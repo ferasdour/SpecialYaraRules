@@ -10,11 +10,11 @@ rule phishingKits3 {
       $s5 = ").click(function(event" ascii
       $s6 = "Please try again later" ascii
       $r1 = /url:(\s)\Shttps:\/\/.[a-zA-Z0-9-_.]{6,200}/is
-      $s7 = "type: 'POST'," ascii
-      $s8 = "email:" ascii
-      $s9 = "password:" ascii
-      $s10 = "btn').html('" ascii
-      $header = { (0d 0a | 20 0d 0a 0d 0a) }
+      $r2 = /type:(\s|\s')POST',/is
+      $s7 = "email:" ascii
+      $s8 = "password:" ascii
+      $s9 = "btn').html('" ascii
+      $header = { (0d 0a | 20 0d 0a 0d 0a | 3c 21 44 4f ) }
    condition:
-       $header at 0 and 7 of ($s*) and $r1
+       $header at 0 and 6 of ($s*) and all of ($r*)
 }
