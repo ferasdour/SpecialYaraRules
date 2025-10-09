@@ -1,6 +1,6 @@
 rule phishingKits3 {
    meta:
-      description = "PhishingKits3"
+      description = "PhishingKits3: This was found in multiple phishing kits hosted on open/unauthenticated S3 buckets."
       author = "ferasdour"
    strings:
       $s1 = "https://ajax.googleapis.com/ajax/libs/jquery/" ascii
