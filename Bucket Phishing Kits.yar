@@ -7,7 +7,8 @@ rule phishingKits3 {
       $s2 = "https://code.jquery.com/jquery-" ascii
       $s3 = "window.location.hash.substr(" ascii
       $s4 = ".substr((" ascii
-      $s5 = ").click(function(event" ascii
+       
+0      $s5 = ").click(function(event" ascii
       $s6 = "Please try again later" ascii
       $r1 = /url:(\s)\Shttps:\/\/.[a-zA-Z0-9-_.]{6,200}/is
       $r2 = /type:(\s|\s')POST',/is
