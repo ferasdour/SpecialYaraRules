@@ -1,0 +1,645 @@
+title: Trojan.Win64.Agent behavior detection (c584b804)
+id: c584b80444ee31aa0a38ef51a5c91c073d021f367da14f5c8fd80c1101a004b7
+status: experimental
+description: Auto-generated Sigma rule for Trojan.Win64.Agent
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"run.exe\")\n Found reference to API \"RegCloseKey\" (Indicator: \"\
+      RegCloseKey\"; Source: \"00000000-00004112.00000000.218960.B6B24000.00000002.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00004508.00000000.218918.00A05000.00000002.mdmp, 00000000-00004508.00000001.218966.00A05000.00000002.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"run.exe\")\n Found reference to API \"ShellExecuteW\" (Indicator:\
+      \ \"ShellExecute\"; Source: \"00000000-00001524.00000001.212725.590C3000.00000002.mdmp\"\
+      )\n Found reference to API \"yncShellExecute\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00001524.00000001.212725.D20E0000.00000004.mdmp\")\n Found\
+      \ reference to API \"64132964628,7172,3191,,ShellExecuteW,Shell32.dll,\"00:55:23.421\"\
+      ,RX=0,PX=0\" (Indicator: \"ShellExecute\"; Source: \"00000000-00001524.00000001.212725.D214D000.00000004.mdmp\"\
+      )\n Found reference to API \"yncShellExecuteN\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00005976.00000000.210921.00C10000.00000004.mdmp\")\n Found\
+      \ reference to API \"yncShellExecute\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00005976.00000000.210921.00C10000.00000004.mdmp\")\n Found reference\
+      \ to API \"ShellExecuteW\" (Indicator: \"ShellExecute\"; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp,\
+      \ 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp, 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\"\
+      )\n Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"run.exe\")\n Found reference to API \"CreateFileA\" (Indicator: \"\
+      CreateFile\"; File: \"run.exe\")\n Found reference to API \"CreateFileA\" (Indicator:\
+      \ \"CreateFile\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00001524.00000001.212725.07021000.00000002.mdmp, 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileA\"\
+      />\" (Indicator: \"CreateFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileW\"\
+      />\" (Indicator: \"CreateFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00004112.00000000.218960.B6B24000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00004508.00000000.218918.00A05000.00000002.mdmp,\
+      \ 00000000-00004508.00000001.218966.00A05000.00000002.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileA\"/>\" (Indicator:\
+      \ \"CreateFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileW\"/>\" (Indicator:\
+      \ \"CreateFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp,\
+      \ 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp, 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingA\" (Indicator: \"CreateFile\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")\n Found\
+      \ reference to API \"CreateFile2\" (Indicator: \"CreateFile\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileMappingFromApp\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"run.exe\")\n Found reference to API \"CreateDirectoryA\" (Indicator:\
+      \ \"CreateDirectory\"; File: \"run.exe\")\n Found reference to API \"CreateDirectoryW\"\
+      \ (Indicator: \"CreateDirectory\"; Source: \"00000000-00001524.00000001.212725.590C3000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "\"D:\\Projects\\WinRAR\\SFX\\build\\sfxrar64\\Release\\sfxrar.pdb\"\
+      \n \"regsvr32.pdb\""
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"run.exe\")\n Found reference to API \"GetProcessHeap\" (Indicator:\
+      \ \"GetProcessHeap\"; File: \"run.exe\")\n file/memory contains long string\
+      \ with (Indicator: \"OpenProcess\"; File: \"UserInfo.dll\")\n Found reference\
+      \ to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source: \"00000000-00004112.00000000.218960.B6B24000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00004508.00000000.218918.00A05000.00000002.mdmp, 00000000-00004508.00000001.218966.00A05000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"SHFileOperationW\" (Indicator: \"SHFileOperation\"\
+      ; File: \"run.exe\")\n Found reference to API \"SHFileOperationW\" (Indicator:\
+      \ \"SHFileOperation\"; Source: \"00000000-00001524.00000001.212725.590C3000.00000002.mdmp\"\
+      )"
+  - EventData: Contains reference to method used by Windows shell items (API string)
+  - EventData: string-269
+  - EventData: "Found string \"MoveFileW\" (Indicator: \"MoveFileW\"; File: \"run.exe\"\
+      )\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; File: \"run.exe\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileW\"; File: \"\
+      uninstall.exe\")\n Found string \"MoveFileExA\" (Indicator: \"MoveFileExA\"\
+      ; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp\")\n Found\
+      \ string \"MoveFileW\" (Indicator: \"MoveFileW\"; Source: \"00000000-00001524.00000001.212725.590C3000.00000002.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileA\"/>\"\
+      \ (Indicator: \"MoveFileA\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"/>\"\
+      \ (Indicator: \"MoveFileW\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"/>\"\
+      \ (Indicator: \"MoveFileExA\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"/>\"\
+      \ (Indicator: \"MoveFileExW\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileA\"/>\"\
+      \ (Indicator: \"MoveFileA\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found string\
+      \ \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"/>\" (Indicator: \"\
+      MoveFileW\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found string\
+      \ \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"/>\" (Indicator: \"\
+      MoveFileExA\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found string\
+      \ \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"/>\" (Indicator: \"\
+      MoveFileExW\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found string\
+      \ \"MoveFileW\" (Indicator: \"MoveFileW\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"run.exe\")\n file/memory contains long string with (Indicator: \"\
+      ShowWindow\"; File: \"LangDLL.dll\")\n Found reference to API \"ShowWindow\"\
+      \ (Indicator: \"ShowWindow\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )\n Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"GetWindowThreadProcessId\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "\"Software\\Microsoft\\Windows\\CurrentVersion\" in Source: run.exe\n\
+      \ \"Software\\WinRAR SFX\" in Source: run.exe\n \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\\
+      Software\\Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source:\
+      \ 00000000-00001524.00000001.212725.D20E0000.00000004.mdmp\n \"ER\\S-1-5-21-735145574-3570218355-1207367261-1001\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source:\
+      \ 00000000-00001524.00000001.212725.D20E0000.00000004.mdmp\n \"5574-\\Registry\\\
+      Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{F}\" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{F\" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n\
+      \ \"e\\Software\\C\" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n\
+      \ \"y\\Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6\" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n\
+      \ \"\\Software\\Classes\\CLSID\\{00000323-0000-0000-C000-000000000046}\" in\
+      \ Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n \"y\\Machine\\\
+      Software\\C/\" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001524.00000001.212725.D214D000.00000004.mdmp\n \"\
+      sub key: Software\\Classes\\CLSID\\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\"\
+      \ in Source: 00000000-00004112.00000000.218960.02C40000.00000004.mdmp\n \"Path=C:\\\
+      ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\\
+      System32\\Wbem;C:\\WINDOWS\\System32\\W\\REGISTRY\\MACHINE\\SOFTWARE\\Classes\\\
+      WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\" in Source: 00000000-00005976.00000000.210921.00C10000.00000004.mdmp\n\
+      \ 00000000-00005976.00000001.211148.00C10000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00005976.00000000.210921.00C10000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00005976.00000000.210921.00C10000.00000004.mdmp\n 00000000-00005976.00000001.211148.00C10000.00000004.mdmp\n\
+      \ \"Software\\Embarcadero\\Locales\" in Source: 00000000-00005976.00000000.210921.04880000.00000004.mdmp\n\
+      \ \"Software\\CodeGear\\Locales\" in Source: 00000000-00005976.00000000.210921.04880000.00000004.mdmp\n\
+      \ \"Software\\Borland\\Locales\" in Source: 00000000-00005976.00000000.210921.04880000.00000004.mdmp\n\
+      \ \"Software\\Borland\\Delphi\\Locales\" in Source: 00000000-00005976.00000000.210921.04880000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"run.exe\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyA\"/>\" in \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyW\"/>\" in \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyExA\"/>\" in \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyExW\"/>\" in \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyA\"/>\" in \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\"\n Found registry\
+      \ modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"RegCreateKeyW\"\
+      />\" in \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp, 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyExA\"/>\" in \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\"\n Found registry\
+      \ modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"RegCreateKeyExW\"\
+      />\" in \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp, 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyW\" in \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "file/memory contains long string(File: \"NppExport.dll\")\n file/memory\
+      \ contains long string(File: \"mimeTools.dll\")\n file/memory contains long\
+      \ string(File: \"genteert.dll\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"run.exe\")\n Found reference to API \"CreateThread failed\" (Indicator:\
+      \ \"CreateThread\"; File: \"run.exe\")\n file/memory contains long string with\
+      \ (Indicator: \"OpenThread\"; File: \"UserInfo.dll\")\n Found reference to API\
+      \ \"CreateThread\" (Indicator: \"CreateThread\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"SuspendThread\" (Indicator: \"SuspendThread\"; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp,\
+      \ 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp, 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\"\
+      )\n Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source:\
+      \ \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateThread\" (Indicator: \"CreateThread\"; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp,\
+      \ 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp, 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\"\
+      )\n Found reference to API \"SetThreadContext\" (Indicator: \"SetThreadContext\"\
+      ; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")\n Found\
+      \ reference to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"; Source:\
+      \ \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenThreadToken\" (Indicator: \"OpenThread\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )\n Found reference to API \"OpenThread\" (Indicator: \"OpenThread\"; Source:\
+      \ \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"run.exe\")\n Found reference to API \"SetLastError\" (Indicator: \"\
+      SetLastError\"; File: \"run.exe\")\n Found reference to API \"WaitForMultipleObjects\
+      \ error %d, GetLastError %d\" (Indicator: \"GetLastError\"; File: \"run.exe\"\
+      )\n file/memory contains long string with (Indicator: \"GetLastError\"; File:\
+      \ \"System.dll\")\n file/memory contains long string with (Indicator: \"GetLastError\"\
+      ; File: \"UserInfo.dll\")\n Found reference to API \"GetLastError\" (Indicator:\
+      \ \"GetLastError\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00004112.00000000.218960.B6B24000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00004508.00000000.218918.00A05000.00000002.mdmp, 00000000-00004508.00000001.218966.00A05000.00000002.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00005976.00000000.210921.01357000.00000002.mdmp, 00000000-00005976.00000000.210921.71BBE000.00000004.mdmp,\
+      \ 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp, 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")\n Found reference\
+      \ to API \"WSAGetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"run.exe\")\n Found reference to API \"GetCommandLineA\" (Indicator:\
+      \ \"GetCommandLine\"; File: \"run.exe\")\n Found reference to API \"GetCommandLineA\"\
+      \ (Indicator: \"GetCommandLine\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp,\
+      \ 00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00004112.00000000.218960.B6B24000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00004508.00000000.218918.00A05000.00000002.mdmp, 00000000-00004508.00000001.218966.00A05000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00005976.00000000.210921.71BBE000.00000004.mdmp, 00000000-00005976.00000000.210921.7EB30000.00000004.mdmp,\
+      \ 00000000-00005976.00000001.211148.71BBE000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: 'Found string "cmd.exe /c deldll.bat" (Indicator: "cmd.exe /c"; Source:
+      "00000000-00006336-00000C47-77701745260")'
+  - EventData: Contains ability to executes commands or batch file
+  - EventData: string-174
+  - EventData: Found string - \\.\pipe\
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: "Found reference to API \"DeviceIoControl\" (Indicator: \"DeviceIoControl\"\
+      ; File: \"run.exe\")\n Found reference to API \"DeviceIoControl\" (Indicator:\
+      \ \"DeviceIoControl\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create/control drivers (API string)
+  - EventData: string-220
+  - EventData: "Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; File:\
+      \ \"run.exe\")\n Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"\
+      ; File: \"run.exe\")\n Found reference to API \"MoveFileExA\" (Indicator: \"\
+      MoveFile\"; Source: \"00000000-00001524.00000001.212725.07021000.00000002.mdmp\"\
+      )\n Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; Source: \"\
+      00000000-00001524.00000001.212725.590C3000.00000002.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileA\"/>\" (Indicator:\
+      \ \"MoveFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004112.00000000.218960.02C40000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileA\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"/>\" (Indicator:\
+      \ \"MoveFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"/>\" (Indicator:\
+      \ \"MoveFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"/>\" (Indicator:\
+      \ \"MoveFile\"; Source: \"00000000-00004508.00000000.218918.00AD0000.00000004.mdmp,\
+      \ 00000000-00004508.00000001.218966.00AD0000.00000004.mdmp\")\n Found reference\
+      \ to API \"MoveFileW\" (Indicator: \"MoveFile\"; Source: \"00000000-00005976.00000000.210921.7EB30000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  selection_network:
+  - DestinationHostname: 00001.ico
+  - DestinationHostname: 01.dll
+  - DestinationHostname: 02.dll
+  - DestinationHostname: 03.dll
+  - DestinationHostname: 04.dll
+  - DestinationHostname: 05.dll
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: APPHELP.dll
+  - DestinationHostname: BaanC.xml
+  - DestinationHostname: Bespin.xml
+  - DestinationHostname: Black.xml
+  - DestinationHostname: Blue.xml
+  - DestinationHostname: CLBCATQ.dll
+  - DestinationHostname: COMCTL32.dll
+  - DestinationHostname: CRYPTBASE.dll
+  - DestinationHostname: Choco.xml
+  - DestinationHostname: ComparePlugin.dll
+  - DestinationHostname: D2D1.DLL
+  - DestinationHostname: D3D11.DLL
+  - DestinationHostname: DM.udl.xml
+  - DestinationHostname: DSpellCheck.dll
+  - DestinationHostname: DWMAPI.dll
+  - DestinationHostname: DWRITE.DLL
+  - DestinationHostname: DXGIDebug.dll
+  - DestinationHostname: DansLeRuSH-Dark.xml
+  - DestinationHostname: DarkModeDefault.xml
+  - DestinationHostname: E0BW5bSM.HVU
+  - DestinationHostname: E0BW5bSM.SVR
+  - DestinationHostname: E0BW5bSM.exe
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: GUP.exe
+  - DestinationHostname: HexEditor.dll
+  - DestinationHostname: HotFudgeSundae.xml
+  - DestinationHostname: Industrial.xml
+  - DestinationHostname: Ink.xml
+  - DestinationHostname: InstallOptions.dll
+  - DestinationHostname: KERNELBASE.DLL
+  - DestinationHostname: Kitty.xml
+  - DestinationHostname: LPK.DLL
+  - DestinationHostname: LangDLL.dll
+  - DestinationHostname: Monokai.xml
+  - DestinationHostname: MossyLawn.xml
+  - DestinationHostname: NETAPI32.DLL
+  - DestinationHostname: NTMARTA.dll
+  - DestinationHostname: Navajo.xml
+  - DestinationHostname: NppConverter.dll
+  - DestinationHostname: NppExport.dll
+  - DestinationHostname: NppQCP.dll
+  - DestinationHostname: NppSaveAsAdmin.dll
+  - DestinationHostname: NppShell.dll
+  - DestinationHostname: NppShell.msix
+  - DestinationHostname: NppTaskList.dll
+  - DestinationHostname: OLEACC.dll
+  - DestinationHostname: Obsidian.xml
+  - DestinationHostname: Oleaut32.dll
+  - DestinationHostname: PGORT90.dll
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: PSAPI.dll
+  - DestinationHostname: README.md
+  - DestinationHostname: RichEd20.dll
+  - DestinationHostname: SETUPAPI.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHFOLDER.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: SSPICLI.DLL
+  - DestinationHostname: SetupApi.dll
+  - DestinationHostname: Solarized-light.xml
+  - DestinationHostname: Solarized.xml
+  - DestinationHostname: SpeechPlugin.dll
+  - DestinationHostname: System.dll
+  - DestinationHostname: Twilight.xml
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UXTHEME.dll
+  - DestinationHostname: UXTheme.dll
+  - DestinationHostname: Uninstall.lnk
+  - DestinationHostname: UserInfo.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: Wlanapi.dll
+  - DestinationHostname: Wrap.xml
+  - DestinationHostname: XMLTools.dll
+  - DestinationHostname: Zenburn.xml
+  - DestinationHostname: abkhazian.xml
+  - DestinationHostname: actionscript.xml
+  - DestinationHostname: ada.xml
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: afrikaans.xml
+  - DestinationHostname: albanian.xml
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: ar.xml
+  - DestinationHostname: arabic.xml
+  - DestinationHostname: aragonese.xml
+  - DestinationHostname: aranese.xml
+  - DestinationHostname: asm.xml
+  - DestinationHostname: autoit.xml
+  - DestinationHostname: avicap32.dll
+  - DestinationHostname: azerbaijani.xml
+  - DestinationHostname: baanc.xml
+  - DestinationHostname: bash.xml
+  - DestinationHostname: basic.xml
+  - DestinationHostname: basque.xml
+  - DestinationHostname: batch.xml
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: belarusian.xml
+  - DestinationHostname: bengali.xml
+  - DestinationHostname: board.xml
+  - DestinationHostname: bosnian.xml
+  - DestinationHostname: breton.xml
+  - DestinationHostname: bulgarian.xml
+  - DestinationHostname: c.xml
+  - DestinationHostname: catalan.xml
+  - DestinationHostname: change.log
+  - DestinationHostname: chineseSimplified.xml
+  - DestinationHostname: cmake.xml
+  - DestinationHostname: cmd.exe
+  - DestinationHostname: cobol-free.xml
+  - DestinationHostname: cobol.xml
+  - DestinationHostname: coffee.xml
+  - DestinationHostname: comctl32.dll
+  - DestinationHostname: comdlg32.dll
+  - DestinationHostname: config.model.xml
+  - DestinationHostname: config.xml
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: contextMenu.xml
+  - DestinationHostname: corsican.xml
+  - DestinationHostname: cpp.xml
+  - DestinationHostname: croatian.xml
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cryptbase.dll
+  - DestinationHostname: cs.xml
+  - DestinationHostname: csi.dll
+  - DestinationHostname: css.xml
+  - DestinationHostname: customizable.xml
+  - DestinationHostname: czech.xml
+  - DestinationHostname: danish.xml
+  - DestinationHostname: deldll.bat
+  - DestinationHostname: disabled.dll
+  - DestinationHostname: doLocalConf.xml
+  - DestinationHostname: dutch.xml
+  - DestinationHostname: dwmapi.dll
+  - DestinationHostname: english.xml
+  - DestinationHostname: esperanto.xml
+  - DestinationHostname: estonian.xml
+  - DestinationHostname: example.xml
+  - DestinationHostname: explorer.exe
+  - DestinationHostname: ext-ms-win-com-ole32-l1-1-0.dll
+  - DestinationHostname: ext-ms-win-ntuser-dialogbox-l1-1-0.dll
+  - DestinationHostname: extremaduran.xml
+  - DestinationHostname: farsi.xml
+  - DestinationHostname: finnish.xml
+  - DestinationHostname: fortran.xml
+  - DestinationHostname: fortran77.xml
+  - DestinationHostname: french.xml
+  - DestinationHostname: friulian.xml
+  - DestinationHostname: galician.xml
+  - DestinationHostname: gdi32.dll
+  - DestinationHostname: gdiplus.dll
+  - DestinationHostname: gdscript.xml
+  - DestinationHostname: genteert.dll
+  - DestinationHostname: georgian.xml
+  - DestinationHostname: german.xml
+  - DestinationHostname: getDownloadUrl.php
+  - DestinationHostname: github.com
+  - DestinationHostname: go.xml
+  - DestinationHostname: greek.xml
+  - DestinationHostname: groovet.dll
+  - DestinationHostname: guig.dll
+  - DestinationHostname: gujarati.xml
+  - DestinationHostname: gup.exe
+  - DestinationHostname: gup.xml
+  - DestinationHostname: haskell.xml
+  - DestinationHostname: hebrew.xml
+  - DestinationHostname: hindi.xml
+  - DestinationHostname: hollywood.xml
+  - DestinationHostname: hongKongCantonese.xml
+  - DestinationHostname: html.xml
+  - DestinationHostname: hungarian.xml
+  - DestinationHostname: imm32.dll
+  - DestinationHostname: indonesian.xml
+  - DestinationHostname: ini.xml
+  - DestinationHostname: inno.xml
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: irish.xml
+  - DestinationHostname: italian.xml
+  - DestinationHostname: jN.dll
+  - DestinationHostname: japanese.xml
+  - DestinationHostname: java.xml
+  - DestinationHostname: javascript.js.xml
+  - DestinationHostname: javascript.xml
+  - DestinationHostname: kabyle.xml
+  - DestinationHostname: kannada.xml
+  - DestinationHostname: kazakh.xml
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: khaki.xml
+  - DestinationHostname: korean.xml
+  - DestinationHostname: krl.xml
+  - DestinationHostname: kurdish.xml
+  - DestinationHostname: kyrgyz.xml
+  - DestinationHostname: langs.model.xml
+  - DestinationHostname: langs.xml
+  - DestinationHostname: latex.xml
+  - DestinationHostname: latvian.xml
+  - DestinationHostname: libcef.dll
+  - DestinationHostname: libcurl.dll
+  - DestinationHostname: ligurian.xml
+  - DestinationHostname: lisp.xml
+  - DestinationHostname: lithuanian.xml
+  - DestinationHostname: lua.xml
+  - DestinationHostname: luxembourgish.xml
+  - DestinationHostname: macedonian.xml
+  - DestinationHostname: makefile.xml
+  - DestinationHostname: malay.xml
+  - DestinationHostname: marathi.xml
+  - DestinationHostname: mimeTools.dll
+  - DestinationHostname: mongolian.xml
+  - DestinationHostname: mpr.dll
+  - DestinationHostname: msacm32.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: n.com
+  - DestinationHostname: nativeLang.xml
+  - DestinationHostname: nepali.xml
+  - DestinationHostname: nim.xml
+  - DestinationHostname: norwegian.xml
+  - DestinationHostname: notepad-plus-plus.org
+  - DestinationHostname: notepad.exe
+  - DestinationHostname: npp.8.9.1.Installer
+  - DestinationHostname: npp.8.9.1.Installer.x64.exe
+  - DestinationHostname: nppLogNulContentCorruptionIssue.xml
+  - DestinationHostname: nppPluginList.dll
+  - DestinationHostname: nppcm.dll
+  - DestinationHostname: nppexec.xml
+  - DestinationHostname: nsDialogs.dll
+  - DestinationHostname: nsfBAD3.tmp
+  - DestinationHostname: nsis.xml
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: nynorsk.xml
+  - DestinationHostname: occitan.xml
+  - DestinationHostname: office.odf
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: olepro32.dll
+  - DestinationHostname: oploa.com
+  - DestinationHostname: os.dll
+  - DestinationHostname: overrideMap.xml
+  - DestinationHostname: pascal.xml
+  - DestinationHostname: perl.xml
+  - DestinationHostname: php.xml
+  - DestinationHostname: piglatin.xml
+  - DestinationHostname: polish.xml
+  - DestinationHostname: portuguese.xml
+  - DestinationHostname: powershell.xml
+  - DestinationHostname: powrprof.dll
+  - DestinationHostname: preinstalled.udl.xml
+  - DestinationHostname: punjabi.xml
+  - DestinationHostname: python.xml
+  - DestinationHostname: raku.xml
+  - DestinationHostname: rc.xml
+  - DestinationHostname: readme.lnk
+  - DestinationHostname: readme.txt
+  - DestinationHostname: regsvr32.exe
+  - DestinationHostname: regsvr32.pdb
+  - DestinationHostname: release-assets.githubusercontent.com
+  - DestinationHostname: riched20.dll
+  - DestinationHostname: romanian.xml
+  - DestinationHostname: rsaenh.dll
+  - DestinationHostname: ruby.xml
+  - DestinationHostname: run.exe
+  - DestinationHostname: russian.xml
+  - DestinationHostname: rust.xml
+  - DestinationHostname: samogitian.xml
+  - DestinationHostname: sardinian.xml
+  - DestinationHostname: sas.xml
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: serbian.xml
+  - DestinationHostname: serbianCyrillic.xml
+  - DestinationHostname: shcore.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: shortcuts.xml
+  - DestinationHostname: sinhala.xml
+  - DestinationHostname: sinumerik.xml
+  - DestinationHostname: slovak.xml
+  - DestinationHostname: slovenian.xml
+  - DestinationHostname: spanish.xml
+  - DestinationHostname: sql.xml
+  - DestinationHostname: start.bat
+  - DestinationHostname: stylers.model.xml
+  - DestinationHostname: stylers.xml
+  - DestinationHostname: swedish.xml
+  - DestinationHostname: tagalog.xml
+  - DestinationHostname: taiwaneseMandarin.xml
+  - DestinationHostname: tajikCyrillic.xml
+  - DestinationHostname: tamil.xml
+  - DestinationHostname: tatar.xml
+  - DestinationHostname: telugu.xml
+  - DestinationHostname: tex.xml
+  - DestinationHostname: thai.xml
+  - DestinationHostname: toml.xml
+  - DestinationHostname: turkish.xml
+  - DestinationHostname: typescript.xml
+  - DestinationHostname: ukrainian.xml
+  - DestinationHostname: uninstall.exe
+  - DestinationHostname: unppmd.dll
+  - DestinationHostname: updater.ico
+  - DestinationHostname: urdu.xml
+  - DestinationHostname: user32.dll
+  - DestinationHostname: userDefinedLang-markdown.default.modern.xml
+  - DestinationHostname: uyghur.xml
+  - DestinationHostname: uzbek.xml
+  - DestinationHostname: uzbekCyrillic.xml
+  - DestinationHostname: vb.xml
+  - DestinationHostname: venetian.xml
+  - DestinationHostname: verifier.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: vhdl.xml
+  - DestinationHostname: vietnamese.xml
+  - DestinationHostname: vvvv.exe
+  - DestinationHostname: welsh.xml
+  - DestinationHostname: wininet.dll
+  - DestinationHostname: winmm.dll
+  - DestinationHostname: wsock32.dll
+  - DestinationHostname: wtsapi32.dll
+  - DestinationHostname: www.w3.org
+  - DestinationHostname: xml.xml
+  - DestinationHostname: zulu.xml
+  - DestinationIp: 140.82.112.4
+  - DestinationIp: 185.199.109.133
+  - DestinationIp: 202.79.166.27
+  - DestinationIp: 8.8.5.0
+  - DestinationIp: 95.128.42.184
+  condition: selection_behavior or selection_network

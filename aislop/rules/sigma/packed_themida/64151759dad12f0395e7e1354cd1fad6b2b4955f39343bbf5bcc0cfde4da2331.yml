@@ -1,0 +1,281 @@
+title: Packed.Themida behavior detection (64151759)
+id: 64151759dad12f0395e7e1354cd1fad6b2b4955f39343bbf5bcc0cfde4da2331
+status: experimental
+description: Auto-generated Sigma rule for Packed.Themida
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "\"Void.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\" at 4C5D0000\n\
+      \ \"Void.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\" at\
+      \ 4CCF0000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: '"Void.exe" has high imagebase  "0x140000000"'
+  - EventData: PE file has a high image base
+  - EventData: static-93
+  - EventData: "\"Void.exe\" file has an entrypoint instructions - \"call\t0x1407361df,push\t\
+      r10,mov\tr10, rsp,push\tr10,mov\trsi, qword ptr [r10 + 0x10],mov\trdi, qword\
+      \ ptr [r10 + 0x20],cld\t,mov\tdl, 0x80,mov\tal, byte ptr [rsi],inc\trsi,mov\t\
+      byte ptr [rdi], al,inc\trdi,mov\tebx, 2,add\tdl, dl,jne\t0x140736089,mov\tdl,\
+      \ byte ptr [rsi],inc\trsi,adc\tdl, dl,jae\t0x14073606f,add\tdl, dl,jne\t0x140736096,mov\t\
+      dl, byte ptr [rsi],inc\trsi,adc\tdl, dl,jae\t0x1407360f6,xor\teax, eax,add\t\
+      dl, dl,jne\t0x1407360a5,mov\tdl, byte ptr [rsi],inc\trsi,adc\tdl, dl,jae\t0x1407361ad,add\t\
+      dl, dl,jne\t0x1407360b6,mov\tdl, byte ptr [rsi],inc\trsi,adc\tdl, dl,adc\teax,\
+      \ eax,add\tdl, dl,jne\t0x1407360c3,\""
+  - EventData: PE file entrypoint instructions
+  - EventData: static-96
+  - EventData: "Found string \"Registry Monitor - Sysinternals: www.sysinternals.com\"\
+      \ (Indicator: \"www.sysinternals.com\"; Source: \"00000000-00006652-0000044C-12579668902\"\
+      )\n Found string \"File Monitor - Sysinternals: www.sysinternals.com\" (Indicator:\
+      \ \"www.sysinternals.com\"; Source: \"00000000-00006652-0000044C-18974428918\"\
+      )\n Found string \"Process Monitor - Sysinternals: www.sysinternals.com\" (Indicator:\
+      \ \"www.sysinternals.com\"; Source: \"00000000-00006652-0000044C-19644034992\"\
+      )"
+  - EventData: Contains reference to Sysinternals URL
+  - EventData: string-262
+  - EventData: "\"Void.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base\
+      \ 7ffc4d0a0000\n \"Void.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 7ffc4d0a0000\n \"Void.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ffc4d0a0000\n \"Void.exe\" loaded module \"KERNEL32\" at base 7ffc4e790000\n\
+      \ \"Void.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE64.DLL\" at base 7ffc27f30000\n\
+      \ \"Void.exe\" loaded module \"USER32.DLL\" at base 7ffc4d9a0000\n \"Void.exe\"\
+      \ loaded module \"ADVAPI32.DLL\" at base 7ffc4dc50000\n \"Void.exe\" loaded\
+      \ module \"NTDLL.DLL\" at base 7ffc4f8d0000\n \"Void.exe\" loaded module \"\
+      SHELL32.DLL\" at base 7ffc4ddb0000\n \"Void.exe\" loaded module \"SHLWAPI.DLL\"\
+      \ at base 7ffc4d6f0000\n \"Void.exe\" loaded module \"KERNEL32.DLL\" at base\
+      \ 7ffc4e790000\n \"Void.exe\" loaded module \"API-MS-WIN-SECURITY-SYSTEMFUNCTIONS-L1-1-0\"\
+      \ at base 7ffc4dc50000\n \"Void.exe\" loaded module \"EXT-MS-WIN-KERNEL32-ERRORHANDLING-L1-1-0.DLL\"\
+      \ at base 7ffc4e790000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"Void.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"LoadLibrary\" with a parameter\
+      \ kernel32 (UID: 00000000-00006652)\n \"Void.exe\" called \"LoadLibrary\" with\
+      \ a parameter user32.dll (UID: 00000000-00006652)\n \"Void.exe\" called \"LoadLibrary\"\
+      \ with a parameter advapi32.dll (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"LoadLibrary\" with a parameter ntdll.dll (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"LoadLibrary\" with a parameter shell32.dll (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"LoadLibrary\" with a parameter shlwapi.dll (UID: 00000000-00006652)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: "\"Void.exe\" searching for class \"RegmonClass\"\n \"Void.exe\" searching\
+      \ for class \"Registry Monitor - Sysinternals: www.sysinternals.com\"\n \"Void.exe\"\
+      \ searching for class \"18467-41\"\n \"Void.exe\" searching for class \"FilemonClass\"\
+      \n \"Void.exe\" searching for window \"File Monitor - Sysinternals: www.sysinternals.com\"\
+      \n \"Void.exe\" searching for class \"PROCMON_WINDOW_CLASS\"\n \"Void.exe\"\
+      \ searching for window \"Process Monitor - Sysinternals: www.sysinternals.com\""
+  - EventData: Scanning for window names
+  - EventData: api-70
+  - EventData: '"Void.exe" loaded module "%WINDIR%\System32\rpcrt4.dll" at 4E5C0000'
+  - EventData: Loads the RPC (Remote Procedure Call) module DLL
+  - EventData: module-10
+  - EventData: "\"Void.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"EN-US\")\n \"Void.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"EN-US\")"
+  - EventData: Reads information about supported languages
+  - EventData: registry-25
+  - EventData: "Found reference to API (Indicator: \"StartServiceW\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetKnownFolderPath\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"WinHttpConnect\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"InternetOpenA\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"getsockname\"; File: \"Void.exe\")\n\
+      \ Found reference to API (Indicator: \"BCryptDecrypt\"; File: \"Void.exe\")\n\
+      \ Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"CreateStreamOnHGlobal\"; File: \"Void.exe\"\
+      )\n Found reference to API (Indicator: \"CryptExportKey\"; Source: \"00000000-00006652.00000000.222779.22460000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQueryInformationProcess\"; Source:\
+      \ \"00000000-00006652.00000001.223677.52BC7000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlAdjustPrivilege\"; Source: \"00000000-00006652.00000001.223677.52BC7000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtRaiseHardError\"; Source: \"00000000-00006652.00000001.223677.52BC7000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceW\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"SHGetKnownFolderPath\"; Source: \"\
+      00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateStreamOnHGlobal\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpConnect\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptDecrypt\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetOpenA\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"StartServiceW\" (Indicator: \"StartService\"\
+      ; File: \"Void.exe\")\n Found reference to API \"StartServiceW\" (Indicator:\
+      \ \"StartService\"; Source: \"00000000-00006652.00000001.223677.52CD7000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "\"Void.exe\" was detected as \"Themida/Winlicense\"  and name: \"\
+      Protector\"\n \"Void.exe\" was detected as \"Microsoft Linker\"  and name: \"\
+      Linker\""
+  - EventData: Matched Compiler/Packer signature (DIE)
+  - EventData: static-157
+  - EventData: "Virtual size of \".themida\" is \"0x578000\" greater than 0x100000\n\
+      \ Virtual size of \".boot\" is \"0x3d8c00\" greater than 0x100000"
+  - EventData: PE file has a big virtual size section
+  - EventData: static-124
+  - EventData: "\"Void.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsAlloc (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsSetValue (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitOnceExecuteOnce (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSemaphoreExW (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ CloseThreadpoolTimer (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlushProcessWriteBuffers (UID: 00000000-00006652)\n \"Void.exe\" called \"\
+      GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetFileInformationByHandle (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeAllConditionVariable (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableCS (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeSRWLock (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ ReleaseSRWLockExclusive (UID: 00000000-00006652)\n \"Void.exe\" called \"\
+      GetProcAddress\" with a parameter SleepConditionVariableSRW (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolWork\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ SubmitThreadpoolWork (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ AreFileApisANSI (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlGetVersion (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoGetClassObject (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromFile (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetLastError (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetLastError (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"GetProcAddress\" with a parameter IsWow64Process2 (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter IsUserAnAdmin (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ NtQuerySystemInformation (UID: 00000000-00006652)\n \"Void.exe\" called \"\
+      GetProcAddress\" with a parameter RtlReleaseSRWLockExclusive (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter NtdllDefWindowProc_W\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ RtlAllocateHeap (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlAcquireSRWLockShared (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlWakeAllConditionVariable (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ RtlAcquireSRWLockExclusive (UID: 00000000-00006652)\n \"Void.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateStreamOnHGlobal (UID: 00000000-00006652)\n\
+      \ \"Void.exe\" called \"GetProcAddress\" with a parameter GetHGlobalFromStream\
+      \ (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ MapViewOfFileFromApp (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlInitializeSListHead (UID: 00000000-00006652)\n \"Void.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateFileMappingFromApp (UID:\
+      \ 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoTaskMemFree (UID: 00000000-00006652)\n \"Void.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlReleaseSRWLockShared (UID: 00000000-00006652)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "Report process \"WerFault.exe\" was created by \"svchost.exe\"\n Report\
+      \ process \"WerFault.exe\" was created by \"Void.exe\""
+  - EventData: An application crash occurred
+  - EventData: target-2
+  - EventData: "\"Void.exe\" has an executable section named \"\"\n \"Void.exe\" has\
+      \ an executable section named \".themida\"\n \"Void.exe\" has an executable\
+      \ section named \".boot\""
+  - EventData: PE file contains executable sections
+  - EventData: static-80
+  - EventData: "\"Void.exe\" has an writable section named \"\"\n \"Void.exe\" has\
+      \ an writable section named \".idata\"\n \"Void.exe\" has an writable section\
+      \ named \".tls\"\n \"Void.exe\" has an writable section named \".themida\""
+  - EventData: PE file contains writable sections
+  - EventData: static-95
+  - EventData: Raw size of ".boot" is "0x3d8c00" greater than 0x100000
+  - EventData: PE file has a big raw size section
+  - EventData: static-125
+  - EventData: 'Found VM detection artifact "RDTSCP trick" in "sample.bin" (Offset:
+      136392)'
+  - EventData: The input sample contains the RDTSCP instruction
+  - EventData: binary-26
+  - EventData: 'Found reference to API "NtRaiseHardError" (Indicator: "RaiseHardError";
+      Source: "00000000-00006652.00000001.223677.52BC7000.00000002.mdmp")'
+  - EventData: Contains ability to reboot/shutdown the operating system (API string)
+  - EventData: string-189
+  selection_network:
+  - DestinationHostname: 1.DLL
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: 47.DLL
+  - DestinationHostname: API-MS-WIN-CRT-CONVERT-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-FILESYSTEM-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-HEAP-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-LOCALE-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-MATH-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-STDIO-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-STRING-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-TIME-L1-1-0.DLL
+  - DestinationHostname: API-MS-WIN-CRT-UTILITY-L1-1-0.DLL
+  - DestinationHostname: BCRYPT.DLL
+  - DestinationHostname: D2D1.DLL
+  - DestinationHostname: D3D11.DLL
+  - DestinationHostname: D3D12.DLL
+  - DestinationHostname: DIRECTML.DLL
+  - DestinationHostname: DWMAPI.DLL
+  - DestinationHostname: DWRITE.DLL
+  - DestinationHostname: DXGI.DLL
+  - DestinationHostname: GDI32.DLL
+  - DestinationHostname: GDIPLUS.DLL
+  - DestinationHostname: MSVCP140.DLL
+  - DestinationHostname: OLE32.DLL
+  - DestinationHostname: ONNXRUNTIME.DLL
+  - DestinationHostname: PDH.DLL
+  - DestinationHostname: SbieDll.dll
+  - DestinationHostname: VCRUNTIME140.DLL
+  - DestinationHostname: Void.exe
+  - DestinationHostname: WINHTTP.DLL
+  - DestinationHostname: WININET.DLL
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: cmdvrt32.dll
+  - DestinationHostname: dateinj01.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: sysMerge.sdb
+  - DestinationHostname: sysmain.sdb
+  - DestinationHostname: user32.dll
+  - DestinationHostname: www.sysinternals.com
+  condition: selection_behavior or selection_network

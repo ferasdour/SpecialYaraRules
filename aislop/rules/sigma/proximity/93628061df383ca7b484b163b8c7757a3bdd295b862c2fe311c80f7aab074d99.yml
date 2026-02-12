@@ -1,0 +1,266 @@
+title: proximity behavior detection (93628061)
+id: 93628061df383ca7b484b163b8c7757a3bdd295b862c2fe311c80f7aab074d99
+status: experimental
+description: Auto-generated Sigma rule for proximity
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "The input sample is signed with a certificate issued by \"CN=WR3,\
+      \ O=Google Trust Services, C=US\" (SHA1: AF:EC:E5:E3:76:0B:70:D0:3E:63:56:25:1D:0E:57:67:3C:42:5A:91;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R1, O=Google Trust Services LLC, C=US\" (SHA1: E2:51:CB:7D:AF:59:31:04:5A:80:45:45:A0:F4:5B:C2:26:A0:BD:76;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 08:74:54:87:E8:91:C1:9E:30:78:C1:F2:A0:7E:45:29:50:EF:36:F6; see report\
+      \ for more information)\n The input sample is signed with a certificate issued\
+      \ by \"CN=Sectigo Public Server Authentication CA DV E36, O=Sectigo Limited,\
+      \ C=GB\" (SHA1: 56:36:FB:D3:E0:9E:71:88:98:A4:C9:34:94:9B:43:3A:C4:C5:1E:BE;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=Sectigo Public Server Authentication Root E46, O=Sectigo Limited,\
+      \ C=GB\" (SHA1: 56:63:48:E6:56:E1:FA:6C:4E:2E:E6:72:59:16:E8:F4:E3:73:8A:07;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=AAA Certificate Services, O=Comodo CA Limited, L=Salford, ST=Greater\
+      \ Manchester, C=GB\" (SHA1: 8A:7E:EC:44:49:04:F9:D0:23:4F:54:56:EE:71:F0:F7:DD:E7:C5:61;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WR2, O=Google Trust Services, C=US\" (SHA1: 62:20:97:37:86:22:13:0B:BF:38:69:D4:17:18:8A:EA:43:CD:45:29;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R1, O=Google Trust Services LLC, C=US\" (SHA1: 66:E4:16:12:60:B1:00:FE:E0:DE:28:7A:9A:52:93:B4:C2:22:4A:E6;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WR2, O=Google Trust Services, C=US\" (SHA1: F1:9D:07:D0:16:5F:B5:2B:B0:D8:35:9E:A2:61:22:81:10:E3:EA:4B;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: 68:4B:F0:7B:7F:01:02:0C:AA:01:8C:1E:BC:C5:F3:96:38:8E:C7:32;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R4, O=Google Trust Services LLC, C=US\" (SHA1: 10:8F:BF:79:4E:18:EC:53:47:A4:14:E4:37:0C:C4:50:6C:29:7A:B2;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 93:2B:ED:33:9A:A6:92:12:C8:93:75:B7:93:04:B4:75:49:0B:89:A0; see report\
+      \ for more information)\n The input sample is signed with a certificate issued\
+      \ by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: C6:6A:71:84:C2:40:13:D1:A4:B7:DF:C4:1C:E1:54:F3:76:97:EF:6B;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: 83:77:17:A9:3B:71:4A:56:97:F9:54:A7:63:E0:2B:25:8E:3A:F0:13;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: E2:E6:2C:00:22:98:2F:F2:69:6F:AA:37:A1:BB:DF:4F:9B:AA:B3:96;\
+      \ see report for more information)"
+  - EventData: The input sample is signed with a certificate
+  - EventData: certificate-0
+  - EventData: "Spawned process \"msedge.exe\" with commandline \"--single-argument\
+      \ http://www.anime-sharing.com/forum/hentai-game ...\" (UID: 00000000-00006092,\
+      \ Additional Context: \"\"PROGRAMFILES\\(x86)\\Microsoft\\Edge\\Application\\\
+      msedge.exe\" --single-argument http://www.anime-sharing.com/forum/hentai-games-38/japanese-[new-release][150828][\xE6\
+      \xA1\xE6\xBA\xE9\xB7]-\xE3\xA9\xE3\xE3\xAD\xE3\xBC\xE3\xB9\xE3\xB1\xE3\xE3\xAA\
+      \xE4\xBF\xBA\xE3\xAE\xE6\xA5\xE5\xB8\xB8-\xEF\xBD\xE7\xBE\xE4\xBA\xBA\xE3\xAA\
+      \xE6\xAF\xE8\xA6\xAA\xE3\xA8\xE6\xAA\xE4\xBA\xA1\xE4\xBA\xBA\xE3\xE5\xE5\xB1\
+      \xE3\xE3\xA6\xE4\xBF\xBA\xE3\xAB\xE8\xBF\xAB\xE3\xA3\xE3\xA6\xE3\xE3\xE4\xBB\
+      \xB6\xEF\xBD-[387m]-403723/#post2100490\")\n Spawned process \"msedge.exe\"\
+      \ with commandline \"--type=crashpad-handler \"--user-data-dir=%LOCALAPPDATA%\\\
+      \\Microso ...\" (UID: 00000000-00005736), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAA\
+      \ ...\" (UID: 00000000-00008160), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=network.mojom.NetworkService - ...\" (UID:\
+      \ 00000000-00005412), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=storage.mojom.StorageService - ...\" (UID: 00000000-00007756),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=renderer --display-capture-permissions-policy-allowed\
+      \ --j ...\" (UID: 00000000-00001284), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=renderer --display-capture-permissions-policy-allowed --j ...\" (UID:\
+      \ 00000000-00007052), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=asset_store.mojom.AssetStoreSe ...\" (UID: 00000000-00002888),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=renderer --display-capture-permissions-policy-allowed\
+      \ --j ...\" (UID: 00000000-00007060), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00001100), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00007332),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00005476), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00007964), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00004588),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00005144), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en\
+      \ ...\" (UID: 00000000-00001388), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID:\
+      \ 00000000-00008096), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID: 00000000-00002344),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00000580), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en\
+      \ ...\" (UID: 00000000-00006772), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00003708), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00006692),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=gpu-process --disable-gpu-sandbox\
+      \ --use-gl=disabled --gpu ...\" (UID: 00000000-00000368), Spawned process \"\
+      msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00005136), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en\
+      \ ...\" (UID: 00000000-00006992)"
+  - EventData: Spawns new processes
+  - EventData: target-25
+  - EventData: "Process \"msedge.exe\" (UID: 00000000-00006092) was launched with\
+      \ new environment variables: \"USERDNSDOMAIN=\"DESKTOP-FVVF82A\"\"\n Process\
+      \ \"msedge.exe\" (UID: 00000000-00006092) was launched with modified environment\
+      \ variables: \"PROCESSOR_ARCHITECTURE, CommonProgramFiles, Path, ProgramFiles,\
+      \ NUMBER_OF_PROCESSORS\"\n Process \"msedge.exe\" (UID: 00000000-00006092) was\
+      \ launched with missing environment variables: \"PROCESSOR_ARCHITEW6432\"\n\
+      \ Process \"msedge.exe\" (UID: 00000000-00005736) was launched with new environment\
+      \ variables: \"CHROME_CRASHPAD_PIPE_NAME=\"\\\\.\\pipe\\LOCAL\\crashpad_6092_LZGISTDITTSVWPBQ\"\
+      , EDGE_BROWSER_PID=\"6092\"\"\n Process \"msedge.exe\" (UID: 00000000-00008160)\
+      \ was launched with new environment variables: \"EDGE_METRICS_SESSION_ID=\"\
+      28\", EDGE_USER_DATA_DIR=\"%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"uiIxlFHEqYK/kbVuiEU5CgZajeU9QmL4/F97KjHfTZw=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      -5815550854748070847\"\"\n Process \"msedge.exe\" (UID: 00000000-00005412) was\
+      \ launched with new environment variables: \"CHROME_RESTART=\"Microsoft Edge|Microsoft\
+      \ Edge has stopped working. Restart it?|LEFT_TO_RIGHT\"\"\n Process \"msedge.exe\"\
+      \ (UID: 00000000-00005412) was launched with modified environment variables:\
+      \ \"EDGE_METRICS_SESSION_ID\""
+  - EventData: Process launched with changed environment
+  - EventData: target-67
+  - EventData: Spawns new processes that are not known child processes
+  - EventData: target-103
+  - EventData: "\"172.67.128.253:80\"\n \"172.67.128.253:443\"\n \"104.21.96.125:443\"\
+      \n \"142.250.217.138:443\"\n \"151.101.2.137:443\"\n \"142.250.217.131:443\"\
+      \n \"104.16.80.73:443\"\n \"35.190.80.1:443\"\n \"172.67.146.29:443\""
+  - EventData: Contacts server
+  - EventData: network-1
+  - EventData: "\"a.nel.cloudflare.com\"\n \"code.jquery.com\"\n \"fonts.googleapis.com\"\
+      \n \"fonts.gstatic.com\"\n \"p.anime-sharing.com\"\n \"static.cloudflareinsights.com\"\
+      \n \"www.anime-sharing.com\"\n \"www.jsdelivr.top\"\n \"www1.788123.xyz\""
+  - EventData: Queries DNS server
+  - EventData: network-51
+  - EventData: 'External resources discovered in HTML content:
+
+      api.whatsapp.com | href
+
+      code.jquery.com | script | src
+
+      github.com | script_content
+
+      p.anime-sharing.com | img | src
+
+      pinterest.com | href
+
+      rapidgator.net | href
+
+      reddit.com | href
+
+      s5d3.turboimagehost.com | data
+
+      schema.org | script_content
+
+      static.cloudflareinsights.com | script | src
+
+      twitter.com | href
+
+      ul.to | href
+
+      www.anime-sharing.com | canonical | favicon | href | meta_content | script_content
+
+      www.datafile.com | href
+
+      www.facebook.com | href
+
+      www.getchu.com | href | meta_content
+
+      www.google.com | href
+
+      www.googletagmanager.com | script | src
+
+      www.jsdelivr.top | img | script | src
+
+      www.r18game.com | href
+
+      www.tumblr.com | href
+
+      www.turboimagehost.com | href
+
+      www.uploadable.ch | href'
+  - EventData: Identifies external resources in HTML content
+  - EventData: binary-8602
+  - EventData: '"urlref_httpwww.anime-sharing.comforumhentai-games-38japanese-%5Bnew-release%5D%5B150828%5D%5B%E6%A1%83%E6%BA%90%E9%83%B7%5D-%E3%83%A9%E"
+      has type "HTML document Unicode text UTF-8 text with very long lines (1098)"-
+      [targetUID: N/A]'
+  - EventData: Dropped files
+  - EventData: binary-0
+  - EventData: "Pattern match: \"http://www.anime-sharing.com/forum/hentai-games-38/japanese-%5bnew-release%5d%5b150828%5d%5b%e6%a1%83%e6%ba%90%e9%83%b7%5d-%e3%83%a9%e3%83%83%e3%82%ad%e3%83%bc%e3%82%b9%e3%82%b1%e3%83%99%e3%81%aa%e4%bf%ba%e3%81%ae%e6%97%a5%e5%b8%b8-%ef%bd%9e%e7%be%8e%e4%ba\"\
+      \n Pattern match: \"http://www.anime-sharing.com\"\n Pattern match: \"http://www.anime-sharing.com/forum/hentai-games-38/japanese\"\
+      \n Pattern match: \"anime-sharing.com/thre\"\n Heuristic match: \"a.nel.cloudflare.com\"\
+      \n Heuristic match: \"code.jquery.com\"\n Heuristic match: \"fonts.googleapis.com\"\
+      \n Heuristic match: \"fonts.gstatic.com\"\n Heuristic match: \"p.anime-sharing.com\"\
+      \n Heuristic match: \"static.cloudflareinsights.com\"\n Pattern match: \"www.anime-sharing.com\"\
+      \n Pattern match: \"www.jsdelivr.top\"\n Pattern match: \"www1.788123.xyz\""
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: "Short term registered certificate: \"a.nel.cloudflare.com\" (90 days\
+      \ old)\n Short term registered certificate: \"fonts.googleapis.com\" (83 days\
+      \ old)\n Short term registered certificate: \"fonts.gstatic.com\" (83 days old)\n\
+      \ Short term registered certificate: \"p.anime-sharing.com\" (90 days old)\n\
+      \ Short term registered certificate: \"static.cloudflareinsights.com\" (90 days\
+      \ old)\n Short term registered certificate: \"www.anime-sharing.com\" (90 days\
+      \ old)\n Short term registered certificate: \"www.jsdelivr.top\" (90 days old)\n\
+      \ Short term registered certificate: \"www1.788123.xyz\" (90 days old)"
+  - EventData: Short-term SSL certificate detected
+  - EventData: certificate-3
+  - EventData: 'Newly renewed or created SSL certificate: "www1.788123.xyz" (3 days
+      old)'
+  - EventData: Recently renewed or created SSL certificate
+  - EventData: certificate-4
+  - EventData: "Original URL:\nhttp://www.anime-sharing.com/forum/hentai-games-38/japanese-%5Bnew-release%5D%5B150828%5D%5B%E6%A1%83%E6%BA%90%E9%83%B7%5D-%E3%83%A9%E3%83%83%E3%82%AD%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%99%E3%81%AA%E4%BF%BA%E3%81%AE%E6%97%A5%E5%B8%B8-%EF%BD%9E%E7%BE%8E%E4%BA%BA%E3%81%AA%E6%AF%8D%E8%A6%AA%E3%81%A8%E6%9C%AA%E4%BA%A1%E4%BA%BA%E3%81%8C%E5%90%8C%E5%B1%85%E3%81%97%E3%81%A6%E4%BF%BA%E3%81%AB%E8%BF%AB%E3%81%A3%E3%81%A6%E3%81%8F%E3%82%8B%E4%BB%B6%EF%BD%9E-%5B387m%5D-403723/#post2100490\n\
+      \nDecoded URL:\nhttp://www.anime-sharing.com/forum/hentai-games-38/japanese-[new-release][150828][\u6843\
+      \u6E90\u90F7]-\u30E9\u30C3\u30AD\u30FC\u30B9\u30B1\u30D9\u306A\u4FFA\u306E\u65E5\
+      \u5E38-\uFF5E\u7F8E\u4EBA\u306A\u6BCD\u89AA\u3068\u672A\u4EA1\u4EBA\u304C\u540C\
+      \u5C45\u3057\u3066\u4FFA\u306B\u8FEB\u3063\u3066\u304F\u308B\u4EF6\uFF5E-[387m]-403723/#post2100490\n"
+  - EventData: Detection of obfuscated or encoded content in URLs
+  - EventData: network-8615
+  - EventData: "Contacted domain: \"fonts.googleapis.com\" has high entropy\n Contacted\
+      \ domain: \"p.anime-sharing.com\" has high entropy\n Contacted domain: \"static.cloudflareinsights.com\"\
+      \ has high entropy\n Contacted domain: \"www.anime-sharing.com\" has high entropy\n\
+      \ Contacted domain: \"www.jsdelivr.top\" has high entropy"
+  - EventData: High entropy domain detected
+  - EventData: network-81
+  - EventData: "\"www.jsdelivr.top\" seems to be random\n \"www1.788123.xyz\" seems\
+      \ to be random"
+  - EventData: Contacts random domain names
+  - EventData: network-6
+  - EventData: 'Detected alert "SURICATA HTTP Response excessive header repetition"
+      (SID: 2221036, Rev: 1, Severity: 3) categorized as "Generic Protocol Command
+      Decode"'
+  - EventData: Detected Suricata Alert
+  - EventData: suricata-0
+  - EventData: 'Commonly abused domains detected in external resources:
+
+      ul.to | href
+
+      www.jsdelivr.top | src'
+  - EventData: External resources linked to high-risk domains
+  - EventData: binary-8604
+  - EventData: "Domain: \"www.jsdelivr.top\" possible high risk indicator. Domain\
+      \ uses TLD that is commonly abused for malicious purposes.\n Domain: \"www1.788123.xyz\"\
+      \ possible high risk indicator. Domain uses TLD that is commonly abused for\
+      \ malicious purposes."
+  - EventData: Detected network traffic to commonly abused domain
+  - EventData: network-84
+  - EventData: "CONTACTED DOMAIN: \"jsdelivr.top\" has been identified as malicious\n\
+      \ CONTACTED DOMAIN: \"788123.xyz\" has been identified as malicious"
+  - EventData: Malicious domain detected
+  - EventData: network-85
+  selection_network:
+  - DestinationHostname: a.nel.cloudflare.com
+  - DestinationHostname: code.jquery.com
+  - DestinationHostname: fonts.googleapis.com
+  - DestinationHostname: fonts.gstatic.com
+  - DestinationHostname: p.anime-sharing.com
+  - DestinationHostname: static.cloudflareinsights.com
+  - DestinationHostname: www.anime-sharing.com
+  - DestinationHostname: www.jsdelivr.top
+  - DestinationHostname: www1.788123.xyz
+  - DestinationIp: 104.16.80.73
+  - DestinationIp: 104.21.96.125
+  - DestinationIp: 142.250.217.131
+  - DestinationIp: 142.250.217.138
+  - DestinationIp: 151.101.2.137
+  - DestinationIp: 172.67.128.253
+  - DestinationIp: 172.67.146.29
+  - DestinationIp: 35.190.80.1
+  condition: selection_behavior or selection_network

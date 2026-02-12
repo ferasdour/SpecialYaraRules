@@ -1,0 +1,83 @@
+title: unknown behavior detection (76168543)
+id: 761685430dd4dc2bb19621265518ee833c29f1680ec8b13f2362150c80c311c4
+status: experimental
+description: Auto-generated Sigma rule for unknown
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: Found permission request for "android.permission.WRITE_SECURE_SETTINGS"
+  - EventData: Requires permissions only available to signed APKs part of the system
+  - EventData: static-30
+  - EventData: "Found permission request for \"android.permission.BIND_DEVICE_ADMIN\"\
+      \n Found permission request for \"android.permission.PACKAGE_USAGE_STATS\""
+  - EventData: Requires permissions only available to signed APKs
+  - EventData: static-29
+  - EventData: "\"AndroidManifest.xml\" has type \"Android binary XML\"\n \"Jsr305_annotations.gwt.xml\"\
+      \ has type \"exported SGML document ASCII text\""
+  - EventData: Drops XML files
+  - EventData: binary-39
+  - EventData: "\"AndroidManifest.xml\" has type \"Android binary XML\"- [targetUID:\
+      \ N/A]\n \"ALIAS_NA.SF\" has type \"JAR Signature File ASCII text with CRLF\
+      \ line terminators\"- [targetUID: N/A]\n \"MANIFEST.MF\" has type \"JAR Manifest\
+      \ ASCII text with CRLF line terminators\"- [targetUID: N/A]\n \"ALIAS_NA.RSA\"\
+      \ has type \"DER Encoded PKCS#7 Signed Data\"- [targetUID: N/A]\n \"librelahsca.so\"\
+      \ has type \"ASCII text\"- [targetUID: N/A]\n \"libivlelhbn.so\" has type \"\
+      ASCII text\"- [targetUID: N/A]\n \"com.google.protobuf.GeneratedExtensionRegistryLoader\"\
+      \ has type \"ASCII text\"- [targetUID: N/A]\n \"Jsr305_annotations.gwt.xml\"\
+      \ has type \"exported SGML document ASCII text\"- [targetUID: N/A]\n \"libgifimage.so\"\
+      \ has type \"ASCII text\"- [targetUID: N/A]"
+  - EventData: Dropped files
+  - EventData: binary-0
+  - EventData: 'Found string "android.util.Base64" (Indicator: "base64"; File: "e.smali")'
+  - EventData: Contains CRYPTO related strings
+  - EventData: string-57
+  - EventData: "Heuristic match: \"lib/armeabi/librelahsca.so\"\n Heuristic match:\
+      \ \"lib/arm64-v8a/libivlelhbn.so\"\n Pattern match: \"ns.adobe.com/xap/1.0/\"\
+      \n Pattern match: \"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n Heuristic\
+      \ match: \"u7p.tz\"\n Heuristic match: \"w6.es\"\n Pattern match: \"com.dropbox.android.provider.sdk/is_user_logged_in/\"\
+      \n Heuristic match: \"camerax.core.target.name\"\n Pattern match: \"http://schemas.android.com/apk/res/android\"\
+      \n Pattern match: \"uzxtjilfnbd1eckzvtlncm1zowxodvrlv1tcmdpvkjtj1kasjwgbrdj.ori/8,zzc/dge4i_wq=+p5$a3\""
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: Sample file "sample.bin" has high entropy 7.91353
+  - EventData: Sample file has high entropy (likely encrypted/compressed content)
+  - EventData: binary-71
+  - EventData: "The analysis contains indicators for crypto or data obfuscation(base64/decrypt)\
+      \ which can hide information. Matched sigs: Contains CRYPTO related strings\n\
+      \ Matched sigs: Sample file has high entropy (likely encrypted/compressed content)"
+  - EventData: Shows ability to obfuscate file or information
+  - EventData: summary-28
+  - EventData: "Permission request for \"android.permission.READ_CONTACTS\"\n Permission\
+      \ request for \"android.permission.READ_SMS\"\n Permission request for \"android.permission.CALL_PHONE\"\
+      \n Permission request for \"android.permission.READ_PHONE_STATE\"\n Permission\
+      \ request for \"android.permission.PROCESS_OUTGOING_CALLS\"\n Permission request\
+      \ for \"android.permission.READ_LOGS\"\n Permission request for \"android.permission.WRITE_EXTERNAL_STORAGE\"\
+      \n Permission request for \"android.permission.INTERNET\"\n Permission request\
+      \ for \"android.permission.ACCESS_COARSE_LOCATION\"\n Permission request for\
+      \ \"android.permission.ACCESS_FINE_LOCATION\"\n Permission request for \"android.permission.READ_CALENDAR\"\
+      \n Permission request for \"android.permission.MODIFY_AUDIO_SETTINGS\"\n Permission\
+      \ request for \"android.permission.RECORD_AUDIO\"\n Permission request for \"\
+      android.permission.CAMERA\"\n Permission request for \"android.permission.WAKE_LOCK\"\
+      \n Permission request for \"android.permission.CHANGE_WIFI_STATE\"\n Permission\
+      \ request for \"android.permission.RECEIVE_BOOT_COMPLETED\"\n Permission request\
+      \ for \"android.permission.GET_TASKS\"\n Permission request for \"android.permission.CHANGE_NETWORK_STATE\"\
+      \n Permission request for \"android.permission.SYSTEM_ALERT_WINDOW\"\n Permission\
+      \ request for \"android.permission.BLUETOOTH_ADMIN\"\n Permission request for\
+      \ \"android.permission.WRITE_SETTINGS\"\n Permission request for \"android.permission.WRITE_SYNC_SETTINGS\"\
+      \n Permission request for \"android.permission.CHANGE_WIFI_MULTICAST_STATE\"\
+      \n Permission request for \"android.permission.CHANGE_CONFIGURATION\""
+  - EventData: Requires permissions that could be uesd for malicious intents
+  - EventData: static-27
+  - EventData: Permission request for "android.permission.RECORD_AUDIO"
+  - EventData: Has the ability to record audio
+  - EventData: static-34
+  - EventData: Permission request for "android.permission.CALL_PHONE"
+  - EventData: Has the ability to dial a phone number
+  - EventData: static-33
+  - EventData: Permission request for "android.permission.RECEIVE_BOOT_COMPLETED"
+  - EventData: Has the ability to execute code after reboot
+  - EventData: static-28
+  selection_network: []
+  condition: selection_behavior or selection_network

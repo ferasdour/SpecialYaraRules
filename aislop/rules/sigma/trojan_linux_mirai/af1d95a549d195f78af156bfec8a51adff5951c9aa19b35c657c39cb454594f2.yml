@@ -1,0 +1,73 @@
+title: Trojan.Linux.Mirai behavior detection (af1d95a5)
+id: af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2
+status: experimental
+description: Auto-generated Sigma rule for Trojan.Linux.Mirai
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Calls a syscall: \"procexit\"\n Calls a syscall: \"execve\"\n Calls\
+      \ a syscall: \"open\"\n Calls a syscall: \"mmap\"\n Calls a syscall: \"mprotect\"\
+      \n Calls a syscall: \"readlink\"\n Calls a syscall: \"mmap2\"\n Calls a syscall:\
+      \ \"brk\"\n Calls a syscall: \"munmap\"\n Calls a syscall: \"close\"\n Calls\
+      \ a syscall: \"ioctl\"\n Calls a syscall: \"rt_sigprocmask\"\n Calls a syscall:\
+      \ \"rt_sigaction\"\n Calls a syscall: \"socket\"\n Calls a syscall: \"connect\"\
+      \n Calls a syscall: \"getsockname\""
+  - EventData: Calls native functions (syscalls)
+  - EventData: api-1150
+  - EventData: af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2.bin
+      is stripped
+  - EventData: Binary is stripped
+  - EventData: static-1000
+  - EventData: 'Found reference to API "mmap failed.Yj" (Indicator: "mmap"; File:
+      "af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2.bin")'
+  - EventData: Contains native function calls (syscalls strings)
+  - EventData: string-5000
+  - EventData: YARA signature for invalid unusual section file "sample.bin"
+  - EventData: "YARA signature match \u2013 Anomalous ELF file structure"
+  - EventData: yara-558
+  - EventData: 'Pattern match: "http://upx.sf.net"'
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: '/home/ubuntu/af1d95a549d.bin executed: getsockname'
+  - EventData: Calls a system call typically used to retrieve the current address
+      to which the socket is bound
+  - EventData: api-1152
+  - EventData: Sample file "sample.bin" has high entropy 7.9602
+  - EventData: Sample file has high entropy (likely encrypted/compressed content)
+  - EventData: binary-71
+  - EventData: 'The analysis contains indicators for crypto or data obfuscation(base64/decrypt)
+      which can hide information. Matched sigs: Sample file has high entropy (likely
+      encrypted/compressed content)'
+  - EventData: Shows ability to obfuscate file or information
+  - EventData: summary-28
+  - EventData: af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2.bin
+      is statically linked
+  - EventData: Binary is statically linked
+  - EventData: static-1001
+  - EventData: 7/26 Antivirus vendors marked sample as malicious (26% detection rate)
+  - EventData: Sample was identified as malicious by at least one Antivirus engine
+  - EventData: avtest-0
+  - EventData: 'af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2.bin
+      entropy is: 7.9602027330787966'
+  - EventData: Binary is packed
+  - EventData: static-1003
+  - EventData: af1d95a549d195f78af156bfec8a51adff5951c9aa19b35c657c39cb454594f2.bin
+      section headers are modified/stripped
+  - EventData: Section headers are modified/stripped
+  - EventData: static-1004
+  - EventData: The binary has been stripped of all debug symbols and its shared objects
+      are also statically linked to the binary
+  - EventData: The binary is stripped and also statically linked
+  - EventData: summary-1000
+  - EventData: 'CrowdStrike Static Analysis and ML (QuickScan) yielded detection:
+      linux/malicious_confidence_100% (W)'
+  - EventData: Sample detected by CrowdStrike Static Analysis and ML with relatively
+      high confidence
+  - EventData: avtest-8
+  - EventData: No specific details available
+  - EventData: Sample was identified as malicious by a trusted Antivirus engine
+  - EventData: avtest-5
+  selection_network: []
+  condition: selection_behavior or selection_network

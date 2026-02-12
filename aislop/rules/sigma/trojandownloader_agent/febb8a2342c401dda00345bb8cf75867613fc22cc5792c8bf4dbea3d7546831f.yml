@@ -1,0 +1,1091 @@
+title: TrojanDownloader.Agent behavior detection (febb8a23)
+id: febb8a2342c401dda00345bb8cf75867613fc22cc5792c8bf4dbea3d7546831f
+status: experimental
+description: Auto-generated Sigma rule for TrojanDownloader.Agent
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "file/memory contains long string with (Indicator: \"ShellExecute\"\
+      ; File: \"2102210.js\")\n Found reference to API \"YaDML.ShellExecute(\"wscript.exe\"\
+      , \" //nologo \\\"\" + REYlx + \"\\\"\",\"\", \"open\",0)\" (Indicator: \"ShellExecute\"\
+      ; File: \"2102210.js\")\n Found reference to API \"rPSyB.ShellExecute(EDqBo,\
+      \ (picgQ + iEqXA + rmhiM ) + \"\\\"\"\n\"\"\n \"open\"\n0);;;;;;;;;;;;;;;;;;;;;;;;;;;;\"\
+      \ (Indicator: \"ShellExecute\"; File: \"2102210.js\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "\"o turn this feature off, remove the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog].\" in Source: 00000000-00001564.00000000.223415.5F7B0000.00000004.mdmp\n\
+      \ 00000000-00001564.00000001.225333.5F7B0000.00000004.mdmp\n 00000000-00001564.00000002.225915.5F7E6000.00000004.mdmp\n\
+      \ \"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00001564.00000000.223415.5F7B0000.00000004.mdmp\n\
+      \ 00000000-00001564.00000001.225333.5F7B0000.00000004.mdmp\n 00000000-00001564.00000002.225915.5F868000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{00000323-0000-0000-C000-000000000046}\" in Source: 00000000-00001564.00000000.223415.5F7B0000.00000004.mdmp\n\
+      \ 00000000-00001564.00000001.225333.5F7B0000.00000004.mdmp\n 00000000-00001564.00000002.225915.5F868000.00000004.mdmp\n\
+      \ \"y\\Machine\\Software\\Classes\\CLSID\\{00000323-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001564.00000000.223415.5F7B0000.00000004.mdmp\n 00000000-00001564.00000001.225333.5F7B0000.00000004.mdmp\n\
+      \ 00000000-00001564.00000002.225915.5F868000.00000004.mdmp\n \"o enable assembly\
+      \ bind failure logging, set the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00001564.00000000.223415.79A60000.00000004.mdmp\n\
+      \ 00000000-00001564.00000001.225333.79A60000.00000004.mdmp\n 00000000-00001564.00000002.225915.79A72000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Microsoft\" in Source: 00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\n\
+      \ \"HKLM\\\" in Source: 00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\OOBE\\Stats\" in Source: 00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Server\\ServerLevels\"\
+      \ in Source: 00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00001564.00000002.225915.628CA000.00000002.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found reference to API \"15486189048,6936,3143,,CreateProcessW,kernel32.dll,\"\
+      00:58:12.468\",RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00001564.00000001.225333.7A0B0000.00000004.mdmp,\
+      \ 00000000-00001564.00000002.225915.7A0E7000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source: \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Observed system executable string:\"%WINDIR%\\system32\\version.dll\"\
+      \ [Source: 00000000-00000332-00000C2B-2448689841]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\advapi32.dll\" [Source: 00000000-00000332-00000C2B-2449016449]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\kernel32.dll\" [Source:\
+      \ 00000000-00000332-00000C2B-2449574455]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscoreei.dll\" [Source: 00000000-00001564-00000C2E-1103671012]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\clr.dll\" [Source: 00000000-00001564-00000C2B-2451385531]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      mscoree.dll\" [Source: 00000000-00001564-00000C2B-2451489468]\n Observed system\
+      \ executable string:\"%WINDIR%\\system32\\combase.dll\" [Source: 00000000-00001564-00000C2B-2451569285]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      mscorlib\\fe2524177eb3088c77be666722039f52\\mscorlib.ni.dll\" [Source: 00000000-00001564-00000C2B-2451709438]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\ole32.dll\" [Source: 00000000-00001564-00000C2B-2451770550]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      api-ms-win-core-winrt-l1-1-0.dll\" [Source: 00000000-00001564-00000C2B-2451822644]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\oleaut32.dll\" [Source: 00000000-00001564-00000C2B-2451876527]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll\" [Source: 00000000-00001564-00000C2B-2451945900]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Core\\0d59b0e237d7519417de10cd84bda4e7\\System.Core.ni.dll\" [Source:\
+      \ 00000000-00001564-00000C2B-2451986821]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\OLEAUT32.dll\" [Source: 00000000-00001564-00000C2B-2452063686]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll\" [Source: 00000000-00001564-00000C2B-2452277485]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll\" [Source: 00000000-00001564-00000C2B-2452379886]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll\" [Source: 00000000-00001564-00000C2B-2452630271]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\psapi.dll\" [Source: 00000000-00001564-00000C2B-2452630809]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en-US\\mscorrc.dll\" [Source: 00000000-00001564-00000C2B-2453036776]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en\\mscorrc.dll\" [Source: 00000000-00001564-00000C2B-2453074894]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\mscorrc.dll\" [Source: 00000000-00001564-00000C2B-2453149249]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wintrust.dll\"\
+      \ [Source: 00000000-00001564-00000C2B-2453214530]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll\" [Source: 00000000-00001564-00000C2B-2453253751]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\ntdll.dll\" [Source: 00000000-00001564-00000C2B-2453391791]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\en-US\\tzres.dll.mui\"\
+      \ [Source: 00000000-00001564-00000C2B-2453902753]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; Source: \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp, 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp, 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: 'Found registry modification API: "RegCreateKeyExW" in "00000000-00001564.00000001.225333.E7F98000.00000002.mdmp"'
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\"\
+      ; Source: \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\")\n Found\
+      \ reference to API \"LockResource\" (Indicator: \"LockResource\"; Source: \"\
+      00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\")\n Found reference\
+      \ to API \"LoadResource\" (Indicator: \"LoadResource\"; Source: \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp,\
+      \ 00000000-00001564.00000002.225915.628CA000.00000002.mdmp\")\n Found reference\
+      \ to API \"FindResourceW\" (Indicator: \"FindResource\"; Source: \"00000000-00001564.00000001.225333.E7F98000.00000002.mdmp\"\
+      )\n Found reference to API \"FindResourceExW\" (Indicator: \"FindResource\"\
+      ; Source: \"00000000-00001564.00000002.225915.628CA000.00000002.mdmp\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "\"WScript.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at\
+      \ base 7ff90d910000\n \"WScript.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 7ff90d910000\n \"WScript.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ff90d910000\n \"WScript.exe\" loaded module \"KERNEL32\" at base\
+      \ 7ff910690000\n \"WScript.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE64.DLL\"\
+      \ at base 7ff8ec6e0000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      UXTHEME.DLL\" at base 7ff90ba20000\n \"WScript.exe\" loaded module \"RPCRT4.DLL\"\
+      \ at base 7ff910c80000\n \"WScript.exe\" loaded module \"KERNEL32.DLL\" at base\
+      \ 7ff910690000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\JSCRIPT.DLL\"\
+      \ at base 7ff8ea9c0000\n \"WScript.exe\" loaded module \"AMSI.DLL\" at base\
+      \ 7ff8f7a10000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\VERSION.DLL\"\
+      \ at base 7ff904730000\n \"WScript.exe\" loaded module \"%ALLUSERSPROFILE%\\\
+      MICROSOFT\\WINDOWS DEFENDER\\PLATFORM\\4.12.17007.18022-0\\MPOAV.DLL\" at base\
+      \ 7ff8f4f00000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\S22FKM7F.DLL\"\
+      \ at base 7ff8ea970000\n \"WScript.exe\" loaded module \"WLDP.DLL\" at base\
+      \ 7ff90c4d0000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\ADVAPI32.DLL\"\
+      \ at base 7ff910da0000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WINTRUST.DLL\" at base 7ff90d7e0000\n \"WScript.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\RSAENH.DLL\" at base 7ff90c880000\n \"WScript.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\MSISIP.DLL\" at base 7ff8fc950000\n \"WScript.exe\"\
+      \ loaded module \"OLE32.DLL\" at base 7ff9107a0000\n \"WScript.exe\" loaded\
+      \ module \"%WINDIR%\\SYSTEM32\\CRYPT32.DLL\" at base 7ff90d490000\n \"WScript.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\WSHEXT.DLL\" at base 7ff8ef540000\n \"\
+      WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\SCROBJ.DLL\" at base 7ff8eeb50000\n\
+      \ \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\MLANG.DLL\" at base 7ff903440000\n\
+      \ \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\SHELL32.DLL\" at base\
+      \ 7ff90e650000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\SCRRUN.DLL\"\
+      \ at base 7ff8ea930000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WSHOM.OCX\" at base 7ff8ec9a0000\n \"WScript.exe\" loaded module \"%ALLUSERSPROFILE%\\\
+      MICROSOFT\\WINDOWS DEFENDER\\PLATFORM\\4.12.17007.18022-0\\MPCLIENT.DLL\" at\
+      \ base 7ff8ea850000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\KERNEL32.DLL\"\
+      \ at base 7ff910690000\n \"WScript.exe\" loaded module \"USERENV.DLL\" at base\
+      \ 7ff90d310000\n \"WScript.exe\" loaded module \"VERSION.DLL\" at base 7ff904730000\n\
+      \ \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\ONECOREUAPCOMMONPROXYSTUB.DLL\"\
+      \ at base 7ff907f80000\n \"WScript.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WINDOWS.STORAGE.DLL\" at base 7ff90dc20000\n \"WScript.exe\" loaded module \"\
+      NTDLL.DLL\" at base 7ff911090000\n \"WScript.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\PROPSYS.DLL\" at base 7ff909a60000\n \"WScript.exe\" loaded module\
+      \ \"SHELL32.DLL\" at base 7ff90e650000\n \"WScript.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\\\WINDOWS.STATEREPOSITORYPS.DLL\" at base 7ff8f7b00000\n \"WScript.exe\"\
+      \ loaded module \"USER32.DLL\" at base 7ff90fda0000\n \"WScript.exe\" loaded\
+      \ module \"%WINDIR%\\SYSTEM32\\URLMON.DLL\" at base 7ff902280000\n \"WScript.exe\"\
+      \ loaded module \"MSISO.DLL\" at base 7ff8fbdf0000\n \"WScript.exe\" loaded\
+      \ module \"SSPICLI.DLL\" at base 7ff90d2e0000\n \"WScript.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-URL-L1-1-0.DLL\" at base 7ff90d910000\n \"WScript.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\SFC_OS.DLL\" at base 7ff8ec6c0000\n \"\
+      powershell.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 7ff90d910000\n\
+      \ \"powershell.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base\
+      \ 7ff90d910000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"KERNEL32\" at base\
+      \ 7ff910690000\n \"powershell.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE64.DLL\"\
+      \ at base 7ff8eaa20000\n \"powershell.exe\" loaded module \"ADVAPI32.DLL\" at\
+      \ base 7ff910da0000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\MSCOREEI.DLL\" at base 7ff8ea970000\n \"powershell.exe\"\
+      \ loaded module \"SHLWAPI.DLL\" at base 7ff9101e0000\n \"powershell.exe\" loaded\
+      \ module \"API-MS-WIN-APPMODEL-RUNTIME-L1-1-2.DLL\" at base 7ff90d420000\n \"\
+      powershell.exe\" loaded module \"VERSION.DLL\" at base 7ff904730000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\V4.0.30319\\CLR.DLL\"\
+      \ at base 7ff8e0af0000\n \"powershell.exe\" loaded module \"USER32.DLL\" at\
+      \ base 7ff90fda0000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-QUIRKS-L1-1-0.DLL\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\MSCOREE.DLL\" at base 0\n \"powershell.exe\" loaded\
+      \ module \"MSCOREE.DLL\" at base 7ff8ec6e0000\n \"powershell.exe\" loaded module\
+      \ \"NTDLL\" at base 7ff911090000\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\COMBASE.DLL\" at base 7ff910970000\n \"powershell.exe\" loaded module\
+      \ \"KERNEL32.DLL\" at base 7ff910690000\n \"powershell.exe\" loaded module \"\
+      RPCRT4.DLL\" at base 7ff910c80000\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\MSCORLIB\\FE2524177EB3088C77BE666722039F52\\\
+      MSCORLIB.NI.DLL\" at base 7ff8df4f0000\n \"powershell.exe\" loaded module \"\
+      %WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\V4.0.30319\\OLE32.DLL\" at base 0\n \"\
+      powershell.exe\" loaded module \"OLE32.DLL\" at base 7ff9107a0000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\V4.0.30319\\API-MS-WIN-CORE-WINRT-L1-1-0.DLL\"\
+      \ at base 0\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-WINRT-L1-1-0.DLL\"\
+      \ at base 7ff910970000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      ASSEMBLY\\GAC_64\\MSCORLIB\\V4.0_4.0.0.0__B77A5C561934E089\\OLEAUT32.DLL\" at\
+      \ base 0\n \"powershell.exe\" loaded module \"OLEAUT32.DLL\" at base 7ff90fa90000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      SYSTEM\\E43DD9C73AB5615E461BF5109C3FACD6\\SYSTEM.NI.DLL\" at base 7ff8de880000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      SYSTEM.CORE\\0D59B0E237D7519417DE10CD84BDA4E7\\SYSTEM.CORE.NI.DLL\" at base\
+      \ 7ff8dde00000\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      MICROSOFT.PB378EC07#\\B5BA37E1558CED178A99011A1D659B52\\MICROSOFT.POWERSHELL.CONSOLEHOST.NI.DLL\"\
+      \ at base 7ff8ee100000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      RSAENH.DLL\" at base 7ff90c880000\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\BCRYPTPRIMITIVES.DLL\" at base 7ff90d660000\n \"powershell.exe\" loaded\
+      \ module \"%WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\V4.0.30319\\OLEAUT32.DLL\"\
+      \ at base 0\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      SYSTEM.MANAA57FC8CC#\\6DA01910C256231D1C50AD0AACEE5941\\SYSTEM.MANAGEMENT.AUTOMATION.NI.DLL\"\
+      \ at base 7ff8dbd90000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      ASSEMBLY\\GAC_64\\MSCORLIB\\V4.0_4.0.0.0__B77A5C561934E089\\COMBASE.DLL\" at\
+      \ base 0\n \"powershell.exe\" loaded module \"COMBASE.DLL\" at base 7ff910970000\n\
+      \ \"powershell.exe\" loaded module \"API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL\"\
+      \ at base 7ff910970000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL\" at base 0\n\
+      \ \"powershell.exe\" loaded module \"NTDLL.DLL\" at base 7ff911090000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_64\\MSCORLIB\\V4.0_4.0.0.0__B77A5C561934E089\\\
+      SHELL32.DLL\" at base 0\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      ASSEMBLY\\GAC_MSIL\\SYSTEM\\V4.0_4.0.0.0__B77A5C561934E089\\PSAPI.DLL\" at base\
+      \ 0\n \"powershell.exe\" loaded module \"SHELL32.DLL\" at base 7ff90e650000\n\
+      \ \"powershell.exe\" loaded module \"PSAPI.DLL\" at base 7ff90e640000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_MSIL\\SYSTEM.MANAGEMENT.AUTOMATION\\\
+      V4.0_3.0.0.0__31BF3856AD364E35\\WINTRUST.DLL\" at base 0\n \"powershell.exe\"\
+      \ loaded module \"WINTRUST.DLL\" at base 7ff90d7e0000\n \"powershell.exe\" loaded\
+      \ module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_MSIL\\SYSTEM.MANAGEMENT.AUTOMATION\\\
+      V4.0_3.0.0.0__31BF3856AD364E35\\AMSI.DLL\" at base 0\n \"powershell.exe\" loaded\
+      \ module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_MSIL\\SYSTEM\\V4.0_4.0.0.0__B77A5C561934E089\\\
+      NTDLL.DLL\" at base 0\n \"powershell.exe\" loaded module \"AMSI.DLL\" at base\
+      \ 7ff8fae80000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\VERSION.DLL\"\
+      \ at base 7ff904730000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WINTRUST.DLL\" at base 7ff90d7e0000\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\CRYPT32.DLL\" at base 7ff90d490000\n \"powershell.exe\" loaded module\
+      \ \"%ALLUSERSPROFILE%\\MICROSOFT\\WINDOWS DEFENDER\\PLATFORM\\4.12.17007.18022-0\\\
+      MPOAV.DLL\" at base 7ff8fae60000\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\S22FKM7F.DLL\" at base 7ff8ee0b0000\n \"powershell.exe\" loaded module\
+      \ \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.MF49F6405#\\7B1F35FB0C2D6955CE5AF2BD372C65F2\\\
+      MICROSOFT.MANAGEMENT.INFRASTRUCTURE.NI.DLL\" at base 7ff8ee010000\n \"powershell.exe\"\
+      \ loaded module \"CRYPT32.DLL\" at base 7ff90d490000\n \"powershell.exe\" loaded\
+      \ module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.MANAGEMENT\\\
+      B221AF81285C1305324612E6DC9C88FF\\SYSTEM.MANAGEMENT.NI.DLL\" at base 7ff8ea740000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_MSIL\\\
+      SYSTEM\\V4.0_4.0.0.0__B77A5C561934E089\\CRYPT32.DLL\" at base 0\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.DATA\\\
+      7BED49C46DE9295A8453DB205C60A028\\SYSTEM.DATA.NI.DLL\" at base 7ff8db420000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_64\\\
+      SYSTEM.DATA\\V4.0_4.0.0.0__B77A5C561934E089\\SYSTEM.DATA.DLL\" at base 7ff8ea3d0000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\\
+      V4.0.30319\\CRYPT32.DLL\" at base 0\n \"powershell.exe\" loaded module \"%WINDIR%\\\
+      ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.XML\\5EE35DEBFC22F727E70E4479DDCBC045\\\
+      SYSTEM.XML.NI.DLL\" at base 7ff8dab70000\n \"powershell.exe\" loaded module\
+      \ \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.DIRED13B18A9#\\8AD4C0AF5B3D51A0F3A4DAC0D44D85D4\\\
+      SYSTEM.DIRECTORYSERVICES.NI.DLL\" at base 7ff8ea260000\n \"powershell.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-XSTATE-L2-1-0.DLL\" at base 7ff90d910000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      SYSTEM.NUMERICS\\86CFD69CE1261BAF4740E7606CADE014\\SYSTEM.NUMERICS.NI.DLL\"\
+      \ at base 7ff8edfb0000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\CLRJIT.DLL\" at base 7ff8ea110000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.P6F792626#\\\
+      7FF5199E757CB8AF9AD949453F698D09\\MICROSOFT.POWERSHELL.SECURITY.NI.DLL\" at\
+      \ base 7ff8edf40000\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\\
+      NATIVEIMAGES_V4.0.30319_64\\SYSTEM.TRANSACTIONS\\604272B0FAEC2E09D53D38E03BC89C6C\\\
+      SYSTEM.TRANSACTIONS.NI.DLL\" at base 7ff8e8130000\n \"powershell.exe\" loaded\
+      \ module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.CONFIGURATION\\\
+      4BEB1EECA20B27D4BD1BB9880F03CC2A\\SYSTEM.CONFIGURATION.NI.DLL\" at base 7ff8e7ff0000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_64\\\
+      SYSTEM.TRANSACTIONS\\V4.0_4.0.0.0__B77A5C561934E089\\SYSTEM.TRANSACTIONS.DLL\"\
+      \ at base 7ff8edef0000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      ASSEMBLY\\GAC_64\\MSCORLIB\\V4.0_4.0.0.0__B77A5C561934E089\\SECUR32.DLL\" at\
+      \ base 0\n \"powershell.exe\" loaded module \"SECUR32.DLL\" at base 7ff903970000\n\
+      \ \"powershell.exe\" loaded module \"SSPICLI.DLL\" at base 7ff90d2e0000\n \"\
+      powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\GAC_MSIL\\\
+      SYSTEM.MANAGEMENT.AUTOMATION\\V4.0_3.0.0.0__31BF3856AD364E35\\SHLWAPI.DLL\"\
+      \ at base 0\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\ASSEMBLY\\\
+      GAC_MSIL\\SYSTEM.MANAGEMENT.AUTOMATION\\V4.0_3.0.0.0__31BF3856AD364E35\\WLDP.DLL\"\
+      \ at base 0\n \"powershell.exe\" loaded module \"WLDP.DLL\" at base 7ff90c4d0000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base\
+      \ 7ff90ba20000\n \"powershell.exe\" loaded module \"%ALLUSERSPROFILE%\\MICROSOFT\\\
+      WINDOWS DEFENDER\\PLATFORM\\4.12.17007.18022-0\\MPCLIENT.DLL\" at base 7ff8e7f10000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\KERNEL32.DLL\" at base\
+      \ 7ff910690000\n \"powershell.exe\" loaded module \"USERENV.DLL\" at base 7ff90d310000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\ADVAPI32.DLL\" at base\
+      \ 7ff910da0000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\API-MS-WIN-CORE-WINRT-ROPARAMETERIZEDIID-L1-1-0.DLL\"\
+      \ at base 0\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-WINRT-ROPARAMETERIZEDIID-L1-1-0.DLL\"\
+      \ at base 7ff910970000\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\\
+      NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.P521220EA#\\DF7D947A99CBCFAA726B127726F05476\\\
+      MICROSOFT.POWERSHELL.COMMANDS.UTILITY.NI.DLL\" at base 7ff8d9e60000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\SYSTEM.CONFE64A9051#\\\
+      120A0532577F871C2415502D9EDACDD6\\SYSTEM.CONFIGURATION.INSTALL.NI.DLL\" at base\
+      \ 7ff8f87d0000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      ASSEMBLY\\GAC_64\\MSCORLIB\\V4.0_4.0.0.0__B77A5C561934E089\\BCRYPT.DLL\" at\
+      \ base 0\n \"powershell.exe\" loaded module \"BCRYPT.DLL\" at base 7ff90cf40000\n\
+      \ \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      MICROSOFT.PAE3498D9#\\D922445A828B30938C72D375A3B34A60\\MICROSOFT.POWERSHELL.COMMANDS.MANAGEMENT.NI.DLL\"\
+      \ at base 7ff8d9c20000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-LOCALREGISTRY-L1-1-0.DLL\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WBEM\\WMIUTILS.DLL\" at base 7ff9010d0000\n \"powershell.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\WBEM\\WBEMPROX.DLL\" at base 7ff902e90000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\MICROSOFT.NET\\FRAMEWORK64\\V4.0.30319\\\\WMINET_UTILS.DLL\"\
+      \ at base 7ff8f87a0000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WBEM\\WBEMSVC.DLL\" at base 7ff901a00000\n \"powershell.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL\" at base 7ff90d910000\n \"powershell.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-1-0.DLL\" at base\
+      \ 7ff90d910000\n \"powershell.exe\" loaded module \"%WINDIR%\\SYSTEM32\\WBEM\\\
+      FASTPROX.DLL\" at base 7ff901180000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-STRING-L1-1-0\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-DATETIME-L1-1-1\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0\"\
+      \ at base 7ff90d910000\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\\
+      NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.M870D558A#\\5F64880C86C98E7DDECDF28E61917307\\\
+      MICROSOFT.MANAGEMENT.INFRASTRUCTURE.NATIVE.NI.DLL\" at base 7ff8f86d0000\n \"\
+      powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\\
+      MICROSOFT.IBAAE5ED9#\\E86F7F836A07F673CDEF4C9A4D4B4D80\\MICROSOFT.IIS.POWERSHELL.COMMANDS.NI.DLL\"\
+      \ at base 7ff8eecc0000\n \"powershell.exe\" loaded module \"%WINDIR%\\ASSEMBLY\\\
+      NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.I6720438C#\\5C7111F55BDF6736AC617CC15D0EADE4\\\
+      MICROSOFT.IIS.POWERSHELL.PROVIDER.NI.DLL\" at base 7ff8ede40000\n \"powershell.exe\"\
+      \ loaded module \"%WINDIR%\\ASSEMBLY\\NATIVEIMAGES_V4.0.30319_64\\MICROSOFT.IC203AD51#\\\
+      B99AD1F57AC47ACE773070D9089F3890\\MICROSOFT.IIS.POWERSHELL.FRAMEWORK.NI.DLL\"\
+      \ at base 7ff8edd40000\n \"powershell.exe\" loaded module \"%WINDIR%\\MICROSOFT.NET\\\
+      FRAMEWORK64\\V4.0.30319\\DIASYMREADER.DLL\" at base 7ff8d9ab0000\n \"powershell.exe\"\
+      \ loaded module \"GDI32.DLL\" at base 7ff90fb60000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"WScript.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00000332)\n \"WScript.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\" with a parameter\
+      \ kernel32 (UID: 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32.dll (UID: 00000000-00000332)\n \"WScript.exe\" called\
+      \ \"LoadLibrary\" with a parameter amsi.dll (UID: 00000000-00000332)\n \"WScript.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\version.dll (UID:\
+      \ 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\" with a parameter\
+      \ WLDP.DLL (UID: 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\system32\\advapi32.dll (UID: 00000000-00000332)\n\
+      \ \"WScript.exe\" called \"LoadLibrary\" with a parameter ole32.dll (UID: 00000000-00000332)\n\
+      \ \"WScript.exe\" called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\\
+      Microsoft\\Windows Defender\\platform\\4.12.17007.18022-0\\MPCLIENT.DLL (UID:\
+      \ 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\" with a parameter\
+      \ %ALLUSERSPROFILE%\\Microsoft\\Windows Defender\\platform\\4.12.17007.18022-0\\\
+      MsMpLics.dll (UID: 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\system32\\kernel32.dll (UID: 00000000-00000332)\n\
+      \ \"WScript.exe\" called \"LoadLibrary\" with a parameter USERENV.dll (UID:\
+      \ 00000000-00000332)\n \"WScript.exe\" called \"LoadLibrary\" with a parameter\
+      \ VERSION.dll (UID: 00000000-00000332)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00001564)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ ADVAPI32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscoreei.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter SHLWAPI.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-appmodel-runtime-l1-1-2.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ VERSION.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\clr.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter USER32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-quirks-l1-1-0.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\mscoree.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter mscoree.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter ntdll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      combase.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\mscorlib\\\
+      fe2524177eb3088c77be666722039f52\\mscorlib.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\ole32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter ole32.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\api-ms-win-core-winrt-l1-1-0.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-winrt-l1-1-0.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter oleaut32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Core\\0d59b0e237d7519417de10cd84bda4e7\\\
+      System.Core.ni.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.Pb378ec07#\\\
+      b5ba37e1558ced178a99011a1d659b52\\Microsoft.PowerShell.ConsoleH (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\OLEAUT32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter OLEAUT32.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Manaa57fc8cc#\\6da01910c256231d1c50ad0aacee5941\\\
+      System.Management.Automation. (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter combase.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter advapi32.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ ntdll.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter version.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      psapi.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter shell32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en-US\\mscorrc.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter psapi.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\en\\mscorrc.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\mscorrc.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter user32.dll (UID: 00000000-00001564)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\\
+      wintrust.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter wintrust.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      ntdll.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter amsi.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\system32\\version.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      en-US\\tzres.dll.mui (UID: 00000000-00001564)\n \"powershell.exe\" called \"\
+      LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.Mf49f6405#\\7b1f35fb0c2d6955ce5af2bd372c65f2\\Microsoft.Management.Infrastr\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Management\\\
+      b221af81285c1305324612e6dc9c88ff\\System.Management.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\crypt32.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Data\\7bed49c46de9295a8453db205c60a028\\\
+      System.Data.ni.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter crypt32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_64\\System.Data\\v4.0_4.0.0.0__b77a5c561934e089\\System.Data.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\CRYPT32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Xml\\5ee35debfc22f727e70e4479ddcbc045\\System.Xml.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Dired13b18a9#\\8ad4c0af5b3d51a0f3a4dac0d44d85d4\\\
+      System.DirectoryServices.ni.d (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter CRYPT32.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-xstate-l2-1-0.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Numerics\\\
+      86cfd69ce1261baf4740e7606cade014\\System.Numerics.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\clrjit.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.P6f792626#\\7ff5199e757cb8af9ad949453f698d09\\Microsoft.PowerShell.Security\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Transactions\\\
+      604272b0faec2e09d53d38e03bc89c6c\\System.Transactions.ni.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Configuration\\4beb1eeca20b27d4bd1bb9880f03cc2a\\\
+      System.Configuration.ni.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      System.Transactions\\v4.0_4.0.0.0__b77a5c561934e089\\System.Transactions.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      secur32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter secur32.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\shlwapi.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter shlwapi.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wldp.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ wldp.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows Defender\\platform\\\
+      4.12.17007.18022-0\\MPCLIENT.DLL (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows\
+      \ Defender\\platform\\4.12.17007.18022-0\\MsMpLics.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      kernel32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter USERENV.dll (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\advapi32.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\Microsoft.P521220ea#\\df7d947a99cbcfaa726b127726f05476\\\
+      Microsoft.PowerShell.Commands (UID: 00000000-00001564)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Confe64a9051#\\120a0532577f871c2415502d9edacdd6\\System.Configuration.Install.\
+      \ (UID: 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter Kernel32.dll (UID: 00000000-00001564)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\bcrypt.dll (UID: 00000000-00001564)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter bcrypt.dll (UID:\
+      \ 00000000-00001564)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-synch-l1-2-0 (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter ADVAPI32.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscoreei.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter SHLWAPI.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-appmodel-runtime-l1-1-2.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter VERSION.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\clr.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter USER32.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-quirks-l1-1-0.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscoree.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter mscoree.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter ntdll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\combase.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\mscorlib\\fe2524177eb3088c77be666722039f52\\\
+      mscorlib.ni.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\ole32.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter ole32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      api-ms-win-core-winrt-l1-1-0.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-winrt-l1-1-0.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter oleaut32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Core\\0d59b0e237d7519417de10cd84bda4e7\\\
+      System.Core.ni.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.Pb378ec07#\\\
+      b5ba37e1558ced178a99011a1d659b52\\Microsoft.PowerShell.ConsoleH (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\OLEAUT32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter OLEAUT32.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Manaa57fc8cc#\\6da01910c256231d1c50ad0aacee5941\\\
+      System.Management.Automation. (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter combase.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter advapi32.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ ntdll.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter version.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ shell32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      psapi.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter psapi.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter user32.dll (UID: 00000000-00006152)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\\
+      wintrust.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      ntdll.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\en-US\\\
+      mscorrc.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter wintrust.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en\\mscorrc.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      mscorrc.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter amsi.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      version.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      crypt32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter crypt32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\CRYPT32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.Mf49f6405#\\7b1f35fb0c2d6955ce5af2bd372c65f2\\Microsoft.Management.Infrastr\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Management\\\
+      b221af81285c1305324612e6dc9c88ff\\System.Management.ni.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      en-US\\tzres.dll.mui (UID: 00000000-00006152)\n \"powershell.exe\" called \"\
+      LoadLibrary\" with a parameter CRYPT32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Dired13b18a9#\\8ad4c0af5b3d51a0f3a4dac0d44d85d4\\System.DirectoryServices.ni.d\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Xml\\5ee35debfc22f727e70e4479ddcbc045\\\
+      System.Xml.ni.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Numerics\\\
+      86cfd69ce1261baf4740e7606cade014\\System.Numerics.ni.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Data\\7bed49c46de9295a8453db205c60a028\\\
+      System.Data.ni.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\System.Data\\\
+      v4.0_4.0.0.0__b77a5c561934e089\\System.Data.dll (UID: 00000000-00006152)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-xstate-l2-1-0.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\clrjit.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.P6f792626#\\7ff5199e757cb8af9ad949453f698d09\\\
+      Microsoft.PowerShell.Security (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Transactions\\604272b0faec2e09d53d38e03bc89c6c\\System.Transactions.ni.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Configuration\\\
+      4beb1eeca20b27d4bd1bb9880f03cc2a\\System.Configuration.ni.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_64\\System.Transactions\\v4.0_4.0.0.0__b77a5c561934e089\\System.Transactions.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      secur32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter secur32.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\shlwapi.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter shlwapi.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wldp.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ wldp.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows Defender\\platform\\\
+      4.12.17007.18022-0\\MPCLIENT.DLL (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows\
+      \ Defender\\platform\\4.12.17007.18022-0\\MsMpLics.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      kernel32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter USERENV.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\advapi32.dll (UID:\
+      \ 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll (UID: 00000000-00006152)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\Microsoft.P521220ea#\\df7d947a99cbcfaa726b127726f05476\\\
+      Microsoft.PowerShell.Commands (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Confe64a9051#\\120a0532577f871c2415502d9edacdd6\\System.Configuration.Install.\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      bcrypt.dll (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter bcrypt.dll (UID: 00000000-00006152)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.Pae3498d9#\\d922445a828b30938c72d375a3b34a60\\Microsoft.PowerShell.Commands\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\\wminet_utils.dll\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\system32\\AdvApi32.dll (UID: 00000000-00006152)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-string-l1-1-0\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-datetime-l1-1-1 (UID: 00000000-00006152)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-obsolete-l1-2-0\
+      \ (UID: 00000000-00006152)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter Kernel32.dll (UID: 00000000-00006152)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ ADVAPI32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscoreei.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter SHLWAPI.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-appmodel-runtime-l1-1-2.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ VERSION.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\clr.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter USER32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-quirks-l1-1-0.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\mscoree.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter mscoree.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter ntdll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      combase.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\mscorlib\\\
+      fe2524177eb3088c77be666722039f52\\mscorlib.ni.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\ole32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter ole32.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\api-ms-win-core-winrt-l1-1-0.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-winrt-l1-1-0.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter oleaut32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Core\\0d59b0e237d7519417de10cd84bda4e7\\\
+      System.Core.ni.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.Pb378ec07#\\\
+      b5ba37e1558ced178a99011a1d659b52\\Microsoft.PowerShell.ConsoleH (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\OLEAUT32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter OLEAUT32.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Manaa57fc8cc#\\6da01910c256231d1c50ad0aacee5941\\\
+      System.Management.Automation. (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter combase.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter advapi32.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ ntdll.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter version.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\psapi.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      shell32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter psapi.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter shell32.dll (UID: 00000000-00004952)\n \"\
+      powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\en-US\\mscorrc.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter user32.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\\
+      wintrust.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\en\\mscorrc.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscorrc.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      ntdll.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter amsi.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter wintrust.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\system32\\version.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\en-US\\tzres.dll.mui\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Data\\\
+      7bed49c46de9295a8453db205c60a028\\System.Data.ni.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_64\\System.Data\\v4.0_4.0.0.0__b77a5c561934e089\\System.Data.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.Mf49f6405#\\\
+      7b1f35fb0c2d6955ce5af2bd372c65f2\\Microsoft.Management.Infrastr (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\crypt32.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Xml\\5ee35debfc22f727e70e4479ddcbc045\\\
+      System.Xml.ni.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter crypt32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Management\\b221af81285c1305324612e6dc9c88ff\\System.Management.ni.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Dired13b18a9#\\\
+      8ad4c0af5b3d51a0f3a4dac0d44d85d4\\System.DirectoryServices.ni.d (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Numerics\\86cfd69ce1261baf4740e7606cade014\\\
+      System.Numerics.ni.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-xstate-l2-1-0.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\CRYPT32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter CRYPT32.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\clrjit.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.P6f792626#\\7ff5199e757cb8af9ad949453f698d09\\Microsoft.PowerShell.Security\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Transactions\\\
+      604272b0faec2e09d53d38e03bc89c6c\\System.Transactions.ni.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\System.Configuration\\4beb1eeca20b27d4bd1bb9880f03cc2a\\\
+      System.Configuration.ni.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      System.Transactions\\v4.0_4.0.0.0__b77a5c561934e089\\System.Transactions.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      secur32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter secur32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\shlwapi.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter shlwapi.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wldp.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ wldp.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows Defender\\platform\\\
+      4.12.17007.18022-0\\MPCLIENT.DLL (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\Microsoft\\Windows\
+      \ Defender\\platform\\4.12.17007.18022-0\\MsMpLics.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\\
+      kernel32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\"\
+      \ with a parameter USERENV.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\advapi32.dll (UID:\
+      \ 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with a parameter\
+      \ %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\Microsoft.M870d558a#\\5f64880c86c98e7ddecdf28e61917307\\\
+      Microsoft.Management.Infrastr (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      Microsoft.Ibaae5ed9#\\e86f7f836a07f673cdef4c9a4d4b4d80\\Microsoft.IIS.Powershell.Comm\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\Microsoft.I6720438c#\\\
+      5c7111f55bdf6736ac617cc15d0eade4\\Microsoft.IIS.PowerShell.Prov (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\\
+      NativeImages_v4.0.30319_64\\Microsoft.Ic203ad51#\\b99ad1f57ac47ace773070d9089f3890\\\
+      Microsoft.IIS.PowerShell.Fram (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Confe64a9051#\\120a0532577f871c2415502d9edacdd6\\System.Configuration.Install.\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\diasymreader.dll\
+      \ (UID: 00000000-00004952)\n \"powershell.exe\" called \"LoadLibrary\" with\
+      \ a parameter KERNEL32.dll (UID: 00000000-00004952)\n \"powershell.exe\" called\
+      \ \"LoadLibrary\" with a parameter GDI32.dll (UID: 00000000-00004952)\n \"powershell.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\Microsoft.Net\\assembly\\\
+      GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\bcrypt.dll (UID: 00000000-00004952)\n\
+      \ \"powershell.exe\" called \"LoadLibrary\" with a parameter bcrypt.dll (UID:\
+      \ 00000000-00004952)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: "\"WScript.exe\" loaded module \"%WINDIR%\\System32\\rpcrt4.dll\" at\
+      \ 10C80000\n \"powershell.exe\" loaded module \"%WINDIR%\\System32\\rpcrt4.dll\"\
+      \ at 10C80000"
+  - EventData: Loads the RPC (Remote Procedure Call) module DLL
+  - EventData: module-10
+  - EventData: "\"WScript.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"EN-US\")\n \"WScript.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"EN-US\")\n \"WScript.exe\" (Path: \"\
+      HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\LOCALE\"; Key: \"00000409\")\n \"\
+      powershell.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\CUSTOMLOCALE\"\
+      ; Key: \"EN\")\n \"powershell.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\EXTENDEDLOCALE\"; Key: \"EN\")\n \"powershell.exe\" (Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\NLS\\CUSTOMLOCALE\"; Key: \"EN-US\")\n \"powershell.exe\"\
+      \ (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key:\
+      \ \"EN-US\")\n \"powershell.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\LOCALE\"; Key: \"00000409\")\n \"powershell.exe\" (Path: \"HKCU\\CONTROL\
+      \ PANEL\\INTERNATIONAL\"; Key: \"SYEARMONTH\")\n \"powershell.exe\" (Path: \"\
+      HKCU\\CONTROL PANEL\\INTERNATIONAL\"; Key: \"LOCALENAME\")"
+  - EventData: Reads information about supported languages
+  - EventData: registry-25
+  - EventData: "\"WScript.exe\" called \"WScript.ScriptFullName\" with result: \"\
+      C:\\2102210.js\" ...\n \"WScript.exe\" called \"Shell.Application.1.CreateObject\"\
+      \ ... \n \"WScript.exe\" called \"Shell.Application.1.ShellExecute\" ... "
+  - EventData: Logged script engine calls
+  - EventData: api-64
+  - EventData: "\"powershell.exe\" failed to load missing module \"%WINDIR%\\Microsoft.NET\\\
+      Framework64\\v4.0.30319\\mscoree.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\"\
+      \ failed to load missing module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      ole32.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-l1-1-0.dll\"\
+      \ - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing module\
+      \ \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\OLEAUT32.dll\"\
+      \ - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing module\
+      \ \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      combase.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll\"\
+      \ - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing module\
+      \ \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      shell32.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      psapi.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\wintrust.dll\" - [base:0; Status:c0000135]\n\
+      \ \"powershell.exe\" failed to load missing module \"%WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\\
+      amsi.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing\
+      \ module \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      ntdll.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      crypt32.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\CRYPT32.dll\"\
+      \ - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing module\
+      \ \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      secur32.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load\
+      \ missing module \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\shlwapi.dll\" - [base:0; Status:c0000135]\n\
+      \ \"powershell.exe\" failed to load missing module \"%WINDIR%\\Microsoft.Net\\\
+      assembly\\GAC_MSIL\\System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\\
+      wldp.dll\" - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing\
+      \ module \"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll\"\
+      \ - [base:0; Status:c0000135]\n \"powershell.exe\" failed to load missing module\
+      \ \"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      bcrypt.dll\" - [base:0; Status:c0000135]"
+  - EventData: Fails to load modules at runtime
+  - EventData: api-22
+  - EventData: '"powershell.exe" loaded module "%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\clr.dll"
+      at E0AF0000'
+  - EventData: Loads the CLR Loader DLL
+  - EventData: module-7
+  - EventData: "Spawned process \"powershell.exe\" with commandline \"-executionpolicy\
+      \ bypass -c \"$ZXMhs ;$EJBZD ;$IyGDC = $null ;$EJB ...\" (UID: 00000000-00001564,\
+      \ Additional Context: \"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\\" -executionpolicy\
+      \ bypass -c \"$ZXMhs (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ .replace(,) (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ .replace(' ',) (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ .replace(' ',) Function igjPt{ (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ (ZnVuY3Rpb24gWXB6Ym0gew0KIC' ' A ' ' 9 ' 'gICBleGl0Ow0KIH07W1N5c3RlbS5OZXQuU2VydmljZVBvaW50TWFuYWdlcl06\
+      \ ))igjPt (igjPt igjPt C:\\Users\\Public\\TYzoX.p' 's1 C:\\Users\\Public\\TYzoX.p'\
+      \ 's1;\")\n Spawned process \"powershell.exe\" with commandline \"-ExecutionPolicy\
+      \ Bypass -file %PUBLIC%\\\\TYzoX.ps1\" (UID: 00000000-00006152)\n Spawned process\
+      \ \"powershell.exe\" with commandline \"-command Resta + \"rt-Computer -Force\"\
+      \" (UID: 00000000-00004952)"
+  - EventData: Spawns new processes
+  - EventData: target-25
+  - EventData: Spawns new processes that are not known child processes
+  - EventData: target-103
+  - EventData: "Process \"powershell.exe\" (UID: 00000000-00001564) was launched with\
+      \ new environment variables: \"USERDNSDOMAIN=\"vx4XshVU1PyFVO2\"\"\n Process\
+      \ \"powershell.exe\" (UID: 00000000-00001564) was launched with modified environment\
+      \ variables: \"PROCESSOR_ARCHITECTURE, CommonProgramFiles, ProgramFiles, NUMBER_OF_PROCESSORS\"\
+      \n Process \"powershell.exe\" (UID: 00000000-00001564) was launched with missing\
+      \ environment variables: \"PROCESSOR_ARCHITEW6432\"\n Process \"powershell.exe\"\
+      \ (UID: 00000000-00006152) was launched with new environment variables: \"PSExecutionPolicyPreference=\"\
+      Bypass\"\""
+  - EventData: Process launched with changed environment
+  - EventData: target-67
+  - EventData: "file/memory contains long string with (Indicator: \"ActiveXObject\"\
+      ; File: \"2102210.js\")\n Found string \"var shell = new ActiveXObject(\"WScript.Shell\"\
+      );\" (Indicator: \"ActiveXObject\"; File: \"2102210.js\")"
+  - EventData: Able to execute application using Windows wscript shell (JSP)
+  - EventData: string-461
+  - EventData: "Observed system executable string:\"%WINDIR%\\System32\\WindowsPowerShell\\\
+      v1.0\\powershell.exe\" [Source: 00000000-00000332-00000BC0-2450165715]\n Observed\
+      \ system executable string:\"\"%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\\
+      powershell.exe\"  -executionpolicy bypass -c \"$ZXMhs ;$EJBZD ;$IyGDC = $null\
+      \ ;$EJBZD =\" [Source: 00000000-00000332-00000C47-4740478660], Observed system\
+      \ executable string:\"%WINDIR%\\system32\\powershell.exe.*\" [Source: 00000000-00001564-00000C2E-15327418874],\
+      \ Observed system executable string:\"%WINDIR%\\powershell.exe.*\" [Source:\
+      \ 00000000-00001564-00000C2E-15328100394], Observed system executable string:\"\
+      %WINDIR%\\System32\\Wbem\\powershell.exe.*\" [Source: 00000000-00001564-00000C2E-15328788446],\
+      \ Observed system executable string:\"%WINDIR%\\System32\\WindowsPowerShell\\\
+      v1.0\\powershell.exe.*\" [Source: 00000000-00001564-00000C2E-15329631788], Observed\
+      \ system executable string:\"\"%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\\
+      powershell.exe\" -ExecutionPolicy Bypass -file %PUBLIC%\\TYzoX.ps1\" [Source:\
+      \ 00000000-00001564-00000C47-15486189048], Observed system executable string:\"\
+      \"%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -command Resta\
+      \ + \"rt-Computer -Force\"\" [Source: 00000000-00006152-00000C47-67039174812]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "Found string - \\\\.\\pipe\\PSHost.134153636398192682.1564.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153636657879757.6152.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153641113466588.4952.DefaultAppDomain.powershell"
+  selection_network:
+  - DestinationHostname: 2102210.js
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: MAPISHELL.DLL
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: Microsoft.IIS.PowerShell.Fram
+  - DestinationHostname: Microsoft.IIS.PowerShell.Prov
+  - DestinationHostname: Microsoft.IIS.PowerShell.Provider
+  - DestinationHostname: Microsoft.IIS.Powershell.Comm
+  - DestinationHostname: Microsoft.IIS.Powershell.Commands
+  - DestinationHostname: Microsoft.Ibaae
+  - DestinationHostname: Microsoft.Ic
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Archive
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Diagnostics
+  - DestinationHostname: Microsoft.PowerShell.Host
+  - DestinationHostname: Microsoft.PowerShell.LocalAccounts
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.ODataUtils
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Microsoft.WSMan.Management
+  - DestinationHostname: Microsoft.Wab
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PSHost.134153636398192682.1564.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153636657879757.6152.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153641113466588.4952.DefaultAppDomain.powershell
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.Install
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Text.Encoding
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: TYzoX.ps
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UTF8.GetString
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WLDP.DLL
+  - DestinationHostname: WScript.exe
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: diasymreader.dll
+  - DestinationHostname: gmhgs.replace
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: mssvp.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: system.Convert
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: utils.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

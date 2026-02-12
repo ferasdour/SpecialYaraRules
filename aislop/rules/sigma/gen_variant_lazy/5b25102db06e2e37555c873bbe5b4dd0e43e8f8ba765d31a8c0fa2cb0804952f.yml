@@ -1,0 +1,467 @@
+title: Gen:Variant.Lazy behavior detection (5b25102d)
+id: 5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f
+status: experimental
+description: Auto-generated Sigma rule for Gen:Variant.Lazy
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"LoadUserProfileA\" (Indicator: \"LoadUserProfile\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"LoadUserProfileA\" (Indicator: \"LoadUserProfile\"\
+      ; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to impersonate another user on the local machine (API
+      string)
+  - EventData: string-225
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source:\
+      \ \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9F670000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; File:\
+      \ \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n\
+      \ Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000001.217745.F07A5000.00000002.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: '"d:\dbs\el\oct\target\x64\ship\delivery\x-none\ose.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator:\
+      \ \"StartServiceCtrlDispatcher\"; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartService\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartServiceCtrlDispatcher\"\
+      ; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartService\"\
+      ; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )\n Found reference to API \"SHCreateDirectoryEx failed for directory: %S\"\
+      \ (Indicator: \"CreateDirectory\"; Source: \"00000000-00008036.00000001.217745.9F670000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp\")\n Found reference\
+      \ to API \"SHCreateDirectoryExW\" (Indicator: \"CreateDirectory\"; Source: \"\
+      00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "\"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Downloads\"\
+      \ in Source: 5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Settings\" in Source:\
+      \ 5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\n \"\
+      USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\" in Source:\
+      \ 00000000-00006924.00000000.215956.43AE0000.00000004.mdmp\n 00000000-00006924.00000001.217874.43AE0000.00000004.mdmp\n\
+      \ 00000000-00006924.00000002.219795.43AE0000.00000004.mdmp\n \"Y\\MACHINE\\\
+      SOFTWARE\\Classes\\AppID\\Symbiote.exe\" in Source: 00000000-00006924.00000001.217874.43AE0000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00006992.00000001.217429.14C20000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00006992.00000001.217429.14C50000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006992.00000001.217429.2F8C0000.00000004.mdmp\n \"\
+      Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00006992.00000001.217429.2F8EF000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Downloads\" in Source:\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp\n 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp\n\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp\n 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Settings\" in Source:\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp\n 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp\n\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp\n 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source:\
+      \ \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9F670000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000001.217745.F07A5000.00000002.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"OpenThreadToken\" (Indicator: \"OpenThread\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; File:\
+      \ \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n\
+      \ Found reference to API \"OpenThread\" (Indicator: \"OpenThread\"; File: \"\
+      5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n Found\
+      \ reference to API \"SuspendThread\" (Indicator: \"SuspendThread\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found reference to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"SetThreadContext\" (Indicator: \"SetThreadContext\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenThread\" (Indicator: \"OpenThread\"; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"SuspendThread\" (Indicator: \"SuspendThread\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"SetThreadContext\" (Indicator: \"SetThreadContext\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenThread\" (Indicator: \"OpenThread\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateThread\" (Indicator: \"CreateThread\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenThreadToken\" (Indicator: \"OpenThread\"; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n\
+      \ Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9F670000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000001.217745.9F670000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found reference\
+      \ to API \"CommandLineToArgvW failed\" (Indicator: \"CommandLineToArgv\"; Source:\
+      \ \"00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp\"\
+      )\n Found reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; Source: \"00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: "Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; File:\
+      \ \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n\
+      \ Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; Source: \"\
+      00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; File: \"\
+      5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\")\n Found\
+      \ string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; Source: \"00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.E2101000.00000080.mdmp,\
+      \ 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp\")"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin\"\
+      )\n Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\")\n Found\
+      \ reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00008036.00000000.215825.80002000.00000002.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp, 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found string \"GetCommandLineA\" (Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found string \"GetCommandLineW\" (Source: \"00000000-00007320.00000000.215889.D203D000.00000002.mdmp\"\
+      )\n Found string \"GetCommandLineA\" (Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")\n Found string\
+      \ \"GetCommandLineW\" (Source: \"00000000-00008036.00000000.215825.80002000.00000002.mdmp,\
+      \ 00000000-00008036.00000000.215825.9D1E0000.00000004.mdmp, 00000000-00008036.00000000.215825.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9D1E0000.00000004.mdmp, 00000000-00008036.00000001.217745.9EE50000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.9F670000.00000004.mdmp, 00000000-00008036.00000001.217745.9FEA2000.00000004.mdmp,\
+      \ 00000000-00008036.00000001.217745.E2101000.00000080.mdmp, 00000000-00008036.00000002.218280.9D1E0000.00000004.mdmp,\
+      \ 00000000-00008036.00000002.218280.9EE50000.00000004.mdmp\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: 'Observed system executable string:"%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe"
+      [Source: 00000000-00007320-00000BC0-2343638898]'
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  selection_network:
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: 5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin
+  - DestinationHostname: 5b25102db06e2e37555c873bbe5b4dd0e43e8f8ba765d31a8c0fa2cb0804952f.bin.exe
+  - DestinationHostname: ACCICONS.EXE
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: Access.en
+  - DestinationHostname: AppInstaller.exe
+  - DestinationHostname: CLVIEW.EXE
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: DW20.EXE
+  - DestinationHostname: Excel.en
+  - DestinationHostname: FlickLearningWizard.exe
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: Groove.en
+  - DestinationHostname: Icon.1CAF0566.1385.42CB.A31F.580978CFEED1.exe
+  - DestinationHostname: Icon.57D52F1E.F0D3.4F58.8F76.E727437CB7A9.exe
+  - DestinationHostname: Icon.6AFF5016.E571.4E7C.AE8E.B1EB13D36EE2.exe
+  - DestinationHostname: InfoPath.en
+  - DestinationHostname: KERNEL32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: MSASCui.exe
+  - DestinationHostname: MSASCuiL.exe
+  - DestinationHostname: MSOICONS.EXE
+  - DestinationHostname: MSTORE.EXE
+  - DestinationHostname: Maps.exe
+  - DestinationHostname: Microsoft.AppV.AppvC
+  - DestinationHostname: Microsoft.AppV.AppvClientComConsumer
+  - DestinationHostname: Microsoft.DesktopAppInstaller
+  - DestinationHostname: Microsoft.Manag
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native.Unmanaged.DLL
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.MicrosoftOfficeHub
+  - DestinationHostname: Microsoft.MicrosoftSolitaireCol
+  - DestinationHostname: Microsoft.MicrosoftSolitaireCollection
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Microsoft.WindowsMaps
+  - DestinationHostname: Microsoft.WindowsSoundRecorder
+  - DestinationHostname: MpUXSrv.exe
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: OHub.exe
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: ONENOTEM.EXE
+  - DestinationHostname: Oarpmany.exe
+  - DestinationHostname: Office.en
+  - DestinationHostname: Office32.WW
+  - DestinationHostname: Office32.en
+  - DestinationHostname: OfficeHubWin32.exe
+  - DestinationHostname: OfflineScannerShell.exe
+  - DestinationHostname: OneDrive.exe
+  - DestinationHostname: OneNote.en
+  - DestinationHostname: Outlook.en
+  - DestinationHostname: PEStub.dll
+  - DestinationHostname: PSHost.134153585186076500.8060.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153585205304143.6992.DefaultAppDomain.powershell
+  - DestinationHostname: PowerPoint.en
+  - DestinationHostname: Proof.en
+  - DestinationHostname: Proof.es
+  - DestinationHostname: Proof.fr
+  - DestinationHostname: Proofing.en
+  - DestinationHostname: PsPInjector.dll
+  - DestinationHostname: Publisher.en
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: Shell32.dll
+  - DestinationHostname: SoundRec.exe
+  - DestinationHostname: Symbiote.exe
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.Install
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WINHTTP.dll
+  - DestinationHostname: WORDICON.EXE
+  - DestinationHostname: Word.en
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-handle-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: chrome.exe
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cryptography-37.0.2.dist
+  - DestinationHostname: explorer.exe
+  - DestinationHostname: groove.net
+  - DestinationHostname: ieinstal.exe
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mergecap.exe
+  - DestinationHostname: mi.dll
+  - DestinationHostname: microsoft.system.package.metadata
+  - DestinationHostname: mitmproxy.exe
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: normalizer.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: ose.pdb
+  - DestinationHostname: pip3.exe
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: reordercap.exe
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: w64-arm.exe
+  - DestinationHostname: wabmig.exe
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wmlaunch.exe
+  - DestinationHostname: wmpconfig.exe
+  - DestinationIp: 1.0.0.0
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

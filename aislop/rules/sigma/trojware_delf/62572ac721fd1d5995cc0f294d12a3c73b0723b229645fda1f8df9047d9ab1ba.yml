@@ -1,0 +1,1429 @@
+title: TrojWare.Delf behavior detection (62572ac7)
+id: 62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba
+status: experimental
+description: Auto-generated Sigma rule for TrojWare.Delf
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; File:
+      "62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateFileMappingA\" (Indicator: \"CreateFile\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; File:\
+      \ \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")\n\
+      \ Found reference to API \"CreateFile end\" (Indicator: \"CreateFile\"; File:\
+      \ \"00000000-00006664.00000001.230273.00D41000.00000020.mdmp\")\n Found reference\
+      \ to API \"CreateFile getLastError %d\" (Indicator: \"CreateFile\"; File: \"\
+      00000000-00006664.00000001.230273.00D41000.00000020.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"PR_CreateFileMap\" (Indicator: \"CreateFile\";\
+      \ File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00001860.00000000.230657.72574000.00000002.mdmp, 00000000-00001860.00000000.230657.72BAB000.00000002.mdmp,\
+      \ 00000000-00001860.00000000.230657.72C54000.00000002.mdmp, 00000000-00001860.00000002.234497.724AA000.00000002.mdmp,\
+      \ 00000000-00001860.00000002.234497.72D24000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00001860.00000000.230657.72574000.00000002.mdmp,\
+      \ 00000000-00001860.00000000.230657.72BAB000.00000002.mdmp, 00000000-00001860.00000000.230657.72C54000.00000002.mdmp,\
+      \ 00000000-00001860.00000001.232577.72BDF000.00000002.mdmp, 00000000-00001860.00000002.234497.724AA000.00000002.mdmp,\
+      \ 00000000-00001860.00000002.234497.72D24000.00000002.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateDirectoryA\" (Indicator: \"CreateDirectory\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"SHCreateDirectoryExW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"EnumDeviceDrivers\" (Indicator: \"EnumDeviceDrivers\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )"
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: 'Found reference to API "CloseServiceHandle" (Indicator: "CloseServiceHandle";
+      File: "62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin")'
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: "Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; File:\
+      \ \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")\n\
+      \ Found reference to API \"OpenThread\" (Indicator: \"OpenThread\"; File: \"\
+      62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")\n Found\
+      \ reference to API \"SuspendThread\" (Indicator: \"SuspendThread\"; File: \"\
+      62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")\n Found\
+      \ reference to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"; File:\
+      \ \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"KillProcess4Setup - OpenProcess start\" (Indicator:\
+      \ \"OpenProcess\"; File: \"00000000-00006664.00000001.230273.00D41000.00000020.mdmp\"\
+      )\n Found reference to API \"KillProcess4Setup - OpenProcess failed\" (Indicator:\
+      \ \"OpenProcess\"; File: \"00000000-00006664.00000001.230273.00D41000.00000020.mdmp\"\
+      )\n Found reference to API \"KillProcess4Setup - OpenProcess end\" (Indicator:\
+      \ \"OpenProcess\"; File: \"00000000-00006664.00000001.230273.00D41000.00000020.mdmp\"\
+      )\n Found reference to API \"OpenProcessToken - (%d)(%lu)\" (Indicator: \"OpenProcess\"\
+      ; File: \"00000000-00006664.00000001.230273.00D41000.00000020.mdmp\")\n Found\
+      \ reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; File: \"\
+      62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\")\n Found\
+      \ reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source:\
+      \ \"00000000-00001860.00000000.230657.72574000.00000002.mdmp, 00000000-00001860.00000000.230657.72BAB000.00000002.mdmp,\
+      \ 00000000-00001860.00000000.230657.72C54000.00000002.mdmp, 00000000-00001860.00000002.234497.724AA000.00000002.mdmp,\
+      \ 00000000-00001860.00000002.234497.72D24000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found string \"MoveFileA\" (Indicator: \"MoveFileA\"; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileExW\"; File:\
+      \ \"SetupPKG.exe\")\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00001860.00000000.230657.72467000.00000002.mdmp, 00000000-00001860.00000000.230657.72574000.00000002.mdmp,\
+      \ 00000000-00001860.00000000.230657.72B87000.00000002.mdmp, 00000000-00001860.00000000.230657.72BAB000.00000002.mdmp,\
+      \ 00000000-00001860.00000000.230657.72C54000.00000002.mdmp, 00000000-00001860.00000001.232577.72BDF000.00000002.mdmp,\
+      \ 00000000-00001860.00000002.234497.724AA000.00000002.mdmp, 00000000-00001860.00000002.234497.72D24000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: 'Found reference to API "SHFileOperationA" (Indicator: "SHFileOperation";
+      File: "62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin")'
+  - EventData: Contains reference to method used by Windows shell items (API string)
+  - EventData: string-269
+  - EventData: "Found string - \\\\.\\pipe\\skprogramMonitor\n Found string - \\\\\
+      .\\pipe\\programMonitor"
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: "Found reference to API \"StartServiceA\" (Indicator: \"StartService\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartServiceCtrlDispatcher\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartService\"\
+      ; File: \"62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin\"\
+      )"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "Observed system executable string:\"%WINDIR%\\SysWOW64\\cmd.exe\"\
+      \ [Source: 00000000-00006196-00000BC0-2630953989]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\schtasks.exe\" [Source: 00000000-00001688-00000C47-1614556990]\n\
+      \ Observed system executable string:\"%WINDIR%\\SysWOW64\\schtasks.exe\" [Source:\
+      \ 00000000-00001688-00000BC0-2631952201]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "\"SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Linkage\" in Source:\
+      \ 00000000-00001860.00000000.230657.70E10000.00000040.mdmp\n \"Software\\Microsoft\\\
+      Cryptography\" in Source: 00000000-00001860.00000000.230657.70E10000.00000040.mdmp\n\
+      \ \"Software\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001860.00000000.230657.70E10000.00000040.mdmp\n\
+      \ \"SOFTWARE\\Ahnlab\\Safe Transaction\" in Source: 00000000-00001860.00000000.230657.70E10000.00000040.mdmp\n\
+      \ \"Software\\AppDataLow\\\" in Source: 00000000-00001860.00000000.230657.70E9B000.00000004.mdmp\n\
+      \ \"SoftWare\\SignKorea\\Configuration\" in Source: 00000000-00001860.00000000.230657.70E9B000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00001860.00000001.232577.00C90000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001860.00000001.232577.00C90000.00000004.mdmp\n \"\
+      Software\\AppDataLow\\\" in Source: 00000000-00001860.00000001.232577.70E9B000.00000004.mdmp\n\
+      \ \"SoftWare\\SignKorea\\Configuration\" in Source: 00000000-00001860.00000001.232577.70E9B000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00001860.00000002.234497.00D02000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001860.00000002.234497.00D02000.00000004.mdmp\n \"\
+      Software\\AppDataLow\\\" in Source: 00000000-00001860.00000002.234497.70E9B000.00000004.mdmp\n\
+      \ \"SoftWare\\SignKorea\\Configuration\" in Source: 00000000-00001860.00000002.234497.70E9B000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Yettiesoft\\SignKoreaWD\" in Source: 00000000-00004164.00000000.230520.04EB0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Yettiesoft\\SignKoreaWD\" in Source: 00000000-00004468.00000000.230566.03140000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Yettiesoft\\SignKoreaWD\" in Source: 00000000-00004468.00000001.232486.03140000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Yettiesoft\" in Source: 00000000-00004468.00000002.234405.0108D000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\services\\%s\" in Source: 00000000-00004468.00000002.234405.0108D000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Yettiesoft\\SignKoreaWD\" in Source: 00000000-00004468.00000002.234405.03140000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006196.00000000.232444.032E0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006196.00000001.234363.032E0000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USB\\%s\\%s\" in Source: 00000000-00006196.00000001.234363.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\" in Source: 00000000-00006196.00000001.234363.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\%s\" in Source: 00000000-00006196.00000001.234363.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\%s\\%s\" in Source: 00000000-00006196.00000001.234363.05530000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006196.00000002.236283.032E0000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USB\\%s\\%s\" in Source: 00000000-00006196.00000002.236283.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\" in Source: 00000000-00006196.00000002.236283.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\%s\" in Source: 00000000-00006196.00000002.236283.05530000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR\\%s\\%s\" in Source: 00000000-00006196.00000002.236283.05530000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006664.00000000.229971.032D0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\MangoWire\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Microsoft\\Santiago\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Classes\\Santiago\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Classes\\Installer\\Products\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"Software\\AppDataLow\\SignKorea\\Configuration\\pkiclient\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\"\
+      \ in Source: 00000000-00006664.00000001.230273.00D76000.00000002.mdmp\n \"Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\S-1-5-21-735145574-3570218355-1207367261-1001\"\
+      \ in Source: 00000000-00006664.00000001.230273.0115F000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Microsoft\\WindowsRuntime\" in Source: 00000000-00006664.00000001.230273.032D0000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00006664.00000001.230273.032D0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006664.00000001.230273.032D0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Microsoft\\WindowsRuntime\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n \"REGISTRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"e\\Software\\Cla\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{1d27f844-3a1f-4410-85ac-14651078412d}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{e2bf9676-5f8f-435c-97eb-11607a5bedf7}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{4234d49b-0245-4df3-b780-3893943456e1}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\*\\shell\\removeproperties\" in Source:\
+      \ 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source: 00000000-00007228.00000000.229652.03460000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Borland\\Delphi\\RTL\" in Source: 00000000-00007228.00000001.231573.00401000.00000020.mdmp\n\
+      \ \"Software\\Borland\\Locales\" in Source: 00000000-00007228.00000001.231573.00401000.00000020.mdmp\n\
+      \ \"Software\\Borland\\Delphi\\Locales\" in Source: 00000000-00007228.00000001.231573.00401000.00000020.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Keyboard Layouts\\%.8x\" in Source:\
+      \ 00000000-00007228.00000001.231573.00401000.00000020.mdmp\n \"\\REGISTRY\\\
+      MACHINE\\Software\\Microsoft\\WindowsRuntime\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n \"REGISTRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"e\\Software\\Cla\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{1d27f844-3a1f-4410-85ac-14651078412d}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{e2bf9676-5f8f-435c-97eb-11607a5bedf7}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{4234d49b-0245-4df3-b780-3893943456e1}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\*\\shell\\removeproperties\" in Source:\
+      \ 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source: 00000000-00007228.00000001.231573.03460000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007228.00000002.232167.034BC000.00000004.mdmp\n\
+      \ \"e\\Software\\Cla\" in Source: 00000000-00007228.00000002.232167.034BC000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{F324E4F9-8496-40B2-A1FF-9617C1C9AFFE}\"\
+      \ in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{76765B11-3F95-4AF2-AC9D-EA55D8994F1A}\"\
+      \ in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{CDC82860-468D-4D4E-B7E7-C298FF23AB2C}\"\
+      \ in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{7B8A2D94-0AC9-11D1-896C-00C04FB6BFC4}\"\
+      \ in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{1d27f844-3a1f-4410-85ac-14651078412d}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{4234d49b-0245-4df3-b780-3893943456e1}\\\
+      InProcServer32\" in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\Applications\\%1.exe\" in Source: 00000000-00007228.00000002.232167.034D9000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\*\\shell\\removeproperties\" in Source:\
+      \ 00000000-00007228.00000002.232167.034D9000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "\"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlsGetValue\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateEventExW (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSymbolicLinkW (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00007228)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableCS (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter InitializeSRWLock\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWork (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetDiskFreeSpaceExA\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VariantChangeTypeEx (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarNot (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarAdd (UID: 00000000-00007228)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarDiv (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarIdiv (UID: 00000000-00007228)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarMod (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarAnd (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarOr (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarXor (UID: 00000000-00007228)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarCmp (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarI4FromStr (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarR4FromStr (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarR8FromStr (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarDateFromStr\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarCyFromStr (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarBoolFromStr (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarBstrFromCy\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarBstrFromDate (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarBstrFromBool (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemMetrics (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter AnimateWindow\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeFlatSB (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter UninitializeFlatSB (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlatSB_GetScrollProp\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_SetScrollProp (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter FlatSB_EnableScrollBar\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_ShowScrollBar (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter FlatSB_GetScrollRange\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_GetScrollInfo (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter FlatSB_GetScrollPos\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_SetScrollPos (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlatSB_SetScrollInfo (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlatSB_SetScrollRange\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetLayeredWindowAttributes (UID: 00000000-00007228)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter CoInitializeEx\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoAddRefServerProcess (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CoReleaseServerProcess\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoResumeClassObjects (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CoSuspendClassObjects\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateToolhelp32Snapshot (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter Heap32ListFirst (UID:\
+      \ 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter Heap32ListNext (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter Heap32First (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter Heap32Next\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter Toolhelp32ReadProcessMemory (UID: 00000000-00007228)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter Process32First\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter Process32Next (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter Process32FirstW (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter Process32NextW\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter Thread32First (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter Thread32Next (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter Module32First\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter Module32Next (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter Module32FirstW (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter Module32NextW\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter EncodePointer (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter DecodePointer (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter IsProcessorFeaturePresent\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindActCtxSectionStringW (UID: 00000000-00007228)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter HeapSetInformation\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter EventWrite (UID: 00000000-00007228)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter EventRegister (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter EventUnregister\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GrooveChainGetGlobalInterfacePtrAddress (UID: 00000000-00007228)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GrooveChainCoCreateInstance\
+      \ (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetNativeSystemInfo (UID: 00000000-00007228)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlsGetValue\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateEventExW (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSemaphoreExW (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolTimer\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetThreadpoolTimer (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolTimer (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolWait\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetThreadpoolWait (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlushProcessWriteBuffers (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentProcessorNumber (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CreateSymbolicLinkW\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetTickCount64 (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00004384)\n \"\
+      ._cache_<Input Sample.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableCS (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter InitializeSRWLock\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWork (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CompareStringEx (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetLocaleInfoEx (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlGetVersion (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CoGetClassObject (UID:\
+      \ 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromFile (UID: 00000000-00004384)\n \"._cache_<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00004384)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeCriticalSectionEx (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"\
+      GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileInformationByHandleEx (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetSystemTimePreciseAsFileTime (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"\
+      GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter EncodePointer (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter DecodePointer (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter ProcessIdToSessionId\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter ImmCreateContext (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter ImmDestroyContext (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter ImmNotifyIME (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ ImmAssociateContext (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"\
+      GetProcAddress\" with a parameter ImmReleaseContext (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter ImmGetContext\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter ImmGetCompositionStringA (UID: 00000000-00006664)\n \"SetupPKG.exe\"\
+      \ called \"GetProcAddress\" with a parameter ImmSetCompositionStringA (UID:\
+      \ 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter\
+      \ ImmGetCompositionStringW (UID: 00000000-00006664)\n \"SetupPKG.exe\" called\
+      \ \"GetProcAddress\" with a parameter ImmSetCompositionStringW (UID: 00000000-00006664)\n\
+      \ \"SetupPKG.exe\" called \"GetProcAddress\" with a parameter ImmSetCandidateWindow\
+      \ (UID: 00000000-00006664)\n \"SetupPKG.exe\" called \"GetProcAddress\" with\
+      \ a parameter NotifyWinEvent (UID: 00000000-00006664)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter FlsAlloc (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"\
+      GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00004164)\n \"\
+      SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter FlsGetValue (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter LCMapStringEx (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00004164)\n \"\
+      SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter CreateSymbolicLinkW (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileInformationByHandleEx (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter WakeConditionVariable (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeAllConditionVariable (UID:\
+      \ 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter SleepConditionVariableCS (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter TryAcquireSRWLockExclusive (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWork (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00004164)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00004164)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00004164)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeCriticalSectionEx (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter FlsSetValue\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlsGetValue (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called\
+      \ \"GetProcAddress\" with a parameter LCMapStringEx (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter FlsFree (UID:\
+      \ 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter InitOnceExecuteOnce (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSemaphoreExW (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00004468)\n \"\
+      SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWait (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlushProcessWriteBuffers (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcessorNumber (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackageId\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTickCount64 (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx (UID:\
+      \ 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter SetFileInformationByHandle (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeConditionVariable (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeConditionVariable (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter SleepConditionVariableCS (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter TryAcquireSRWLockExclusive (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWork (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with\
+      \ a parameter NtQueryInformationProcess (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter WTSGetActiveConsoleSessionId (UID:\
+      \ 00000000-00004468)\n \"SignKoreaWD.exe\" called \"GetProcAddress\" with a\
+      \ parameter WTSQueryUserToken (UID: 00000000-00004468)\n \"SignKoreaWD.exe\"\
+      \ called \"GetProcAddress\" with a parameter WTSEnumerateSessionsW (UID: 00000000-00004468)\n\
+      \ \"SignKoreaWD.exe\" called \"GetProcAddress\" with a parameter WTSFreeMemory\
+      \ (UID: 00000000-00004468)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeCriticalSectionEx (UID: 00000000-00001860)\n \"\
+      SKCertService.exe\" called \"GetProcAddress\" with a parameter FlsAlloc (UID:\
+      \ 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlsSetValue (UID: 00000000-00001860)\n \"SKCertService.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsFree (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitOnceExecuteOnce (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter CreateEventExW\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSemaphoreW (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreExW (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolTimer\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetThreadpoolTimer (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolTimer (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSymbolicLinkW (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00001860)\n \"\
+      SKCertService.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeAllConditionVariable (UID:\
+      \ 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\" with\
+      \ a parameter SleepConditionVariableCS (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter TryAcquireSRWLockExclusive (UID: 00000000-00001860)\n \"\
+      SKCertService.exe\" called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableSRW (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWork (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetLastError (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter GetLastError\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter IsWow64Process2 (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter IsUserAnAdmin (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter NtQuerySystemInformation\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter CM_Get_Parent (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter CM_Get_Device_IDA (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter GetAdaptersInfo\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlDecodePointer (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlLeaveCriticalSection (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter RtlAllocateHeap\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlEnterCriticalSection (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlEncodePointer (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter RtlDeleteCriticalSection\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlInitializeCriticalSection (UID: 00000000-00001860)\n \"\
+      SKCertService.exe\" called \"GetProcAddress\" with a parameter GetVersionExW\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlSizeHeap (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlExitUserThread (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter GetVersionExA\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlReAllocateHeap (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGBaseWrapper_GetList (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter SGCryptoWrapper_GetList\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter SGCrypto_SetDebugCallback (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGKCMVPWrapper_GetList (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter SGServiceWrapper_GetList\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter SGPKCS_SetDebugCallback (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGstorage_Init (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter SGstorage_InitProc\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter SGstorage_Final (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGstorage_Service (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter ShowMessage\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter nspr_native_threads_only (UID: 00000000-00001860)\n \"SKCertService.exe\"\
+      \ called \"GetProcAddress\" with a parameter NSC_GetFunctionList (UID: 00000000-00001860)\n\
+      \ \"SKCertService.exe\" called \"GetProcAddress\" with a parameter NSC_ModuleDBFunc\
+      \ (UID: 00000000-00001860)\n \"SKCertService.exe\" called \"GetProcAddress\"\
+      \ with a parameter FREEBL_GetVector (UID: 00000000-00001860)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called\
+      \ \"GetProcAddress\" with a parameter LCMapStringEx (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called\
+      \ \"GetProcAddress\" with a parameter InitOnceExecuteOnce (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateEventExW (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSemaphoreExW (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetThreadpoolTimer (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolTimer (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetThreadpoolWait (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CloseThreadpoolWait (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlushProcessWriteBuffers (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentProcessorNumber (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetCurrentPackageId (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetFileInformationByHandleEx (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeConditionVariable (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeConditionVariable (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeAllConditionVariable (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableCS (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeSRWLock (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ TryAcquireSRWLockExclusive (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SleepConditionVariableSRW (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWork (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SubmitThreadpoolWork (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CloseThreadpoolWork (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CompareStringEx (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ AreFileApisANSI (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoCreateInstance (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoCreateInstanceEx (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoGetClassObject (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoGetInstanceFromIStorage (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGBaseWrapper_GetList (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SGCryptoWrapper_GetList (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGCrypto_SetDebugCallback (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter SGKCMVPWrapper_GetList (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SGServiceWrapper_GetList (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter SGPKCS_SetDebugCallback (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter nspr_native_threads_only (UID:\
+      \ 00000000-00002212)\n \"SantiagoWireInitializer.exe\" called \"GetProcAddress\"\
+      \ with a parameter NSC_GetFunctionList (UID: 00000000-00002212)\n \"SantiagoWireInitializer.exe\"\
+      \ called \"GetProcAddress\" with a parameter NSC_ModuleDBFunc (UID: 00000000-00002212)\n\
+      \ \"SantiagoWireInitializer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FREEBL_GetVector (UID: 00000000-00002212)\n \"chromehelper.exe\" called \"\
+      GetProcAddress\" with a parameter InitializeCriticalSectionEx (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter FlsAlloc (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter FlsSetValue (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsFree (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter InitOnceExecuteOnce (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CreateEventExW\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSemaphoreW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreExW (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolTimer\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetThreadpoolTimer (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolTimer (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter CreateSymbolicLinkW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00006196)\n \"\
+      chromehelper.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeAllConditionVariable (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter SleepConditionVariableCS (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter TryAcquireSRWLockExclusive (UID: 00000000-00006196)\n \"\
+      chromehelper.exe\" called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableSRW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWork (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDiskFreeSpaceExA (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VariantChangeTypeEx\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarNeg (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarNot (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarSub (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter VarMul (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"\
+      GetProcAddress\" with a parameter VarDiv (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarIdiv (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarMod (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter VarAnd (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"\
+      GetProcAddress\" with a parameter VarOr (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarCmp (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter VarI4FromStr (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarR4FromStr (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarR8FromStr\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDateFromStr (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarCyFromStr (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarBoolFromStr\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarBstrFromCy (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarBstrFromDate (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter VarBstrFromBool\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetMonitorInfoA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemMetrics (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter EnumDisplayMonitors\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter AnimateWindow (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeFlatSB (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter UninitializeFlatSB\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_GetScrollProp (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlatSB_SetScrollProp (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter FlatSB_EnableScrollBar\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_ShowScrollBar (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlatSB_GetScrollRange (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter FlatSB_GetScrollInfo\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_GetScrollPos (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlatSB_SetScrollPos (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter FlatSB_SetScrollInfo\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlatSB_SetScrollRange (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetLayeredWindowAttributes (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter CoInitializeEx (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoAddRefServerProcess (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CoReleaseServerProcess\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoResumeClassObjects (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoSuspendClassObjects (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CreateToolhelp32Snapshot\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter Heap32ListFirst (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter Heap32ListNext (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter Heap32First\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter Heap32Next (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter Toolhelp32ReadProcessMemory (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter Process32First (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter Process32Next (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter Process32FirstW\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter Process32NextW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter Thread32First (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter Thread32Next\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter Module32First (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter Module32Next (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter Module32FirstW\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter Module32NextW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumProcesses (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter EnumProcessModules\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetModuleBaseNameA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetModuleFileNameExA (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter GetModuleBaseNameW\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetModuleFileNameExW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetModuleInformation (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter EmptyWorkingSet\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter QueryWorkingSet (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeProcessForWsWatch (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter GetMappedFileNameA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDeviceDriverBaseNameA (UID:\
+      \ 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\" with a\
+      \ parameter GetDeviceDriverFileNameA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetMappedFileNameW (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter GetDeviceDriverBaseNameW\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDeviceDriverFileNameW (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumDeviceDrivers (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter GetProcessMemoryInfo\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDriveTypeA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHGetKnownFolderPath (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter RegisterDeviceNotificationA\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter HOn (UID: 00000000-00006196)\n \"chromehelper.exe\" called\
+      \ \"GetProcAddress\" with a parameter HOff (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetWindowsHookExA (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter CallNextHookEx\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter OpenFileMappingA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter MapViewOfFile (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter PostMessageA\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter UnmapViewOfFile (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter CloseHandle (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter IsWow64Process\
+      \ (UID: 00000000-00006196)\n \"chromehelper.exe\" called \"GetProcAddress\"\
+      \ with a parameter InternetOpenA (UID: 00000000-00006196)\n \"chromehelper.exe\"\
+      \ called \"GetProcAddress\" with a parameter InternetOpenUrlA (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"GetProcAddress\" with a parameter InternetCloseHandle\
+      \ (UID: 00000000-00006196)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeCriticalSectionEx (UID: 00000000-00001688)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00001688)\n \"\
+      cmd.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitOnceExecuteOnce (UID: 00000000-00001688)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSemaphoreExW (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CloseThreadpoolTimer (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlushProcessWriteBuffers (UID: 00000000-00001688)\n \"cmd.exe\" called \"\
+      GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetFileInformationByHandle (UID: 00000000-00001688)\n \"cmd.exe\" called \"\
+      GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeAllConditionVariable (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableCS (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeSRWLock (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ ReleaseSRWLockExclusive (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableSRW (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWork (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CloseThreadpoolWork (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CompareStringEx (UID: 00000000-00001688)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ RtlGetVersion (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstance (UID: 00000000-00001688)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstanceEx (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CoGetClassObject (UID:\
+      \ 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoGetInstanceFromFile (UID: 00000000-00001688)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00001688)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsAlloc (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsSetValue (UID: 00000000-00004116)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitOnceExecuteOnce (UID: 00000000-00004116)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSemaphoreExW (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CloseThreadpoolTimer (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlushProcessWriteBuffers (UID: 00000000-00004116)\n \"cmd.exe\" called \"\
+      GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetFileInformationByHandle (UID: 00000000-00004116)\n \"cmd.exe\" called \"\
+      GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeAllConditionVariable (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableCS (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeSRWLock (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ ReleaseSRWLockExclusive (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableSRW (UID: 00000000-00004116)\n \"cmd.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWork (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CloseThreadpoolWork (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CompareStringEx (UID: 00000000-00004116)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ RtlGetVersion (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstance (UID: 00000000-00004116)\n \"cmd.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstanceEx (UID: 00000000-00004116)\n\
+      \ \"cmd.exe\" called \"GetProcAddress\" with a parameter CoGetClassObject (UID:\
+      \ 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\" with a parameter\
+      \ CoGetInstanceFromFile (UID: 00000000-00004116)\n \"cmd.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00004116)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "\"<Input Sample.exe\" called \"CreateProcessW\" with parameter \"\"\
+      C:\\._cache_62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin.exe\"\
+      \" - (UID: 00000000-00007228)\n \"<Input Sample.exe\" called \"CreateProcessW\"\
+      \ with parameter \"\"%PROGRAMFILES%\\(x86)\\Google Chrome Helper\\chromehelper.exe\"\
+      \" - (UID: 00000000-00007228)\n \"._cache_<Input Sample.exe\" called \"CreateProcessA\"\
+      \ with parameter \".\\SetupPKG.exe -is\" - (UID: 00000000-00004384)\n \"SetupPKG.exe\"\
+      \ called \"CreateProcessW\" with parameter \"\"%PROGRAMFILES%\\(x86)\\SignKorea\\\
+      skcert\\SignKoreaWD.exe\" -i\" - (UID: 00000000-00006664)\n \"SKCertService.exe\"\
+      \ called \"CreateProcessW\" with parameter \"\"%PROGRAMFILES%\\(x86)\\SignKorea\\\
+      skcert\\SantiagoWireInitializer.exe\" S F C\" - (UID: 00000000-00001860)\n \"\
+      chromehelper.exe\" called \"CreateProcessA\" with parameter \"cmd.exe /C schtasks\
+      \ /QUERY /TN \"Google Chrome Helper Update\"\" - (UID: 00000000-00006196)\n\
+      \ \"chromehelper.exe\" called \"CreateProcessA\" with parameter \"cmd.exe /C\
+      \ schtasks /CREATE /XML \"%TEMP%\\qER.xml\" /TN \"Google Chrome Helper Update\"\
+      \" - (UID: 00000000-00006196)\n \"cmd.exe\" called \"CreateProcessW\" with parameter\
+      \ \"schtasks  /QUERY /TN \"Google Chrome Helper Update\"\" - (UID: 00000000-00001688)\n\
+      \ \"cmd.exe\" called \"CreateProcessW\" with parameter \"schtasks  /CREATE /XML\
+      \ \"%TEMP%\\qER.xml\" /TN \"Google Chrome Helper Update\"\" - (UID: 00000000-00004116)"
+  - EventData: Calls an API typically used to create a process
+  - EventData: api-128
+  - EventData: "\"<Input Sample.exe\" called \"CreateDirectoryA\" with parameter %PROGRAMFILES%\\\
+      (x86)\\Google Chrome Helper (UID: 00000000-00007228)\n \"._cache_<Input Sample.exe\"\
+      \ called \"CreateDirectoryA\" with parameter %TEMP%\\7zSBC73.tmp (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"CreateDirectoryW\" with parameter %TEMP%\\\
+      7zSBC73.tmp (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called\
+      \ \"CreateDirectoryW\" with parameter %TEMP%\\7zSBC73.tmp\\NPKI (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"CreateDirectoryW\" with parameter %TEMP%\\\
+      7zSBC73.tmp\\NPKI\\SignKorea (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\"\
+      \ called \"CreateDirectoryW\" with parameter %TEMP%\\7zSBC73.tmp\\NPKI\\CrossCert\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"CreateDirectoryW\"\
+      \ with parameter %TEMP%\\7zSBC73.tmp\\NPKI\\TradeSign (UID: 00000000-00004384)\n\
+      \ \"._cache_<Input Sample.exe\" called \"CreateDirectoryW\" with parameter %TEMP%\\\
+      7zSBC73.tmp\\NPKI\\yessign (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\"\
+      \ called \"CreateDirectoryW\" with parameter %TEMP%\\7zSBC73.tmp\\NPKI\\KICA\
+      \ (UID: 00000000-00004384)\n \"._cache_<Input Sample.exe\" called \"CreateDirectoryW\"\
+      \ with parameter %TEMP%\\7zSBC73.tmp\\NPKI\\NCASign (UID: 00000000-00004384)"
+  - EventData: Calls an API typically used to create a directory
+  - EventData: api-122
+  - EventData: "\"SignKoreaWD.exe\" called \"CreateNamedPipeA\" with parameter \"\\\
+      \\.\\pipe\\programMonitor\"\n dwOpenMode: \"1073741827\"\n dwPipeMode: \"6\"\
+      \ - (UID: 00000000-00004468)"
+  - EventData: Calls an API typically used to create a named pipe
+  - EventData: api-275
+  selection_network:
+  - DestinationHostname: 1.der
+  - DestinationHostname: 10023.der
+  - DestinationHostname: 10043.der
+  - DestinationHostname: 10045.der
+  - DestinationHostname: 10050.der
+  - DestinationHostname: 10056.der
+  - DestinationHostname: 10078.der
+  - DestinationHostname: 10079.der
+  - DestinationHostname: 10080.der
+  - DestinationHostname: 10081.der
+  - DestinationHostname: 10082.der
+  - DestinationHostname: 10084.der
+  - DestinationHostname: 10088.der
+  - DestinationHostname: 11.Driver
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: 4.der
+  - DestinationHostname: 4098.der
+  - DestinationHostname: 4099.der
+  - DestinationHostname: 4100.der
+  - DestinationHostname: 4105.der
+  - DestinationHostname: 4106.der
+  - DestinationHostname: 4124.der
+  - DestinationHostname: 4125.der
+  - DestinationHostname: 4126.der
+  - DestinationHostname: 4127.der
+  - DestinationHostname: 4128.der
+  - DestinationHostname: 62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin
+  - DestinationHostname: 62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin.EN
+  - DestinationHostname: 62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin.ENU
+  - DestinationHostname: 62572ac721fd1d5995cc0f294d12a3c73b0723b229645fda1f8df9047d9ab1ba.bin.exe
+  - DestinationHostname: 7zSBC73.tmp
+  - DestinationHostname: BCRYPT.DLL
+  - DestinationHostname: COMCTL32.DLL
+  - DestinationHostname: COMDLG32.DLL
+  - DestinationHostname: CRYPT32.DLL
+  - DestinationHostname: GDI32.DLL
+  - DestinationHostname: Iphlpapi.dll
+  - DestinationHostname: KERNEL32.DLL
+  - DestinationHostname: KERNELBASE.DLL
+  - DestinationHostname: KR.UTF
+  - DestinationHostname: KR.euc
+  - DestinationHostname: KSCSKey.dll
+  - DestinationHostname: KSTokenIF.dll
+  - DestinationHostname: Kernel32.dll
+  - DestinationHostname: LPK.DLL
+  - DestinationHostname: MAPI32.DLL
+  - DestinationHostname: MangoSecurityService.dll
+  - DestinationHostname: NSS4MANGO.DLL
+  - DestinationHostname: PGORT90.dll
+  - DestinationHostname: PJResFile.pas
+  - DestinationHostname: PSAPI.dll
+  - DestinationHostname: RvsVP1.exe
+  - DestinationHostname: RvsVP1.ico
+  - DestinationHostname: SETUPAPI.DLL
+  - DestinationHostname: SGBASE.DLL
+  - DestinationHostname: SGBase.dll
+  - DestinationHostname: SGCrypto.dll
+  - DestinationHostname: SGService.dll
+  - DestinationHostname: SKCertService.exe
+  - DestinationHostname: SKCertService.pdb
+  - DestinationHostname: SKCommWB.exe
+  - DestinationHostname: SantiagoSecurityService.dll
+  - DestinationHostname: SantiagoSecurityService.json
+  - DestinationHostname: SantiagoWireInitializer.exe
+  - DestinationHostname: SetupPKG.exe
+  - DestinationHostname: SetupPkg.exe
+  - DestinationHostname: SignKoreaWD.exe
+  - DestinationHostname: TokenManager.json
+  - DestinationHostname: USER32.DLL
+  - DestinationHostname: UbiKeyWin32.dll
+  - DestinationHostname: VERSION.DLL
+  - DestinationHostname: VestCert.MangoCake
+  - DestinationHostname: WbemScripting.SWbemLocator
+  - DestinationHostname: Winscard.dll
+  - DestinationHostname: Wtsapi32.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: atiservice64.exe
+  - DestinationHostname: chromehelper.EN
+  - DestinationHostname: chromehelper.ENU
+  - DestinationHostname: chromehelper.exe
+  - DestinationHostname: cmd.exe
+  - DestinationHostname: comctl32.dll
+  - DestinationHostname: config.dat
+  - DestinationHostname: config.json
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: dateinj01.dll
+  - DestinationHostname: dummy.txt
+  - DestinationHostname: env.cer
+  - DestinationHostname: env.key
+  - DestinationHostname: freebl3.dll
+  - DestinationHostname: groovet.dll
+  - DestinationHostname: hsm01.jsp
+  - DestinationHostname: ig.cer
+  - DestinationHostname: imm32.dll
+  - DestinationHostname: install.log
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kmCert.der
+  - DestinationHostname: kmPri.key
+  - DestinationHostname: liberta.pid
+  - DestinationHostname: libnspr4.dll
+  - DestinationHostname: libplc4.dll
+  - DestinationHostname: libplds4.dll
+  - DestinationHostname: mangoconf.json
+  - DestinationHostname: mangoservice.json
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mssvp.dll
+  - DestinationHostname: msvcr100.dll
+  - DestinationHostname: nss3.dll
+  - DestinationHostname: nss4Mango.dll
+  - DestinationHostname: nssckbi.dll
+  - DestinationHostname: nssdbm3.dll
+  - DestinationHostname: nssutil3.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: office.odf
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: pkcs11.cnf
+  - DestinationHostname: qER.xml
+  - DestinationHostname: rt.santiago
+  - DestinationHostname: s.cer
+  - DestinationHostname: s.key
+  - DestinationHostname: santiago.json
+  - DestinationHostname: schtasks.exe
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: sig.cer
+  - DestinationHostname: sig.key
+  - DestinationHostname: signCert.der
+  - DestinationHostname: signPri.key
+  - DestinationHostname: skmCert.der
+  - DestinationHostname: skmPri.key
+  - DestinationHostname: skmagerapi.dll
+  - DestinationHostname: smime3.dll
+  - DestinationHostname: softokn3.dll
+  - DestinationHostname: sqlite3.dll
+  - DestinationHostname: ssignCert.der
+  - DestinationHostname: ssignPri.key
+  - DestinationHostname: update.dll
+  - DestinationHostname: user32.dll
+  - DestinationHostname: uxtheme.dll
+  - DestinationHostname: vcltest3.dll
+  - DestinationHostname: verifier.dll
+  - DestinationHostname: wininet.dll
+  - DestinationHostname: www.rootca.or.kr
+  - DestinationHostname: www.signkorea.co.kr
+  - DestinationHostname: www.sysinternals.com
+  - DestinationHostname: xcmhsmpc.dll
+  - DestinationHostname: xredini.mooo.com
+  - DestinationHostname: yDaemon.json
+  - DestinationHostname: ywzu7870.default
+  - DestinationIp: 127.0.0.1
+  - DestinationIp: 2.5.40.281
+  condition: selection_behavior or selection_network

@@ -1,0 +1,245 @@
+title: Virlock.Gen behavior detection (051c6ccb)
+id: 051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21
+status: experimental
+description: Auto-generated Sigma rule for Virlock.Gen
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: '"<Input Sample.exe" loaded module "%WINDIR%\SysWOW64\bcryptprimitives.dll"
+      at 76C20000'
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "\"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE"
+  - EventData: Uses 32 bit executable PE
+  - EventData: static-153
+  - EventData: "\"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ file has an entrypoint instructions - \"mov\tedi, edi,push\tebp,mov\tebp,\
+      \ esp,sub\tesp, 0x28,call\t0x4b6d9b,leave\t,ret\t,int3\t,mov\tedi, edi,push\t\
+      ebp,mov\tebp, esp,sub\tesp, 0x20,push\t-0x47,push\t0x3d1544,push\t0x7a3440,push\t\
+      -0x27,push\t0x53,push\t0x47,push\t0x4f,push\t0x467d9e,push\t0x3d,push\t0x1f007a,call\t\
+      0x4bd99d,leave\t,ret\t,sub\tesp, 0x24,jmp\t0x4010b8,ret\t,jmp\t0x4010be,ret\t\
+      ,add\tesp, 0x24,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t\
+      ,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,int3\t,\""
+  - EventData: PE file entrypoint instructions
+  - EventData: static-96
+  - EventData: "\"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 75010000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 75010000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 75010000\n \"<Input Sample.exe\" loaded module \"KERNEL32\" at base\
+      \ 74cf0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\"\
+      \ at base 72c40000\n \"<Input Sample.exe\" loaded module \"EXT-MS-WIN-KERNEL32-ERRORHANDLING-L1-1-0.DLL\"\
+      \ at base 74cf0000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"<Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00006012)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: '"<Input Sample.exe" loaded module "%WINDIR%\SysWOW64\rpcrt4.dll" at
+      751F0000'
+  - EventData: Loads the RPC (Remote Procedure Call) module DLL
+  - EventData: module-10
+  - EventData: '"<Input Sample.exe" (Path: "HKLM\SYSTEM\CONTROLSET001\CONTROL\NLS\CUSTOMLOCALE";
+      Key: "EMPTY")'
+  - EventData: Reads information about supported languages
+  - EventData: registry-25
+  - EventData: "Spawned process \"WerFault.exe\" with commandline \"-pss -s 456 -p\
+      \ 6012 -ip 6012\" (UID: 00000000-00007960)\n Spawned process \"WerFault.exe\"\
+      \ with commandline \"-u -p 6012 -s 548\" (UID: 00000000-00005140)\n Spawned\
+      \ process \"WerFault.exe\" with commandline \"-u -p 6012 -s 548\" (UID: 00000000-00003640)"
+  - EventData: Spawns new processes that are not known child processes
+  - EventData: target-103
+  - EventData: Spawns new processes
+  - EventData: target-25
+  - EventData: "\"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ was detected as \"MASM32\"  and name: \"Compiler\"\n \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ was detected as \"Microsoft Linker\"  and name: \"Linker\""
+  - EventData: Matched Compiler/Packer signature (DIE)
+  - EventData: static-157
+  - EventData: "Found reference to API (Indicator: \"NtReadFile\"; File: \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      )\n Found reference to API (Indicator: \"RtlUpcaseUnicodeToOemN\"; File: \"\
+      051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\")\n Found\
+      \ reference to API (Indicator: \"GetMenuCheckMarkDimensions\"; File: \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      )\n Found reference to API (Indicator: \"LoadMenuA\"; File: \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      )\n Found reference to API (Indicator: \"WSAAsyncGetProtoByName\"; File: \"\
+      051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\")\n Found\
+      \ reference to API (Indicator: \"CryptEncrypt\"; Source: \"00000000-00006012.00000000.225967.03280000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "\"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlsGetValue\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateEventExW (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSymbolicLinkW (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00006012)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableCS (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter InitializeSRWLock\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWork (UID: 00000000-00006012)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00006012)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00006012)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00006012)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00006012)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "Report process \"WerFault.exe\" was created by \"svchost.exe\"\n Report\
+      \ process \"WerFault.exe\" was created by \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin.exe\""
+  - EventData: An application crash occurred
+  - EventData: target-2
+  - EventData: "\"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ has an executable section named \".text\"\n \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ has an executable section named \".data\""
+  - EventData: PE file contains executable sections
+  - EventData: static-80
+  - EventData: "\"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ has an writable section named \".data\"\n \"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin\"\
+      \ has an writable section named \".rsrc\""
+  - EventData: PE file contains writable sections
+  - EventData: static-95
+  - EventData: '"051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin"
+      was detected as "Visual C++ 2003 DLL -> Microsoft"'
+  - EventData: Matched Compiler/Packer signature
+  - EventData: static-18
+  - EventData: '"<Input Sample.exe" (Path: "HKLM\SYSTEM\CONTROLSET001\CONTROL\NLS\LANGUAGE";
+      Key: "INSTALLLANGUAGEFALLBACK")'
+  - EventData: Reads the windows installation language
+  - EventData: registry-26
+  - EventData: "\"<Input Sample.exe\" trying to access non-existent file \"C:\\Windows\\\
+      System32\\WOW64LOG.DLL\"\n \"<Input Sample.exe\" trying to access non-existent\
+      \ file \"C:\\FLTLIB.DLL\"\n \"<Input Sample.exe\" trying to access non-existent\
+      \ file \"C:\\CRYPTSP.DLL\""
+  - EventData: Tries to access non-existent files (executable)
+  - EventData: api-126
+  - EventData: "\"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\SESSION MANAGER\\SEGMENT HEAP\"; Key: \"\"; Value: \"\
+      \")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\SESSION MANAGER\"; Key: \"\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"OPEN\"; Path: \"HKLM\\SOFTWARE\\MICROSOFT\\WOW64\\X86\"; Key:\
+      \ \"\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"\
+      HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\TERMINAL SERVER\"; Key: \"\"; Value: \"\
+      \")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\SAFEBOOT\\OPTION\"; Key: \"\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"OPEN\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\SRP\\\
+      GP\\DLL\"; Key: \"\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"\
+      OPEN\"; Path: \"HKLM\\SOFTWARE\\POLICIES\\MICROSOFT\\WINDOWS\\SAFER\\CODEIDENTIFIERS\"\
+      ; Key: \"\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path:\
+      \ \"HKCU\\SOFTWARE\\POLICIES\\MICROSOFT\\WINDOWS\\SAFER\\CODEIDENTIFIERS\";\
+      \ Key: \"\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path:\
+      \ \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\FILESYSTEM\"; Key: \"\"; Value: \"\
+      \")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"HKLM\\SOFTWARE\\\
+      WOW6432NODE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\"; Key: \"\
+      \"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"OPEN\"; Path: \"HKCU\\\
+      SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\EXPLORER\\SHELL FOLDERS\"; Key:\
+      \ \"\"; Value: \"\")"
+  - EventData: Opens registry keys
+  - EventData: registry-177
+  - EventData: '"<Input Sample.exe" queries basic process information of the  "C:\051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin.exe"
+      (UID: 6012)'
+  - EventData: Queries basic information of the specified process
+  - EventData: api-235
+  - EventData: "\"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\SESSION MANAGER\"; Key: \"RESOURCEPOLICIES\"; Value:\
+      \ \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SOFTWARE\\\
+      MICROSOFT\\WOW64\\X86\"; Key: \"051C6CCB5E0CB3BD1FF9C2437455E7871F395E5D66777EFAD0ECC060E885FE21.BIN.EXE\"\
+      ; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"\
+      HKLM\\SOFTWARE\\MICROSOFT\\WOW64\\X86\"; Key: \"\"; Value: \"\")\n \"<Input\
+      \ Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\TERMINAL SERVER\"; Key: \"TSAPPCOMPAT\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      TERMINAL SERVER\"; Key: \"TSUSERENABLED\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"QUERYVAL\"; Path: \"HKLM\\SOFTWARE\\POLICIES\\MICROSOFT\\\
+      WINDOWS\\SAFER\\CODEIDENTIFIERS\"; Key: \"TRANSPARENTENABLED\"; Value: \"\"\
+      )\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\FILESYSTEM\"; Key: \"LONGPATHSENABLED\"; Value: \"\"\
+      )\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SOFTWARE\\\
+      WOW6432NODE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\"; Key: \"\
+      LOGFLAGS\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"\
+      ; Path: \"HKLM\\SOFTWARE\\WOW6432NODE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\\
+      APPCOMPATFLAGS\"; Key: \"SHOWDEBUGINFO\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"QUERYVAL\"; Path: \"HKCU\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\\
+      EXPLORER\\SHELL FOLDERS\"; Key: \"CACHE\"; Value: \"\")\n \"<Input Sample.exe\"\
+      \ (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\CUSTOMLOCALE\"; Key: \"EMPTY\"; Value: \"\")\n \"<Input Sample.exe\" (Access\
+      \ type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\LANGUAGE\"\
+      ; Key: \"INSTALLLANGUAGEFALLBACK\"; Value: \"\")\n \"<Input Sample.exe\" (Access\
+      \ type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\MUI\\UILANGUAGES\\\
+      EN-US\"; Key: \"TYPE\"; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"\
+      QUERYVAL\"; Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\MUI\\UILANGUAGES\\\
+      EN-US\"; Key: \"ALTERNATECODEPAGE\"; Value: \"\")\n \"<Input Sample.exe\" (Access\
+      \ type: \"QUERYVAL\"; Path: \"HKCU\\CONTROL PANEL\\DESKTOP\"; Key: \"PREFERREDUILANGUAGES\"\
+      ; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"\
+      HKCU\\CONTROL PANEL\\DESKTOP\\MUICACHED\"; Key: \"MACHINEPREFERREDUILANGUAGES\"\
+      ; Value: \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"\
+      HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\SORTING\\VERSIONS\"; Key: \"\"; Value:\
+      \ \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\LSA\\FIPSALGORITHMPOLICY\"; Key: \"ENABLED\"; Value:\
+      \ \"\")\n \"<Input Sample.exe\" (Access type: \"QUERYVAL\"; Path: \"HKLM\\SYSTEM\\\
+      CONTROLSET001\\CONTROL\\LSA\"; Key: \"FIPSALGORITHMPOLICY\"; Value: \"\")"
+  selection_network:
+  - DestinationHostname: 051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin
+  - DestinationHostname: 051c6ccb5e0cb3bd1ff9c2437455e7871f395e5d66777efad0ecc060e885fe21.bin.exe
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: ntdll.dll
+  condition: selection_behavior or selection_network

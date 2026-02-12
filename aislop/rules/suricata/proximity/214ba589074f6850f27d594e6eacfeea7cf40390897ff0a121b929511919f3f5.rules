@@ -1,0 +1,8 @@
+alert dns any any -> any any (msg:"C2 domain 5.UR (214ba589)"; dns.query; content:"5.UR"; nocase; sid:491285601; rev:1;)
+alert dns any any -> any any (msg:"C2 domain M.SZF (214ba589)"; dns.query; content:"M.SZF"; nocase; sid:491285602; rev:1;)
+alert dns any any -> any any (msg:"C2 domain a.nel.cloudflare.com (214ba589)"; dns.query; content:"a.nel.cloudflare.com"; nocase; sid:491285603; rev:1;)
+alert dns any any -> any any (msg:"C2 domain filesreviewsigndocsx.sbs (214ba589)"; dns.query; content:"filesreviewsigndocsx.sbs"; nocase; sid:491285604; rev:1;)
+alert dns any any -> any any (msg:"C2 domain static.cloudflareinsights.com (214ba589)"; dns.query; content:"static.cloudflareinsights.com"; nocase; sid:491285605; rev:1;)
+alert ip any any -> 104.16.80.73 any (msg:"C2 IP 104.16.80.73 (214ba589)"; sid:491285606; rev:1;)
+alert ip any any -> 104.21.89.117 any (msg:"C2 IP 104.21.89.117 (214ba589)"; sid:491285607; rev:1;)
+alert ip any any -> 35.190.80.1 any (msg:"C2 IP 35.190.80.1 (214ba589)"; sid:491285608; rev:1;)

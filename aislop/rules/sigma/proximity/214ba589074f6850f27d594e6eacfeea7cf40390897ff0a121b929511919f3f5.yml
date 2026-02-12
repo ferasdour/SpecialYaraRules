@@ -1,0 +1,140 @@
+title: proximity behavior detection (214ba589)
+id: 214ba589074f6850f27d594e6eacfeea7cf40390897ff0a121b929511919f3f5
+status: experimental
+description: Auto-generated Sigma rule for proximity
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "The input sample is signed with a certificate issued by \"CN=WR3,\
+      \ O=Google Trust Services, C=US\" (SHA1: AF:EC:E5:E3:76:0B:70:D0:3E:63:56:25:1D:0E:57:67:3C:42:5A:91;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R1, O=Google Trust Services LLC, C=US\" (SHA1: E2:51:CB:7D:AF:59:31:04:5A:80:45:45:A0:F4:5B:C2:26:A0:BD:76;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 08:74:54:87:E8:91:C1:9E:30:78:C1:F2:A0:7E:45:29:50:EF:36:F6; see report\
+      \ for more information)\n The input sample is signed with a certificate issued\
+      \ by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: 38:F5:41:6B:4A:85:43:94:6A:1C:2B:66:8D:CA:97:CE:9D:3A:BA:7A;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R4, O=Google Trust Services LLC, C=US\" (SHA1: 10:8F:BF:79:4E:18:EC:53:47:A4:14:E4:37:0C:C4:50:6C:29:7A:B2;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 93:2B:ED:33:9A:A6:92:12:C8:93:75:B7:93:04:B4:75:49:0B:89:A0; see report\
+      \ for more information)\n The input sample is signed with a certificate issued\
+      \ by \"CN=WE1, O=Google Trust Services, C=US\" (SHA1: C6:6A:71:84:C2:40:13:D1:A4:B7:DF:C4:1C:E1:54:F3:76:97:EF:6B;\
+      \ see report for more information)"
+  - EventData: The input sample is signed with a certificate
+  - EventData: certificate-0
+  - EventData: "Spawned process \"msedge.exe\" with commandline \"--single-argument\
+      \ https://filesreviewsigndocsx.sbs/%22,%22emailI ...\" (UID: 00000000-00004356)\n\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=crashpad-handler\
+      \ \"--user-data-dir=%LOCALAPPDATA%\\\\Microso ...\" (UID: 00000000-00007372),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=gpu-process --gpu-preferences=UAAAAAAAAADgAAAYAAAAAAAAAAA\
+      \ ...\" (UID: 00000000-00006368), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=network.mojom.NetworkService - ...\" (UID:\
+      \ 00000000-00005588), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=storage.mojom.StorageService - ...\" (UID: 00000000-00007224),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=renderer --display-capture-permissions-policy-allowed\
+      \ --j ...\" (UID: 00000000-00004336), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=renderer --display-capture-permissions-policy-allowed --j ...\" (UID:\
+      \ 00000000-00006660), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=asset_store.mojom.AssetStoreSe ...\" (UID: 00000000-00007916),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00005776), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00000772), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00003696),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00007444), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en\
+      \ ...\" (UID: 00000000-00007148), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID:\
+      \ 00000000-00004480), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID: 00000000-00003492),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00004352), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu\
+      \ ...\" (UID: 00000000-00006292), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID:\
+      \ 00000000-00006156), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID: 00000000-00006852),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper\
+      \ --lang=en ...\" (UID: 00000000-00002936), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en\
+      \ ...\" (UID: 00000000-00003964), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=unzip.mojom.Unzipper --lang=en ...\" (UID:\
+      \ 00000000-00007784)"
+  - EventData: Spawns new processes that are not known child processes
+  - EventData: target-103
+  - EventData: "Process \"msedge.exe\" (UID: 00000000-00004356) was launched with\
+      \ new environment variables: \"USERDNSDOMAIN=\"DESKTOP-FVVF82A\"\"\n Process\
+      \ \"msedge.exe\" (UID: 00000000-00004356) was launched with modified environment\
+      \ variables: \"PROCESSOR_ARCHITECTURE, CommonProgramFiles, Path, ProgramFiles,\
+      \ NUMBER_OF_PROCESSORS\"\n Process \"msedge.exe\" (UID: 00000000-00004356) was\
+      \ launched with missing environment variables: \"PROCESSOR_ARCHITEW6432\"\n\
+      \ Process \"msedge.exe\" (UID: 00000000-00007372) was launched with new environment\
+      \ variables: \"CHROME_CRASHPAD_PIPE_NAME=\"\\\\.\\pipe\\LOCAL\\crashpad_4356_HQEALQVFXYIFYLYW\"\
+      , EDGE_BROWSER_PID=\"4356\"\"\n Process \"msedge.exe\" (UID: 00000000-00006368)\
+      \ was launched with new environment variables: \"EDGE_METRICS_SESSION_ID=\"\
+      29\", EDGE_USER_DATA_DIR=\"%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"uiIxlFHEqYK/kbVuiEU5CgZajeU9QmL4/F97KjHfTZw=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      -5815550854748070847\"\"\n Process \"msedge.exe\" (UID: 00000000-00005588) was\
+      \ launched with new environment variables: \"CHROME_RESTART=\"Microsoft Edge|Microsoft\
+      \ Edge has stopped working. Restart it?|LEFT_TO_RIGHT\"\""
+  - EventData: Process launched with changed environment
+  - EventData: target-67
+  - EventData: Spawns new processes
+  - EventData: target-25
+  - EventData: "\"104.21.89.117:443\"\n \"35.190.80.1:443\"\n \"104.16.80.73:443\""
+  - EventData: Contacts server
+  - EventData: network-1
+  - EventData: "\"a.nel.cloudflare.com\"\n \"filesreviewsigndocsx.sbs\"\n \"static.cloudflareinsights.com\""
+  - EventData: Queries DNS server
+  - EventData: network-51
+  - EventData: "Pattern match: \"https://filesreviewsigndocsx.sbs/\"\n Pattern match:\
+      \ \"https://filesreviewsigndocsx.sbs/,emailld:c1ce47af-3603-4774-a1bb-3232d1199549,iat:1770809195%7d@\"\
+      \n Pattern match: \"https://filesreviewsigndocsx.sbs/%22,%22emailid%22:%22c1ce47af-3603-4774-a1bb-3232d1199549%22,%22iat%22:1770809195%7d%ef%bf%bd%ef%bf%bd'%22%ef%bf%bds%ef%bf%bdgw$%ef%bf%bd%ef%bf%bd%7f%ef%bf%bd%ef%bf%bdr%ef%bf%bd%19%05%16%ef%bf%bd%ef%bf%bd%ef%bf%bd%ef%bf%bdu\"\
+      \n Pattern match: \"https://filesreviewsigndocsx.sbs\"\n Heuristic match: \"\
+      a.nel.cloudflare.com\"\n Heuristic match: \"static.cloudflareinsights.com\""
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: "Short term registered certificate: \"a.nel.cloudflare.com\" (90 days\
+      \ old)\n Short term registered certificate: \"filesreviewsigndocsx.sbs\" (90\
+      \ days old)\n Short term registered certificate: \"static.cloudflareinsights.com\"\
+      \ (90 days old)"
+  - EventData: Short-term SSL certificate detected
+  - EventData: certificate-3
+  - EventData: "Original URL:\nhttps://filesreviewsigndocsx.sbs/%22\n%22emailId%22:%22c1ce47af-3603-4774-a1bb-3232d1199549%22\n\
+      %22iat%22:1770809195%7D%EF%BF%BD%EF%BF%BD'%22%EF%BF%BDS%EF%BF%BDgw$%EF%BF%BD%EF%BF%BD%7F%EF%BF%BD%EF%BF%BDR%EF%BF%BD%19%05%16%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDu%EF%BF%BD%EF%BF%BD0\n\
+      \nDecoded URL:\nhttps://filesreviewsigndocsx.sbs/\",\"emailId\":\"c1ce47af-3603-4774-a1bb-3232d1199549\"\
+      ,\"iat\":1770809195}\uFFFD\uFFFD'\"\uFFFDS\uFFFDgw$\uFFFD\uFFFD\uFFFD\uFFFD\
+      R\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDu\uFFFD\uFFFD0\n"
+  - EventData: Detection of obfuscated or encoded content in URLs
+  - EventData: network-8615
+  - EventData: "Contacted domain: \"filesreviewsigndocsx.sbs\" has high entropy\n\
+      \ Contacted domain: \"static.cloudflareinsights.com\" has high entropy"
+  - EventData: High entropy domain detected
+  - EventData: network-81
+  - EventData: 'Recently Registered domain detected: "filesreviewsigndocsx.sbs" (30
+      days old). Commonly seen with phishing or other suspicious domains'
+  - EventData: Recently registered domain detected
+  - EventData: network-8600
+  - EventData: 'Domain: "filesreviewsigndocsx.sbs" possible high risk indicator. Domain
+      uses TLD that is commonly abused for malicious purposes.'
+  - EventData: Detected network traffic to commonly abused domain
+  - EventData: network-84
+  - EventData: 'SUBMITTED URL: "https://filesreviewsigndocsx.sbs/%22,%22emailId%22:%22c1ce47af-3603-4774-a1bb-3232d1199549%22,%22iat%22:1770809195%7D%EF%BF%BD%EF%BF%BD''%22%EF%BF%BDS%EF%BF%BDgw$%EF%BF%BD%EF%BF%BD%7F%EF%BF%BD%EF%BF%BDR%EF%BF%BD%19%05%16%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDu%EF%BF%BD%EF%BF%BD0"
+      contacted related malicious domain: "filesreviewsigndocsx.sbs"'
+  - EventData: Malicious domain detected
+  - EventData: network-85
+  selection_network:
+  - DestinationHostname: 5.UR
+  - DestinationHostname: M.SZF
+  - DestinationHostname: a.nel.cloudflare.com
+  - DestinationHostname: filesreviewsigndocsx.sbs
+  - DestinationHostname: static.cloudflareinsights.com
+  - DestinationIp: 104.16.80.73
+  - DestinationIp: 104.21.89.117
+  - DestinationIp: 35.190.80.1
+  condition: selection_behavior or selection_network

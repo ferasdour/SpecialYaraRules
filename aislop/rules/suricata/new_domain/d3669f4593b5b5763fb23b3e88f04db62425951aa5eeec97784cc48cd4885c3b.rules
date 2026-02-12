@@ -1,0 +1,8 @@
+alert dns any any -> any any (msg:"C2 domain a.nel.cloudflare.com (d3669f45)"; dns.query; content:"a.nel.cloudflare.com"; nocase; sid:166987601; rev:1;)
+alert dns any any -> any any (msg:"C2 domain images.unsplash.com (d3669f45)"; dns.query; content:"images.unsplash.com"; nocase; sid:166987602; rev:1;)
+alert dns any any -> any any (msg:"C2 domain revenue.fizice.com (d3669f45)"; dns.query; content:"revenue.fizice.com"; nocase; sid:166987603; rev:1;)
+alert dns any any -> any any (msg:"C2 domain static.cloudflareinsights.com (d3669f45)"; dns.query; content:"static.cloudflareinsights.com"; nocase; sid:166987604; rev:1;)
+alert ip any any -> 104.16.79.73 any (msg:"C2 IP 104.16.79.73 (d3669f45)"; sid:166987605; rev:1;)
+alert ip any any -> 151.101.130.208 any (msg:"C2 IP 151.101.130.208 (d3669f45)"; sid:166987606; rev:1;)
+alert ip any any -> 172.67.163.37 any (msg:"C2 IP 172.67.163.37 (d3669f45)"; sid:166987607; rev:1;)
+alert ip any any -> 35.190.80.1 any (msg:"C2 IP 35.190.80.1 (d3669f45)"; sid:166987608; rev:1;)

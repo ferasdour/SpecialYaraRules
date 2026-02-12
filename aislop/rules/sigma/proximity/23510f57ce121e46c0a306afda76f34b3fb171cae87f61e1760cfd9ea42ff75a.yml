@@ -1,0 +1,362 @@
+title: proximity behavior detection (23510f57)
+id: 23510f57ce121e46c0a306afda76f34b3fb171cae87f61e1760cfd9ea42ff75a
+status: experimental
+description: Auto-generated Sigma rule for proximity
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "\"identity_helper.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at C68E0000\n \"identity_helper.exe\" loaded module \"%WINDIR%\\System32\\\
+      bcrypt.dll\" at C5F10000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "The input sample is signed with a certificate issued by \"CN=GlobalSign\
+      \ Atlas R3 DV TLS CA 2025 Q2, O=GlobalSign nv-sa, C=BE\" (SHA1: 21:17:81:78:41:C6:8F:86:D6:CF:8D:98:CC:74:A8:F1:03:F8:C9:D4;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign, O=GlobalSign, OU=GlobalSign Root CA - R3\" (SHA1:\
+      \ 5A:AA:6B:59:12:47:15:3E:8E:ED:0D:5C:0D:6E:2C:53:9B:85:58:AE; see report for\
+      \ more information)\n The input sample is signed with a certificate issued by\
+      \ \"CN=WR2, O=Google Trust Services, C=US\" (SHA1: 0D:2C:0C:B5:1F:EC:07:70:54:A4:FE:24:48:66:33:F8:EC:EA:B9:81;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GTS Root R1, O=Google Trust Services LLC, C=US\" (SHA1: 66:E4:16:12:60:B1:00:FE:E0:DE:28:7A:9A:52:93:B4:C2:22:4A:E6;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 08:74:54:87:E8:91:C1:9E:30:78:C1:F2:A0:7E:45:29:50:EF:36:F6; see report\
+      \ for more information)\n The input sample is signed with a certificate issued\
+      \ by \"CN=WR2, O=Google Trust Services, C=US\" (SHA1: 17:F1:21:AF:29:27:FD:80:6E:A3:7E:FB:1A:93:24:56:A0:37:E5:9B;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=WR2, O=Google Trust Services, C=US\" (SHA1: 1C:68:EC:BF:C5:D4:64:55:33:3F:6C:95:8A:F5:74:44:CD:1E:E4:AF;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign ECC OV SSL CA 2018, O=GlobalSign nv-sa, C=BE\" (SHA1:\
+      \ 77:D9:43:82:07:FF:48:D3:BA:16:7E:7E:F2:6F:4A:1E:F0:38:14:70; see report for\
+      \ more information)\n The input sample is signed with a certificate issued by\
+      \ \"CN=GlobalSign, O=GlobalSign, OU=GlobalSign ECC Root CA - R5\" (SHA1: 95:3E:42:EE:8D:62:7C:ED:52:B9:6A:DF:C0:22:26:B5:DE:13:04:17;\
+      \ see report for more information)\n The input sample is signed with a certificate\
+      \ issued by \"CN=GlobalSign Root CA, OU=Root CA, O=GlobalSign nv-sa, C=BE\"\
+      \ (SHA1: 45:76:9B:51:27:DC:17:55:42:4B:EC:B5:68:C7:0B:43:39:83:3F:BE; see report\
+      \ for more information)"
+  - EventData: The input sample is signed with a certificate
+  - EventData: certificate-0
+  - EventData: '"identity_helper.exe" loaded module "%WINDIR%\System32\rpcrt4.dll"
+      at C7D00000'
+  - EventData: Loads the RPC (Remote Procedure Call) module DLL
+  - EventData: module-10
+  - EventData: "Process \"msedge.exe\" (UID: 00000000-00003684) was launched with\
+      \ new environment variables: \"USERDNSDOMAIN=\"DESKTOP-8LD9T6N\"\"\n Process\
+      \ \"msedge.exe\" (UID: 00000000-00003684) was launched with modified environment\
+      \ variables: \"PROCESSOR_ARCHITECTURE, CommonProgramFiles, Path, ProgramFiles,\
+      \ NUMBER_OF_PROCESSORS\"\n Process \"msedge.exe\" (UID: 00000000-00003684) was\
+      \ launched with missing environment variables: \"PROCESSOR_ARCHITEW6432\"\n\
+      \ Process \"msedge.exe\" (UID: 00000000-00004200) was launched with new environment\
+      \ variables: \"EDGE_USER_DATA_DIR=\"%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\"\
+      , CHROME_CRASHPAD_PIPE_NAME=\"\\\\.\\pipe\\crashpad_3684_OSXVQJYLTBSIFDGX\"\
+      , EDGE_BROWSER_PID=\"3684\"\"\n Process \"msedge.exe\" (UID: 00000000-00004212)\
+      \ was launched with new environment variables: \"EDGE_UX_CONFIG_CORRELATION_ID=\"\
+      Y+r4K2h+HKri2jdCLXFa+/6F9WMZIqf9xrw3Pd63ADs=\", EDGE_METRICS_SESSION_ID=\"37\"\
+      , COMPONENT_INSTALLER_DIR=\"%LOCALAPPDATA%\\Microsoft\\Edge\\User Data\", EDGE_RUNTIME_VARIATIONS_SEED_ETAG=\"\
+      \"+zeiNMiHXziW9aRXmlgTiV7KQwwfrvfvq2aabIiDmUw=\"\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"bbybgpoI/O5VtJlBlWwSN1DCMVuccWAk2HM4jkcd9Hc=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      1918044760612785876\"\"\n Process \"msedge.exe\" (UID: 00000000-00002992) was\
+      \ launched with new environment variables: \"CHROME_RESTART=\"Microsoft Edge|Microsoft\
+      \ Edge has stopped working. Restart it?|LEFT_TO_RIGHT\"\"\n Process \"msedge.exe\"\
+      \ (UID: 00000000-00004080) was launched with missing environment variables:\
+      \ \"EDGE_UX_CONFIG_CORRELATION_ID, USERDOMAIN_ROAMINGPROFILE, NVM_SYMLINK, PROCESSOR_LEVEL,\
+      \ CHROME_RESTART, SSLKEYLOGFILE, SESSIONNAME, ALLUSERSPROFILE, PROCESSOR_ARCHITECTURE,\
+      \ PSModulePath, EDGE_METRICS_SESSION_ID, EDGE_USER_DATA_DIR, USERNAME, USERDNSDOMAIN,\
+      \ ProgramFiles(x86), CURL_CA_BUNDLE, FPS_BROWSER_USER_PROFILE_STRING, PATHEXT,\
+      \ DriverData, ProgramData, ProgramW6432, HOMEPATH, PROCESSOR_IDENTIFIER, ProgramFiles,\
+      \ PUBLIC, windir, USERDOMAIN, FPS_BROWSER_APP_PROFILE_STRING, LOGONSERVER, PROMPT,\
+      \ OneDrive, APPDATA, CommonProgramFiles, EDGE_RUNTIME_VARIATIONS_SEED_ETAG,\
+      \ OS, COMPUTERNAME, NVM_HOME, PROCESSOR_REVISION, CommonProgramW6432, ComSpec,\
+      \ EFC_5644, HOMEDRIVE, USERPROFILE, CommonProgramFiles(x86), NUMBER_OF_PROCESSORS,\
+      \ EDGE_VARIATIONS_SEED_ETAG, EDGE_METRICS_CLIENT_ID_HASH\"\n Process \"msedge.exe\"\
+      \ (UID: 00000000-00004356) was launched with new environment variables: \"EDGE_UX_CONFIG_CORRELATION_ID=\"\
+      Y+r4K2h+HKri2jdCLXFa+/6F9WMZIqf9xrw3Pd63ADs=\", USERDOMAIN_ROAMINGPROFILE=\"\
+      DESKTOP-8LD9T6N\", NVM_SYMLINK=\"%PROGRAMFILES%\\nodejs\", PROCESSOR_LEVEL=\"\
+      6\", CHROME_RESTART=\"Microsoft Edge|Microsoft Edge has stopped working. Restart\
+      \ it?|LEFT_TO_RIGHT\", SSLKEYLOGFILE=\"%TEMP%\\sslkey.txt\", SESSIONNAME=\"\
+      Console\", ALLUSERSPROFILE=\"C:\\ProgramData\", PROCESSOR_ARCHITECTURE=\"AMD64\"\
+      , PSModulePath=\"C:\\Users\\%OSUSER%\\Documents\\WindowsPowerShell\\Modules;%PROGRAMFILES%\\\
+      (x86)\\WindowsPowerShell\\Modules;%PROGRAMFILES%\\WindowsPowerShell\\Modules;%WINDIR%\\\
+      system32\\WindowsPowerShell\\v1.0\\Modules;%PROGRAMFILES%\\(x86)\\AutoIt3\\\
+      AutoItX\", EDGE_METRICS_SESSION_ID=\"37\", EDGE_USER_DATA_DIR=\"%LOCALAPPDATA%\\\
+      Microsoft\\Edge\\User Data\", USERNAME=\"%OSUSER%\", USERDNSDOMAIN=\"DESKTOP-8LD9T6N\"\
+      , ProgramFiles(x86)=\"%PROGRAMFILES%\\(x86)\", CURL_CA_BUNDLE=\"%USERPROFILE%\\\
+      .mitmproxy\\mitmproxy-ca-cert.cer\", FPS_BROWSER_USER_PROFILE_STRING=\"Default\"\
+      , PATHEXT=\".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL\", DriverData=\"\
+      %WINDIR%\\System32\\Drivers\\DriverData\", ProgramData=\"C:\\ProgramData\",\
+      \ ProgramW6432=\"C:\\Program Files\", HOMEPATH=\"\\Users\\%OSUSER%\", PROCESSOR_IDENTIFIER=\"\
+      Intel64 Family 6 Model 79 Stepping 0\n GenuineIntel\", ProgramFiles=\"C:\\Program\
+      \ Files\", PUBLIC=\"C:\\Users\\Public\", windir=\"C:\\WINDOWS\", USERDOMAIN=\"\
+      DESKTOP-8LD9T6N\", FPS_BROWSER_APP_PROFILE_STRING=\"Internet Explorer\", LOGONSERVER=\"\
+      \\\\DESKTOP-8LD9T6N\", PROMPT=\"$P$G\", OneDrive=\"%USERPROFILE%\\OneDrive\"\
+      , APPDATA=\"%USERPROFILE%\\AppData\\Roaming\", CommonProgramFiles=\"%PROGRAMFILES%\\\
+      Common Files\", EDGE_RUNTIME_VARIATIONS_SEED_ETAG=\"\"+zeiNMiHXziW9aRXmlgTiV7KQwwfrvfvq2aabIiDmUw=\"\
+      \", OS=\"Windows_NT\", COMPUTERNAME=\"DESKTOP-8LD9T6N\", NVM_HOME=\"%APPDATA%\\\
+      nvm\", PROCESSOR_REVISION=\"4f00\", CommonProgramW6432=\"%PROGRAMFILES%\\Common\
+      \ Files\", ComSpec=\"%WINDIR%\\system32\\cmd.exe\", EFC_5644=\"1\", HOMEDRIVE=\"\
+      C:\", USERPROFILE=\"C:\\Users\\%OSUSER%\", CommonProgramFiles(x86)=\"%PROGRAMFILES%\\\
+      (x86)\\Common Files\", NUMBER_OF_PROCESSORS=\"8\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"bbybgpoI/O5VtJlBlWwSN1DCMVuccWAk2HM4jkcd9Hc=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      1918044760612785876\"\"\n Process \"msedge.exe\" (UID: 00000000-00001632) was\
+      \ launched with missing environment variables: \"EDGE_UX_CONFIG_CORRELATION_ID,\
+      \ USERDOMAIN_ROAMINGPROFILE, NVM_SYMLINK, PROCESSOR_LEVEL, CHROME_RESTART, SSLKEYLOGFILE,\
+      \ SESSIONNAME, ALLUSERSPROFILE, PROCESSOR_ARCHITECTURE, PSModulePath, EDGE_METRICS_SESSION_ID,\
+      \ EDGE_USER_DATA_DIR, USERNAME, USERDNSDOMAIN, ProgramFiles(x86), CURL_CA_BUNDLE,\
+      \ FPS_BROWSER_USER_PROFILE_STRING, PATHEXT, DriverData, ProgramData, ProgramW6432,\
+      \ HOMEPATH, PROCESSOR_IDENTIFIER, ProgramFiles, PUBLIC, windir, USERDOMAIN,\
+      \ FPS_BROWSER_APP_PROFILE_STRING, LOGONSERVER, PROMPT, OneDrive, APPDATA, CommonProgramFiles,\
+      \ EDGE_RUNTIME_VARIATIONS_SEED_ETAG, OS, COMPUTERNAME, NVM_HOME, PROCESSOR_REVISION,\
+      \ CommonProgramW6432, ComSpec, EFC_5644, HOMEDRIVE, USERPROFILE, CommonProgramFiles(x86),\
+      \ NUMBER_OF_PROCESSORS, EDGE_VARIATIONS_SEED_ETAG, EDGE_METRICS_CLIENT_ID_HASH\"\
+      \n Process \"msedge.exe\" (UID: 00000000-00004572) was launched with new environment\
+      \ variables: \"EDGE_UX_CONFIG_CORRELATION_ID=\"Y+r4K2h+HKri2jdCLXFa+/6F9WMZIqf9xrw3Pd63ADs=\"\
+      , USERDOMAIN_ROAMINGPROFILE=\"DESKTOP-8LD9T6N\", NVM_SYMLINK=\"%PROGRAMFILES%\\\
+      nodejs\", PROCESSOR_LEVEL=\"6\", CHROME_RESTART=\"Microsoft Edge|Microsoft Edge\
+      \ has stopped working. Restart it?|LEFT_TO_RIGHT\", SSLKEYLOGFILE=\"%TEMP%\\\
+      sslkey.txt\", SESSIONNAME=\"Console\", ALLUSERSPROFILE=\"C:\\ProgramData\",\
+      \ PROCESSOR_ARCHITECTURE=\"AMD64\", PSModulePath=\"C:\\Users\\%OSUSER%\\Documents\\\
+      WindowsPowerShell\\Modules;%PROGRAMFILES%\\(x86)\\WindowsPowerShell\\Modules;%PROGRAMFILES%\\\
+      WindowsPowerShell\\Modules;%WINDIR%\\system32\\WindowsPowerShell\\v1.0\\Modules;%PROGRAMFILES%\\\
+      (x86)\\AutoIt3\\AutoItX\", EDGE_METRICS_SESSION_ID=\"37\", EDGE_USER_DATA_DIR=\"\
+      %LOCALAPPDATA%\\Microsoft\\Edge\\User Data\", USERNAME=\"%OSUSER%\", USERDNSDOMAIN=\"\
+      DESKTOP-8LD9T6N\", ProgramFiles(x86)=\"%PROGRAMFILES%\\(x86)\", CURL_CA_BUNDLE=\"\
+      %USERPROFILE%\\.mitmproxy\\mitmproxy-ca-cert.cer\", FPS_BROWSER_USER_PROFILE_STRING=\"\
+      Default\", PATHEXT=\".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL\"\
+      , DriverData=\"%WINDIR%\\System32\\Drivers\\DriverData\", ProgramData=\"C:\\\
+      ProgramData\", ProgramW6432=\"C:\\Program Files\", HOMEPATH=\"\\Users\\%OSUSER%\"\
+      , PROCESSOR_IDENTIFIER=\"Intel64 Family 6 Model 79 Stepping 0\n GenuineIntel\"\
+      , ProgramFiles=\"C:\\Program Files\", PUBLIC=\"C:\\Users\\Public\", windir=\"\
+      C:\\WINDOWS\", USERDOMAIN=\"DESKTOP-8LD9T6N\", FPS_BROWSER_APP_PROFILE_STRING=\"\
+      Internet Explorer\", LOGONSERVER=\"\\\\DESKTOP-8LD9T6N\", PROMPT=\"$P$G\", OneDrive=\"\
+      %USERPROFILE%\\OneDrive\", APPDATA=\"%USERPROFILE%\\AppData\\Roaming\", CommonProgramFiles=\"\
+      %PROGRAMFILES%\\Common Files\", EDGE_RUNTIME_VARIATIONS_SEED_ETAG=\"\"+zeiNMiHXziW9aRXmlgTiV7KQwwfrvfvq2aabIiDmUw=\"\
+      \", OS=\"Windows_NT\", COMPUTERNAME=\"DESKTOP-8LD9T6N\", NVM_HOME=\"%APPDATA%\\\
+      nvm\", PROCESSOR_REVISION=\"4f00\", CommonProgramW6432=\"%PROGRAMFILES%\\Common\
+      \ Files\", ComSpec=\"%WINDIR%\\system32\\cmd.exe\", EFC_5644=\"1\", HOMEDRIVE=\"\
+      C:\", USERPROFILE=\"C:\\Users\\%OSUSER%\", CommonProgramFiles(x86)=\"%PROGRAMFILES%\\\
+      (x86)\\Common Files\", NUMBER_OF_PROCESSORS=\"8\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"bbybgpoI/O5VtJlBlWwSN1DCMVuccWAk2HM4jkcd9Hc=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      1918044760612785876\"\"\n Process \"msedge.exe\" (UID: 00000000-00003224) was\
+      \ launched with missing environment variables: \"EDGE_UX_CONFIG_CORRELATION_ID,\
+      \ USERDOMAIN_ROAMINGPROFILE, NVM_SYMLINK, PROCESSOR_LEVEL, CHROME_RESTART, SSLKEYLOGFILE,\
+      \ SESSIONNAME, ALLUSERSPROFILE, PROCESSOR_ARCHITECTURE, PSModulePath, EDGE_METRICS_SESSION_ID,\
+      \ EDGE_USER_DATA_DIR, USERNAME, USERDNSDOMAIN, ProgramFiles(x86), CURL_CA_BUNDLE,\
+      \ FPS_BROWSER_USER_PROFILE_STRING, PATHEXT, DriverData, ProgramData, ProgramW6432,\
+      \ HOMEPATH, PROCESSOR_IDENTIFIER, ProgramFiles, PUBLIC, windir, USERDOMAIN,\
+      \ FPS_BROWSER_APP_PROFILE_STRING, LOGONSERVER, PROMPT, OneDrive, APPDATA, CommonProgramFiles,\
+      \ EDGE_RUNTIME_VARIATIONS_SEED_ETAG, OS, COMPUTERNAME, NVM_HOME, PROCESSOR_REVISION,\
+      \ CommonProgramW6432, ComSpec, EFC_5644, HOMEDRIVE, USERPROFILE, CommonProgramFiles(x86),\
+      \ NUMBER_OF_PROCESSORS, EDGE_VARIATIONS_SEED_ETAG, EDGE_METRICS_CLIENT_ID_HASH\"\
+      \n Process \"msedge.exe\" (UID: 00000000-00006692) was launched with new environment\
+      \ variables: \"EDGE_UX_CONFIG_CORRELATION_ID=\"Y+r4K2h+HKri2jdCLXFa+/6F9WMZIqf9xrw3Pd63ADs=\"\
+      , USERDOMAIN_ROAMINGPROFILE=\"DESKTOP-8LD9T6N\", NVM_SYMLINK=\"%PROGRAMFILES%\\\
+      nodejs\", PROCESSOR_LEVEL=\"6\", CHROME_RESTART=\"Microsoft Edge|Microsoft Edge\
+      \ has stopped working. Restart it?|LEFT_TO_RIGHT\", SSLKEYLOGFILE=\"%TEMP%\\\
+      sslkey.txt\", SESSIONNAME=\"Console\", ALLUSERSPROFILE=\"C:\\ProgramData\",\
+      \ PROCESSOR_ARCHITECTURE=\"AMD64\", PSModulePath=\"C:\\Users\\%OSUSER%\\Documents\\\
+      WindowsPowerShell\\Modules;%PROGRAMFILES%\\(x86)\\WindowsPowerShell\\Modules;%PROGRAMFILES%\\\
+      WindowsPowerShell\\Modules;%WINDIR%\\system32\\WindowsPowerShell\\v1.0\\Modules;%PROGRAMFILES%\\\
+      (x86)\\AutoIt3\\AutoItX\", EDGE_METRICS_SESSION_ID=\"37\", EDGE_USER_DATA_DIR=\"\
+      %LOCALAPPDATA%\\Microsoft\\Edge\\User Data\", USERNAME=\"%OSUSER%\", USERDNSDOMAIN=\"\
+      DESKTOP-8LD9T6N\", ProgramFiles(x86)=\"%PROGRAMFILES%\\(x86)\", CURL_CA_BUNDLE=\"\
+      %USERPROFILE%\\.mitmproxy\\mitmproxy-ca-cert.cer\", FPS_BROWSER_USER_PROFILE_STRING=\"\
+      Default\", PATHEXT=\".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL\"\
+      , DriverData=\"%WINDIR%\\System32\\Drivers\\DriverData\", ProgramData=\"C:\\\
+      ProgramData\", ProgramW6432=\"C:\\Program Files\", HOMEPATH=\"\\Users\\%OSUSER%\"\
+      , PROCESSOR_IDENTIFIER=\"Intel64 Family 6 Model 79 Stepping 0\n GenuineIntel\"\
+      , ProgramFiles=\"C:\\Program Files\", PUBLIC=\"C:\\Users\\Public\", windir=\"\
+      C:\\WINDOWS\", USERDOMAIN=\"DESKTOP-8LD9T6N\", FPS_BROWSER_APP_PROFILE_STRING=\"\
+      Internet Explorer\", LOGONSERVER=\"\\\\DESKTOP-8LD9T6N\", PROMPT=\"$P$G\", OneDrive=\"\
+      %USERPROFILE%\\OneDrive\", APPDATA=\"%USERPROFILE%\\AppData\\Roaming\", CommonProgramFiles=\"\
+      %PROGRAMFILES%\\Common Files\", EDGE_RUNTIME_VARIATIONS_SEED_ETAG=\"\"+zeiNMiHXziW9aRXmlgTiV7KQwwfrvfvq2aabIiDmUw=\"\
+      \", OS=\"Windows_NT\", COMPUTERNAME=\"DESKTOP-8LD9T6N\", NVM_HOME=\"%APPDATA%\\\
+      nvm\", PROCESSOR_REVISION=\"4f00\", CommonProgramW6432=\"%PROGRAMFILES%\\Common\
+      \ Files\", ComSpec=\"%WINDIR%\\system32\\cmd.exe\", EFC_5644=\"1\", HOMEDRIVE=\"\
+      C:\", USERPROFILE=\"C:\\Users\\%OSUSER%\", CommonProgramFiles(x86)=\"%PROGRAMFILES%\\\
+      (x86)\\Common Files\", NUMBER_OF_PROCESSORS=\"8\", EDGE_VARIATIONS_SEED_ETAG=\"\
+      \"bbybgpoI/O5VtJlBlWwSN1DCMVuccWAk2HM4jkcd9Hc=\"\", EDGE_METRICS_CLIENT_ID_HASH=\"\
+      1918044760612785876\"\""
+  - EventData: Process launched with changed environment
+  - EventData: target-67
+  - EventData: "Spawned process \"msedge.exe\" with commandline \"--single-argument\
+      \ https://www.readabilit.com/\" (UID: 00000000-00003684)\n Spawned process \"\
+      msedge.exe\" with commandline \"--type=crashpad-handler \"--user-data-dir=%LOCALAPPDATA%\\\
+      \\Microso ...\" (UID: 00000000-00004200), Spawned process \"msedge.exe\" with\
+      \ commandline \"--type=gpu-process --no-appcompat-clear --gpu-preferences=WAAAAA\
+      \ ...\" (UID: 00000000-00004212), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=network.mojom.NetworkService - ...\" (UID:\
+      \ 00000000-00002992), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=storage.mojom.StorageService - ...\" (UID: 00000000-00007092),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=renderer --no-appcompat-clear\
+      \ --first-renderer-process -- ...\" (UID: 00000000-00004080), Spawned process\
+      \ \"msedge.exe\" with commandline \"--type=renderer --no-appcompat-clear --lang=en-US\
+      \ --js-flags=--m ...\" (UID: 00000000-00004696), Spawned process \"msedge.exe\"\
+      \ with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00004356), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00005688), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=edge_xpay_wallet.mojom.EdgeXPa ...\" (UID: 00000000-00008168),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00001716), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00005904), Spawned process \"msedge.exe\" with commandline \"--type=renderer\
+      \ --no-appcompat-clear --disable-gpu-compositing - ...\" (UID: 00000000-00001632),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00004572), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID:\
+      \ 00000000-00004820), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00007528),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00007308), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=renderer --no-appcompat-clear --disable-gpu-compositing - ...\" (UID:\
+      \ 00000000-00003224), Spawned process \"msedge.exe\" with commandline \"--type=renderer\
+      \ --no-appcompat-clear --disable-gpu-compositing - ...\" (UID: 00000000-00003292),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=asset_store.mojom.AssetStoreSe\
+      \ ...\" (UID: 00000000-00006692), Spawned process \"msedge.exe\" with commandline\
+      \ \"--type=utility --utility-sub-type=entity_extraction_service.mojo ...\" (UID:\
+      \ 00000000-00001348), Spawned process \"msedge.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=data_decoder.mojom.DataDecoder ...\" (UID: 00000000-00007732),\
+      \ Spawned process \"identity_helper.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=winrt_app_id.mojom.WinrtAppIdS ...\" (UID: 00000000-00001588),\
+      \ Spawned process \"identity_helper.exe\" with commandline \"--type=utility\
+      \ --utility-sub-type=winrt_app_id.mojom.WinrtAppIdS ...\" (UID: 00000000-00002516),\
+      \ Spawned process \"msedge.exe\" with commandline \"--type=utility --utility-sub-type=data_decoder.mojom.DataDecoder\
+      \ ...\" (UID: 00000000-00004604)"
+  - EventData: Spawns new processes
+  - EventData: target-25
+  - EventData: Spawns new processes that are not known child processes
+  - EventData: target-103
+  - EventData: "\"18.208.88.157:443\"\n \"172.67.214.24:443\"\n \"142.251.45.162:443\"\
+      \n \"87.250.251.119:443\"\n \"167.82.49.229:443\"\n \"142.251.35.162:443\"\n\
+      \ \"142.250.190.238:443\"\n \"142.250.190.226:443\"\n \"142.250.80.1:443\"\n\
+      \ \"142.251.45.164:443\"\n \"23.41.4.16:443\""
+  - EventData: Contacts server
+  - EventData: network-1
+  - EventData: '"mc.yandex.com"'
+  - EventData: Contacts domains
+  - EventData: network-0
+  - EventData: "\"api.readabilit.com\"\n \"cdn.jsdelivr.net\"\n \"clients2.googleusercontent.com\"\
+      \n \"ep1.adtrafficquality.google\"\n \"ep2.adtrafficquality.google\"\n \"fundingchoicesmessages.google.com\"\
+      \n \"googleads.g.doubleclick.net\"\n \"mc.yandex.com\"\n \"mc.yandex.ru\"\n\
+      \ \"pagead2.googlesyndication.com\"\n \"www.google.com\"\n \"www.readabilit.com\""
+  - EventData: Queries DNS server
+  - EventData: network-51
+  - EventData: 'External resources discovered in HTML content:
+
+      schema.org | script_content
+
+      static.gumlet.io | meta_content
+
+      www.fileconverts.com | href
+
+      www.imagetools.org | href
+
+      www.luxa.org | href
+
+      www.readabilit.com | canonical | href | meta_content
+
+      www.textcompare.org | href
+
+      www.unziper.com | href'
+  - EventData: Identifies external resources in HTML content
+  - EventData: binary-8602
+  - EventData: '"urlref_httpswww.readabilit.com" has type "HTML document ASCII text
+      with very long lines (60956)"- [targetUID: N/A]'
+  - EventData: Dropped files
+  - EventData: binary-0
+  - EventData: '"identity_helper.exe" loaded module "%WINDIR%\System32\dbghelp.dll"
+      at BC8B0000'
+  - EventData: Loads the debugger/analysis tool module
+  - EventData: module-16
+  - EventData: "Pattern match: \"https://www.readabilit.com/\"\n Pattern match: \"\
+      https://www.readabilit.com\"\n Pattern match: \"www.readabilit.com\"\n Heuristic\
+      \ match: \"mc.yandex.com\"\n Heuristic match: \"/solid.ws\"\n Pattern match:\
+      \ \"https://www.readabilit.comsec-websocket-version\"\n Heuristic match: \"\
+      api.readabilit.com\"\n Heuristic match: \"cdn.jsdelivr.net\"\n Heuristic match:\
+      \ \"clients2.googleusercontent.com\"\n Heuristic match: \"fundingchoicesmessages.google.com\"\
+      \n Heuristic match: \"googleads.g.doubleclick.net\"\n Heuristic match: \"mc.yandex.ru\"\
+      \n Heuristic match: \"pagead2.googlesyndication.com\"\n Pattern match: \"www.google.com\""
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: "Short term registered certificate: \"clients2.googleusercontent.com\"\
+      \ (83 days old)\n Short term registered certificate: \"ep1.adtrafficquality.google\"\
+      \ (83 days old)\n Short term registered certificate: \"ep2.adtrafficquality.google\"\
+      \ (83 days old)\n Short term registered certificate: \"fundingchoicesmessages.google.com\"\
+      \ (83 days old)\n Short term registered certificate: \"googleads.g.doubleclick.net\"\
+      \ (83 days old)\n Short term registered certificate: \"pagead2.googlesyndication.com\"\
+      \ (83 days old)\n Short term registered certificate: \"www.google.com\" (83\
+      \ days old)\n Short term registered certificate: \"www.readabilit.com\" (89\
+      \ days old)"
+  - EventData: Short-term SSL certificate detected
+  - EventData: certificate-3
+  - EventData: 'Observed email domain:"imx.6" [Source: PCAP Frame #4493]'
+  - EventData: Found mail related domain names
+  - EventData: string-169
+  - EventData: Found http requests in header "GET /solid.ws"
+  - EventData: Communicates with HTTP webserver (GET/POST requests)
+  - EventData: network-62
+  - EventData: "Contacted domain: \"api.readabilit.com\" has high entropy\n Contacted\
+      \ domain: \"cdn.jsdelivr.net\" has high entropy\n Contacted domain: \"clients2.googleusercontent.com\"\
+      \ has high entropy\n Contacted domain: \"ep1.adtrafficquality.google\" has high\
+      \ entropy\n Contacted domain: \"ep2.adtrafficquality.google\" has high entropy\n\
+      \ Contacted domain: \"googleads.g.doubleclick.net\" has high entropy\n Contacted\
+      \ domain: \"pagead2.googlesyndication.com\" has high entropy\n Contacted domain:\
+      \ \"www.readabilit.com\" has high entropy"
+  - EventData: High entropy domain detected
+  - EventData: network-81
+  - EventData: '"mc.yandex.ru" seems to be random'
+  - EventData: Contacts random domain names
+  - EventData: network-6
+  - EventData: "Detected alert \"SURICATA IPv4 invalid checksum\" (SID: 2200073, Rev:\
+      \ 2, Severity: 3) categorized as \"Generic Protocol Command Decode\"\n Detected\
+      \ alert \"SURICATA UDPv4 invalid checksum\" (SID: 2200075, Rev: 2, Severity:\
+      \ 3) categorized as \"Generic Protocol Command Decode\""
+  - EventData: Detected Suricata Alert
+  - EventData: suricata-0
+  - EventData: "\"GET /solid.ws HTTP/1.1\nHost: mc.yandex.com\nConnection: Upgrade\n\
+      Pragma: no-cache\nCache-Control: no-cache\nUser-Agent: Mozilla/5.0 (Windows\
+      \ NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0\
+      \ Safari/537.36 Edg/121.0.0.0\nUpgrade: websocket\nOrigin: https://www.readabilit.com\n\
+      Sec-WebSocket-Version: 13\nAccept-Encoding: gzip, deflate, br\nAccept-Language:\
+      \ en-US,en;q=0.9\nSec-WebSocket-Key: 6sNxVlhdDIHzEWxmKtuJFg==\nSec-WebSocket-Extensions:\
+      \ permessage-deflate; client_max_window_bits\" Response ==> HTTP/1.1 101 Switching\
+      \ protocols\nSec-WebSocket-Accept: KqMG1IU3bE8bvImxEd3z9g1rQ6g=\nStrict-Transport-Security:\
+      \ max-age=31536000\nUpgrade: websocket\nSet-Cookie: bh=YMvJtMwGaiHcyuH/CJLYobEDn8/h6gP7+vDnDev//fYPmIrMhwi5/gI=;\
+      \ Path=/; Domain=.yandex.com; Expires=Fri\n 19 Mar 2027 00:54:35 GMT; SameSite=None;\
+      \ Secure\nConnection: Upgrade\nSec-WebSocket-Extensions: permessage-deflate;server_max_window_bits=15\
+      \ with no response body"
+  - EventData: GETs files from a webserver
+  - EventData: network-61
+  - EventData: 'SUBMITTED URL: "https://www.readabilit.com/" contacted related malicious
+      domain: "readabilit.com"'
+  selection_network:
+  - DestinationHostname: -.iI
+  - DestinationHostname: api.readabilit.com
+  - DestinationHostname: cdn.jsdelivr.net
+  - DestinationHostname: clients2.googleusercontent.com
+  - DestinationHostname: ep1.adtrafficquality.google
+  - DestinationHostname: ep2.adtrafficquality.google
+  - DestinationHostname: fundingchoicesmessages.google.com
+  - DestinationHostname: googleads.g.doubleclick.net
+  - DestinationHostname: mc.yandex.com
+  - DestinationHostname: mc.yandex.ru
+  - DestinationHostname: pagead2.googlesyndication.com
+  - DestinationHostname: solid.ws
+  - DestinationHostname: www.google.com
+  - DestinationHostname: www.readabilit.com
+  - DestinationIp: 121.0.0.0
+  - DestinationIp: 142.250.190.226
+  - DestinationIp: 142.250.190.238
+  - DestinationIp: 142.250.80.1
+  - DestinationIp: 142.251.35.162
+  - DestinationIp: 142.251.45.162
+  - DestinationIp: 142.251.45.164
+  - DestinationIp: 167.82.49.229
+  - DestinationIp: 172.67.214.24
+  - DestinationIp: 18.208.88.157
+  - DestinationIp: 23.41.4.16
+  - DestinationIp: 87.250.251.119
+  condition: selection_behavior or selection_network

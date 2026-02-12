@@ -1,0 +1,507 @@
+title: Gen:Variant.Lazy behavior detection (9a188615)
+id: 9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e
+status: experimental
+description: Auto-generated Sigma rule for Gen:Variant.Lazy
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"LoadUserProfileA\" (Indicator: \"LoadUserProfile\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"LoadUserProfileA\" (Indicator: \"LoadUserProfile\"\
+      ; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to impersonate another user on the local machine (API
+      string)
+  - EventData: string-225
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; File:\
+      \ \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\")\n\
+      \ Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.04925000.00000002.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp, 00000000-00001796.00000002.209839.4002F000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp,\
+      \ 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp, 00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp, 00000000-00001796.00000002.209839.4002F000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"SHCreateDirectoryEx failed for directory: %S\"\
+      \ (Indicator: \"CreateDirectory\"; Source: \"00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp\")\n Found reference\
+      \ to API \"SHCreateDirectoryExW\" (Indicator: \"CreateDirectory\"; Source: \"\
+      00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp,\
+      \ 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp, 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp, 00000000-00001796.00000002.209839.4002F000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\")\n\
+      \ Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8E020000.00000004.mdmp, 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "\"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Downloads\"\
+      \ in Source: 9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Settings\" in Source:\
+      \ 9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\n \"\
+      SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Downloads\" in Source:\
+      \ 00000000-00001796.00000000.207325.7A781000.00000080.mdmp\n 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp\n\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp\n 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\Delivery\\SourceEngine\\Settings\" in Source:\
+      \ 00000000-00001796.00000000.207325.7A781000.00000080.mdmp\n 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp\n\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp\n 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00004600.00000000.207460.D469A000.00000002.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Microsoft\\StrongName\\RevokedKeys\" in Source:\
+      \ 00000000-00004600.00000000.207460.E6CF0000.00000004.mdmp\n \"\\REGISTRY\\\
+      MACHINE\\Software\\WOW6432Node\\Microsoft\\StrongName\\Revo&\" in Source: 00000000-00004600.00000000.207460.E6CF0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\\Microsoft\\StrongName\\RevokedKeys\"\
+      \ in Source: 00000000-00004600.00000000.207460.E6CF0000.00000004.mdmp\n \"Y\\\
+      MACHINE\\Software\\Microsoft\" in Source: 00000000-00004600.00000000.207460.E6CF0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Cryptography\\Defaults\\Provider\\Microsoft Strong\
+      \ Cryptographic Provider\" in Source: 00000000-00004600.00000000.207460.E6CF0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "file/memory contains long string(File: \"MSOXMLED.EXE\")\n Found string\
+      \ \"GetCommandLineW\" (Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp,\
+      \ 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp, 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp, 00000000-00001796.00000002.209839.4002F000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\")\n Found string\
+      \ \"GetCommandLineA\" (Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp,\
+      \ 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp, 00000000-00001796.00000000.207325.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8E020000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.8EB5E000.00000004.mdmp, 00000000-00001796.00000002.209839.4002F000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; File:\
+      \ \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\")\n\
+      \ Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; Source: \"\
+      00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: '"d:\dbs\el\sa1\target\x64\ship\delivery\x-none\ose.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\mscoreei.dll\" [Source: 00000000-00004600-00000C2B-2205878241]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\clr.dll\" [Source: 00000000-00004600-00000C2B-2206719353]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      mscoree.dll\" [Source: 00000000-00004600-00000C2B-2207048914]\n Observed system\
+      \ executable string:\"%WINDIR%\\system32\\combase.dll\" [Source: 00000000-00004600-00000C2B-2207228428]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      mscorlib\\fe2524177eb3088c77be666722039f52\\mscorlib.ni.dll\" [Source: 00000000-00004600-00000C2B-2207590116]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\ole32.dll\" [Source: 00000000-00004600-00000C2B-2207709994]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      api-ms-win-core-winrt-l1-1-0.dll\" [Source: 00000000-00004600-00000C2B-2207945117]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\oleaut32.dll\" [Source: 00000000-00004600-00000C2B-2208097391]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll\" [Source: 00000000-00004600-00000C2B-2208423040]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Core\\0d59b0e237d7519417de10cd84bda4e7\\System.Core.ni.dll\" [Source:\
+      \ 00000000-00004600-00000C2B-2208482283]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\OLEAUT32.dll\" [Source: 00000000-00004600-00000C2B-2208792630]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll\" [Source: 00000000-00004600-00000C2B-2209601453]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll\" [Source: 00000000-00004600-00000C2B-2210232852]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\psapi.dll\" [Source: 00000000-00004600-00000C2B-2210908417]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll\" [Source: 00000000-00004600-00000C2B-2210908901]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en-US\\mscorrc.dll\" [Source: 00000000-00004600-00000C2B-2211617657]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\ntdll.dll\" [Source: 00000000-00004600-00000C2B-2211870593]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wintrust.dll\"\
+      \ [Source: 00000000-00004600-00000C2B-2212007622]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\en\\mscorrc.dll\"\
+      \ [Source: 00000000-00004600-00000C2B-2212054192]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\mscorrc.dll\" [Source:\
+      \ 00000000-00004600-00000C2B-2212126205]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll\" [Source: 00000000-00004600-00000C2B-2213143757]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\version.dll\" [Source:\
+      \ 00000000-00004600-00000C2B-2213569605]\n Observed system executable string:\"\
+      %WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\System.Management\\b221af81285c1305324612e6dc9c88ff\\\
+      System.Management.ni.dll\" [Source: 00000000-00004600-00000C2B-2214271030]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Xml\\5ee35debfc22f727e70e4479ddcbc045\\System.Xml.ni.dll\" [Source: 00000000-00004600-00000C2B-2214583551]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Numerics\\86cfd69ce1261baf4740e7606cade014\\System.Numerics.ni.dll\"\
+      \ [Source: 00000000-00004600-00000C2B-2214713863]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"\
+      ; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.04925000.00000002.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\")\n Found reference\
+      \ to API \"LockResource\" (Indicator: \"LockResource\"; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.04925000.00000002.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\"\
+      ; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp, 00000000-00001796.00000001.209246.04925000.00000002.mdmp,\
+      \ 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp, 00000000-00001796.00000002.209839.80002000.00000002.mdmp,\
+      \ 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\")\n Found reference\
+      \ to API \"FindResourceW\" (Indicator: \"FindResource\"; Source: \"00000000-00001796.00000000.207325.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000001.209246.04925000.00000002.mdmp, 00000000-00001796.00000001.209246.8DB20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.80002000.00000002.mdmp, 00000000-00001796.00000002.209839.8DB20000.00000004.mdmp\"\
+      )\n Found reference to API \"102850678614,7848,3140,,FindResourceW,kernel32.dll,\"\
+      00:54:37.484\",RX=0,PX=0\" (Indicator: \"FindResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103387123794,7848,3141,,LoadResource,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"LoadResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103386676178,7848,3140,,FindResourceW,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"FindResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103387431366,7848,3141,,LoadResource,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"LoadResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103387546860,7848,3141,,LoadResource,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"LoadResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103386511194,7848,3140,,FindResourceW,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"FindResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103386984672,7848,3140,,FindResourceW,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"FindResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"103387664198,7848,3141,,LoadResource,kernel32.dll,\"\
+      00:54:37.718\",RX=0,PX=0\" (Indicator: \"LoadResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"102850922688,7848,3141,,LoadResource,kernel32.dll,\"\
+      00:54:37.484\",RX=0,PX=0\" (Indicator: \"LoadResource\"; Source: \"00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"FindResourceExW\" (Indicator: \"FindResource\"\
+      ; Source: \"00000000-00004600.00000000.207460.D469A000.00000002.mdmp\")\n Found\
+      \ reference to API \"LoadResource\" (Indicator: \"LoadResource\"; Source: \"\
+      00000000-00004600.00000000.207460.D469A000.00000002.mdmp\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator:\
+      \ \"StartServiceCtrlDispatcher\"; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartService\"\
+      ; File: \"9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartServiceCtrlDispatcher\"\
+      ; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherW\" (Indicator: \"StartService\"\
+      ; Source: \"00000000-00001796.00000000.207325.7A781000.00000080.mdmp, 00000000-00001796.00000000.207325.8BE20000.00000004.mdmp,\
+      \ 00000000-00001796.00000002.209839.4002F000.00000002.mdmp, 00000000-00001796.00000002.209839.8BE20000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "\"<Input Sample.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 16D40000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\"\
+      \ at 15B50000\n \"Symbiote.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 16D40000\n \"powershell.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 16D40000\n \"powershell.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\"\
+      \ at 15B50000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "Process <Input Sample.exe created mutex with name  \"\\Sessions\\\
+      1\\BaseNamedObjects\\SM0:1796:304:WilStaging_02\"\n Process <Input Sample.exe\
+      \ created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\Local\\SM0:1796:304:WilStaging_02\"\
+      \n Process <Input Sample.exe created mutex with name  \"SM0:1796:304:WilStaging_02\"\
+      \n Process <Input Sample.exe created mutex with name  \"Local\\SM0:1796:304:WilStaging_02\"\
+      \n Process powershell.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:4600:304:WilStaging_02\"\n Process powershell.exe created mutex with\
+      \ name  \"Local\\SM0:4600:304:WilStaging_02\"\n Process powershell.exe created\
+      \ mutex with name  \"SM0:4600:120:WilError_01\"\n Process powershell.exe created\
+      \ mutex with name  \"SM0:4600:304:WilStaging_02\"\n Process powershell.exe created\
+      \ mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\SM0:4600:120:WilError_01\"\
+      \n Process powershell.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      SM0:4600:304:WilStaging_02\"\n Process Symbiote.exe created mutex with name\
+      \  \"\\BaseNamedObjects\\NCUNIQUE_550e8400-e29b-41e4-a716-446655441100\"\n Process\
+      \ powershell.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\ZonesCacheCounterMutex\"\n Process powershell.exe created mutex with\
+      \ name  \"\\Sessions\\1\\BaseNamedObjects\\Local\\ZonesLockedCacheCounterMutex\"\
+      \n Process powershell.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      SM0:8008:120:WilError_01\"\n Process powershell.exe created mutex with name\
+      \  \"\\Sessions\\1\\BaseNamedObjects\\Local\\SM0:8008:304:WilStaging_02\"\n\
+      \ Process powershell.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:8008:120:WilError_01\"\n Process powershell.exe created mutex with\
+      \ name  \"Local\\SM0:8008:304:WilStaging_02\"\n Process powershell.exe created\
+      \ mutex with name  \"Local\\ZonesLockedCacheCounterMutex\"\n Process powershell.exe\
+      \ created mutex with name  \"Local\\SM0:8008:120:WilError_01\"\n Process powershell.exe\
+      \ created mutex with name  \"SM0:8008:120:WilError_01\"\n Process powershell.exe\
+      \ created mutex with name  \"SM0:8008:304:WilStaging_02\"\n Process powershell.exe\
+      \ created mutex with name  \"Local\\ZonesCacheCounterMutex\"\n Process powershell.exe\
+      \ created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\SM0:8008:304:WilStaging_02\""
+  - EventData: Creates mutants
+  - EventData: mutant-0
+  - EventData: 'Found string "processstartinfo" (Source: "00000000-00004600.00000001.208938.8AC00000.00000004.mdmp")'
+  - EventData: Able to execute applications using .NET process API
+  - EventData: string-934
+  - EventData: "\"powershell.exe\" called \"NtCreateNamedPipeFile\" with parameter\
+      \ \"pipe\\PSHost.134153618609902598.4600.DefaultAppDomain.powershell\" - (UID:\
+      \ 00000000-00004600)\n \"powershell.exe\" called \"NtCreateNamedPipeFile\" with\
+      \ parameter \"pipe\\PSHost.134153618623765945.8008.DefaultAppDomain.powershell\"\
+      \ - (UID: 00000000-00008008)"
+  - EventData: Calls an API typically used to create an instance of a named pipe
+  - EventData: api-138
+  selection_network:
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: 64-w64-mingw32-nmakehlp.exe
+  - DestinationHostname: 9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin
+  - DestinationHostname: 9a18861557a332a164c48d8c183ae959390cb0e4d661603e16392f552e17475e.bin.exe
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: Access.en
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: Excel.en
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: Groove.en
+  - DestinationHostname: HxMail.exe
+  - DestinationHostname: InfoPath.en
+  - DestinationHostname: KERNEL32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: MSOXMLED.EXE
+  - DestinationHostname: Microsoft.AppV.AppvC
+  - DestinationHostname: Microsoft.AppV.AppvClientComConsumer
+  - DestinationHostname: Microsoft.MSPaint
+  - DestinationHostname: Microsoft.Manag
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native.Unmanaged.DLL
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.MicrosoftOfficeHub
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Office.OneNote
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.People
+  - DestinationHostname: Microsoft.Photos.exe
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Microsoft.Windows.Photos
+  - DestinationHostname: Microsoft.WindowsAlarms
+  - DestinationHostname: Microsoft.WindowsSoundRecorder
+  - DestinationHostname: Microsoft.WindowsStore
+  - DestinationHostname: Microsoft.XboxApp
+  - DestinationHostname: MpCmdRun.exe
+  - DestinationHostname: MpUxSrv.exe
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: NisSrv.exe
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: Oarpmany.exe
+  - DestinationHostname: Office.en
+  - DestinationHostname: Office32.WW
+  - DestinationHostname: Office32.en
+  - DestinationHostname: OneDrive.exe
+  - DestinationHostname: OneNote.en
+  - DestinationHostname: Outlook.en
+  - DestinationHostname: PEStub.dll
+  - DestinationHostname: PSHost.134153618609902598.4600.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153618623765945.8008.DefaultAppDomain.powershell
+  - DestinationHostname: PaintStudio.View.exe
+  - DestinationHostname: PeopleApp.exe
+  - DestinationHostname: PowerPoint.en
+  - DestinationHostname: Proof.en
+  - DestinationHostname: Proof.es
+  - DestinationHostname: Proof.fr
+  - DestinationHostname: Proofing.en
+  - DestinationHostname: PsPInjector.dll
+  - DestinationHostname: Publisher.en
+  - DestinationHostname: RPCRT4.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: Shell32.dll
+  - DestinationHostname: SmartTagInstall.exe
+  - DestinationHostname: SoundRec.exe
+  - DestinationHostname: Symbiote.exe
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.Install
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: Time.exe
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WINHTTP.dll
+  - DestinationHostname: WINTRUST.dll
+  - DestinationHostname: WinStore.App.exe
+  - DestinationHostname: WinStore.Mobile.exe
+  - DestinationHostname: Word.en
+  - DestinationHostname: XboxApp.exe
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-handle-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: capinfos.exe
+  - DestinationHostname: cli-64.exe
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cryptography-37.0.2.dist
+  - DestinationHostname: dftest.exe
+  - DestinationHostname: explorer.exe
+  - DestinationHostname: groove.net
+  - DestinationHostname: gui-arm64.exe
+  - DestinationHostname: helper.exe
+  - DestinationHostname: iediagcmd.exe
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mi.dll
+  - DestinationHostname: microsoft.system.package.metadata
+  - DestinationHostname: microsoft.windowscommunicationsapps
+  - DestinationHostname: mitmproxy.exe
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: normalizer.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: onenoteim.exe
+  - DestinationHostname: onenoteshare.exe
+  - DestinationHostname: ose.pdb
+  - DestinationHostname: osrrb.exe
+  - DestinationHostname: pip.exe
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: pythonservice.exe
+  - DestinationHostname: rawshark.exe
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: service.exe
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: uninstall-wireshark.exe
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: w32.exe
+  - DestinationHostname: wabmig.exe
+  - DestinationHostname: wdnsfltr.exe
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wm.exe
+  - DestinationHostname: wmpconfig.exe
+  - DestinationIp: 1.0.0.0
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

@@ -1,0 +1,8 @@
+alert dns any any -> any any (msg:"C2 domain 4b616059ce65f7318e0b9937dc1d51512d99e54d7b592b87c4c6b3fb0a440887.bin (4b616059)"; dns.query; content:"4b616059ce65f7318e0b9937dc1d51512d99e54d7b592b87c4c6b3fb0a440887.bin"; nocase; sid:904205301; rev:1;)
+alert dns any any -> any any (msg:"C2 domain 4b616059ce65f7318e0b9937dc1d51512d99e54d7b592b87c4c6b3fb0a440887.bin.exe (4b616059)"; dns.query; content:"4b616059ce65f7318e0b9937dc1d51512d99e54d7b592b87c4c6b3fb0a440887.bin.exe"; nocase; sid:904205302; rev:1;)
+alert dns any any -> any any (msg:"C2 domain Client.exe (4b616059)"; dns.query; content:"Client.exe"; nocase; sid:904205303; rev:1;)
+alert dns any any -> any any (msg:"C2 domain api-ms-win-core-synch-l1-2-0.dll (4b616059)"; dns.query; content:"api-ms-win-core-synch-l1-2-0.dll"; nocase; sid:904205304; rev:1;)
+alert dns any any -> any any (msg:"C2 domain kernel32.dll (4b616059)"; dns.query; content:"kernel32.dll"; nocase; sid:904205305; rev:1;)
+alert dns any any -> any any (msg:"C2 domain ntdll.dll (4b616059)"; dns.query; content:"ntdll.dll"; nocase; sid:904205306; rev:1;)
+alert dns any any -> any any (msg:"C2 domain tk2bt1z3v.localto.net (4b616059)"; dns.query; content:"tk2bt1z3v.localto.net"; nocase; sid:904205307; rev:1;)
+alert ip any any -> 198.244.201.139 any (msg:"C2 IP 198.244.201.139 (4b616059)"; sid:904205308; rev:1;)

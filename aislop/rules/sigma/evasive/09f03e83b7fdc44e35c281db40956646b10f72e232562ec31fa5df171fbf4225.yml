@@ -1,0 +1,743 @@
+title: evasive behavior detection (09f03e83)
+id: 09f03e83b7fdc44e35c281db40956646b10f72e232562ec31fa5df171fbf4225
+status: experimental
+description: Auto-generated Sigma rule for evasive
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: 'Found reference to API "CreateDirectoryW" (Indicator: "CreateDirectory";
+      File: "Cherry-Studio-1.7.17-x64-setup.exe")'
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n file/memory contains long\
+      \ string with (Indicator: \"CreateProcess\"; File: \"nsExec.dll\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n file/memory contains long\
+      \ string with (Indicator: \"CreateFile\"; File: \"nsExec.dll\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: 'Found reference to API "ShellExecuteExW" (Indicator: "ShellExecute";
+      File: "Cherry-Studio-1.7.17-x64-setup.exe")'
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; File:
+      "Cherry-Studio-1.7.17-x64-setup.exe")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "\"Software\\Microsoft\\Windows\\CurrentVersion\" in Source: Cherry-Studio-1.7.17-x64-setup.exe\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 34153-159-00C9D560\n \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\"\
+      \ in Source: 34153-194-00C98190\n \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\"\
+      \ in Source: 34153-194-00C98190\n \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\\
+      PowerShellEngine\" in Source: 34153-194-00C98190\n \"SOFTWARE\\Microsoft\\PowerShell\\\
+      3\" in Source: 34153-196-00C9BFA2\n \"SOFTWARE\\Microsoft\\PowerShell\" in Source:\
+      \ 34153-207-00C98AF0\n \"o enable assembly bind failure logging, set the registry\
+      \ value [HKLM\\Software\\Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source:\
+      \ 00000000-00003500.00000000.221716.033F0000.00000004.mdmp\n 00000000-00003500.00000001.222099.033F0000.00000004.mdmp\n\
+      \ \"s\\;C:\\Users\\HAPUBWS\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\\
+      Users\\HAPUBWS\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\mitmpro\\\
+      REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9\"\
+      \ in Source: 00000000-00003500.00000000.221716.033F0000.00000004.mdmp\n 00000000-00003500.00000001.222099.033F0000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00003500.00000000.221716.033F0000.00000004.mdmp\n\
+      \ 00000000-00003500.00000001.222099.033F0000.00000004.mdmp\n \"System\\CurrentControlSet\\\
+      Control\\Nls\\RegionMapping\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\PowerShell\\\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\"\
+      \ in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"Software\\\
+      Microsoft\\PowerShell\\3\\PowerShellEngine\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\PowerShell\\3\\PowerShellEngine\"\
+      \ in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Windows\\PowerShell\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Windows\\PowerShell\\Transcription\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\\Dynamic\
+      \ DST\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\\Dynamic DST\" in Source: 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Pattern match: \"support@cherry-ai.com\"\n Pattern match: \"premium-server@thawte.com\""
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "file/memory contains long string(File: \"nsis7z.dll\")\n file/memory\
+      \ contains long string(File: \"elevate.exe\")\n file/memory contains long string(File:\
+      \ \"StdUtils.dll\")\n file/memory contains long string(File: \"UAC.dll\")\n\
+      \ file/memory contains long string(File: \"nsExec.dll\")\n file/memory contains\
+      \ long string(File: \"PaymoWinShutdownHandler.node\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; File:\
+      \ \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API \"MoveFileExW\"\
+      \ (Indicator: \"MoveFile\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found reference to API (Indicator: \"MulDiv\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DeleteFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetPrivateProfileStringW\"; File: \"\
+      Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator: \"\
+      WritePrivateProfileStringW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n\
+      \ Found reference to API (Indicator: \"FreeLibrary\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"; File:\
+      \ \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"lstrcmpW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference\
+      \ to API (Indicator: \"lstrcmpiW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFileTime\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CompareFileTime\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SearchPathW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetShortPathNameW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFullPathNameW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MoveFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetCurrentDirectoryW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; File: \"\
+      Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator: \"\
+      GetWindowsDirectoryW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found\
+      \ reference to API (Indicator: \"GetTempPathW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetVersion\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcpynW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDiskFreeSpaceW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalUnlock\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalLock\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RemoveDirectoryW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcmpiA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetTempFileNameW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MoveFileExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcatW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FillRect\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetClientRect\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"BeginPaint\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"InvalidateRect\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EnableWindow\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LoadImageW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindow\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"wsprintfW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"PostQuitMessage\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetTimer\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharNextW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateWindowExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegisterClassW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ScreenToClient\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetWindowRect\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EnableMenuItem\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemMenu\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindowEnabled\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetWindowPos\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSysColor\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetCursor\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LoadCursorW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindowVisible\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CloseClipboard\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetClipboardData\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EmptyClipboard\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OpenClipboard\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"TrackPopupMenu\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"AppendMenuW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreatePopupMenu\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemMetrics\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharPrevW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharNextA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"wsprintfA\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"PeekMessageW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SelectObject\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHFileOperationW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetFileInfoW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHBrowseForFolderW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetPathFromIDListW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetSpecialFolderLocation\"; File:\
+      \ \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"RegEnumValueW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference\
+      \ to API (Indicator: \"RegEnumKeyW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LookupPrivilegeValueW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFileSecurityW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OleUninitialize\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OleInitialize\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"VerQueryValueW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeW\"; File: \"\
+      Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator: \"\
+      SHGetFolderPathW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference\
+      \ to API (Indicator: \"RegDeleteKeyExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultUILanguage\"; File: \"\
+      Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API (Indicator: \"\
+      GetDiskFreeSpaceExW\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found\
+      \ reference to API (Indicator: \"SetDefaultDllDirectories\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SeShutdownPrivilege\"; File: \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"00000000-00003500.00000000.221716.033F0000.00000004.mdmp,\
+      \ 00000000-00003500.00000000.221716.055E0000.00000004.mdmp, 00000000-00003500.00000001.222099.09666000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found string \"Set-Alias -Name scim -Value Set-CimInstance -Option\
+      \ ReadOnly, AllScope -ErrorAction SilentlyContinue\" (Indicator: \"Set-CimInstance\"\
+      ; File: \"AMSI\")\n Found string \"Set-Alias -Name ncim -Value New-CimInstance\
+      \  -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\" (Indicator: \"\
+      New-CimInstance\"; File: \"AMSI\")\n Found string \"Set-Alias -Name rcim -Value\
+      \ Remove-cimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\"\
+      \ (Indicator: \"Remove-CimInstance\"; File: \"AMSI\")\n Found string \"Set-Alias\
+      \ -Name icim -Value Invoke-CimMethod -Option ReadOnly, AllScope -ErrorAction\
+      \ SilentlyContinue\" (Indicator: \"Invoke-CimMethod\"; File: \"AMSI\")\n Found\
+      \ string \"Set-Alias -Name gcai -Value Get-CimAssociatedInstance -Option ReadOnly,\
+      \ AllScope -ErrorAction SilentlyContinue\" (Indicator: \"Get-CimAssociatedInstance\"\
+      ; File: \"AMSI\")\n Found string \"Set-Alias -Name rcie -Value Register-CimIndicationEvent\
+      \ -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\" (Indicator: \"\
+      Register-CimIndicationEvent\"; File: \"AMSI\")\n Found string \"Set-Alias -Name\
+      \ ncms -Value New-CimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\"\
+      \ (Indicator: \"New-CimSession\"; File: \"AMSI\")\n Found string \"Set-Alias\
+      \ -Name rcms -Value Remove-cimSession -Option ReadOnly, AllScope -ErrorAction\
+      \ SilentlyContinue\" (Indicator: \"Remove-CimSession\"; File: \"AMSI\")\n Found\
+      \ string \"Set-Alias -Name gcms -Value Get-CimSession -Option ReadOnly, AllScope\
+      \ -ErrorAction SilentlyContinue\" (Indicator: \"Get-CimSession\"; File: \"AMSI\"\
+      )\n Found string \"Set-Alias -Name ncso -Value New-CimSessionOption -Option\
+      \ ReadOnly, AllScope -ErrorAction SilentlyContinue\" (Indicator: \"New-CimSession\"\
+      ; File: \"AMSI\")\n Found string \"Set-Alias -Name ncso -Value New-CimSessionOption\
+      \ -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\" (Indicator: \"\
+      New-CimSessionOption\"; File: \"AMSI\")\n Found string \"Set-Alias -Name gcls\
+      \ -Value Get-CimClass -Option ReadOnly, AllScope -ErrorAction SilentlyContinue\"\
+      \ (Indicator: \"Get-CimClass\"; File: \"AMSI\")"
+  - EventData: Contains reference to WMI activity (Powershell command string)
+  - EventData: string-390
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n file/memory contains long\
+      \ string with (Indicator: \"GetLastError\"; File: \"System.dll\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: 'Found string "Import-Module" (Indicator: "Import-Module"; Source:
+      "00000000-00003500.00000000.221716.055E0000.00000004.mdmp")'
+  - EventData: Contains ability to add modules to the current session (Powershell
+      command string)
+  - EventData: string-348
+  - EventData: 'Found string "Invoke-Expression" (Indicator: "Invoke-Expression";
+      Source: "00000000-00003500.00000000.221716.055E0000.00000004.mdmp")'
+  - EventData: Contains ability to run commands or expressions (Powershell command
+      string)
+  - EventData: string-288
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"Cherry-Studio-1.7.17-x64-setup.exe\")\n Found reference to API \"\
+      [Parameter(ParameterSetName='ShowWindow', Mandatory=$true)]\" (Indicator: \"\
+      ShowWindow\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found reference to API \"${ShowWindow})\" (Indicator: \"ShowWindow\"; Source:\
+      \ \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: 'Found registry modification API: "RegCreateKeyExW" in file "Cherry-Studio-1.7.17-x64-setup.exe"'
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "\"Cherry-Studio-1.7.17-x64-setup.exe\" with parameter %TEMP%\\ (UID:\
+      \ 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\" with parameter\
+      \ C:\\Users (UID: 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ with parameter C:\\Users\\%OSUSER% (UID: 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ with parameter %USERPROFILE%\\AppData (UID: 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ with parameter %USERPROFILE%\\AppData\\Local (UID: 00000000-00003872)\n \"\
+      Cherry-Studio-1.7.17-x64-setup.exe\" with parameter %LOCALAPPDATA%\\Temp (UID:\
+      \ 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\" with parameter\
+      \ %TEMP%\\nsa5315.tmp (UID: 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ with parameter %LOCALAPPDATA%\\Programs (UID: 00000000-00003872)\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ with parameter %LOCALAPPDATA%\\Programs\\Cherry Studio (UID: 00000000-00003872)\n\
+      \ \"Cherry-Studio-1.7.17-x64-setup.exe\" with parameter %TEMP%\\nsa5315.tmp\\\
+      7z-out (UID: 00000000-00003872)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "file/memory contains long string with (Indicator: \"New-Object\";\
+      \ File: \"getDetailedFontsByPowerShell.js\")\n Found string \"powershell_ise.exe\"\
+      \ (Indicator: \"powershell_ise.exe\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Variable to hold all default <cmdlet:parameter, value> pairse\
+      \ used instead of the HostName parameter in the Send-MailMessage cmd\" (Indicator:\
+      \ \"Send-MailMessage\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Join-Path\" (Indicator: \"Join-Path\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Always resolve file paths using Resolve-Path -Relative.\"\
+      \ (Indicator: \"Resolve-Path\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Variable to contain the name of the email server. This can\
+      \ be used instead of the HostName parameter in the Send-MailMessage cmdlet.ater\
+      \ than $ConfirmPreference. If $ConfirmPreference is None, actions will only\
+      \ be confirmed when Confirm is specified.\" (Indicator: \"Send-MailMessage\"\
+      ; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found\
+      \ string \"Variable to contain the name of the email server. This can be used\
+      \ instead of the HostName parameter in the Send-MailMessage cmdlet.\" (Indicator:\
+      \ \"Send-MailMessage\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Resolve-Path\" (Indicator: \"Resolve-Path\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Write-Output\" (Indicator: \"Write-Output\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Show-Command\" (Indicator: \"Show-Command\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Trace-Command\" (Indicator: \"Trace-Command\"; Source: \"\
+      00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found string \"\
+      Pop-Location\" (Indicator: \"Pop-Location\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Push-Location\" (Indicator: \"Push-Location\"; Source: \"\
+      00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found string \"\
+      Select-String\" (Indicator: \"Select-String\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Enter-PSHostProcess\" (Indicator: \"Enter-PSHostProcess\"\
+      ; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found\
+      \ string \"Exit-PSHostProcess\" (Indicator: \"Exit-PSHostProcess\"; Source:\
+      \ \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found string\
+      \ \"Save-Help\" (Indicator: \"Save-Help\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"Test-ModuleManifest\" (Indicator: \"Test-ModuleManifest\"\
+      ; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found\
+      \ string \"split-path $_.Path\" (Indicator: \"Split-Path\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"split-path $_.Path -leaf\" (Indicator: \"Split-Path\"; Source:\
+      \ \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found string\
+      \ \"\"$(split-path $_.Path -leaf): $($_.Status)\"\" (Indicator: \"Split-Path\"\
+      ; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found\
+      \ string \",(new-object Microsoft.Powershell.Commands.EnhancedKeyUsageProperty\
+      \ -argumentlist $this).EnhancedKeyUsageList;\" (Indicator: \"New-Object\"; Source:\
+      \ \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\")\n Found string\
+      \ \",(new-object Microsoft.Powershell.Commands.DnsNameProperty -argumentlist\
+      \ $this).DnsNameList;\" (Indicator: \"New-Object\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"New-Object System.Version -ArgumentList @(\" (Indicator:\
+      \ \"New-Object\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )\n Found string \"new-object datetime @([int]$matches[1], [int]$matches[2],\
+      \ [int]$matches[3])\" (Indicator: \"New-Object\"; Source: \"00000000-00003500.00000000.221716.055E0000.00000004.mdmp\"\
+      )"
+  - EventData: Observed Powershell command strings
+  - EventData: string-187
+  - EventData: "Observed system executable string:\"%WINDIR%\\system32\\UXTHEME.dll\"\
+      \ [Source: 00000000-00003872-00000C2B-2402443681]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\USERENV.dll\" [Source: 00000000-00003872-00000C2B-2402471527]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\SETUPAPI.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2402508159]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\APPHELP.dll\" [Source: 00000000-00003872-00000C2B-2402591944]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\PROPSYS.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2402623808]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\DWMAPI.dll\" [Source: 00000000-00003872-00000C2B-2402652968]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\CRYPTBASE.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2402678849]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\OLEACC.dll\" [Source: 00000000-00003872-00000C2B-2402711893]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\CLBCATQ.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2402739419]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\NTMARTA.dll\" [Source: 00000000-00003872-00000C2B-2402768216]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\VERSION.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2402795914]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\SHFOLDER.dll\" [Source: 00000000-00003872-00000C2B-2402825034]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\RichEd20.dll\" [Source:\
+      \ 00000000-00003872-00000C2B-2404174408]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\mscoreei.dll\" [Source: 00000000-00008040-00000C2E-856593998]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      clr.dll\" [Source: 00000000-00008040-00000C2B-2412237682]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\mscoree.dll\"\
+      \ [Source: 00000000-00008040-00000C2B-2412354181]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\combase.dll\" [Source: 00000000-00008040-00000C2B-2412446611]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\\
+      mscorlib\\36eaccfde177c2e7b93b8dbdde4e012a\\mscorlib.ni.dll\" [Source: 00000000-00008040-00000C2B-2412609409]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      ole32.dll\" [Source: 00000000-00008040-00000C2B-2412635692]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\api-ms-win-core-winrt-l1-1-0.dll\"\
+      \ [Source: 00000000-00008040-00000C2B-2412688660]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_32\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll\" [Source: 00000000-00008040-00000C2B-2412817760]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\clrjit.dll\"\
+      \ [Source: 00000000-00008040-00000C2B-2413020996]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\OLEAUT32.dll\" [Source:\
+      \ 00000000-00008040-00000C2B-2413050488]\n Observed system executable string:\"\
+      %WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\System\\2c3c912ea8f058f9d04c4650128feb3f\\\
+      System.ni.dll\" [Source: 00000000-00008040-00000C2B-2413713376]\n Observed system\
+      \ executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\System.Core\\\
+      31fae3290fad30c31c98651462d22724\\System.Core.ni.dll\" [Source: 00000000-00008040-00000C2B-2413763532]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "\"Cherry-Studio-1.7.17-x64-setup.exe\" writes to a file \"C:\\Users\\\
+      %OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\System.dll\"\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\\
+      UAC.dll\"\n \"Cherry-Studio-1.7.17-x64-setup.exe\" writes to a file \"C:\\Users\\\
+      %OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\StdUtils.dll\"\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\\
+      modern-wizard.bmp\"\n \"Cherry-Studio-1.7.17-x64-setup.exe\" writes to a file\
+      \ \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\nsDialogs.dll\"\n\
+      \ \"Cherry-Studio-1.7.17-x64-setup.exe\" writes to a file \"C:\\Users\\%OSUSER%\\\
+      AppData\\Local\\Temp\\nsa5315.tmp\\nsExec.dll\"\n \"Cherry-Studio-1.7.17-x64-setup.exe\"\
+      \ writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\nsa5315.tmp\\\
+      app-64.7z\""
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  selection_network:
+  - DestinationHostname: .Data.Common
+  - DestinationHostname: .Diagnostics.DiagnosticSource
+  - DestinationHostname: .Diagnostics.TextWriterTraceListener
+  - DestinationHostname: .IO.FileSystem.Watcher
+  - DestinationHostname: .IO.Packaging
+  - DestinationHostname: .Path.StartsWith
+  - DestinationHostname: .Private.Uri
+  - DestinationHostname: .Resources.ResourceManager
+  - DestinationHostname: .Security.Cryptography.Primitives
+  - DestinationHostname: .Xml.XPath
+  - DestinationHostname: 32.dll
+  - DestinationHostname: 47.dll
+  - DestinationHostname: 6d340246-e4f3-4450-aa28-24a972a7526f.tmp
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: APPHELP.dll
+  - DestinationHostname: CLBCATQ.dll
+  - DestinationHostname: COMCTL32.dll
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: CRYPTBASE.dll
+  - DestinationHostname: Cherry-Studio-1.7.17-x64-setup.exe
+  - DestinationHostname: DWMAPI.dll
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: Microsoft.AppV.AppvC
+  - DestinationHostname: Microsoft.AppV.AppvClientComConsumer
+  - DestinationHostname: Microsoft.CSharp
+  - DestinationHostname: Microsoft.IIS.Powershell.Comm
+  - DestinationHostname: Microsoft.IIS.Powershell.Commands
+  - DestinationHostname: Microsoft.Ibaae
+  - DestinationHostname: Microsoft.Kd
+  - DestinationHostname: Microsoft.KeyDis
+  - DestinationHostname: Microsoft.KeyDistributionServ
+  - DestinationHostname: Microsoft.KeyDistributionService.Cmdlets
+  - DestinationHostname: Microsoft.KeyDistributionService.Cmdlets.dll
+  - DestinationHostname: Microsoft.Manag
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Management.Infrastructure
+  - DestinationHostname: Microsoft.Management.Infrastructure.CimCmdlets
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native.Unmanaged.DLL
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Archive
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Diagnostics
+  - DestinationHostname: Microsoft.PowerShell.Host
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.ODataUtils
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Microsoft.Wab
+  - DestinationHostname: Model.Primitives
+  - DestinationHostname: Model.Security
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: NTMARTA.dll
+  - DestinationHostname: OLEACC.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: PSHost.134153623164146812.8040.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153624500598060.6664.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153625832322581.3500.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153627737092472.7400.DefaultAppDomain.powershell
+  - DestinationHostname: PowerShell.lnk
+  - DestinationHostname: RichEd20.dll
+  - DestinationHostname: SETUPAPI.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHFOLDER.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: StdUtils.dll
+  - DestinationHostname: Studio.exe
+  - DestinationHostname: Studio.lnk
+  - DestinationHostname: System.Collections.Concurrent
+  - DestinationHostname: System.ComponentModel.TypeConverter
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Dynamic.Runtime
+  - DestinationHostname: System.IO.Compression.ZipFile
+  - DestinationHostname: System.IO.UnmanagedMemoryStream
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Net.WebHeaderCollection
+  - DestinationHostname: System.Net.WebSockets
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Private.CoreLib
+  - DestinationHostname: System.Runtime.Extensions
+  - DestinationHostname: System.Runtime.InteropServices
+  - DestinationHostname: System.Runtime.Numerics
+  - DestinationHostname: System.Text.Encoding
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.Linq
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: UAC.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UXTHEME.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WTSAPI32.dll
+  - DestinationHostname: WinShell.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: agents-en.json
+  - DestinationHostname: agents-zh.json
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: aphy.Pkcs
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-file-l2-1-4.dll
+  - DestinationHostname: api-ms-win-core-handle-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-3.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: api-ms-win-downlevel-shell32-l1-1-0.dll
+  - DestinationHostname: api-ms-win-power-base-l1-1-0.dll
+  - DestinationHostname: api-ms-win-shcore-scaling-l1-1-1.dll
+  - DestinationHostname: app-update.yml
+  - DestinationHostname: app.asar
+  - DestinationHostname: app.asar.unpacked
+  - DestinationHostname: asks.Parallel
+  - DestinationHostname: balization.Extensions
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: bcryptprimitives.dll
+  - DestinationHostname: blob.bin
+  - DestinationHostname: ceModel.Duplex
+  - DestinationHostname: ceModel.Http
+  - DestinationHostname: ceModel.Web
+  - DestinationHostname: cherry-ai.com
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: cmd.exe
+  - DestinationHostname: codings.Web
+  - DestinationHostname: combase.dll
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: core.js
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cs.Debug
+  - DestinationHostname: ction.Extensions
+  - DestinationHostname: de.pak
+  - DestinationHostname: del.Annotations
+  - DestinationHostname: demo.js
+  - DestinationHostname: ding.Extensions
+  - DestinationHostname: ding.Tasks.Extensions
+  - DestinationHostname: ding.Thread
+  - DestinationHostname: download.js
+  - DestinationHostname: dxcompiler.dll
+  - DestinationHostname: dxil.dll
+  - DestinationHostname: eading.ThreadPool
+  - DestinationHostname: ecurity.Claims
+  - DestinationHostname: ecurity.Cryptography.OpenSsl
+  - DestinationHostname: eflection.DispatchProxy
+  - DestinationHostname: elevate.exe
+  - DestinationHostname: em.Diagnostics.Process
+  - DestinationHostname: em.Linq.Parallel
+  - DestinationHostname: em.Net.Primitives
+  - DestinationHostname: em.Numerics.Vectors
+  - DestinationHostname: em.Reflection.Emit
+  - DestinationHostname: em.Threading.Overlapped
+  - DestinationHostname: em.Windows
+  - DestinationHostname: em.Xml.XmlDocument
+  - DestinationHostname: en-US.pak
+  - DestinationHostname: es.Reader
+  - DestinationHostname: et.NetworkInformation
+  - DestinationHostname: ffmpeg.dll
+  - DestinationHostname: fonts.vbs
+  - DestinationHostname: getByVBS.js
+  - DestinationHostname: gistry.AccessControl
+  - DestinationHostname: github.com
+  - DestinationHostname: gnostics.Contracts
+  - DestinationHostname: hreading.Tasks
+  - DestinationHostname: hy.Cng
+  - DestinationHostname: hy.Encoding
+  - DestinationHostname: iagnostics.TraceSource
+  - DestinationHostname: icd.json
+  - DestinationHostname: ices.RuntimeInformation
+  - DestinationHostname: icudtl.dat
+  - DestinationHostname: index.js
+  - DestinationHostname: index.mjs
+  - DestinationHostname: index.no
+  - DestinationHostname: index.node
+  - DestinationHostname: install-bun.js
+  - DestinationHostname: install-ovms.js
+  - DestinationHostname: install-uv.js
+  - DestinationHostname: ion.Emit.ILGeneration
+  - DestinationHostname: ion.Metadata
+  - DestinationHostname: ise.exe
+  - DestinationHostname: it.Lightweight
+  - DestinationHostname: ity.Cryptography.Algorithms
+  - DestinationHostname: ity.Principal
+  - DestinationHostname: ity.Principal.Windows
+  - DestinationHostname: ja.pak
+  - DestinationHostname: journal.json
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: lection.Primitives
+  - DestinationHostname: lections.Specialized
+  - DestinationHostname: libEGL.dll
+  - DestinationHostname: libGLESv2.dll
+  - DestinationHostname: license.html
+  - DestinationHostname: lp01powershell.exe
+  - DestinationHostname: mi.dll
+  - DestinationHostname: ml.Serialization
+  - DestinationHostname: ml.XPath.XDocument
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: n.TypeExtensions
+  - DestinationHostname: nentModel.DataAnnotations
+  - DestinationHostname: network.mojom.NetworkS
+  - DestinationHostname: nsDialogs.dll
+  - DestinationHostname: nsExec.dll
+  - DestinationHostname: nsa5315.tmp
+  - DestinationHostname: nsis7z.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: oft.PowerShell.UnmanagedPSEntry
+  - DestinationHostname: oft.Win32.Primitives
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: ollections.Immutable
+  - DestinationHostname: package.jso
+  - DestinationHostname: package.json
+  - DestinationHostname: percent.pak
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: powershell.pdb
+  - DestinationHostname: powrprof.dll
+  - DestinationHostname: privacy-en.html
+  - DestinationHostname: privacy-zh.html
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: rServices.VisualC
+  - DestinationHostname: registry.js
+  - DestinationHostname: releases.html
+  - DestinationHostname: resources.pak
+  - DestinationHostname: ru.pak
+  - DestinationHostname: s.mui
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: snapshot.bin
+  - DestinationHostname: standardize.js
+  - DestinationHostname: stem.AccessControl
+  - DestinationHostname: stem.AppContext
+  - DestinationHostname: stem.ComponentModel.EventBasedAsync
+  - DestinationHostname: stem.IO.FileSystem.DriveInfo
+  - DestinationHostname: stem.Net.Http
+  - DestinationHostname: stem.Net.Security
+  - DestinationHostname: stem.Runtime.Serialization.Json
+  - DestinationHostname: stem.Security.Cryptography.Csp
+  - DestinationHostname: swiftshader.dll
+  - DestinationHostname: t.PowerShell.CoreCLR.AssemblyLoadContext
+  - DestinationHostname: t.RegularExpressions
+  - DestinationHostname: test-commonjs.js
+  - DestinationHostname: test-esm.mjs
+  - DestinationHostname: time.Serialization.Xml
+  - DestinationHostname: ttp.WinHttpHandler
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: user32.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: versions.json
+  - DestinationHostname: viceModel.NetTcp
+  - DestinationHostname: viceProcess.ServiceController
+  - DestinationHostname: vulkan-1.dll
+  - DestinationHostname: where.exe
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: zh-CN.pak
+  - DestinationHostname: zh-TW.pak
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

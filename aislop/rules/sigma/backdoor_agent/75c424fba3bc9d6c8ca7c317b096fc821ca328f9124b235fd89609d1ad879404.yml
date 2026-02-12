@@ -1,0 +1,1197 @@
+title: Backdoor.Agent behavior detection (75c424fb)
+id: 75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404
+status: experimental
+description: Auto-generated Sigma rule for Backdoor.Agent
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"CreateProcess\" (Indicator: \"CreateProcess\";\
+      \ Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"CreateFileMoniker\" (Indicator: \"CreateFile\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"CreateFile\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileMapping\" (Indicator: \"CreateFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"WSAGetLastError\" (Indicator: \"GetLastError\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"WSASetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp, 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A6850000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B2222000.00000002.mdmp, 00000000-00003736.00000001.219120.B3393000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B234D000.00000002.mdmp, 00000000-00003736.00000002.221037.B23C5000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.AB8D1000.00000002.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2389000.00000002.mdmp, 00000000-00003736.00000003.225061.B33C4000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"GetWindowThreadProcessId\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API (Indicator: \"OpenProcessToken\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetTokenInformation\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ConvertStringSecurityDescriptorToSecurityDescriptorW\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ConvertSidToStringSidW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"FlsFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFinalPathNameByHandleW\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetProcessHeap\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetCurrentThreadId\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetFileSizeEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FileTimeToSystemTime\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"K32EnumProcessModules\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateSymbolicLinkW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlVirtualUnwind\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetCurrentProcessId\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFullPathNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SystemTimeToTzSpecificLocalTime\";\
+      \ File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RemoveDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EncodePointer\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlPcToFileHeader\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleOutputCP\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetCPInfo\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileInformationByHandle\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"VirtualProtect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetDllDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"TlsFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceFrequency\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"RaiseException\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeSListHead\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"CreateDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetConsoleCtrlHandler\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTimeZoneInformation\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetACP\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetEndOfFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"LeaveCriticalSection\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDriveTypeW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PeekNamedPipe\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"K32GetModuleFileNameExW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetCommandLineA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"FormatMessageW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FreeEnvironmentStringsW\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"SetLastError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"TlsAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReadConsoleW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTempPathW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RegisterClassW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PeekMessageW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TranslateMessage\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"CreateWindowExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MsgWaitForMultipleObjects\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"AreFileApisANSI\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CompareStringEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LCMapStringEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LocaleNameToLCID\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibrary\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateDirectory\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReportEventW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeregisterEventSource\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RegisterEventSourceW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockShared\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFiberEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemInfo\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockShared\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ConvertThreadToFiberEx\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"ReleaseSRWLockExclusive\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FormatMessageA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReadConsoleA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SwitchToFiber\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteFiber\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemTime\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeSRWLock\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"VirtualAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetConsoleMode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualLock\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ConvertFiberToThread\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SystemTimeToFileTime\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcessWindowStation\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetUserObjectInformationW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WSAGetLastError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"getsockopt\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"gethostbyaddr\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"getsockname\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"htonl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"gethostbyname\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"inet_ntoa\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WSACleanup\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"htons\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"closesocket\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"inet_addr\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"getservbyname\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"recvfrom\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WSASetLastError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ioctlsocket\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WSAStartup\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"getservbyport\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ntohs\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"BCryptGenRandom\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ImpersonateSelf\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RevertToSelf\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OpenThreadToken\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AccessCheck\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EqualSid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetUserNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorOwner\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetNamedSecurityInfoW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSidIdentifierAuthority\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetFileSecurityW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetVolumeInformationW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCommState\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DuplicateHandle\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SleepEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetFileTime\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateEventW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObjectEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetShortPathNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetOverlappedResult\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetEvent\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SearchPathW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EscapeCommFunction\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreatePipe\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetComputerNameExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetLogicalDriveStringsA\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"lstrcmpiA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSection\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetVolumeInformationA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PurgeComm\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TerminateThread\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetupComm\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ClearCommError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeThread\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommState\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTempFileNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PeekConsoleInputW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommModemStatus\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeviceIoControl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateHardLinkW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetVolumeNameForVolumeMountPointW\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetHandleInformation\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetThreadPriority\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"BuildCommDCBW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DisableThreadLibraryCalls\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"SetCurrentDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCommTimeouts\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MoveFileW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"NetGetDCName\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"NetApiBufferFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"NetUserGetInfo\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PostQuitMessage\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CharLowerW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBeep\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"KillTimer\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MsgWaitForMultipleObjectsEx\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"wsprintfW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetTimer\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnregisterClassW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetProfilesDirectoryW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"getpeername\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"gethostname\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WSAAsyncSelect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSaveFileNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetOpenFileNameW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TextOutA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDIBits\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleDC\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"BitBlt\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DPtoLP\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTextExtentPoint32A\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteDC\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetObjectA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetMapMode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreatePatternBrush\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetStockObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetMapMode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleBitmap\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"SelectObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateSolidBrush\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MulDiv\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsDBCSLeadByte\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalLock\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FindResourceW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LockResource\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalUnlock\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SHBrowseForFolderW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetFileInfoW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetPathFromIDListW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetMalloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetDesktopFolder\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CloseClipboard\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EnumWindows\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetWindowPos\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDesktopWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetKeyState\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InsertMenuW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RemoveMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCapture\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DrawMenuBar\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EnableWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsZoomed\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetClientRect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFocus\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MoveWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadIconW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowRect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsIconic\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowTextW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetParent\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DrawEdge\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ReleaseCapture\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreatePopupMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemMetrics\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateIconIndirect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UpdateWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetKeyboardLayout\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadCursorFromFileA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateIconFromResource\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetSysColor\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetMenuItemCount\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetActiveWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetClipboardData\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TrackPopupMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateIconFromResourceEx\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"BeginPaint\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"EmptyClipboard\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetCursorPos\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetAsyncKeyState\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PeekMessageA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"WindowFromPoint\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCaretPos\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyIcon\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InvalidateRect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FillRect\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCursorPos\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AdjustWindowRectEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCapture\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateCaret\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetClipboardData\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowPlacement\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DrawFrameControl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnhookWindowsHookEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetMenu\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ScreenToClient\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetForegroundWindow\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadCursorW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SendInput\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetMessageA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetParent\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyCaret\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsWindowVisible\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSysColorBrush\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetCursor\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ClientToScreen\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OpenClipboard\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetFocus\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CallNextHookEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetScrollInfo\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadCursorA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetTempPathA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MapViewOfFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LockFileEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnlockFileEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileMappingW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnlockFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapDestroy\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetFullPathNameA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"FlushViewOfFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDiskFreeSpaceW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapCompact\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapCreate\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"UnmapViewOfFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"HeapValidate\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetDiskFreeSpaceA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"TryEnterCriticalSection\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"DeleteFileA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LockFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CancelIoEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetThreadStackGuarantee\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetQueuedCompletionStatusEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"PostQueuedCompletionStatus\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"ReleaseMutex\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateIoCompletionPort\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"AddVectoredExceptionHandler\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"QueryFullProcessImageNameW\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"SetNamedPipeHandleState\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"NtDeviceIoControlFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"NtWriteFile\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlNtStatusToDosError\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetErrorInfo\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SysFreeString\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SysStringLen\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalSize\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SysAllocString\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VariantCopyInd\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VariantInit\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VariantChangeType\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayCreate\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayAccessData\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayPutElement\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayGetUBound\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayUnaccessData\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"VariantClear\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayGetElement\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetActiveObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SafeArrayGetLBound\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoGetObject\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"OleInitialize\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoCreateGuid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CreateStreamOnHGlobal\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoMarshalInterface\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"ProgIDFromCLSID\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoReleaseMarshalData\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"StringFromCLSID\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CoCreateFreeThreadedMarshaler\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"VirtualQuery\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsDBCSLeadByteEx\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeSid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorControl\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"AddAce\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CopySid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorLength\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"InitializeSecurityDescriptor\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetAclInformation\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSidSubAuthorityCount\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"IsValidSid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetEntriesInAclW\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeAcl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AddAuditAccessAce\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorDacl\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetSecurityDescriptorSacl\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"IsValidSecurityDescriptor\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsTextUnicode\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"IsValidAcl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorGroup\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetSidSubAuthority\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MakeAbsoluteSD\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"MakeSelfRelativeSD\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorGroup\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetSecurityDescriptorDacl\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"SetSecurityDescriptorSacl\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorOwner\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"GetAce\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"; File: \"\
+      75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n Found\
+      \ reference to API (Indicator: \"GetLengthSid\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteAce\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"LocalAlloc\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"DosDateTimeToFileTime\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"SysAllocStringLen\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"CLSIDFromString\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InterlockedFlushSList\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"RtlUnwind\"; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API (Indicator: \"InterlockedPushEntrySList\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API (Indicator: \"ExpandEnvironmentStrings\"; Source: \"\
+      00000000-00003736.00000000.217197.222F0000.00000004.mdmp, 00000000-00003736.00000001.219120.222F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000002.221037.222F0000.00000004.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.222F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetACP\"; Source: \"00000000-00003736.00000000.217197.222F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000001.219120.222F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000002.221037.222F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.222F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringEx\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A6850000.00000002.mdmp, 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000001.219120.AFBEB000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.AB8D1000.00000002.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConnectNamedPipe\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateEventW\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileMapping\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexW\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateNamedPipe\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreatePipe\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"DuplicateHandle\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExitProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000000.217197.B2273000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B2FB3000.00000002.mdmp, 00000000-00003736.00000000.217197.B2FCE000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A42CC000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A53AE000.00000002.mdmp, 00000000-00003736.00000001.219120.A564E000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A58C6000.00000002.mdmp, 00000000-00003736.00000001.219120.A6850000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.AFBEB000.00000002.mdmp, 00000000-00003736.00000001.219120.B02E3000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B2143000.00000002.mdmp, 00000000-00003736.00000001.219120.B2222000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B22A5000.00000002.mdmp, 00000000-00003736.00000001.219120.B3393000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B0252000.00000002.mdmp, 00000000-00003736.00000002.221037.B2273000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B234D000.00000002.mdmp, 00000000-00003736.00000002.221037.B2373000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23A7000.00000002.mdmp, 00000000-00003736.00000002.221037.B23C5000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000002.221037.BA486000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.98D77000.00000002.mdmp, 00000000-00003736.00000003.225061.A6CA9000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.AB8A5000.00000002.mdmp, 00000000-00003736.00000003.225061.AB8D1000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B0263000.00000002.mdmp, 00000000-00003736.00000003.225061.B2158000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp, 00000000-00003736.00000003.225061.B2389000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B23F7000.00000002.mdmp, 00000000-00003736.00000003.225061.B33C4000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A6850000.00000002.mdmp, 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000001.219120.B2222000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B3393000.00000002.mdmp, 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp, 00000000-00003736.00000002.221037.B234D000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23C5000.00000002.mdmp, 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.98D77000.00000002.mdmp, 00000000-00003736.00000003.225061.AB8D1000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp, 00000000-00003736.00000003.225061.B2389000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B33C4000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLongPathName\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleFileName\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetVersion\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MapViewOfFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenEventW\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenFileMapping\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenMutexW\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"PeekNamedPipe\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseMutex\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetEvent\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetNamedPipeHandleState\"; Source:\
+      \ \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000000.217197.B2273000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B2FB3000.00000002.mdmp, 00000000-00003736.00000000.217197.B2FCE000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A42CC000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A53AE000.00000002.mdmp, 00000000-00003736.00000001.219120.A564E000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A58C6000.00000002.mdmp, 00000000-00003736.00000001.219120.A6850000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000001.219120.AFBEB000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B02E3000.00000002.mdmp, 00000000-00003736.00000001.219120.B2143000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B2222000.00000002.mdmp, 00000000-00003736.00000001.219120.B22A5000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.B3393000.00000002.mdmp, 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp, 00000000-00003736.00000002.221037.B0252000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B2273000.00000002.mdmp, 00000000-00003736.00000002.221037.B234D000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B2373000.00000002.mdmp, 00000000-00003736.00000002.221037.B23A7000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23C5000.00000002.mdmp, 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.BA486000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.A6CA9000.00000002.mdmp, 00000000-00003736.00000003.225061.AB8A5000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.AB8D1000.00000002.mdmp, 00000000-00003736.00000003.225061.B0263000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2158000.00000002.mdmp, 00000000-00003736.00000003.225061.B2336000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2389000.00000002.mdmp, 00000000-00003736.00000003.225061.B23F7000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B33C4000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnmapViewOfFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjects\"; Source: \"\
+      00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A6850000.00000002.mdmp, 00000000-00003736.00000001.219120.A79C4000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000001.219120.AFBEB000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WriteFile\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000001.219120.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileType\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFile2\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetOverlappedResult\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000003.225061.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000003.225061.B2336000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadLibrary\"; Source: \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000001.219120.B3393000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00003736.00000000.217197.229D0000.00000004.mdmp,\
+      \ 00000000-00003736.00000000.217197.A23B0000.00000002.mdmp, 00000000-00003736.00000000.217197.A9E6C000.00000002.mdmp,\
+      \ 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp, 00000000-00003736.00000001.219120.229D0000.00000004.mdmp,\
+      \ 00000000-00003736.00000001.219120.A7AA4000.00000002.mdmp, 00000000-00003736.00000001.219120.B3393000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.229D0000.00000004.mdmp, 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp, 00000000-00003736.00000002.221037.B23C5000.00000002.mdmp,\
+      \ 00000000-00003736.00000002.221037.B23D4000.00000002.mdmp, 00000000-00003736.00000003.225061.1B70F000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.98D77000.00000002.mdmp, 00000000-00003736.00000003.225061.B33C4000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptExportKey\"; Source: \"00000000-00003736.00000000.217197.22AD0000.00000004.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptEncrypt\"; Source: \"00000000-00003736.00000000.217197.22AD0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptDecrypt\"; Source: \"00000000-00003736.00000000.217197.22AD0000.00000004.mdmp,\
+      \ 00000000-00003736.00000002.221037.97D6E000.00000002.mdmp, 00000000-00003736.00000003.225061.98D77000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptImportKey\"; Source: \"00000000-00003736.00000000.217197.22AD0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "file/memory contains long string(File: \"api-ms-win-core-processenvironment-l1-1-0.dll\"\
+      )\n file/memory contains long string(File: \"win32api.pyd\")\n file/memory contains\
+      \ long string(File: \"servicemanager.pyd\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source:\
+      \ \"00000000-00003736.00000000.217197.224F0000.00000004.mdmp, 00000000-00003736.00000000.217197.B03CB000.00000002.mdmp,\
+      \ 00000000-00003736.00000001.219120.224F0000.00000004.mdmp, 00000000-00003736.00000002.221037.AFFB3000.00000002.mdmp,\
+      \ 00000000-00003736.00000003.225061.224F0000.00000004.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"DeviceIoControl\" (Indicator: \"DeviceIoControl\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"NtDeviceIoControlFile\" (Indicator: \"NtDeviceIoControlFile\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"NtDeviceIoControlFile\" (Indicator: \"DeviceIoControl\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )"
+  - EventData: Contains ability to create/control drivers (API string)
+  - EventData: string-220
+  - EventData: "\"import loggingfrom mitmproxy import httpclass ServerSideEvents:\
+      \    \"\"\"    Server-Side Events are currently swallowed if there's no streaming\n\
+      \    see https://github.com/mitmproxy/mitmproxy/issues/4469.    Until this bug\
+      \ is fixed\n this addon warns the user about this.    \"\"\"    def response(self,\
+      \ flow: http.HTTPFlow):        assert flow.response        is_sse = flow.response.headers.get(\"\
+      content-type\", \"\").startswith(            \"text/event-stream\"        )\
+      \        if is_sse and not flow.response.stream:            logging.warning(\
+      \                \"mitmproxy currently does not support server side events.\
+      \ As a workaround\n you can enable response \"                \"streaming for\
+      \ such flows: https://github.com/mitmproxy/mitmproxy/issues/4469\"         \
+      \   )\" (Indicator: \"github.com\")\n \"import sysimport typesfrom .mitmproxy_rs\
+      \ import *__doc__ = mitmproxy_rs.__doc__if hasattr(mitmproxy_rs, \"__all__\"\
+      ):    __all__ = mitmproxy_rs.__all__# Hacky workaround for https://github.com/PyO3/pyo3/issues/759for\
+      \ k, v in vars(mitmproxy_rs).items():    if isinstance(v, types.ModuleType):\
+      \        sys.modules[f\"mitmproxy_rs.{k}\"] = v\" (Indicator: \"github.com\"\
+      )\n \"https://github.com/python/cpython/blob/3.9/Lib/importlib/_bootstrap_external.py#L679-L688\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/Unidata/MetPy/blob/a3424de66a44bf3a92b0dcacf4dff82ad7b86712/src/metpy/plots/wx_symbols.py#L24-L25\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/tensorflow/datasets/blob/master/tensorflow_datasets/core/utils/resource_utils.py#L81-L97\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/readers.py#L11\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/abc.py#L422\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/abc.py#L312\"\
+      \ (Indicator: \"github.com\")\n \"argument types, see https://github.com/python/cpython/issues/86361.\"\
+      \ (Indicator: \"github.com\")"
+  - EventData: Found well known domains (string)
+  - EventData: string-135
+  - EventData: 'Found reference to API "MoveFileW" (Indicator: "MoveFile"; File: "75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin")'
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found reference to API \"FindResourceW\" (Indicator: \"FindResource\"\
+      ; File: \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\"\
+      )\n Found reference to API \"LockResource\" (Indicator: \"LockResource\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")\n\
+      \ Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"; File:\
+      \ \"75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; File:
+      "75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: '"Insert an entry into the list of warnings filters (at the front)."
+      (Source: 00000000-00003736.00000000.217197.222F0000.00000004.mdmp, 00000000-00003736.00000001.219120.222F0000.00000004.mdmp,
+      00000000-00003736.00000002.221037.222F0000.00000004.mdmp, 00000000-00003736.00000003.225061.222F0000.00000004.mdmp,
+      Indicator: "insert an entry into the list of warnings filters (at the front)."),
+      "Insert a simple entry into the list of warnings filters (at the front)." (Source:
+      00000000-00003736.00000000.217197.222F0000.00000004.mdmp, 00000000-00003736.00000001.219120.222F0000.00000004.mdmp,
+      00000000-00003736.00000002.221037.222F0000.00000004.mdmp, 00000000-00003736.00000003.225061.222F0000.00000004.mdmp,
+      Indicator: "insert a simple entry into the list of warnings filters (at the
+      front).")'
+  - EventData: Contains SQL queries
+  - EventData: string-16
+  - EventData: "\"Software\\Python\\PythonCore\\{sys_version}\\Modules\\{fullname}\"\
+      \ in Source: 00000000-00003736.00000000.217197.222F0000.00000004.mdmp\n 00000000-00003736.00000001.219120.222F0000.00000004.mdmp\n\
+      \ 00000000-00003736.00000002.221037.222F0000.00000004.mdmp\n 00000000-00003736.00000003.225061.222F0000.00000004.mdmp\n\
+      \ \"Software\\Python\\PythonCore\\{sys_version}\\Modules\\{fullname}\\Debug\"\
+      \ in Source: 00000000-00003736.00000000.217197.222F0000.00000004.mdmp\n 00000000-00003736.00000001.219120.222F0000.00000004.mdmp\n\
+      \ 00000000-00003736.00000002.221037.222F0000.00000004.mdmp\n 00000000-00003736.00000003.225061.222F0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Pattern match: \"mal@lemburg.com\"\n Pattern match: \"guido@python.org\"\
+      \n Pattern match: \"info@egenix.com\""
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "\"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402 (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\OpenSSL (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\Pythonwin (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_argon2_cffi_bindings\
+      \ (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\\
+      _tcl_data (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\\
+      _MEI55402\\_tcl_data\\encoding (UID: 00000000-00005540)\n \"<Input Sample.exe\"\
+      \ with parameter %TEMP%\\_MEI55402\\_tcl_data\\http1.0 (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\msgs (UID:\
+      \ 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\\
+      _tcl_data\\opt0.4 (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter\
+      \ %TEMP%\\_MEI55402\\_tcl_data\\tzdata (UID: 00000000-00005540)\n \"<Input Sample.exe\"\
+      \ with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\Africa (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      America (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\\
+      _MEI55402\\_tcl_data\\tzdata\\America\\Argentina (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      America\\Indiana (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter\
+      \ %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\America\\Kentucky (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      America\\North_Dakota (UID: 00000000-00005540)\n \"<Input Sample.exe\" with\
+      \ parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\Antarctica (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      Arctic (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\\
+      _MEI55402\\_tcl_data\\tzdata\\Asia (UID: 00000000-00005540)\n \"<Input Sample.exe\"\
+      \ with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\Atlantic (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      Australia (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\\
+      _MEI55402\\_tcl_data\\tzdata\\Brazil (UID: 00000000-00005540)\n \"<Input Sample.exe\"\
+      \ with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\Canada (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\_MEI55402\\_tcl_data\\tzdata\\\
+      Chile (UID: 00000000-00005540)\n \"<Input Sample.exe\" with parameter %TEMP%\\\
+      _MEI55402\\_tcl_data\\tzdata\\Etc (UID: 00000000-00005540)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "\"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"KERNEL32\" at\
+      \ base 7ff8c89d0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\TEMP\\\
+      VXOLE64.DLL\" at base 7ff8a7900000\n \"<Input Sample.exe\" loaded module \"\
+      API-MS-WIN-CORE-FIBERS-L1-1-2\" at base 7ff8c5180000\n \"<Input Sample.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 7ff8c7e10000\n \"<Input Sample.exe\"\
+      \ loaded module \"VCRUNTIME140.DLL\" at base 7ff8bc4d0000\n \"<Input Sample.exe\"\
+      \ loaded module \"VCRUNTIME140_1.DLL\" at base 7ff8bc6f0000\n \"<Input Sample.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 7ff8c8d80000\n \"<Input Sample.exe\" loaded\
+      \ module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 7ff8c3750000\n \"<Input\
+      \ Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\UCRTBASE.DLL\" at base 7ff8a79e0000\n\
+      \ \"<Input Sample.exe\" loaded module \"KERNELBASE.DLL\" at base 7ff8c5180000\n\
+      \ \"<Input Sample.exe\" loaded module \"KERNEL32.DLL\" at base 7ff8c89d0000\n\
+      \ \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\PYTHON313.DLL\" at\
+      \ base 7ff8a2400000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      BCRYPTPRIMITIVES.DLL\" at base 7ff8c56b0000\n \"<Input Sample.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-FILE-L2-1-4\" at base 7ff8c5180000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\PYTHON3\" at base 2c921ee0000\n \"<Input\
+      \ Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_CTYPES.PYD\" at base 7ff8b3380000\n\
+      \ \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_BZ2.PYD\" at base\
+      \ 7ff8b2fc0000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_LZMA.PYD\"\
+      \ at base 7ff8b23e0000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      _QUEUE.PYD\" at base 7ff8b2fb0000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\\
+      _MEI55402\\_WMI.PYD\" at base 7ff8b23d0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%TEMP%\\_MEI55402\\_HASHLIB.PYD\" at base 7ff8b23a0000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\_SOCKET.PYD\" at base 7ff8b2380000\n \"\
+      <Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\SELECT.PYD\" at base\
+      \ 7ff8b2370000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_SSL.PYD\"\
+      \ at base 7ff8b2340000\n \"<Input Sample.exe\" loaded module \"OLE32.DLL\" at\
+      \ base 7ff8c8870000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALREGISTRY-L1-1-0.DLL\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WBEM\\WBEMPROX.DLL\" at base 7ff8bace0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\WBEM\\WBEMSVC.DLL\" at base 7ff8b97c0000\n \"<Input\
+      \ Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL\" at\
+      \ base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-1-0.DLL\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      WBEM\\FASTPROX.DLL\" at base 7ff8b8aa0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%TEMP%\\_MEI55402\\PYEXPAT.PYD\" at base 7ff8b2280000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\_ASYNCIO.PYD\" at base 7ff8b2150000\n \"\
+      <Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_OVERLAPPED.PYD\" at\
+      \ base 7ff8b2330000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      MSWSOCK.DLL\" at base 7ff8c4900000\n \"<Input Sample.exe\" loaded module \"\
+      %TEMP%\\_MEI55402\\PSUTIL\\_PSUTIL_WINDOWS.PYD\" at base 7ff8b03c0000\n \"<Input\
+      \ Sample.exe\" loaded module \"IPHLPAPI.DLL\" at base 7ff8c4690000\n \"<Input\
+      \ Sample.exe\" loaded module \"NTDLL\" at base 7ff8c8d80000\n \"<Input Sample.exe\"\
+      \ loaded module \"WTSAPI32.DLL\" at base 7ff8c0430000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\WIN32\\WIN32API.PYD\" at base 7ff8affa0000\n\
+      \ \"<Input Sample.exe\" loaded module \"SECUR32.DLL\" at base 7ff8bb7a0000\n\
+      \ \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\CRYPTOGRAPHY\\HAZMAT\\\
+      BINDINGS\\_RUST.PYD\" at base 7ff898700000\n \"<Input Sample.exe\" loaded module\
+      \ \"%TEMP%\\_MEI55402\\_CFFI_BACKEND.CP313-WIN_AMD64.PYD\" at base 7ff8a9e50000\n\
+      \ \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\BCRYPT\\_BCRYPT.PYD\"\
+      \ at base 7ff8a7990000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      _UUID.PYD\" at base 7ff8b2270000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\\
+      _MEI55402\\MITMPROXY_RS\\MITMPROXY_RS.PYD\" at base 7ff897e60000\n \"<Input\
+      \ Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_BROTLI.CP313-WIN_AMD64.PYD\"\
+      \ at base 7ff8a5350000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      ZSTANDARD\\BACKEND_C.CP313-WIN_AMD64.PYD\" at base 7ff8a67e0000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\_RUAMEL_YAML.CP313-WIN_AMD64.PYD\" at base\
+      \ 7ff8a6c70000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\AIOQUIC\\\
+      _BUFFER.PYD\" at base 7ff8b2140000\n \"<Input Sample.exe\" loaded module \"\
+      %TEMP%\\_MEI55402\\UNICODEDATA.PYD\" at base 7ff8a58c0000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\AIOQUIC\\_CRYPTO.PYD\" at base 7ff897ac0000\n\
+      \ \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\PYLSQPACK\\_BINDING.PYD\"\
+      \ at base 7ff8a42c0000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      MARKUPSAFE\\_SPEEDUPS.CP313-WIN_AMD64.PYD\" at base 7ff8b02e0000\n \"<Input\
+      \ Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\_DECIMAL.PYD\" at base 7ff8a5620000\n\
+      \ \"<Input Sample.exe\" loaded module \"SHELL32\" at base 2c924450000\n \"<Input\
+      \ Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\TORNADO\\SPEEDUPS.PYD\" at\
+      \ base 7ff8b0260000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYSINFO-L1-2-1\"\
+      \ at base 7ff8c5180000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      _ARGON2_CFFI_BINDINGS\\_FFI.PYD\" at base 7ff8afbe0000\n \"<Input Sample.exe\"\
+      \ loaded module \"%TEMP%\\_MEI55402\\CHARSET_NORMALIZER\\MD.CP313-WIN_AMD64.PYD\"\
+      \ at base 7ff8b0250000\n \"<Input Sample.exe\" loaded module \"%TEMP%\\_MEI55402\\\
+      CHARSET_NORMALIZER\\MD__MYPYC.CP313-WIN_AMD64.PYD\" at base 7ff8ab890000\n \"\
+      <Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\RASADHLP.DLL\" at base\
+      \ 7ff8bcba0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      FWPUCLNT.DLL\" at base 7ff8be0a0000\n \"<Input Sample.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\RSAENH.DLL\" at base 7ff8c4510000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"<Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00005540)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00005540)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00005540)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00005540)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-2 (UID: 00000000-00005540)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter VCRUNTIME140.dll\
+      \ (UID: 00000000-00005540)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter VCRUNTIME140_1.dll (UID: 00000000-00005540)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00003736)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00003736)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-2 (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      ucrtbase.dll (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernelbase.dll (UID: 00000000-00003736)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter ntdll.dll (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter kernel32.dll\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\python313.dll (UID: 00000000-00003736)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-file-l2-1-4\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\python3 (UID: 00000000-00003736)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_ctypes.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\_bz2.pyd (UID: 00000000-00003736)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_lzma.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\_queue.pyd (UID: 00000000-00003736)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_wmi.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\_hashlib.pyd (UID: 00000000-00003736)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      _socket.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %TEMP%\\_MEI55402\\select.pyd (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      _ssl.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter ole32.dll (UID: 00000000-00003736)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\pyexpat.pyd (UID:\
+      \ 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter\
+      \ %TEMP%\\_MEI55402\\_asyncio.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_overlapped.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\psutil\\_psutil_windows.pyd (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter iphlpapi.dll\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter ntdll (UID: 00000000-00003736)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter wtsapi32.dll (UID: 00000000-00003736)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      win32\\win32api.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter secur32.dll (UID: 00000000-00003736)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      cryptography\\hazmat\\bindings\\_rust.pyd (UID: 00000000-00003736)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_cffi_backend.cp313-win_amd64.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\bcrypt\\_bcrypt.pyd (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      _uuid.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %TEMP%\\_MEI55402\\mitmproxy_rs\\mitmproxy_rs.pyd (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      _brotli.cp313-win_amd64.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\zstandard\\backend_c.cp313-win_amd64.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\_ruamel_yaml.cp313-win_amd64.pyd (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      aioquic\\_buffer.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\unicodedata.pyd (UID:\
+      \ 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter\
+      \ %TEMP%\\_MEI55402\\aioquic\\_crypto.pyd (UID: 00000000-00003736)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\pylsqpack\\\
+      _binding.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %TEMP%\\_MEI55402\\markupsafe\\_speedups.cp313-win_amd64.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\_decimal.pyd (UID: 00000000-00003736)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter shell32 (UID: 00000000-00003736)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\\
+      tornado\\speedups.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter %TEMP%\\_MEI55402\\_argon2_cffi_bindings\\\
+      _ffi.pyd (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %TEMP%\\_MEI55402\\charset_normalizer\\md.cp313-win_amd64.pyd\
+      \ (UID: 00000000-00003736)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter %TEMP%\\_MEI55402\\charset_normalizer\\md__mypyc.cp313-win_amd64.pyd\
+      \ (UID: 00000000-00003736)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: '"<Input Sample.exe" writes to a file "C:\Users\%OSUSER%\AppData\Local\Temp\_MEI55402\OpenSSL\SSL.py"'
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  selection_network:
+  - DestinationHostname: 1.dll
+  - DestinationHostname: 75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin
+  - DestinationHostname: 75c424fba3bc9d6c8ca7c317b096fc821ca328f9124b235fd89609d1ad879404.bin.exe
+  - DestinationHostname: VCRUNTIME140.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: aiohttp-3.13.3.dist
+  - DestinationHostname: amd64.pyd
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: asyncio.pyd
+  - DestinationHostname: attrs-25.4.0.dist
+  - DestinationHostname: backend.cp
+  - DestinationHostname: bcrypt.pyd
+  - DestinationHostname: binding.pyd
+  - DestinationHostname: blinker-1.9.0.dist
+  - DestinationHostname: brotli-1.2.0.dist
+  - DestinationHostname: brotli.cp
+  - DestinationHostname: buffer.pyd
+  - DestinationHostname: bz2.pyd
+  - DestinationHostname: c.cp
+  - DestinationHostname: certifi-2026.1.4.dist
+  - DestinationHostname: cffi-2.0.0.dist
+  - DestinationHostname: cffi-25.1.0.dist
+  - DestinationHostname: click-8.3.1.dist
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: crypto.pyd
+  - DestinationHostname: cryptography-46.0.3.dist
+  - DestinationHostname: ctypes-0.2.3.dist
+  - DestinationHostname: ctypes.pyd
+  - DestinationHostname: decimal.pyd
+  - DestinationHostname: extensions-4.15.0.dist
+  - DestinationHostname: ffi.pyd
+  - DestinationHostname: flask-3.1.2.dist
+  - DestinationHostname: fortnite-api.com
+  - DestinationHostname: h2-4.3.0.dist
+  - DestinationHostname: hashlib.pyd
+  - DestinationHostname: hpack-4.1.0.dist
+  - DestinationHostname: hyperframe-6.1.0.dist
+  - DestinationHostname: identity-24.2.0.dist
+  - DestinationHostname: idna-3.11.dist
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: itsdangerous-2.2.0.dist
+  - DestinationHostname: jinja2-3.1.6.dist
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: library.zip
+  - DestinationHostname: lzma.pyd
+  - DestinationHostname: markupsafe-3.0.3.dist
+  - DestinationHostname: md.cp
+  - DestinationHostname: metadata-8.7.1.dist
+  - DestinationHostname: mitmproxy-12.2.1.dist
+  - DestinationHostname: multidict-6.7.0.dist
+  - DestinationHostname: mypyc.cp
+  - DestinationHostname: normalizer-3.4.4.dist
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: overlapped.pyd
+  - DestinationHostname: packaging-26.0.dist
+  - DestinationHostname: psutil-5.9.8.dist
+  - DestinationHostname: pycparser-3.0.dist
+  - DestinationHostname: pydivert-2.1.0.dist
+  - DestinationHostname: pyexpat.pyd
+  - DestinationHostname: pyopenssl-25.3.0.dist
+  - DestinationHostname: pyparsing-3.2.5.dist
+  - DestinationHostname: python313.dll
+  - DestinationHostname: queue.pyd
+  - DestinationHostname: requests-2.32.5.dist
+  - DestinationHostname: rs-0.12.8.dist
+  - DestinationHostname: rs.pyd
+  - DestinationHostname: rust.pyd
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: select.pyd
+  - DestinationHostname: six-1.17.0.dist
+  - DestinationHostname: socket.pyd
+  - DestinationHostname: sortedcontainers-2.4.0.dist
+  - DestinationHostname: speedups.cp
+  - DestinationHostname: speedups.pyd
+  - DestinationHostname: ssl.pyd
+  - DestinationHostname: ucrtbase.dll
+  - DestinationHostname: unicodedata.pyd
+  - DestinationHostname: urllib3-2.6.3.dist
+  - DestinationHostname: user32.dll
+  - DestinationHostname: uuid.pyd
+  - DestinationHostname: wcwidth-0.3.4.dist
+  - DestinationHostname: websockets-16.0.dist
+  - DestinationHostname: werkzeug-3.1.5.dist
+  - DestinationHostname: win32api.pyd
+  - DestinationHostname: windows-0.12.8.dist
+  - DestinationHostname: windows.pyd
+  - DestinationHostname: wmi.pyd
+  - DestinationHostname: wsproto-1.2.0.dist
+  - DestinationHostname: wtsapi32.dll
+  - DestinationHostname: yaml.cp
+  - DestinationHostname: yarl-1.22.0.dist
+  - DestinationIp: 104.26.6.220
+  - DestinationIp: 127.0.0.1
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

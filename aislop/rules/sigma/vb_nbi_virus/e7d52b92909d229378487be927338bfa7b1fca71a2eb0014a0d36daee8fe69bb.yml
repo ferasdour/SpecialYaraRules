@@ -1,0 +1,1857 @@
+title: VB.NBI virus behavior detection (e7d52b92)
+id: e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb
+status: experimental
+description: Auto-generated Sigma rule for VB.NBI virus
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"RegCloseKey()\" (Indicator: \"RegCloseKey\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"RegCloseKey().\" (Indicator: \"RegCloseKey\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"RegCloseKey()\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey().\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "\"Software\\Microsoft\\DirectX\" in Source: e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00002996.00000000.224783.02EA0000.00000004.mdmp\n\
+      \ 00000000-00002996.00000001.224817.02EC1000.00000004.mdmp\n \"REGISTRY\\USER\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00002996.00000000.224783.02EA0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00004952.00000000.225279.02850000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006384.00000000.224934.02A70000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006384.00000000.224934.02A70000.00000004.mdmp\n \"Software\\\
+      Microsoft\\DirectX\" in Source: 00000000-00006384.00000001.225222.00611000.00000020.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ 00000000-00007376.00000001.225222.02B22000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows\\CurrentVersion\\Run\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ 00000000-00007376.00000001.225222.02B22000.00000004.mdmp\n \"REGISTRY\\USER\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows NT\\CurrentVersion\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows\\CurrentVersion\\Run\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n \"REGISTRY\\USER\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n \"STRY\\USER\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Policies\\Microsoft\\\
+      Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" in Source:\
+      \ 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Services\\SharedAccess\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\Schedule\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API \"CreateDirectoryA\" (Indicator: \"CreateDirectory\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"CreateDirectoryA\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API (Indicator: \"GetForegroundWindow\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API (Indicator: \"FindFirstFileA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FindNextFileA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateToolhelp32Snapshot\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"Process32First\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"Process32Next\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameExA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LookupPrivilegeValueA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"OpenThread\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"Thread32First\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"Thread32Next\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"URLDownloadToFileA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteUrlCacheEntryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RtlGetVersion\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteFileA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetFileInfoA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DrawIconEx\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyIcon\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RtlMoveMemory\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SeShutdownPrivilege\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FlsFree\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcessWindowStation\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"GetUserObjectInformationW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetLastActivePopup\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetActiveWindow\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowsDirectoryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FormatMessageA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CompareStringA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetVersionExA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentDirectoryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcmpiA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SelectObject\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleDC\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteDC\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"StretchBlt\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetObjectA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetFocus\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetClassNameA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowTextA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LoadStringA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CharLowerA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"EnumWindows\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetAsyncKeyState\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SendMessageA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetParent\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"PostMessageA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetWindowLongA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowLongA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LoadImageA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeA\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"VerQueryValueA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineA\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapSetInformation\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocalTime\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DecodePointer\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FreeEnvironmentStringsW\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"WideCharToMultiByte\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"SetHandleCount\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"EncodePointer\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"InterlockedIncrement\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"InterlockedDecrement\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapCreate\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"GetTickCount\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; File: \"\
+      e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n Found\
+      \ reference to API (Indicator: \"UnhandledExceptionFilter\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LeaveCriticalSection\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RtlUnwind\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API (Indicator: \"GetCPInfo\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleCP\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SetEndOfFile\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"SeDebugPrivilege\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API (Indicator: \"FindWindowA\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GrayStringA\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetTimer\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindWindowExA\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetUserNameW\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ResumeThread\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetWindowTextW\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CryptCreateHash\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"NetWkstaGetInfo\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IcmpSendEcho\"; Source: \"00000000-00006040.00000000.225329.03312000.00000004.mdmp,\
+      \ 00000000-00006040.00000001.227249.03312000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SeShutdownPrivilege\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsFree\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessWindowStation\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetUserObjectInformationW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastActivePopup\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetActiveWindow\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LookupPrivilegeValueA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowsDirectoryA\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LocalFree\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentDirectoryA\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"lstrcmpiA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SelectObject\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleDC\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteDC\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"StretchBlt\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetObjectA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFocus\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetClassNameA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowTextA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadStringA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharLowerA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumWindows\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetAsyncKeyState\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SendMessageA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetParent\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"PostMessageA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetWindowLongA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowLongA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoA\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadImageA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeA\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerQueryValueA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineA\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSetInformation\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocalTime\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"DecodePointer\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeEnvironmentStringsW\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetHandleCount\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found\
+      \ reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EncodePointer\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"InterlockedIncrement\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetLastError\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"InterlockedDecrement\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapCreate\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnhandledExceptionFilter\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlUnwind\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCPInfo\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleCP\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEndOfFile\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetForegroundWindow\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindNextFileA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateToolhelp32Snapshot\"; Source:\
+      \ \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Process32First\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"Process32Next\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameExA\"; Source: \"\
+      00000000-00007392.00000001.227054.00402000.00000080.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; Source: \"\
+      00000000-00007392.00000001.227054.00402000.00000080.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LookupPrivilegeValueA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"; Source:\
+      \ \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenThread\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"Thread32First\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"Thread32Next\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"URLDownloadToFileA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteUrlCacheEntryA\"; Source: \"\
+      00000000-00007392.00000001.227054.00402000.00000080.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlGetVersion\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteFileA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"SHGetFileInfoA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"DrawIconEx\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyIcon\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlMoveMemory\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptExportKey\"; Source: \"00000000-00007392.00000001.227054.02B80000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found\
+      \ reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"\
+      GetWindowThreadProcessId\"; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"GetWindowThreadProcessId\" (Indicator: \"GetWindowThreadProcessId\"\
+      ; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API \"OpenThread\" (Indicator: \"OpenThread\";\
+      \ File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"CreateThread()\" (Indicator: \"CreateThread\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source:\
+      \ \"00000000-00006040.00000000.225329.03312000.00000004.mdmp, 00000000-00006040.00000001.227249.03312000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateThread()\" (Indicator: \"CreateThread\";\
+      \ Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found\
+      \ reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source: \"\
+      00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"OpenThread\" (Indicator: \"OpenThread\"; Source: \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\"\
+      )\n Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source:\
+      \ \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Observed system executable string:\"C:\\Windows\\System32\\ieframe.dll\"\
+      \ [Source: e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin]\n\
+      \ Observed system executable string:\"%WINDIR%\\SYSTEM32\\MSVBVM60.DLL\" [Source:\
+      \ 00000000-00002996-0000044E-1064650227]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Found registry modification API: \"RegCreateKeyA\" in file \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      \n Found registry modification API: \"RegCreateKeyEx()\" in file \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExA\" in file \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      \n Found registry modification API: \"RegCreateKeyEx()\" in \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyExA\" in \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyA\" in \"00000000-00007392.00000001.227054.00402000.00000080.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: '"DXSETUP.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin\")\n\
+      \ Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00006384.00000001.225222.00611000.00000020.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Observed system executable string:\"%WINDIR%\\Resources\\Themes\\\
+      icsys.icn.exe\" [Source: 00000000-00002996-00000BC0-2483842218]\n Observed system\
+      \ executable string:\"%WINDIR%\\Resources\\Themes\\explorer.exe\" [Source: 00000000-00007376-00000BC0-2486097674]\n\
+      \ Observed system executable string:\"%WINDIR%\\resources\\themes\\explorer.exe\"\
+      \ [Source: 00000000-00007376-00000C2D-4635676866]\n Observed system executable\
+      \ string:\"%WINDIR%\\Resources\\spoolsv.exe\" [Source: 00000000-00007392-00000BC0-2488345612]\n\
+      \ Observed system executable string:\"%WINDIR%\\resources\\themes\\explorer.exe\
+      \ RO\" [Source: 00000000-00007392-00000BC1-2492348709]\n Observed system executable\
+      \ string:\"%WINDIR%\\resources\\svchost.exe RO\" [Source: 00000000-00007392-00000BC1-2492374282]\n\
+      \ Observed system executable string:\"%WINDIR%\\resources\\spoolsv.exe\" [Source:\
+      \ 00000000-00007392-00000C2D-4596940571]\n Observed system executable string:\"\
+      %WINDIR%\\resources\\spoolsv.exe SE\" [Source: 00000000-00007392-00000C47-4810370066]\n\
+      \ Observed system executable string:\"%WINDIR%\\System32\\explorer.exe\" [Source:\
+      \ 00000000-00007392-00000C2D-14576106829]\n Observed system executable string:\"\
+      %WINDIR%\\resources\\svchost.exe\" [Source: 00000000-00004952-00000C2D-1146089892]\n\
+      \ Observed system executable string:\"%WINDIR%\\Resources\\svchost.exe\" [Source:\
+      \ 00000000-00004952-00000BC0-2489138218]\n Observed system executable string:\"\
+      %WINDIR%\\resources\\spoolsv.exe PR\" [Source: 00000000-00006040-00000C47-5168768936]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "\"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00002996.00000000.224783.02EA0000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00002996.00000000.224783.02EA0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00002996.00000001.224817.02EC1000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00004952.00000000.225279.02850000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006384.00000000.224934.02A70000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006384.00000000.224934.02A70000.00000004.mdmp\n \"Software\\\
+      Microsoft\\DirectX\" in Source: 00000000-00006384.00000001.225222.00611000.00000020.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows NT\\CurrentVersion\" in Source: 00000000-00007376.00000000.224990.02B00000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007376.00000001.225222.02B22000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00007376.00000001.225222.02B22000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Policies\\\
+      Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007392.00000000.225134.02B80000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\" in Source:\
+      \ 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Services\\SharedAccess\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\Schedule\" in Source: 00000000-00007392.00000001.227054.02B80000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "\"<Input Sample.exe\" sets a windows hook with filter \"WH_MOUSE\"\
+      \ for thread ID 5624\n \"icsys.icn.exe\" sets a windows hook with filter \"\
+      WH_MOUSE\" for thread ID 6456\n \"explorer.exe\" sets a windows hook with filter\
+      \ \"WH_MOUSE\" for thread ID 3440\n \"spoolsv.exe\" sets a windows hook with\
+      \ filter \"WH_MOUSE\" for thread ID 7360\n \"svchost.exe\" sets a windows hook\
+      \ with filter \"WH_MOUSE\" for thread ID 7304\n \"spoolsv.exe\" sets a windows\
+      \ hook with filter \"WH_MOUSE\" for thread ID 7912"
+  - EventData: Sets a windows hook
+  - EventData: api-71
+  - EventData: "\"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 772b0000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 772b0000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 772b0000\n \"<Input Sample.exe\" loaded module \"KERNEL32\" at base\
+      \ 771e0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\"\
+      \ at base 72e70000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      UXTHEME.DLL\" at base 73960000\n \"<Input Sample.exe\" loaded module \"OLEAUT32.DLL\"\
+      \ at base 74650000\n \"<Input Sample.exe\" loaded module \"SXS.DLL\" at base\
+      \ 72de0000\n \"<Input Sample.exe\" loaded module \"COMCTL32.DLL\" at base 72bc0000\n\
+      \ \"<Input Sample.exe\" loaded module \"KERNEL32.DLL\" at base 771e0000\n \"\
+      <Input Sample.exe\" loaded module \"PSAPI.DLL\" at base 771d0000\n \"<Input\
+      \ Sample.exe\" loaded module \"NTDLL.DLL\" at base 77490000\n \"<Input Sample.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 73e00000\n \"<Input\
+      \ Sample.exe?\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 772b0000\n\
+      \ \"<Input Sample.exe?\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at\
+      \ base 772b0000\n \"<Input Sample.exe?\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 772b0000\n \"<Input Sample.exe?\" loaded module \"KERNEL32\" at base\
+      \ 771e0000\n \"<Input Sample.exe?\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\"\
+      \ at base 72e70000\n \"<Input Sample.exe?\" loaded module \"ADVPACK.DLL\" at\
+      \ base 72b90000\n \"<Input Sample.exe?\" loaded module \"ADVAPI32.DLL\" at base\
+      \ 744f0000\n \"<Input Sample.exe?\" loaded module \"DSETUP.DLL\" at base 0\n\
+      \ \"<Input Sample.exe?\" loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at\
+      \ base 73960000\n \"<Input Sample.exe?\" loaded module \"COMCTL32.DLL\" at base\
+      \ 72bc0000\n \"<Input Sample.exe?\" loaded module \"KERNEL32.DLL\" at base 771e0000\n\
+      \ \"<Input Sample.exe?\" loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at\
+      \ base 752d0000\n \"<Input Sample.exe?\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      OLE32.DLL\" at base 75020000\n \"<Input Sample.exe?\" loaded module \"OLEAUT32.DLL\"\
+      \ at base 74650000\n \"<Input Sample.exe?\" loaded module \"RPCRT4.DLL\" at\
+      \ base 76e10000\n \"<Input Sample.exe?\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\"\
+      \ at base 741f0000\n \"<Input Sample.exe?\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 741f0000\n \"<Input Sample.exe?\" loaded module \"API-MS-WIN-CORE-COM-L1-1-0.DLL\"\
+      \ at base 74cd0000\n \"icsys.icn.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 772b0000\n \"icsys.icn.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 772b0000\n \"icsys.icn.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 772b0000\n \"icsys.icn.exe\" loaded module \"KERNEL32\" at base 771e0000\n\
+      \ \"icsys.icn.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72e70000\n\
+      \ \"icsys.icn.exe\" loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base\
+      \ 73960000\n \"icsys.icn.exe\" loaded module \"OLEAUT32.DLL\" at base 74650000\n\
+      \ \"icsys.icn.exe\" loaded module \"SXS.DLL\" at base 72de0000\n \"icsys.icn.exe\"\
+      \ loaded module \"COMCTL32.DLL\" at base 72bc0000\n \"icsys.icn.exe\" loaded\
+      \ module \"KERNEL32.DLL\" at base 771e0000\n \"icsys.icn.exe\" loaded module\
+      \ \"PSAPI.DLL\" at base 771d0000\n \"icsys.icn.exe\" loaded module \"NTDLL.DLL\"\
+      \ at base 77490000\n \"icsys.icn.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      APPHELP.DLL\" at base 73e00000\n \"explorer.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 772b0000\n \"explorer.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 772b0000\n \"explorer.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 772b0000\n \"explorer.exe\" loaded module \"KERNEL32\" at base 771e0000\n\
+      \ \"explorer.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72e70000\n\
+      \ \"explorer.exe\" loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base\
+      \ 73960000\n \"explorer.exe\" loaded module \"OLEAUT32.DLL\" at base 74650000\n\
+      \ \"explorer.exe\" loaded module \"SXS.DLL\" at base 72de0000\n \"explorer.exe\"\
+      \ loaded module \"COMCTL32.DLL\" at base 72bc0000\n \"explorer.exe\" loaded\
+      \ module \"KERNEL32.DLL\" at base 771e0000\n \"explorer.exe\" loaded module\
+      \ \"PSAPI.DLL\" at base 771d0000\n \"explorer.exe\" loaded module \"NTDLL.DLL\"\
+      \ at base 77490000\n \"explorer.exe\" loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\"\
+      \ at base 73e00000\n \"explorer.exe\" loaded module \"ADVAPI32.DLL\" at base\
+      \ 744f0000\n \"explorer.exe\" loaded module \"USER32\" at base 741f0000\n \"\
+      explorer.exe\" loaded module \"USER32.DLL\" at base 741f0000\n \"spoolsv.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 772b0000\n \"spoolsv.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 772b0000\n \"spoolsv.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 772b0000\n \"\
+      spoolsv.exe\" loaded module \"KERNEL32\" at base 771e0000\n \"spoolsv.exe\"\
+      \ loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72e70000\n \"spoolsv.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73960000\n \"spoolsv.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 74650000\n \"spoolsv.exe\" loaded module\
+      \ \"SXS.DLL\" at base 72de0000\n \"spoolsv.exe\" loaded module \"COMCTL32.DLL\"\
+      \ at base 72bc0000\n \"spoolsv.exe\" loaded module \"KERNEL32.DLL\" at base\
+      \ 771e0000\n \"spoolsv.exe\" loaded module \"NTDLL.DLL\" at base 77490000\n\
+      \ \"spoolsv.exe\" loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base\
+      \ 73e00000\n \"svchost.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 772b0000\n \"svchost.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 772b0000\n \"svchost.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 772b0000\n \"svchost.exe\" loaded module \"KERNEL32\" at base 771e0000\n\
+      \ \"svchost.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72e70000\n\
+      \ \"svchost.exe\" loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base\
+      \ 73960000\n \"svchost.exe\" loaded module \"OLEAUT32.DLL\" at base 74650000\n\
+      \ \"svchost.exe\" loaded module \"SXS.DLL\" at base 72de0000\n \"svchost.exe\"\
+      \ loaded module \"COMCTL32.DLL\" at base 72bc0000\n \"svchost.exe\" loaded module\
+      \ \"KERNEL32.DLL\" at base 771e0000\n \"svchost.exe\" loaded module \"PSAPI.DLL\"\
+      \ at base 771d0000\n \"svchost.exe\" loaded module \"NTDLL.DLL\" at base 77490000\n\
+      \ \"svchost.exe\" loaded module \"RPCRT4.DLL\" at base 76e10000\n \"svchost.exe\"\
+      \ loaded module \"%WINDIR%\\SYSWOW64\\OLEAUT32.DLL\" at base 74650000\n \"svchost.exe\"\
+      \ loaded module \"NTDLL\" at base 77490000\n \"svchost.exe\" loaded module \"\
+      ADVAPI32.DLL\" at base 744f0000\n \"svchost.exe\" loaded module \"USER32\" at\
+      \ base 741f0000\n \"svchost.exe\" loaded module \"USER32.DLL\" at base 741f0000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"<Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter OLEAUT32.DLL (UID: 00000000-00002996)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter SXS.DLL (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter kernel32.dll\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter Psapi.dll (UID: 00000000-00002996)\n \"<Input Sample.exe?\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"LoadLibrary\" with a parameter kernel32 (UID:\
+      \ 00000000-00006384)\n \"<Input Sample.exe?\" called \"LoadLibrary\" with a\
+      \ parameter advpack.dll (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called\
+      \ \"LoadLibrary\" with a parameter advapi32.dll (UID: 00000000-00006384)\n \"\
+      <Input Sample.exe?\" called \"LoadLibrary\" with a parameter dsetup.dll (UID:\
+      \ 00000000-00006384)\n \"icsys.icn.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-synch-l1-2-0 (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"LoadLibrary\" with a parameter OLEAUT32.DLL (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"LoadLibrary\" with a parameter\
+      \ SXS.DLL (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32.dll (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"LoadLibrary\" with a parameter Psapi.dll (UID: 00000000-00007376)\n\
+      \ \"explorer.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"LoadLibrary\" with a\
+      \ parameter kernel32 (UID: 00000000-00007392)\n \"explorer.exe\" called \"LoadLibrary\"\
+      \ with a parameter OLEAUT32.DLL (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"LoadLibrary\" with a parameter SXS.DLL (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"LoadLibrary\" with a parameter kernel32.dll (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"LoadLibrary\" with a parameter\
+      \ Psapi.dll (UID: 00000000-00007392)\n \"explorer.exe\" called \"LoadLibrary\"\
+      \ with a parameter advapi32.dll (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"LoadLibrary\" with a parameter user32 (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"LoadLibrary\" with a parameter user32.dll (UID:\
+      \ 00000000-00007392)\n \"spoolsv.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-synch-l1-2-0 (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"LoadLibrary\" with a parameter\
+      \ kernel32 (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"LoadLibrary\"\
+      \ with a parameter OLEAUT32.DLL (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"LoadLibrary\" with a parameter SXS.DLL (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32.dll (UID: 00000000-00004952)\n\
+      \ \"svchost.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"LoadLibrary\" with a parameter\
+      \ kernel32 (UID: 00000000-00006040)\n \"svchost.exe\" called \"LoadLibrary\"\
+      \ with a parameter OLEAUT32.DLL (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"LoadLibrary\" with a parameter SXS.DLL (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32.dll (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"LoadLibrary\" with a parameter Psapi.dll (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"LoadLibrary\" with a parameter NTDLL (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"LoadLibrary\" with a parameter advapi32.dll (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"LoadLibrary\" with a parameter\
+      \ user32 (UID: 00000000-00006040)\n \"svchost.exe\" called \"LoadLibrary\" with\
+      \ a parameter user32.dll (UID: 00000000-00006040)\n \"spoolsv.exe\" called \"\
+      LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"LoadLibrary\" with a parameter OLEAUT32.DLL (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"LoadLibrary\" with a parameter\
+      \ SXS.DLL (UID: 00000000-00003820)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: "\"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter FlsGetValue\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateEventExW (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSymbolicLinkW (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00002996)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableCS (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter InitializeSRWLock\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWork (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter OleLoadPictureEx (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter DispCallFunc (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter LoadTypeLibEx (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter UnRegisterTypeLib\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateTypeLib2 (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDateFromUdate (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarUdateFromDate\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetAltMonthNames (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarNumFromParseNum (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarParseNumFromStr\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecFromR4 (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDecFromR8 (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarDecFromDate\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecFromI4 (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDecFromCy (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarR4FromDec\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetRecordInfoFromTypeInfo (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter GetRecordInfoFromGuids\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SafeArrayGetRecordInfo (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter SafeArraySetRecordInfo\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SafeArrayGetIID (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArraySetIID (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter SafeArrayCopyData\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter SafeArrayAllocDescriptorEx (UID: 00000000-00002996)\n \"\
+      <Input Sample.exe\" called \"GetProcAddress\" with a parameter SafeArrayCreateEx\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarFormat (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarFormatDateTime (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarFormatNumber\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarFormatPercent (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarFormatCurrency (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarWeekdayName\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarMonthName (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarAnd (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarCat (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarImp (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarMod (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarOr (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarPow (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarAbs (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFix (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarInt (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarNot (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarRound (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarCmp (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter VarDecAdd (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarDecCmp\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarBstrCat (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarCyMulI4 (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter VarBstrCmp\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromProgIDEx (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemMetrics (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter MonitorFromWindow (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter MonitorFromRect\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter MonitorFromPoint (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateToolhelp32Snapshot (UID: 00000000-00002996)\n \"<Input\
+      \ Sample.exe\" called \"GetProcAddress\" with a parameter Process32First (UID:\
+      \ 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\" with\
+      \ a parameter OpenProcess (UID: 00000000-00002996)\n \"<Input Sample.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetModuleFileNameExA (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe\" called \"GetProcAddress\" with a parameter Process32Next\
+      \ (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"GetProcAddress\"\
+      \ with a parameter CloseHandle (UID: 00000000-00002996)\n \"<Input Sample.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileAttributesA (UID: 00000000-00002996)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter FlsAlloc (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter FlsGetValue\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CreateEventExW (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolTimer (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWait (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryWhenCallbackReturns (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CreateSymbolicLinkW (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter GetFileInformationByHandleEx (UID: 00000000-00006384)\n \"\
+      <Input Sample.exe?\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter InitializeConditionVariable\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter WakeConditionVariable (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter SleepConditionVariableCS (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter InitializeSRWLock\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter AcquireSRWLockExclusive (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWork (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter SubmitThreadpoolWork\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CloseThreadpoolWork (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter CompareStringEx (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter GetLocaleInfoEx\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter AreFileApisANSI (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter RtlGetVersion (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter CoCreateInstance\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CoCreateInstanceEx (UID: 00000000-00006384)\n \"<Input Sample.exe?\"\
+      \ called \"GetProcAddress\" with a parameter CoGetClassObject (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter CoGetInstanceFromFile\
+      \ (UID: 00000000-00006384)\n \"<Input Sample.exe?\" called \"GetProcAddress\"\
+      \ with a parameter CoGetInstanceFromIStorage (UID: 00000000-00006384)\n \"<Input\
+      \ Sample.exe?\" called \"GetProcAddress\" with a parameter IsNTAdmin (UID: 00000000-00006384)\n\
+      \ \"<Input Sample.exe?\" called \"GetProcAddress\" with a parameter CheckTokenMembership\
+      \ (UID: 00000000-00006384)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeCriticalSectionEx (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"\
+      GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileInformationByHandleEx (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetSystemTimePreciseAsFileTime (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter OleLoadPictureEx (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter DispCallFunc (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter LoadTypeLibEx\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter UnRegisterTypeLib (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateTypeLib2 (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarDateFromUdate\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarUdateFromDate (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetAltMonthNames (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarNumFromParseNum\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarParseNumFromStr (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDecFromR4 (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarDecFromR8\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromDate (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromI4 (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarDecFromCy\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarR4FromDec (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRecordInfoFromTypeInfo (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter GetRecordInfoFromGuids\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayGetRecordInfo (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArraySetRecordInfo (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter SafeArrayGetIID\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArraySetIID (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter SafeArrayCopyData (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter SafeArrayAllocDescriptorEx\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayCreateEx (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarFormat (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarFormatDateTime\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormatNumber (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatPercent (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarFormatCurrency\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarWeekdayName (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarMonthName (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarAdd (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarAnd (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarCat (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarImp (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarMod (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarOr (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarPow (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarSub (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarXor (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarAbs (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarFix (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarInt (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarNeg (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarNot (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarRound (UID: 00000000-00007376)\n \"\
+      icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarCmp (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarDecAdd (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarDecCmp (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarBstrCat (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarCyMulI4 (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter VarBstrCmp (UID:\
+      \ 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter\
+      \ CLSIDFromProgIDEx (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\"\
+      \ with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter GetSystemMetrics\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter MonitorFromWindow (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter MonitorFromRect (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter MonitorFromPoint\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter EnumDisplayMonitors (UID: 00000000-00007376)\n \"icsys.icn.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetMonitorInfoA (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter CreateToolhelp32Snapshot\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter Process32First (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter OpenProcess (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter GetModuleFileNameExA\
+      \ (UID: 00000000-00007376)\n \"icsys.icn.exe\" called \"GetProcAddress\" with\
+      \ a parameter Process32Next (UID: 00000000-00007376)\n \"icsys.icn.exe\" called\
+      \ \"GetProcAddress\" with a parameter CloseHandle (UID: 00000000-00007376)\n\
+      \ \"icsys.icn.exe\" called \"GetProcAddress\" with a parameter GetFileAttributesA\
+      \ (UID: 00000000-00007376)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeCriticalSectionEx (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00007392)\n \"explorer.exe\" called \"\
+      GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileInformationByHandleEx (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetSystemTimePreciseAsFileTime (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00007392)\n \"explorer.exe\" called \"\
+      GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00007392)\n \"explorer.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter OleLoadPictureEx (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter DispCallFunc (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter LoadTypeLibEx\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter UnRegisterTypeLib (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateTypeLib2 (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarDateFromUdate\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarUdateFromDate (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetAltMonthNames (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarNumFromParseNum\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarParseNumFromStr (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDecFromR4 (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarDecFromR8 (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarDecFromDate (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecFromI4 (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDecFromCy (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarR4FromDec (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetRecordInfoFromTypeInfo (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRecordInfoFromGuids (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter SafeArrayGetRecordInfo\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArraySetRecordInfo (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArrayGetIID (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter SafeArraySetIID\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayCopyData (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArrayAllocDescriptorEx (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ SafeArrayCreateEx (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarFormat (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatDateTime (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarFormatNumber\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormatPercent (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatCurrency (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarWeekdayName\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarMonthName (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAnd (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarCat (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarImp (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarMod (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarOr (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarPow (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarAbs (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarFix (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarInt (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarNot (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarRound (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarCmp (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecAdd (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecCmp (UID: 00000000-00007392)\n \"\
+      explorer.exe\" called \"GetProcAddress\" with a parameter VarBstrCat (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter VarCyMulI4 (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarBstrCmp (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromProgIDEx (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemMetrics (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter MonitorFromWindow (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter MonitorFromRect\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter MonitorFromPoint (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateToolhelp32Snapshot (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter Process32First (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter OpenProcess (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetModuleFileNameExA (UID: 00000000-00007392)\n \"explorer.exe\" called \"\
+      GetProcAddress\" with a parameter Process32Next (UID: 00000000-00007392)\n \"\
+      explorer.exe\" called \"GetProcAddress\" with a parameter CloseHandle (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetFileAttributesA (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegCreateKeyA (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegSetValueExA (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter RegCloseKey (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ RegOpenKeyA (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegDeleteValueA (UID: 00000000-00007392)\n \"explorer.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetForegroundWindow (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter GetWindowThreadProcessId\
+      \ (UID: 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with\
+      \ a parameter Thread32First (UID: 00000000-00007392)\n \"explorer.exe\" called\
+      \ \"GetProcAddress\" with a parameter Thread32Next (UID: 00000000-00007392)\n\
+      \ \"explorer.exe\" called \"GetProcAddress\" with a parameter OpenThread (UID:\
+      \ 00000000-00007392)\n \"explorer.exe\" called \"GetProcAddress\" with a parameter\
+      \ ResumeThread (UID: 00000000-00007392)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeCriticalSectionEx (UID: 00000000-00004952)\n \"\
+      spoolsv.exe\" called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetFileInformationByHandle (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeConditionVariable (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeConditionVariable (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SleepConditionVariableCS (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter TryAcquireSRWLockExclusive (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWork (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter OleLoadPictureEx (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter DispCallFunc (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter LoadTypeLibEx (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ UnRegisterTypeLib (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateTypeLib2 (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDateFromUdate (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarUdateFromDate\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetAltMonthNames (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarNumFromParseNum (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarParseNumFromStr\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromR4 (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromR8 (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarDecFromDate\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromI4 (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromCy (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarR4FromDec (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetRecordInfoFromTypeInfo (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRecordInfoFromGuids (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArrayGetRecordInfo\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArraySetRecordInfo (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArrayGetIID (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArraySetIID\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayCopyData (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter SafeArrayAllocDescriptorEx (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArrayCreateEx\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormat (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"\
+      GetProcAddress\" with a parameter VarFormatDateTime (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarFormatNumber\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormatPercent (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatCurrency (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarWeekdayName\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarMonthName (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAnd (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarCat (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarImp (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarMod (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarOr (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarPow (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarAbs (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarFix (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarInt (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarNot (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarRound (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarCmp (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecAdd (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecCmp (UID: 00000000-00004952)\n \"\
+      spoolsv.exe\" called \"GetProcAddress\" with a parameter VarBstrCat (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarCyMulI4 (UID:\
+      \ 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarBstrCmp (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromProgIDEx (UID: 00000000-00004952)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemMetrics (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter MonitorFromWindow (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter MonitorFromRect\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter MonitorFromPoint (UID: 00000000-00004952)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00004952)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00004952)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileAttributesA (UID: 00000000-00004952)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsAlloc (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsSetValue (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitOnceExecuteOnce (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSemaphoreExW (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00006040)\n \"\
+      svchost.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWait (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlushProcessWriteBuffers (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcessorNumber (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackageId\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTickCount64 (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetFileInformationByHandleEx (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00006040)\n \"svchost.exe\" called \"\
+      GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00006040)\n \"svchost.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter OleLoadPictureEx (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter DispCallFunc (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter LoadTypeLibEx (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ UnRegisterTypeLib (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateTypeLib2 (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDateFromUdate (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarUdateFromDate\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetAltMonthNames (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarNumFromParseNum (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarParseNumFromStr\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromR4 (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromR8 (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarDecFromDate\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromI4 (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromCy (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarR4FromDec (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetRecordInfoFromTypeInfo (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRecordInfoFromGuids (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SafeArrayGetRecordInfo\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArraySetRecordInfo (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArrayGetIID (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SafeArraySetIID\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayCopyData (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter SafeArrayAllocDescriptorEx (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter SafeArrayCreateEx\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormat (UID: 00000000-00006040)\n \"svchost.exe\" called \"\
+      GetProcAddress\" with a parameter VarFormatDateTime (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarFormatNumber\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormatPercent (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatCurrency (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarWeekdayName\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarMonthName (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAnd (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarCat (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarImp (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarMod (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarOr (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarPow (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarAbs (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarFix (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarInt (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarNot (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarRound (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarCmp (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecAdd (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecCmp (UID: 00000000-00006040)\n \"\
+      svchost.exe\" called \"GetProcAddress\" with a parameter VarBstrCat (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter VarCyMulI4 (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarBstrCmp (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromProgIDEx (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemMetrics (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter MonitorFromWindow (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter MonitorFromRect\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter MonitorFromPoint (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateToolhelp32Snapshot (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter Process32First (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter OpenProcess (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetModuleFileNameExA (UID: 00000000-00006040)\n \"svchost.exe\" called \"\
+      GetProcAddress\" with a parameter Process32Next (UID: 00000000-00006040)\n \"\
+      svchost.exe\" called \"GetProcAddress\" with a parameter CloseHandle (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter RegCreateKeyA (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ RegSetValueExA (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegCloseKey (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegOpenKeyA (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter RegDeleteValueA\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileAttributesA (UID: 00000000-00006040)\n \"svchost.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetForegroundWindow (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter GetWindowThreadProcessId\
+      \ (UID: 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with\
+      \ a parameter Thread32First (UID: 00000000-00006040)\n \"svchost.exe\" called\
+      \ \"GetProcAddress\" with a parameter Thread32Next (UID: 00000000-00006040)\n\
+      \ \"svchost.exe\" called \"GetProcAddress\" with a parameter OpenThread (UID:\
+      \ 00000000-00006040)\n \"svchost.exe\" called \"GetProcAddress\" with a parameter\
+      \ ResumeThread (UID: 00000000-00006040)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeCriticalSectionEx (UID: 00000000-00003820)\n \"\
+      spoolsv.exe\" called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter FlsSetValue (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsGetValue (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringEx (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsFree (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter InitOnceExecuteOnce\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventExW (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreW (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreExW\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolTimer (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolTimer (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentPackageId (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTickCount64 (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetFileInformationByHandle (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeConditionVariable (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter WakeConditionVariable (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter WakeAllConditionVariable\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SleepConditionVariableCS (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSRWLock (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter TryAcquireSRWLockExclusive (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseSRWLockExclusive (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableSRW\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWork (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter OleLoadPictureEx (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter DispCallFunc (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter LoadTypeLibEx (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ UnRegisterTypeLib (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateTypeLib2 (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarDateFromUdate (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarUdateFromDate\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetAltMonthNames (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarNumFromParseNum (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarParseNumFromStr\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromR4 (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromR8 (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarDecFromDate\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarDecFromI4 (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecFromCy (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarR4FromDec (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetRecordInfoFromTypeInfo (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRecordInfoFromGuids (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArrayGetRecordInfo\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArraySetRecordInfo (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SafeArrayGetIID (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArraySetIID\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter SafeArrayCopyData (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter SafeArrayAllocDescriptorEx (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter SafeArrayCreateEx\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormat (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"\
+      GetProcAddress\" with a parameter VarFormatDateTime (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarFormatNumber\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarFormatPercent (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarFormatCurrency (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarWeekdayName\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter VarMonthName (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarAdd (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter VarAnd (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarCat (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarDiv (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarEqv (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarIdiv (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarImp (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarMod (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarMul (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarOr (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarPow (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarSub (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarXor (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarAbs (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarFix (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarInt (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarNeg (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarNot (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarRound (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarCmp (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter VarDecAdd (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter VarDecCmp (UID: 00000000-00003820)\n \"\
+      spoolsv.exe\" called \"GetProcAddress\" with a parameter VarBstrCat (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter VarCyMulI4 (UID:\
+      \ 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with a parameter\
+      \ VarBstrCmp (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromProgIDEx (UID: 00000000-00003820)\n \"spoolsv.exe\"\
+      \ called \"GetProcAddress\" with a parameter SxsOleAut32MapIIDOrCLSIDToTypeLibrary\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemMetrics (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter MonitorFromWindow (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter MonitorFromRect\
+      \ (UID: 00000000-00003820)\n \"spoolsv.exe\" called \"GetProcAddress\" with\
+      \ a parameter MonitorFromPoint (UID: 00000000-00003820)\n \"spoolsv.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumDisplayMonitors (UID: 00000000-00003820)\n\
+      \ \"spoolsv.exe\" called \"GetProcAddress\" with a parameter GetMonitorInfoA\
+      \ (UID: 00000000-00003820)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "\"<Input Sample.exe\" called \"CreateProcessW\" with parameter \"\
+      c:\\e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin.exe\"\
+      \ - (UID: 00000000-00002996)\n \"<Input Sample.exe\" called \"CreateProcessW\"\
+      \ with parameter \"%WINDIR%\\Resources\\Themes\\icsys.icn.exe\" - (UID: 00000000-00002996)\n\
+      \ \"icsys.icn.exe\" called \"CreateProcessW\" with parameter \"%WINDIR%\\resources\\\
+      themes\\explorer.exe\" - (UID: 00000000-00007376)\n \"explorer.exe\" called\
+      \ \"CreateProcessW\" with parameter \"%WINDIR%\\resources\\spoolsv.exe SE\"\
+      \ - (UID: 00000000-00007392)\n \"spoolsv.exe\" called \"CreateProcessW\" with\
+      \ parameter \"%WINDIR%\\resources\\svchost.exe\" - (UID: 00000000-00004952)\n\
+      \ \"svchost.exe\" called \"CreateProcessW\" with parameter \"%WINDIR%\\resources\\\
+      spoolsv.exe PR\" - (UID: 00000000-00006040)"
+  - EventData: Calls an API typically used to create a process
+  - EventData: api-128
+  selection_network:
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: COMCTL32.dll
+  - DestinationHostname: DXError.log
+  - DestinationHostname: DXSETUP.pdb
+  - DestinationHostname: DirectX.log
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: KERNEL32.DLL
+  - DestinationHostname: MSVBVM60.DLL
+  - DestinationHostname: OLEAUT32.DLL
+  - DestinationHostname: Project1.uExWatch
+  - DestinationHostname: Project1.vbp
+  - DestinationHostname: Psapi.dll
+  - DestinationHostname: SXS.DLL
+  - DestinationHostname: USER32.DLL
+  - DestinationHostname: VB6.OLB
+  - DestinationHostname: VBA6.DLL
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: advpack.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: comctl32.dll
+  - DestinationHostname: directx.cab
+  - DestinationHostname: directx.inf
+  - DestinationHostname: dsetup.dll
+  - DestinationHostname: dsetup32.dll
+  - DestinationHostname: dxnt.cab
+  - DestinationHostname: dxntunp.inf
+  - DestinationHostname: dxsetup.cpp
+  - DestinationHostname: e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin
+  - DestinationHostname: e7d52b92909d229378487be927338bfa7b1fca71a2eb0014a0d36daee8fe69bb.bin.exe
+  - DestinationHostname: explorer.exe
+  - DestinationHostname: icsys.icn
+  - DestinationHostname: icsys.icn.exe
+  - DestinationHostname: ieframe.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ntkrnlpa.exe
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: psheets.cpp
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: spoolsv.exe
+  - DestinationHostname: svchost.exe
+  - DestinationHostname: user32.dll
+  - DestinationHostname: utils.cpp
+  - DestinationHostname: wininet.dll
+  condition: selection_behavior or selection_network
