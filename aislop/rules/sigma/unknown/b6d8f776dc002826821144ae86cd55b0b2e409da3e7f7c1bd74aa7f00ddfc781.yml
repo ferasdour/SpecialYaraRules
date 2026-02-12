@@ -1,0 +1,639 @@
+title: unknown behavior detection (b6d8f776)
+id: b6d8f776dc002826821144ae86cd55b0b2e409da3e7f7c1bd74aa7f00ddfc781
+status: experimental
+description: Auto-generated Sigma rule for unknown
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: '"uSoftware\Policies\Microsoft\Windows\Installer" in Source: DrukiGofin_3.18.2.0
+      (1).msi'
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: 'file/memory contains long string(File: "MSID381.tmp")'
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: 'Found reference to API "CreateFileW" (Indicator: "CreateFile"; Source:
+      "00000000-00002456.00000000.289008.0078A000.00000002.mdmp, 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp")'
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp, 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      )\n Found reference to API \"levateCreateProcess\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00002456.00000000.289008.032E0000.00000004.mdmp, 00000000-00002456.00000001.289040.032E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source:\
+      \ \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "\"msiexec.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\" at\
+      \ 0CAB0000\n \"msiexec.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 0D780000\n \"MsiExec.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 77450000\n \"MsiExec.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72E20000\n \"rundll32.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72E20000\n \"rundll32.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 77450000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: '"rundll32.exe" with parameter %TEMP%\MSID381.tmp- (UID: 00000000-00002456)'
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "\"rundll32.exe\" writes to a file \"C:\\Users\\%OSUSER%\\AppData\\\
+      Local\\Temp\\MSID381.tmp-\\Gofin.SetupCustomActions.dll\"\n \"rundll32.exe\"\
+      \ writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\MSID381.tmp-\\\
+      Microsoft.Deployment.WindowsInstaller.dll\"\n \"rundll32.exe\" writes to a file\
+      \ \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\MSID381.tmp-\\CustomAction.config\""
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  - EventData: '"rundll32.exe" loaded module "%WINDIR%\assembly\NativeImages_v4.0.30319_32\mscorlib\8d55d7cad944a3f21aeb1db491f3d6de\mscorlib.ni.dll"
+      at 70F40000'
+  - EventData: Loads the .NET runtime environment
+  - EventData: module-3
+  - EventData: "Process rundll32.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:2456:168:WilStaging_02\"\n Process rundll32.exe created mutex with\
+      \ name  \"Local\\SM0:2456:168:WilStaging_02\""
+  - EventData: Creates mutants
+  - EventData: mutant-0
+  - EventData: "LoadLibraryExW at 00000000-00002456-40118-123-00784801\n LoadLibraryExW\
+      \ at 00000000-00002456-40118-134-007842F5"
+  - EventData: Contains ability to dynamically load libraries
+  - EventData: stream-108
+  - EventData: "Found string - \\\\.\\pipe\\\n Found string - \\.\\pipe\\SfxCA_4510750"
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: "Found reference to API (Indicator: \"SeShutdownPrivilege\"; File:\
+      \ \"DrukiGofin_3.18.2.0 (1).msi\"), Found reference to API (Indicator: \"SeDebugPrivilege\"\
+      ; File: \"DrukiGofin_3.18.2.0 (1).msi\"), Found reference to API (Indicator:\
+      \ \"RtlDllShutdownInProgress\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"RaiseFailFastException\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"MessageBoxW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"TranslateMessage\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DispatchMessageW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"RegisterClassW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DestroyWindow\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateWindowExW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"GetWindow\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DefWindowProcW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadCursorW\"; File: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"RaiseFailFastException\"; Source: \"\
+      00000000-00002456.00000000.289008.00781000.00000020.mdmp\"), Found reference\
+      \ to API (Indicator: \"RtlDllShutdownInProgress\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"MessageBoxW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"TranslateMessage\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DispatchMessageW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"RegisterClassW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DestroyWindow\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateWindowExW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"GetWindow\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"DefWindowProcW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadCursorW\"; Source: \"00000000-00002456.00000000.289008.00781000.00000020.mdmp\"\
+      ), Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"IsWow64Process2\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"InitOnceExecuteOnce\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateSemaphoreExW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"SetLastError\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\n 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ReleaseSemaphore\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetSystemWow64Directory2W\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"InitializeProcThreadAttributeList\"\
+      ; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found\
+      \ reference to API (Indicator: \"EncodePointer\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\n 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LocalAlloc\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"ReleaseMutex\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetSystemDirectoryW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"Wow64EnableWow64FsRedirection\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetProcessMitigationPolicy\"; Source:\
+      \ \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CreateEventW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CoInitializeSecurity\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"AttachConsole\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"UpdateProcThreadAttribute\"; Source:\
+      \ \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"ReleaseSRWLockExclusive\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"OutputDebugStringW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetEvent\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"AcquireSRWLockExclusive\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"\
+      00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"OpenSemaphoreW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"ReleaseSRWLockShared\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FreeConsole\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"HeapSetInformation\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DeleteProcThreadAttributeList\"; Source:\
+      \ \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"LoadStringW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DecodePointer\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CreateMutexExW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"AcquireSRWLockShared\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CLSIDFromString\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\n 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DebugBreak\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.07832000.00000002.mdmp\n 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"Sleep\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"UnhandledExceptionFilter\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"QueryPerformanceCounter\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetSystemTimeAsFileTime\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"SearchPathW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\n\
+      \ 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"CharNextW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateActCtxW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ActivateActCtx\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DeactivateActCtx\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ReleaseActCtx\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"QueryActCtxW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"PathIsRelativeW\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"NtQuerySystemInformation\"; Source:\
+      \ \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"RtlImageNtHeader\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"NtSetInformationProcess\"; Source: \"\
+      00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"NtQueryInformationToken\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"RtlNtStatusToDosError\"; Source: \"\
+      00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"NtOpenProcessToken\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"NtClose\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DelayLoadFailureHook\"; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LockResource\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FormatMessage\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetEnvironmentVariable\"; Source: \"\
+      00000000-00002456.00000000.289008.07832000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"GetTempFileName\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetObject\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FatalExit\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindResourceEx\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadLibraryEx\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"MessageBox\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateDirectory\"; Source: \"00000000-00002456.00000000.289008.07832000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FlsAlloc\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FlsFree\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FlsGetValue\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FlsSetValue\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; Source:\
+      \ \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"LCMapStringEx\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LocaleNameToLCID\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"PathFileExistsW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LoadLibraryW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateDirectoryW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"MultiByteToWideChar\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateThread\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetOverlappedResult\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ResetEvent\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"WaitForMultipleObjects\"; Source: \"\
+      00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"WriteFile\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ConnectNamedPipe\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DisconnectNamedPipe\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CreateNamedPipeW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"WaitNamedPipeW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"CancelIo\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetTempPathW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"RemoveDirectoryW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DeleteFileW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindFirstFileW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindNextFileW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"InitializeSListHead\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"InterlockedFlushSList\"; Source: \"\
+      00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"RtlUnwind\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"TlsFree\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetFilePointerEx\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetConsoleMode\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"ReadConsoleW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetConsoleCP\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetStdHandle\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SetEndOfFile\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetStringTypeW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetACP\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"LCMapStringW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindFirstFileExA\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FindNextFileA\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"IsValidCodePage\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetOEMCP\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetCPInfo\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetCommandLineA\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"GetEnvironmentStringsW\"; Source: \"\
+      00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"), Found reference\
+      \ to API (Indicator: \"FreeEnvironmentStringsW\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"HeapSize\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      ), Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"00000000-00002456.00000001.289040.032E0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp, 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: "Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp, 00000000-00002456.00000000.289008.72DF6000.00000002.mdmp\"\
+      )\n Found reference to API \"NtOpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00002456.00000000.289008.0078A000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: 'Found reference to API "CreateThread" (Indicator: "CreateThread";
+      Source: "00000000-00002456.00000000.289008.72DF6000.00000002.mdmp")'
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: '"rundll32.exe" called "CreateDirectoryW" with parameter %TEMP%\MSID381.tmp-
+      (UID: 00000000-00002456)'
+  - EventData: Calls an API typically used to create a directory
+  - EventData: api-122
+  - EventData: "\"rundll32.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlsAlloc (UID: 00000000-00002456)\n \"rundll32.exe\" called \"\
+      GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00002456)\n \"\
+      rundll32.exe\" called \"GetProcAddress\" with a parameter FlsGetValue (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ LCMapStringEx (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsFree (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter InitOnceExecuteOnce (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CreateEventExW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSemaphoreW (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateSemaphoreExW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CreateThreadpoolTimer\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetThreadpoolTimer (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter WaitForThreadpoolTimerCallbacks\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolTimer (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolWait (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolWait\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CloseThreadpoolWait (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlushProcessWriteBuffers (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ FreeLibraryWhenCallbackReturns (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcessorNumber (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateSymbolicLinkW (UID: 00000000-00002456)\n \"rundll32.exe\" called \"\
+      GetProcAddress\" with a parameter GetCurrentPackageId (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetTickCount64\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileInformationByHandleEx (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFileInformationByHandle (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetSystemTimePreciseAsFileTime (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00002456)\n \"rundll32.exe\" called \"\
+      GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00002456)\n \"rundll32.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetNativeSystemInfo (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter EncodePointer (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GuardCheckLongJumpTarget\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter DecodePointer (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetRequestedRuntimeInfo (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CorBindToRuntimeEx\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegOpenKeyExW (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegQueryInfoKeyW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter RegEnumKeyExW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegEnumValueW (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegCloseKey (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter RegQueryValueExW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter AddDllDirectory (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter EventRegister (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter EventSetInformation\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegisterShimImplCallback (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterShimImplCleanupCallback\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetShellShimInstance (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter OnShimDllMainCalled (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetRequestedRuntimeInfo_RetAddr\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter UrlIsW (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\"\
+      \ with a parameter AppPolicyGetClrCompat (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackageInfo (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackagePath\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter OpenProcessToken (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetTokenInformation (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetFileVersionInfoSizeW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileVersionInfoW (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter VerQueryValueW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CorBindToRuntimeEx_RetAddr\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetRuntimeInfo (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetProcessWindowStation (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetUserObjectInformationW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter DllGetClassObjectInternal (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter QuirkIsEnabled3 (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter QuirkGetData2\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateConfigStream (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateConfigStream_RetAddr (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetNumaHighestNodeNumber (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetSystemWindowsDirectoryW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter AllocateAndInitializeSid\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeAcl (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter AddAccessAllowedAce (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter FreeSid (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ RoInitialize (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\"\
+      \ with a parameter AddSIDToBoundaryDescriptor (UID: 00000000-00002456)\n \"\
+      rundll32.exe\" called \"GetProcAddress\" with a parameter CreateBoundaryDescriptorW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreatePrivateNamespaceW (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter OpenPrivateNamespaceW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter DeleteBoundaryDescriptor\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter WerRegisterRuntimeExceptionModule (UID: 00000000-00002456)\n \"\
+      rundll32.exe\" called \"GetProcAddress\" with a parameter RaiseException (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ SetSystemFileCacheSize (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter NtSetSystemInformation (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter PrivIsDllSynchronizationHeld\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoInitializeEx (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter RoUninitialize (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetProcessExecutableHeap\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetProcessExecutableHeap_RetAddr (UID: 00000000-00002456)\n \"\
+      rundll32.exe\" called \"GetProcAddress\" with a parameter SysStringByteLen (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ CompareStringOrdinal (UID: 00000000-00002456)\n \"rundll32.exe\" called \"\
+      GetProcAddress\" with a parameter GetFullPathName (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetFullPathNameW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoCreateGuid (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter LocaleNameToLCID (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetUserDefaultLocaleName\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter LCIDToLocaleName (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetUserPreferredUILanguages (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetEnabledXStateFeatures\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter sxsJitStartup (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter jitStartup (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter getJit (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter LocalAlloc (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ LocalFree (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegOpenKeyEx (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetCurrentDirectory (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter SetCurrentDirectoryW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetEnvironmentVariable (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetEnvironmentVariableW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter LookupPrivilegeValue\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter LookupPrivilegeValueW (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentProcess (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter OpenProcessTokenW\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter AdjustTokenPrivileges (UID: 00000000-00002456)\n \"rundll32.exe\"\
+      \ called \"GetProcAddress\" with a parameter AdjustTokenPrivilegesW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CloseHandle (UID:\
+      \ 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with a parameter\
+      \ NtQuerySystemInformation (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter NtQuerySystemInformationW (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter CoGetContextToken\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateActCtxW (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter AddRefActCtx (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter ReleaseActCtx\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter ActivateActCtx (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter DeactivateActCtx (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter GetCurrentActCtx\
+      \ (UID: 00000000-00002456)\n \"rundll32.exe\" called \"GetProcAddress\" with\
+      \ a parameter QueryActCtxW (UID: 00000000-00002456)\n \"rundll32.exe\" called\
+      \ \"GetProcAddress\" with a parameter RtlDllShutdownInProgress (UID: 00000000-00002456)\n\
+      \ \"rundll32.exe\" called \"GetProcAddress\" with a parameter EventUnregister\
+      \ (UID: 00000000-00002456)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "\"SELECT `WixCloseApplication`, `Target`, `Description`, `Condition`,\
+      \ `Attributes`, `Property`, `TerminateExitCode`, `Timeout` FROM `WixCloseApplication`\
+      \ ORDER BY `Sequence`\" (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator: \"\
+      select `wixcloseapplication`, `target`, `description`, `condition`, `attributes`,\
+      \ `property`, `terminateexitcode`, `timeout` from `wixcloseapplication` order\
+      \ by `sequence`\")\n \"SELECT `WixRemoveFolderEx`, `Component_`, `Property`,\
+      \ `InstallMode` FROM `WixRemoveFolderEx`\" (Source: DrukiGofin_3.18.2.0 (1).msi\n\
+      \ Indicator: \"select `wixremovefolderex`, `component_`, `property`, `installmode`\
+      \ from `wixremovefolderex`\")\n \"SELECT `SecureObjects`.`SecureObject`, `SecureObjects`.`Table`,\
+      \ `SecureObjects`.`Domain`, `SecureObjects`.`User`, `SecureObjects`.`Permission`,\
+      \ `SecureObjects`.`Component_`, `Component`.`Attributes` FROM `SecureObjects`,`Component`\
+      \ WHERE `SecureObjects`.`Component_`=`Component`.`Component`\" (Source: DrukiGofin_3.18.2.0\
+      \ (1).msi\n Indicator: \"select `secureobjects`.`secureobject`, `secureobjects`.`table`,\
+      \ `secureobjects`.`domain`, `secureobjects`.`user`, `secureobjects`.`permission`,\
+      \ `secureobjects`.`component_`, `component`.`attributes` from `secureobjects`,`component`\
+      \ where `secureobjects`.`component_`=`component`.`component`\")\n \"SELECT `Registry`.`Registry`,\
+      \ `Registry`.`Root`, `Registry`.`Key` FROM `Registry` WHERE `Registry`.`Registry`=?\"\
+      \ (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator: \"select `registry`.`registry`,\
+      \ `registry`.`root`, `registry`.`key` from `registry` where `registry`.`registry`=?\"\
+      )\n \"SELECT `ServiceInstall`.`Name` FROM `ServiceInstall` WHERE `ServiceInstall`.`ServiceInstall`=?\"\
+      \ (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator: \"select `serviceinstall`.`name`\
+      \ from `serviceinstall` where `serviceinstall`.`serviceinstall`=?\")\n \"SELECT\
+      \ `ServiceName`, `Component_`, `NewService`, `FirstFailureActionType`, `SecondFailureActionType`,\
+      \ `ThirdFailureActionType`, `ResetPeriodInDays`, `RestartServiceDelayInSeconds`,\
+      \ `ProgramCommandLine`, `RebootMessage` FROM `ServiceConfig`\" (Source: DrukiGofin_3.18.2.0\
+      \ (1).msi\n Indicator: \"select `servicename`, `component_`, `newservice`, `firstfailureactiontype`,\
+      \ `secondfailureactiontype`, `thirdfailureactiontype`, `resetperiodindays`,\
+      \ `restartservicedelayinseconds`, `programcommandline`, `rebootmessage` from\
+      \ `serviceconfig`\")\n \"SELECT `Data` FROM `Binary` WHERE `Name`='%s'\" (Source:\
+      \ DrukiGofin_3.18.2.0 (1).msi\n Indicator: \"select `data` from `binary` where\
+      \ `name`='%s'\")\n \"SELECT `XmlFile`.`XmlFile`, `XmlFile`.`File`, `XmlFile`.`ElementPath`,\
+      \ `XmlFile`.`Name`, `XmlFile`.`Value`, `XmlFile`.`Flags`, `XmlFile`.`Component_`,\
+      \ `Component`.`Attributes` FROM `XmlFile`,`Component` WHERE `XmlFile`.`Component_`=`Component`.`Component`\
+      \ ORDER BY `File`, `Sequence`\" (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator:\
+      \ \"select `xmlfile`.`xmlfile`, `xmlfile`.`file`, `xmlfile`.`elementpath`, `xmlfile`.`name`,\
+      \ `xmlfile`.`value`, `xmlfile`.`flags`, `xmlfile`.`component_`, `component`.`attributes`\
+      \ from `xmlfile`,`component` where `xmlfile`.`component_`=`component`.`component`\
+      \ order by `file`, `sequence`\")\n \"SELECT `XmlConfig`.`XmlConfig`, `XmlConfig`.`File`,\
+      \ `XmlConfig`.`ElementPath`, `XmlConfig`.`VerifyPath`, `XmlConfig`.`Name`, `XmlConfig`.`Value`,\
+      \ `XmlConfig`.`Flags`, `XmlConfig`.`Component_`, `Component`.`Attributes` FROM\
+      \ `XmlConfig`,`Component` WHERE `XmlConfig`.`Component_`=`Component`.`Component`\
+      \ ORDER BY `File`, `Sequence`\" (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator:\
+      \ \"select `xmlconfig`.`xmlconfig`, `xmlconfig`.`file`, `xmlconfig`.`elementpath`,\
+      \ `xmlconfig`.`verifypath`, `xmlconfig`.`name`, `xmlconfig`.`value`, `xmlconfig`.`flags`,\
+      \ `xmlconfig`.`component_`, `component`.`attributes` from `xmlconfig`,`component`\
+      \ where `xmlconfig`.`component_`=`component`.`component` order by `file`, `sequence`\"\
+      )\n \"SELECT * FROM `%s`\" (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator:\
+      \ \"select * from `%s`\")\n \"SELECT `Text` FROM `Control` WHERE `Control`='LicenseText'\"\
+      \ (Source: DrukiGofin_3.18.2.0 (1).msi\n Indicator: \"select `text` from `control`\
+      \ where `control`='licensetext'\")"
+  - EventData: Contains SQL queries
+  - EventData: string-16
+  - EventData: '"rundll32.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  selection_network:
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: Gofin.Setup
+  - DestinationHostname: Gofin.SetupCustomActions
+  - DestinationHostname: Gofin.SetupCustomActions.CustomActions.DrukiGofinDetectRunningRelatedProcessesCustomAction
+  - DestinationHostname: MSID381.tmp
+  - DestinationHostname: Microsoft.Df
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-guard-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: ext-ms-win-ntuser-window-l1-1-0.dll
+  - DestinationHostname: ext-ms-win-ntuser-windowclass-l1-1-0.dll
+  - DestinationHostname: ext-ms-win-ntuser-windowclass-l1-1-1.dll
+  - DestinationHostname: ext-ms-win-ntuser-windowclass-l1-1-2.dll
+  - DestinationHostname: ext-ms-win-rtcore-ntuser-cursor-l1-1-0.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: ndll32.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: r-message-l1-1-0.dll
+  - DestinationHostname: rundll32.exe
+  - DestinationHostname: rundll32.pdb
+  - DestinationHostname: sysMerge.sdb
+  - DestinationHostname: sysmain.sdb
+  condition: selection_behavior or selection_network

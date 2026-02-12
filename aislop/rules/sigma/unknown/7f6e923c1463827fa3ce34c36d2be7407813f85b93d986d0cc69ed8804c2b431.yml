@@ -1,0 +1,843 @@
+title: unknown behavior detection (7f6e923c)
+id: 7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431
+status: experimental
+description: Auto-generated Sigma rule for unknown
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00002868.00000002.231484.00841000.00000020.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"[Failed to ::ShellExecuteEx][%s][%s][0x%08x]\"\
+      \ (Indicator: \"ShellExecute\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found reference\
+      \ to API \"[File::OpenShareMode - CreateFile failed][%s][%d][%d][0x%x]\" (Indicator:\
+      \ \"CreateFile\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source:\
+      \ \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source: \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "\"Software\\Microsoft\\Windows\\CurrentVersion\" in Source: 7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 34687-426-002099F6\n \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\\
+      MicrosoftEdge\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft\
+      \ Edge Update\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n \"Software\\Classes\"\
+      \ in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n \"HKLM\\\
+      Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"LM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"sWinPEHost: Cannot open reg key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\\
+      Control\\MiniNT. Assuming the host is NOT WinPE. RegOpenKeyExW err\" in Source:\
+      \ 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n \"AL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Control\\MiniNT. Assuming the host is NOT WinPE.\
+      \ RegOpenKeyExW error cod{\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\\Policies\\Microsoft\\EdgeUpj\"\
+      \ in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\WOW643S\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001660.00000000.228141.033C0000.00000004.mdmp\n\
+      \ 00000000-00001660.00000001.230063.033C0000.00000004.mdmp\n 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ 00000000-00001660.00000002.231981.033C0000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Cryptography\\Defaults\\Provider\\Microsoft Enhanced RSA and AES Cryptographic\
+      \ Provider\" in Source: 00000000-00001660.00000000.228141.033C0000.00000004.mdmp\n\
+      \ 00000000-00001660.00000001.230063.033C0000.00000004.mdmp\n 00000000-00001660.00000002.231981.033C0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001660.00000000.228141.04F60000.00000004.mdmp\n 00000000-00001660.00000001.230063.04F60000.00000004.mdmp\n\
+      \ 00000000-00001660.00000002.231981.04F60000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"KLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKCU\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\%ws\\UsageStats\\Daily\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKU\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Setup\\State\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in\
+      \ Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\DownloaderLockout\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\CdpNames\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\AdditionalInstallArgs\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\\NetworkCards\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Classes\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution\
+      \ Options\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\%s\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\InternetRegistry\\REGISTRY\\USER\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\proxy\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\http\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\\IEXPLORE.EXE\\shell\\open\\\
+      command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\Applications\\FIREFOX.EXE\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\{0002DF01-0000-0000-C000-000000000046}\\LocalServer32\" in\
+      \ Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKCR\\\
+      Applications\\chrome.exe\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      SQMClient\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"\\SOFTWARE\\Classes\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"APHKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"ilSoftware\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\\Microsoft\\EdgeUpdateDev\\\"\
+      \ in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\U\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \":\\Users\\HAPUBWS\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\\
+      HAPUBWS\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\mitmpro\\\
+      REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\"\
+      \ in Source: 00000000-00002868.00000000.227645.02890000.00000004.mdmp\n 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdateDev\\\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"HKLM\\SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\" in Source: 00000000-00002868.00000002.231484.00841000.00000020.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{A2F5CB38-265F-4A02-9D1E-F25B664968AB}\"\
+      \ in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"REGISTRY\\\
+      USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\" in Source:\
+      \ 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\CurrentState\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"HKU\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\EdgeUpdate\\\
+      ClientState\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"Path=C:\\\
+      ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\\
+      System32\\Wbem;C:\\WINDOWS\\System32\\W\\REGISTRY\\MACHINE\\SOFTWARE\\Classes\\\
+      WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"HKLM\\SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-21-735145574-3570218355-1207367261-1001\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-18\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source:\
+      \ 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SystemInformation\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdateDev\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "file/memory contains long string(File: \"psmachine_arm64.dll\")\n\
+      \ file/memory contains long string(File: \"psuser_arm64.dll\")\n file/memory\
+      \ contains long string(File: \"psmachine.dll\")\n file/memory contains long\
+      \ string(File: \"psuser.dll\")\n file/memory contains long string(File: \"MicrosoftEdgeUpdateCore.exe\"\
+      )\n file/memory contains long string(File: \"MicrosoftEdgeUpdateComRegisterShell64.exe\"\
+      )\n file/memory contains long string(File: \"MicrosoftEdgeUpdate.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeComRegisterShellARM64.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeUpdateOnDemand.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeUpdateBroker.exe\")\n file/memory\
+      \ contains long string(File: \"CopilotUpdate.exe\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      \n Found registry modification API: \"RegCreateKeyTransactedW\" in \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"00000000-00006248.00000001.227539.00219000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source:\
+      \ \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: 'Found reference to API "SHFileOperationW" (Indicator: "SHFileOperation";
+      File: "7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin")'
+  - EventData: Contains reference to method used by Windows shell items (API string)
+  - EventData: string-269
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"GetWindowThreadProcessId\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"ShowWindow\" (Indicator: \"ShowWindow\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found string \"MoveFileW\" (Indicator: \"MoveFileW\"; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileExW\"; File:\
+      \ \"psmachine_arm64.dll\")\n file/memory contains long string with (Indicator:\
+      \ \"MoveFileExW\"; File: \"psuser_arm64.dll\")\n file/memory contains long string\
+      \ with (Indicator: \"MoveFileExW\"; File: \"psmachine.dll\")\n file/memory contains\
+      \ long string with (Indicator: \"MoveFileExW\"; File: \"psuser.dll\")\n file/memory\
+      \ contains long string with (Indicator: \"MoveFileExW\"; File: \"MicrosoftEdgeUpdateCore.exe\"\
+      )\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"00000000-00006248.00000001.227539.00219000.00000002.mdmp\")\n Found\
+      \ reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; Source: \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\"\
+      )\n Found reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n Found reference to API \"CreateThreadpoolTimer\" (Indicator: \"CreateThread\"\
+      ; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateThreadpoolWait\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateThreadpoolWork\" (Indicator: \"CreateThread\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"OpenThreadToken\" (Indicator: \"OpenThread\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateThread\" (Indicator: \"CreateThread\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"OpenThread\" (Indicator: \"OpenThread\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; File:\
+      \ \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\")\n\
+      \ Found reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; File: \"\
+      7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\")\n Found\
+      \ reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "\"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\"\
+      \ in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\"\
+      \ in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"Software\\Classes\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00000940.00000000.227159.46088000.00000002.mdmp\n\
+      \ \"LM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"sWinPEHost: Cannot open reg key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\\
+      Control\\MiniNT. Assuming the host is NOT WinPE. RegOpenKeyExW err\" in Source:\
+      \ 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n \"AL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Control\\MiniNT. Assuming the host is NOT WinPE.\
+      \ RegOpenKeyExW error cod{\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\\Policies\\Microsoft\\EdgeUpj\"\
+      \ in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\WOW643S\" in Source: 00000000-00000940.00000000.227159.8E920000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Cryptography\\Defaults\\Provider\\Microsoft Enhanced\
+      \ RSA and AES Cryptographic Provider\" in Source: 00000000-00001660.00000000.228141.033C0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001660.00000000.228141.033C0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001660.00000000.228141.04F60000.00000004.mdmp\n \"\
+      SOFTWARE\\Microsoft\\Cryptography\\Defaults\\Provider\\Microsoft Enhanced RSA\
+      \ and AES Cryptographic Provider\" in Source: 00000000-00001660.00000001.230063.033C0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001660.00000001.230063.033C0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001660.00000001.230063.04F60000.00000004.mdmp\n \"\
+      SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"KLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKCU\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\%ws\\UsageStats\\Daily\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKU\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Setup\\State\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in\
+      \ Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\DownloaderLockout\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\CdpNames\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\AdditionalInstallArgs\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\\NetworkCards\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Classes\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution\
+      \ Options\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\Clients\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\ClientState\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\%s\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\InternetRegistry\\REGISTRY\\USER\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\proxy\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\http\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\\IEXPLORE.EXE\\shell\\open\\\
+      command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\Applications\\FIREFOX.EXE\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\{0002DF01-0000-0000-C000-000000000046}\\LocalServer32\" in\
+      \ Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"HKCR\\\
+      Applications\\chrome.exe\\shell\\open\\command\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      SQMClient\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"\\SOFTWARE\\Classes\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\\" in Source: 00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Cryptography\\Defaults\\Provider\\Microsoft Enhanced\
+      \ RSA and AES Cryptographic Provider\" in Source: 00000000-00001660.00000002.231981.033C0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001660.00000002.231981.033C0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001660.00000002.231981.04F60000.00000004.mdmp\n \"\
+      APHKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"ilSoftware\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\\Microsoft\\EdgeUpdateDev\\\"\
+      \ in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\U\" in Source: 00000000-00002856.00000000.226352.D10F0000.00000004.mdmp\n\
+      \ \":\\Users\\HAPUBWS\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\\
+      HAPUBWS\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\mitmpro\\\
+      REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\"\
+      \ in Source: 00000000-00002868.00000000.227645.02890000.00000004.mdmp\n \":\\\
+      Users\\HAPUBWS\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\HAPUBWS\\\
+      AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\mitmpro\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\" in\
+      \ Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00002868.00000001.229565.02890000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00002868.00000002.231484.00841000.00000020.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n\
+      \ \":\\Users\\HAPUBWS\\AppData\\Local\\Programs\\Python\\Python311\\;C:\\Users\\\
+      HAPUBWS\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\mitmpro\\\
+      REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\"\
+      \ in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"stry\\\
+      Machine\\Software\\Classes\\CLSID\\{A2F5CB38-265F-4A02-9D1E-F25B664968AB}\"\
+      \ in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00002868.00000002.231484.02890000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"HKU\\\
+      S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\EdgeUpdate\\\
+      ClientState\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"Path=C:\\\
+      ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\\
+      System32\\Wbem;C:\\WINDOWS\\System32\\W\\REGISTRY\\MACHINE\\SOFTWARE\\Classes\\\
+      WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"HKLM\\SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-21-735145574-3570218355-1207367261-1001\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-18\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source:\
+      \ 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SystemInformation\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00003112.00000000.227836.02BD0000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"Path=C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\\
+      WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\W\\REGISTRY\\MACHINE\\\
+      SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{A47979D2-C419-11D9-A5B\" in Source:\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"HKLM\\SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-21-735145574-3570218355-1207367261-1001\\\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-18\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source:\
+      \ 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SystemInformation\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00003112.00000001.229757.02BD0000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"HKLM\\SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-21-735145574-3570218355-1207367261-1001\\\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKU\\S-1-5-18\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source:\
+      \ 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SystemInformation\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00003112.00000002.231677.02BD0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source: 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00003112.00000002.231677.722B8000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\EdgeUpdate\" in Source: 00000000-00004972.00000000.225490.012AC000.00000002.mdmp\n\
+      \ \"Software\\OEM\\MicrosoftEdge\" in Source: 00000000-00004972.00000000.225490.012AC000.00000002.mdmp\n\
+      \ \"ISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows NT\\CurrentVersion\" in Source: 00000000-00004972.00000001.227410.00840000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00004972.00000001.227410.00840000.00000004.mdmp\n \"ISTRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\
+      \ NT\\CurrentVersion\" in Source: 00000000-00004972.00000002.229329.00840000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00004972.00000002.229329.00840000.00000004.mdmp\n \"LM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00005592.00000000.226775.D8D90000.00000004.mdmp\n\
+      \ \"sWinPEHost: Cannot open reg key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\\
+      Control\\MiniNT. Assuming the host is NOT WinPE. RegOpenKeyExW err\" in Source:\
+      \ 00000000-00005592.00000000.226775.D8D90000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\" in Source: 00000000-00006248.00000000.225620.00201000.00000020.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n \"HKLM\\\
+      SOFTWAR\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00006248.00000000.225620.02E00000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00006248.00000001.227539.02E00000.00000004.mdmp\n \"stry\\\
+      Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00006248.00000001.227539.02E00000.00000004.mdmp\n \"stry\\\
+      Machine\\Software\\ClassV\" in Source: 00000000-00006248.00000001.227539.02E00000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00006248.00000002.229459.02E00000.00000004.mdmp\n \"stry\\\
+      Machine\\Software\\Classes\\CLSID\\{9AC9FBE1-E0A2-4AD6-B4EE-E212013EA917}\"\
+      \ in Source: 00000000-00006248.00000002.229459.02E00000.00000004.mdmp\n \"stry\\\
+      Machine\\Software\\ClassV\" in Source: 00000000-00006248.00000002.229459.02E00000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00006932.00000000.225849.033E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00007544.00000000.226239.03280000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007544.00000001.227239.032AC000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00007544.00000001.227239.032AC000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007544.00000001.227239.032AC000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007544.00000001.227239.032CB000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00007888.00000000.227603.03340000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00007888.00000000.227603.06300000.00000004.mdmp\n \"\
+      Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00007888.00000001.227798.0338D000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00007888.00000001.227798.0338D000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00007888.00000001.227798.0338D000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00007888.00000001.227798.0338D000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00007888.00000001.227798.06302000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00007888.00000001.227798.06302000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007888.00000001.227798.06302000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source:\
+      \ 00000000-00007888.00000001.227798.06302000.00000004.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\" in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00007888.00000001.227798.0630D000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "\"<Input Sample.exe\" with parameter %TEMP%\\ (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter C:\\Users (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter C:\\Users\\%OSUSER% (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter %USERPROFILE%\\AppData (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter %USERPROFILE%\\AppData\\Local (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter %LOCALAPPDATA%\\Temp (UID: 00000000-00003284)\n\
+      \ \"<Input Sample.exe\" with parameter %TEMP%\\nsi979C.tmp (UID: 00000000-00003284)\n\
+      \ \"MicrosoftEdgeWebview2Setup.exe\" with parameter %PROGRAMFILES%\\(x86)\\\
+      Microsoft (UID: 00000000-00004972)\n \"MicrosoftEdgeWebview2Setup.exe\" with\
+      \ parameter %PROGRAMFILES%\\(x86)\\Microsoft\\Temp (UID: 00000000-00004972)\n\
+      \ \"MicrosoftEdgeWebview2Setup.exe\" with parameter %PROGRAMFILES%\\(x86)\\\
+      Microsoft\\Temp\\EUB237.tmp (UID: 00000000-00004972)\n \"MicrosoftEdgeUpdate.exe\"\
+      \ with parameter %PROGRAMFILES%\\(x86)\\Microsoft\\EdgeUpdate\\1.3.217.3 (UID:\
+      \ 00000000-00006248)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin\"\
+      )\n file/memory contains long string with (Indicator: \"GetLastError\"; File:\
+      \ \"System.dll\")\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; File: \"00000000-00006248.00000001.227539.00219000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"\
+      00000000-00000940.00000000.227159.46088000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00000940.00000000.227159.46088000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00001660.00000001.230063.72CC9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00002868.00000000.227645.00859000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  selection_network:
+  - DestinationHostname: 32.dll
+  - DestinationHostname: 64.dll
+  - DestinationHostname: 7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin
+  - DestinationHostname: 7f6e923c1463827fa3ce34c36d2be7407813f85b93d986d0cc69ed8804c2b431.bin.exe
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: APPHELP.dll
+  - DestinationHostname: Advapi32.dll
+  - DestinationHostname: CLBCATQ.dll
+  - DestinationHostname: CRYPTBASE.dll
+  - DestinationHostname: CopilotUpdate.exe
+  - DestinationHostname: DWMAPI.dll
+  - DestinationHostname: EUB237.tmp
+  - DestinationHostname: EdgeUpdate.dat
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: Iphlpapi.dll
+  - DestinationHostname: MDMRegistration.dll
+  - DestinationHostname: Microsoft.Windows.Common
+  - DestinationHostname: MicrosoftEdgeComRegisterShellARM64.exe
+  - DestinationHostname: MicrosoftEdgeUpdate.CoreClass
+  - DestinationHostname: MicrosoftEdgeUpdate.CoreMachineClass
+  - DestinationHostname: MicrosoftEdgeUpdate.CredentialDialogMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassMachineFallback
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassSvc
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusMachineFallback
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusSvc
+  - DestinationHostname: MicrosoftEdgeUpdate.ProcessLauncher
+  - DestinationHostname: MicrosoftEdgeUpdate.Update
+  - DestinationHostname: MicrosoftEdgeUpdate.exe
+  - DestinationHostname: MicrosoftEdgeUpdateBroker.exe
+  - DestinationHostname: MicrosoftEdgeUpdateComRegisterShell64.exe
+  - DestinationHostname: MicrosoftEdgeUpdateCore.exe
+  - DestinationHostname: MicrosoftEdgeUpdateOnDemand.exe
+  - DestinationHostname: MicrosoftEdgeUpdateSetup.exe
+  - DestinationHostname: MicrosoftEdgeWebview2Setup.exe
+  - DestinationHostname: NETAPI32.dll
+  - DestinationHostname: NOTICE.TXT
+  - DestinationHostname: NSISdl.dll
+  - DestinationHostname: NTMARTA.dll
+  - DestinationHostname: NetApi32.dll
+  - DestinationHostname: OLEACC.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: RPCRT4.dll
+  - DestinationHostname: RichEd20.dll
+  - DestinationHostname: SETUPAPI.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHFOLDER.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UXTHEME.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WININET.dll
+  - DestinationHostname: af.dll
+  - DestinationHostname: am.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: ar.dll
+  - DestinationHostname: arm64.dll
+  - DestinationHostname: as.dll
+  - DestinationHostname: atlthunk.dll
+  - DestinationHostname: az.dll
+  - DestinationHostname: bg.dll
+  - DestinationHostname: bn-IN.dll
+  - DestinationHostname: bn.dll
+  - DestinationHostname: bs.dll
+  - DestinationHostname: ca-Es-VALENCIA.dll
+  - DestinationHostname: ca.dll
+  - DestinationHostname: config.edge.skype.com
+  - DestinationHostname: cs.dll
+  - DestinationHostname: cy.dll
+  - DestinationHostname: da.dll
+  - DestinationHostname: date.dll
+  - DestinationHostname: de.dll
+  - DestinationHostname: eUpdateSetup.exe
+  - DestinationHostname: edgeupdate.dll
+  - DestinationHostname: el.dll
+  - DestinationHostname: en-GB.dll
+  - DestinationHostname: en.dll
+  - DestinationHostname: es-419.dll
+  - DestinationHostname: es.dll
+  - DestinationHostname: et.dll
+  - DestinationHostname: eu.dll
+  - DestinationHostname: fa.dll
+  - DestinationHostname: fi.dll
+  - DestinationHostname: fil.dll
+  - DestinationHostname: fr-CA.dll
+  - DestinationHostname: fr.dll
+  - DestinationHostname: ga.dll
+  - DestinationHostname: gd.dll
+  - DestinationHostname: gl.dll
+  - DestinationHostname: gu.dll
+  - DestinationHostname: hi.dll
+  - DestinationHostname: hr.dll
+  - DestinationHostname: hu.dll
+  - DestinationHostname: id.dll
+  - DestinationHostname: is.dll
+  - DestinationHostname: it.dll
+  - DestinationHostname: iw.dll
+  - DestinationHostname: ja.dll
+  - DestinationHostname: ka.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: kk.dll
+  - DestinationHostname: km.dll
+  - DestinationHostname: kn.dll
+  - DestinationHostname: ko.dll
+  - DestinationHostname: kok.dll
+  - DestinationHostname: lb.dll
+  - DestinationHostname: lo.dll
+  - DestinationHostname: lt.dll
+  - DestinationHostname: lv.dll
+  - DestinationHostname: mi.dll
+  - DestinationHostname: mk.dll
+  - DestinationHostname: ml.dll
+  - DestinationHostname: mr.dll
+  - DestinationHostname: ms.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: msedgeupdate.dll
+  - DestinationHostname: mt.dll
+  - DestinationHostname: nb.dll
+  - DestinationHostname: ne.dll
+  - DestinationHostname: netapi32.dll
+  - DestinationHostname: nl.dll
+  - DestinationHostname: nn.dll
+  - DestinationHostname: nsDialogs.dll
+  - DestinationHostname: nsi979C.tmp
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: or.dll
+  - DestinationHostname: pa.dll
+  - DestinationHostname: pl.dll
+  - DestinationHostname: psmachine.dll
+  - DestinationHostname: psuser.dll
+  - DestinationHostname: pt-BR.dll
+  - DestinationHostname: pt-PT.dll
+  - DestinationHostname: quz.dll
+  - DestinationHostname: ro.dll
+  - DestinationHostname: ru.dll
+  - DestinationHostname: schemas.microsoft.com
+  - DestinationHostname: self.events.data.microsoft.com
+  - DestinationHostname: sk.dll
+  - DestinationHostname: sl.dll
+  - DestinationHostname: slwga.dll
+  - DestinationHostname: sq.dll
+  - DestinationHostname: sr-Cyrl-BA.dll
+  - DestinationHostname: sr-Cyrl-RS.dll
+  - DestinationHostname: sr-Latn-RS.dll
+  - DestinationHostname: sr.dll
+  - DestinationHostname: sv.dll
+  - DestinationHostname: ta.dll
+  - DestinationHostname: te.dll
+  - DestinationHostname: th.dll
+  - DestinationHostname: tr.dll
+  - DestinationHostname: tt.dll
+  - DestinationHostname: ug.dll
+  - DestinationHostname: uk.dll
+  - DestinationHostname: unsigned.pdb
+  - DestinationHostname: ur.dll
+  - DestinationHostname: vi.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wtsapi32.dll
+  - DestinationHostname: zh-CN.dll
+  - DestinationHostname: zh-TW.dll
+  - DestinationIp: 1.3.171.37
+  - DestinationIp: 1.3.217.3
+  - DestinationIp: 6.0.0.0
+  condition: selection_behavior or selection_network
