@@ -1,0 +1,225 @@
+title: Spy.Grandoreiro_AGen behavior detection (b07cd28e)
+id: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc
+status: experimental
+description: Auto-generated Sigma rule for Spy.Grandoreiro_AGen
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"LogonUserW\" (Indicator: \"LogonUser\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"User authentication using Basic authentication scheme\
+      \ failed. %n%n Additional Data %n Unexpected error received from LogonUser %1:\
+      \ %%%1.\" (Indicator: \"LogonUser\"; Source: \"00000000-00001292.00000001.219869.080E0000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to impersonate another user on the local machine (API
+      string)
+  - EventData: string-225
+  - EventData: "Found reference to API \"RegUnLoadKeyW\" (Indicator: \"RegUnLoadKey\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: 'Found reference to API "CreateProcessW" (Indicator: "CreateProcess";
+      File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"CreateFileMappingA\" (Indicator: \"CreateFile\";\
+      \ File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: 'Found reference to API "CreateDirectoryW" (Indicator: "CreateDirectory";
+      File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"WinExec\" (Indicator: \"WinExec\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"ShellExecuteW\" (Indicator: \"ShellExecute\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "\"Software\\Embarcadero\\Locales\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"Software\\CodeGear\\Locales\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"Software\\Borland\\Locales\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"Software\\Borland\\Delphi\\Locales\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\FontSubstitutes\" in Source:\
+      \ b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n \"\\\
+      SYSTEM\\CurrentControlSet\\Control\\Keyboard Layouts\\\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"System\\CurrentControlSet\\Control\\Keyboard Layouts\\%.8x\" in Source:\
+      \ b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n \"\
+      SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"Software\\Microsoft\\Windows\\DWM\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"Software\\MlSkin\" in Source: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001292.00000000.217950.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000001.219869.00880000.00000004.mdmp\n 00000000-00001292.00000002.221791.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000003.227301.00880000.00000004.mdmp\n \"Software\\Wow6432`\"\
+      \ in Source: 00000000-00001292.00000000.217950.00880000.00000004.mdmp\n 00000000-00001292.00000001.219869.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000002.221791.00880000.00000004.mdmp\n 00000000-00001292.00000003.227301.00880000.00000004.mdmp\n\
+      \ \"Software\\Wow6432\" in Source: 00000000-00001292.00000000.217950.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000001.219869.00880000.00000004.mdmp\n 00000000-00001292.00000002.221791.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000003.227301.00880000.00000004.mdmp\n \"sSoftware\\Wow6432\"\
+      \ in Source: 00000000-00001292.00000000.217950.00880000.00000004.mdmp\n 00000000-00001292.00000001.219869.00880000.00000004.mdmp\n\
+      \ 00000000-00001292.00000002.221791.00880000.00000004.mdmp\n 00000000-00001292.00000003.227301.00880000.00000004.mdmp\n\
+      \ \"The COM sub system is suppressing duplicate event log entries for a duration\
+      \ of %1 seconds.  The suppression timeout can be controlled by a REG_DWORD value\
+      \ named %2 under the following registry key: HKLM\\%3.\" in Source: 00000000-00001292.00000001.219869.080E0000.00000002.mdmp\n\
+      \ \"Registry file %1 is loaded at HKU\\%2.\" in Source: 00000000-00001292.00000001.219869.080E0000.00000002.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001292.00000001.219869.0F9A0000.00000004.mdmp\n\
+      \ 00000000-00001292.00000002.221791.0F9A0000.00000004.mdmp\n 00000000-00001292.00000003.227301.0F9A0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: 'Found reference to API "StartServiceW" (Indicator: "StartService";
+      File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "Found registry modification API: \"RegLoadKeyW\" in file \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      \n Found registry modification API: \"RegConnectRegistryW\" in file \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in file \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"OpenThreadToken\" (Indicator: \"OpenThread\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"SuspendThread\" (Indicator: \"SuspendThread\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"SetThreadContext\" (Indicator: \"SetThreadContext\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: 'Found reference to API "CloseServiceHandle" (Indicator: "CloseServiceHandle";
+      File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: 'Found reference to API "DeviceIoControl" (Indicator: "DeviceIoControl";
+      File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to create/control drivers (API string)
+  - EventData: string-220
+  - EventData: "Found reference to API \"QueryServiceStatus\" (Indicator: \"QueryServiceStatus\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"OpenSCManagerW\" (Indicator: \"OpenSCManager\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )"
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: 'Found reference to API "MoveFileW" (Indicator: "MoveFile"; File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Pattern match: \"iepo@microsoft.com\"\n Pattern match: \"premium-server@thawte.com\""
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: 'Found string "MoveFileW" (Indicator: "MoveFileW"; File: "b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin")'
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"DdeGetLastError\" (Indicator: \"GetLastError\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"WSAGetLastError\" (Indicator: \"GetLastError\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"WSASetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"The function \"%1\" failed unexpectedly. Error=%2!d!,\
+      \ GetLastError=%3!d!.\" (Indicator: \"GetLastError\"; Source: \"00000000-00001292.00000001.219869.080E0000.00000002.mdmp\"\
+      )\n Found reference to API \"The function: \"%1\" failed unexpectedly. GetLastError=%2!d!.\"\
+      \ (Indicator: \"GetLastError\"; Source: \"00000000-00001292.00000001.219869.080E0000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError: %2!d!.%n\" (Indicator: \"GetLastError\"\
+      ; Source: \"00000000-00001292.00000001.219869.080E0000.00000002.mdmp\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"FindResourceW\" (Indicator: \"FindResource\"\
+      ; File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )\n Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"FreeResource\" (Indicator: \"FreeResource\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"LockResource\" (Indicator: \"LockResource\"; File:\
+      \ \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\")\n\
+      \ Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\";\
+      \ File: \"b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin\"\
+      )"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  selection_network:
+  - DestinationHostname: 32.DLL
+  - DestinationHostname: Fwpuclnt.dll
+  - DestinationHostname: HID.dll
+  - DestinationHostname: IdnDL.dll
+  - DestinationHostname: MSFTEDIT.DLL
+  - DestinationHostname: Msctf.dll
+  - DestinationHostname: Normaliz.dll
+  - DestinationHostname: SectigoPublicCodeSigningCAR36.crl
+  - DestinationHostname: SetupApi.dll
+  - DestinationHostname: Shcore.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: auth.rdviewer.com
+  - DestinationHostname: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin
+  - DestinationHostname: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin.ENU
+  - DestinationHostname: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin.en
+  - DestinationHostname: b07cd28effb80905152cfd4d136c3ca58a08cb636728a1a49150d167821428fc.bin.exe
+  - DestinationHostname: colorui.dll
+  - DestinationHostname: comctl32.dll
+  - DestinationHostname: comdlg32.dll
+  - DestinationHostname: compstui.dll
+  - DestinationHostname: crl.sectigo.com
+  - DestinationHostname: dwmapi.dll
+  - DestinationHostname: gdi32.dll
+  - DestinationHostname: gdiplus.dll
+  - DestinationHostname: imm32.dll
+  - DestinationHostname: inetres.dll
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: msimg32.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ocsp.sectigo.com
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: olepro32.dll
+  - DestinationHostname: rpcrt4.dll
+  - DestinationHostname: security.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: user32.dll
+  - DestinationHostname: userenv.dll
+  - DestinationHostname: uxtheme.dll
+  - DestinationHostname: winsta.dll
+  - DestinationHostname: wtsapi32.dll
+  - DestinationIp: 1.3.6.1
+  - DestinationIp: 104.18.38.233
+  - DestinationIp: 159.75.228.159
+  - DestinationIp: 2.5.29.31
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  - DestinationIp: 5.5.7.1
+  condition: selection_behavior or selection_network

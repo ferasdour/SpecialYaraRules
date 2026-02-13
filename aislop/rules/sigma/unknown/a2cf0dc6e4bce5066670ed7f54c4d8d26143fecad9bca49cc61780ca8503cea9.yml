@@ -1,0 +1,682 @@
+title: unknown behavior detection (a2cf0dc6)
+id: a2cf0dc6e4bce5066670ed7f54c4d8d26143fecad9bca49cc61780ca8503cea9
+status: experimental
+description: Auto-generated Sigma rule for unknown
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"CreateFileMappingW\" (Indicator:\
+      \ \"CreateFile\"; File: \"rdpcorets.dll\")\n Found reference to API \"NtCreateFile\"\
+      \ (Indicator: \"CreateFile\"; File: \"rdpcorets.dll\")\n Found reference to\
+      \ API \"NtCreateFile\" (Indicator: \"NtCreateFile\"; File: \"rdpcorets.dll\"\
+      )\n Found reference to API \"MFCreateFile\" (Indicator: \"CreateFile\"; File:\
+      \ \"rdpcorets.dll\")\n Found reference to API \"GetProcAddress( MFCreateFile\
+      \ ) failed.  Non-Fatal.\" (Indicator: \"CreateFile\"; File: \"rdpcorets.dll\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileA\"\
+      />\" (Indicator: \"CreateFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"CreateFileW\"\
+      />\" (Indicator: \"CreateFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: 'Found reference to API "CreateDirectoryW" (Indicator: "CreateDirectory";
+      File: "rdpcorets.dll")'
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"RegCloseKey\" (Indicator:\
+      \ \"RegCloseKey\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "\"Software\\Microsoft\\Windows NT\\CurrentVersion\\Terminal Server\\\
+      AutoTrace\" in Source: rdpcorets.dll\n \"System\\CurrentControlSet\\Control\\\
+      Terminal Server\" in Source: rdpcorets.dll\n \"Software\\Microsoft\\Windows\
+      \ NT\\CurrentVersion\\Terminal Server\\AutoTrace\\Providers\" in Source: rdpcorets.dll\n\
+      \ \"Software\\Policies\\Microsoft\\Windows NT\\Terminal Services\" in Source:\
+      \ rdpcorets.dll\n \"System\\CurrentControlSet\\Control\\Terminal Server\\WinStations\"\
+      \ in Source: rdpcorets.dll\n \"SYSTEM\\CurrentControlSet\\Services\\TermDD\"\
+      \ in Source: rdpcorets.dll\n \"SOFTWARE\\Microsoft\\TClient\\TestDVCName\" in\
+      \ Source: rdpcorets.dll\n \"System\\CurrentControlSet\\Control\\Terminal Server\\\
+      WinStations\\RDP-Tcp\" in Source: rdpcorets.dll\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\Terminal Server\\WinStations\" in Source: rdpcorets.dll\n \"System\\\
+      CurrentControlSet\\Services\\TcpIp\\Parameters\" in Source: rdpcorets.dll\n\
+      \ \".System\\CurrentControlSet\\Control\\Terminal Server\\lanatable\" in Source:\
+      \ rdpcorets.dll\n \"SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\RdpCloudStackSettings\"\
+      \ in Source: rdpcorets.dll\n \"SYSTEM\\CurrentControlSet\\Control\\Terminal\
+      \ Server\\AddIns\\TestDVCPlugin\" in Source: rdpcorets.dll\n \"Software\\Microsoft\\\
+      Windows NT\\CurrentVersion\\Terminal Server\\TSAppAllowList\\Applications\"\
+      \ in Source: rdpcorets.dll\n \"Software\\Microsoft\\Windows NT\\CurrentVersion\\\
+      Terminal Server\\TSAppAllowList\" in Source: rdpcorets.dll\n \"Software\\Policies\\\
+      Microsoft\\Windows NT\\Terminal Services\\H264Encoding\" in Source: rdpcorets.dll\n\
+      \ \"System\\CurrentControlSet\\Control\\Terminal Server\\lanatable\" in Source:\
+      \ rdpcorets.dll\n \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in\
+      \ Source: 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n \"y\\Machine\\\
+      Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source:\
+      \ 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n \"\\Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-H\" in Source: 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n\
+      \ \"1A-00065B83E\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\\
+      {FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00004556.00000001.193874.E0880000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n\
+      \ 00000000-00004588.00000001.192534.20720000.00000004.mdmp\n \"y\\Machine\\\
+      Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source:\
+      \ 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n \"\\Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-H\" in Source: 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n\
+      \ \"1A-00065B83E\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\\
+      {FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00004588.00000000.192275.20720000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n\
+      \ \"y\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n \"\\\
+      Registry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-H\" in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n\
+      \ \"1A-00065B83E\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\\
+      {FA445657-9379-11D6<\" in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n\
+      \ \"5657\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00004900.00000001.194212.BF0D0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n\
+      \ 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n \"y\\Machine\\\
+      Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source:\
+      \ 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-\" in Source: 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n\
+      \ 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n \"1A-00065B83E\\\
+      Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00006200.00000000.192274.EFCE0000.00000004.mdmp\n\
+      \ 00000000-00006200.00000001.193882.EFCE0000.00000004.mdmp\n \"\\REGISTRY\\\
+      MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp\n\
+      \ \"y\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp\n \"\\\
+      Registry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-\" in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source: 00000000-00007580.00000001.194462.CEFD0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found string \"GetCommandLineW\" (Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found string \"GetCommandLineW\" (Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "\"regsvr32.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 28D00000\n \"regsvr32.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\"\
+      \ at 27E90000\n \"rundll32.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at 28D00000\n \"rundll32.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\"\
+      \ at 27E90000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "Found reference to API (Indicator: \"EventProviderEnabled\"; File:\
+      \ \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CryptProtectMemory\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CryptUnprotectMemory\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetStockObject\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetObjectW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DeleteObject\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetAdapterIndex\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"VariantInit\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SysFreeString\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"VariantClear\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SysAllocString\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SysStringLen\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"VariantCopy\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcBindingSetAuthInfoExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"NdrClientCall3\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcBindingFromStringBindingW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcStringBindingComposeW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcStringFreeW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UuidToStringW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcRevertToSelf\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UuidCreate\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcBindingFree\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"I_RpcExceptionFilter\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcImpersonateClient\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RpcBindingSetOption\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LoadCursorW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DefWindowProcW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DestroyWindow\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateWindowExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UnregisterClassW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UnregisterClassA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetRect\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegisterClassW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CopyRect\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DispatchMessageW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"closesocket\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CLSIDFromString\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CoTaskMemRealloc\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CoCreateInstance\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CoTaskMemFree\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CoTaskMemAlloc\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"StringFromGUID2\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CoCreateGuid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"IIDFromString\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetCommTimeouts\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OutputDebugStringA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"IsDebuggerPresent\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OutputDebugStringW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DebugBreak\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DelayLoadFailureHook\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetLastError\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetLastError\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetErrorMode\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RaiseException\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetFileAttributesW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateFileW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetFilePointerEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WriteFileEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FindNextFileW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReadFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FindFirstFileW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateDirectoryW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DeleteFileW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReadFileEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WriteFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FindClose\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetFileInformationByHandle\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetTempFileNameW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CloseHandle\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"HeapAlloc\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"HeapFree\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetProcessHeap\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GlobalFree\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LocalAlloc\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LocalFree\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GlobalAlloc\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GlobalLock\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GlobalUnlock\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GlobalSize\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CancelIoEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetOverlappedResult\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DeviceIoControl\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CancelIo\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetNamedPipeServerProcessId\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"BindIoCompletionCallback\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"MoveFileW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WTSGetActiveConsoleSessionId\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegisterWaitForSingleObject\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"VerifyVersionInfoW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SizeofResource\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LoadLibraryExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetModuleHandleW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DisableThreadLibraryCalls\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetModuleHandleExA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LoadResource\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FindResourceExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetModuleHandleExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetProcAddress\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetModuleFileNameW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FreeLibrary\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetModuleFileNameA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LoadLibraryW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetCPInfo\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FormatMessageW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"IsDBCSLeadByte\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"MapViewOfFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UnmapViewOfFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenFileMappingW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateFileMappingW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateNamedPipeW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"PeekNamedPipe\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitNamedPipeW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DisconnectNamedPipe\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetNamedPipeHandleState\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ConnectNamedPipe\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenThreadToken\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetExitCodeThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ResumeThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SuspendThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetCurrentProcessId\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetCurrentThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetCurrentThreadId\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetCurrentProcess\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"TerminateProcess\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenProcess\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"QueryPerformanceCounter\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"QueryPerformanceFrequency\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"K32GetModuleFileNameExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegOpenKeyExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegEnumValueW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegCloseKey\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegQueryInfoKeyW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegDeleteValueW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegFlushKey\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegQueryValueExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegSetValueExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegCreateKeyExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegGetValueW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegNotifyChangeKeyValue\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegEnumKeyExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlCaptureContext\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlCompareMemory\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlVirtualUnwind\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"PathFindExtensionW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CompareStringW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WideCharToMultiByte\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"MultiByteToWideChar\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CharNextW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"lstrcmpiW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CharPrevA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CharNextA\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitForSingleObjectEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitForSingleObject\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateEventW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetEvent\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"EnterCriticalSection\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeSRWLock\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DeleteCriticalSection\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenSemaphoreW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeCriticalSection\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"AcquireSRWLockShared\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitForMultipleObjectsEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReleaseSRWLockShared\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"LeaveCriticalSection\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateMutexExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ResetEvent\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateSemaphoreExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReleaseSemaphore\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ReleaseMutex\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SleepConditionVariableSRW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WakeAllConditionVariable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SleepConditionVariableCS\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitOnceExecuteOnce\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"Sleep\"; File:\
+      \ \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeConditionVariable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitForMultipleObjects\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetSystemTime\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetTickCount\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetTickCount64\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetSystemDirectoryW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetVersionExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"VerSetConditionMask\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CloseThreadpoolTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"WaitForThreadpoolTimerCallbacks\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateThreadpoolTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetThreadpoolTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateTimerQueueTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"UnregisterWaitEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"DeleteTimerQueueTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ChangeTimerQueueTimer\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"EventRegister\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"EventUnregister\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"EventWrite\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"AccessCheckAndAuditAlarmW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"MakeSelfRelativeSD\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetSecurityDescriptorLength\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetSecurityDescriptorDacl\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"FreeSid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RevertToSelf\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ImpersonateLoggedOnUser\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"EqualSid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CreateWellKnownSid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"IsValidSid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetTokenInformation\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"InitializeSecurityDescriptor\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetEntriesInAclW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"ConvertStringSecurityDescriptorToSecurityDescriptorW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"BuildSecurityDescriptorW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenSCManagerW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"StartServiceW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OpenServiceW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"CloseServiceHandle\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlInitUnicodeString\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"NtCreateFile\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlInitializeGenericTable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlInsertElementGenericTable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"NtQuerySystemInformation\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlIpv6StringToAddressW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlDeleteElementGenericTable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlLookupElementGenericTable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlNtStatusToDosError\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlEnumerateGenericTable\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlIpv4StringToAddressW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetEntriesInAcl\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RaiseFailFastException\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlNtStatusToDosErrorNoTeb\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RtlDllShutdownInProgress\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegDeleteKeyExW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegDeleteKeyW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"GetEnabledXStateFeatures\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegOpenKeyEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"RegQueryValueEx\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OleInitialize\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OleUninitialize\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetupDiGetDevicePropertyW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetupDiDestroyDeviceInfoList\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetupDiCreateDeviceInfoList\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetupDiOpenDeviceInterfaceW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SetupDiGetDeviceInterfaceDetailW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"AssocQueryStringW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"SHFileOperationW\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API (Indicator: \"OleUninitialize\"\
+      ; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"OleInitialize\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; Source: \"\
+      00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlVirtualUnwind\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharNextW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSetInformation\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadStringW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemDirectoryW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalAlloc\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcmpW\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Wow64EnableWow64FsRedirection\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsWow64Process2\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemWow64Directory2W\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExA\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"; Source:\
+      \ \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"AcquireSRWLockExclusive\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualQuery\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemInfo\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeConditionVariable\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SleepConditionVariableCS\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WakeAllConditionVariable\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlDllShutdownInProgress\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadIconW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TranslateMessage\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegisterClassW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateWindowExW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindow\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadCursorW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process2\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateSemaphoreExW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSemaphore\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemWow64Directory2W\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EncodePointer\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalAlloc\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseMutex\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateEventW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeSecurity\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AttachConsole\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OutputDebugStringW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEvent\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSemaphoreW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockShared\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeConsole\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSetInformation\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadStringW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DecodePointer\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexExW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockShared\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CLSIDFromString\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DebugBreak\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ResetEvent\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlVirtualUnwind\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemTimeAsFileTime\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SearchPathW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharNextW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Wow64EnableWow64FsRedirection\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateActCtxW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ActivateActCtx\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeactivateActCtx\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseActCtx\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryActCtxW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathIsRelativeW\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQuerySystemInformation\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlImageNtHeader\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQueryInformationToken\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlNtStatusToDosError\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtOpenProcessToken\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtClose\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DelayLoadFailureHook\"; Source: \"\
+      00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: 'Found reference to API "GetWindowThreadProcessId" (Indicator: "GetWindowThreadProcessId";
+      File: "rdpcorets.dll")'
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"SetLastError\" (Indicator:\
+      \ \"SetLastError\"; File: \"rdpcorets.dll\")\n Found reference to API \"GetLastError\"\
+      \ (Indicator: \"GetLastError\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"OpenProcess\" (Indicator:\
+      \ \"OpenProcess\"; File: \"rdpcorets.dll\")\n Found reference to API \"GetProcessHeap\"\
+      \ (Indicator: \"GetProcessHeap\"; Source: \"00000000-00004868.00000000.192273.4F624000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")\n Found\
+      \ reference to API \"NtOpenProcessToken\" (Indicator: \"OpenProcess\"; Source:\
+      \ \"00000000-00007580.00000000.192861.8ECB8000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found string \"MoveFileW\" (Indicator: \"MoveFileW\"; File: \"rdpcorets.dll\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileA\"/>\"\
+      \ (Indicator: \"MoveFileA\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"/>\"\
+      \ (Indicator: \"MoveFileW\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"/>\"\
+      \ (Indicator: \"MoveFileExA\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found string \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"/>\"\
+      \ (Indicator: \"MoveFileExW\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: 'Found reference to API "DeviceIoControl" (Indicator: "DeviceIoControl";
+      File: "rdpcorets.dll")'
+  - EventData: Contains ability to create/control drivers (API string)
+  - EventData: string-220
+  - EventData: "Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; File:\
+      \ \"rdpcorets.dll\")\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\"\
+      \ FUNCTION=\"MoveFileA\"/>\" (Indicator: \"MoveFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileW\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExA\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )\n Found reference to API \"<HOOK MODULE=\"KERNEL32.DLL\" FUNCTION=\"MoveFileExW\"\
+      />\" (Indicator: \"MoveFile\"; Source: \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found reference to API \"OpenThreadToken\" (Indicator: \"OpenThread\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"ResumeThread\" (Indicator:\
+      \ \"ResumeThread\"; File: \"rdpcorets.dll\")\n Found reference to API \"SuspendThread\"\
+      \ (Indicator: \"SuspendThread\"; File: \"rdpcorets.dll\")\n Found reference\
+      \ to API \"CreateThread\" (Indicator: \"CreateThread\"; File: \"rdpcorets.dll\"\
+      )\n Found reference to API \"CreateThreadpoolTimer\" (Indicator: \"CreateThread\"\
+      ; File: \"rdpcorets.dll\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\"\
+      ; File: \"rdpcorets.dll\")\n Found reference to API \"LoadResource\" (Indicator:\
+      \ \"LoadResource\"; File: \"rdpcorets.dll\")\n Found reference to API \"FindResourceExW\"\
+      \ (Indicator: \"FindResource\"; File: \"rdpcorets.dll\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: 'Found reference to API "OpenSCManagerW" (Indicator: "OpenSCManager";
+      File: "rdpcorets.dll")'
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: 'Found reference to API "StartServiceW" (Indicator: "StartService";
+      File: "rdpcorets.dll")'
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: 'Found reference to API "CloseServiceHandle" (Indicator: "CloseServiceHandle";
+      File: "rdpcorets.dll")'
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"rdpcorets.dll\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyA\"/>\" in \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyW\"/>\" in \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyExA\"/>\" in \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\"\
+      \n Found registry modification API: \"<HOOK MODULE=\"ADVAPI32.DLL\" FUNCTION=\"\
+      RegCreateKeyExW\"/>\" in \"00000000-00004868.00000000.192273.02FE0000.00000004.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  selection_network:
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: rdpcorets.dll
+  - DestinationHostname: regsvr32.exe
+  - DestinationHostname: rundll32.exe
+  condition: selection_behavior or selection_network

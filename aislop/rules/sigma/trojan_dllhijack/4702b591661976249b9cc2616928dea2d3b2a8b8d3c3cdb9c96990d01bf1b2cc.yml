@@ -1,0 +1,1723 @@
+title: Trojan.DLLhijack behavior detection (4702b591)
+id: 4702b591661976249b9cc2616928dea2d3b2a8b8d3c3cdb9c96990d01bf1b2cc
+status: experimental
+description: Auto-generated Sigma rule for Trojan.DLLhijack
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"RegCloseKey\"\
+      \ (Indicator: \"RegCloseKey\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"[Failed\
+      \ to ::ShellExecuteEx][%s][%s][0x%08x]\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"yncShellExecute\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00000648.00000001.177707.02A20000.00000004.mdmp, 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\"\
+      )\n Found reference to API \"yncShellExecute)\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00000648.00000001.177707.02A20000.00000004.mdmp, 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"[File::OpenShareMode\
+      \ - CreateFile failed][%s][%d][%d][0x%x]\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"CreateDirectoryW\"\
+      \ (Indicator: \"CreateDirectory\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"6775872036,5332,3143,,CreateProcessW,kernel32.dll,\"\
+      00:45:44.687\",RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00000648.00000000.175788.02A20000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API (Indicator: \"RegEnumValueW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LookupPrivilegeValueW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHFileOperationW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetFileInfoW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHBrowseForFolderW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SHGetPathFromIDListW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IIDFromString\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OleUninitialize\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OleInitialize\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FillRect\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetClientRect\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"BeginPaint\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"InvalidateRect\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EnableWindow\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LoadImageW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindow\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"wsprintfW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"PostQuitMessage\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetTimer\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharNextW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateWindowExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RegisterClassW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ScreenToClient\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetWindowRect\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EnableMenuItem\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemMenu\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindowEnabled\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetWindowPos\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSysColor\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetCursor\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"LoadCursorW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"IsWindowVisible\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CloseClipboard\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetClipboardData\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"EmptyClipboard\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"OpenClipboard\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"TrackPopupMenu\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"AppendMenuW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreatePopupMenu\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemMetrics\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharPrevW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CharNextA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"wsprintfA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"PeekMessageW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SelectObject\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MulDiv\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"DeleteFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetPrivateProfileStringW\"; File: \"\
+      Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator: \"WritePrivateProfileStringW\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"FreeLibrary\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference\
+      \ to API (Indicator: \"LoadLibraryExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"; File:\
+      \ \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator: \"\
+      lstrcmpW\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API\
+      \ (Indicator: \"lstrcmpiW\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found\
+      \ reference to API (Indicator: \"CloseHandle\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFileTime\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CompareFileTime\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SearchPathW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetShortPathNameW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFullPathNameW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MoveFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetCurrentDirectoryW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; File: \"\
+      Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator: \"GetWindowsDirectoryW\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"GetTempPathW\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference\
+      \ to API (Indicator: \"GetCommandLineW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcpynW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetDiskFreeSpaceW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalUnlock\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GlobalLock\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"RemoveDirectoryW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcmpiA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetTempFileNameW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"MoveFileExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"lstrcatW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"VerQueryValueW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeW\"; File: \"\
+      Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator: \"SHGetFolderPathW\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"SHGetKnownFolderPath\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found\
+      \ reference to API (Indicator: \"RegDeleteKeyExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultUILanguage\"; File: \"\
+      Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator: \"GetDiskFreeSpaceExW\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API (Indicator:\
+      \ \"SetDefaultDllDirectories\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found\
+      \ reference to API (Indicator: \"SeShutdownPrivilege\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocaleNameToLCID\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringEx\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; File:\
+      \ \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlsFree\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"; File: \"\
+      00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReleaseSRWLockExclusive\"; File: \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"00000000-00000648.00000000.175788.02A20000.00000004.mdmp,\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DisplayVersion\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SleepConditionVariableCS\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WakeAllConditionVariable\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlsFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlsGetValue\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlsSetValue\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"AreFileApisANSI\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CompareStringEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDateFormatEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimePreciseAsFileTime\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTimeFormatEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLocaleName\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsValidLocaleName\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LCIDToLocaleName\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocaleNameToLCID\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadStackGuarantee\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitOnceExecuteOnce\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateSemaphoreW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateSemaphoreExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpoolTimer\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadpoolTimer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForThreadpoolTimerCallbacks\";\
+      \ Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"CloseThreadpoolTimer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpoolWait\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadpoolWait\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpoolWait\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushProcessWriteBuffers\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeLibraryWhenCallbackReturns\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessorNumber\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateSymbolicLinkW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount64\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileInformationByHandleEx\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFileInformationByHandle\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeConditionVariable\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WakeConditionVariable\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeSRWLock\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TryAcquireSRWLockExclusive\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SleepConditionVariableSRW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpoolWork\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SubmitThreadpoolWork\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpoolWork\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NetGetAadJoinInformation\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"NetFreeAadJoinInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AddDllDirectory\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureStackBackTrace\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateMutexExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateEventExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProductInfo\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetNativeSystemInfo\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process2\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlGetVersion\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQueryInformationProcess\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WTSGetActiveConsoleSessionId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WTSQueryUserToken\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetInitializeAutoProxyDll\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CryptUnprotectData\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CredEnumerateW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CredFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpAddRequestHeaders\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpCheckPlatform\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpDetectAutoProxyConfigUrl\";\
+      \ Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"WinHttpGetIEProxyConfigForCurrentUser\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpGetDefaultProxyConfiguration\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpGetProxyForUrl\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpCloseHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpConnect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpCrackUrl\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpCreateUrl\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpQueryHeaders\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpQueryOption\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpReadData\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpReceiveResponse\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpOpen\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpOpenRequest\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpQueryAuthSchemes\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpQueryDataAvailable\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpSetStatusCallback\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WinHttpSetTimeouts\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpWriteData\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpSendRequest\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpSetDefaultProxyConfiguration\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"WinHttpSetCredentials\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WinHttpSetOption\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetAdaptersInfo\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnregisterClassW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DnsFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetIfTable\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathAppendW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathCanonicalizeW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathAddBackslashW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathRemoveFileSpecW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathRemoveExtensionW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"PathStripPathW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathFindFileNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathFileExistsW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathFindExtensionW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyEnvironmentBlock\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateEnvironmentBlock\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MakeSelfRelativeSD\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSecurityDescriptorLength\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSecurityDescriptorOwner\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorControl\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSecurityDescriptorGroup\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSecurityDescriptorDacl\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSecurityDescriptorSacl\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTokenInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorGroup\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MakeAbsoluteSD\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LookupAccountSidW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenThreadToken\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLengthSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenServiceW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeAcl\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeSecurityDescriptor\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"StartServiceW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AddAce\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ImpersonateLoggedOnUser\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConvertStringSidToSidW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetNamedSecurityInfoW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopySid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetNamedSecurityInfoW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateWellKnownSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSidLengthRequired\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSidSubAuthority\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseServiceHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EqualSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetAce\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorOwner\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetAclInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RevertToSelf\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorDacl\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EventUnregister\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EventRegister\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSidIdentifierAuthority\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CheckTokenMembership\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeSid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSidSubAuthorityCount\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DuplicateTokenEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConvertSidToStringSidW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateProcessAsUserW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LookupPrivilegeValueW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumValueW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetKeySecurity\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryInfoKeyW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegGetKeySecurity\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegNotifyChangeKeyValue\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ImpersonateSelf\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOverridePredefKey\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReportEventW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegisterEventSourceW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ChangeServiceConfigW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryServiceConfigW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceCtrlDispatcherW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegisterServiceCtrlHandlerW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteService\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetServiceStatus\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateServiceW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeregisterEventSource\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsTextUnicode\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenCurrentUser\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateGuid\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeSecurity\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IIDFromString\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoGetObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoTaskMemAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemRealloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateFreeThreadedMarshaler\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SHGetFolderPathW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CommandLineToArgvW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetParent\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PostQuitMessage\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetClientRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TranslateMessage\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MapWindowPoints\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PeekMessageW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateWindowExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetWindowPos\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"wsprintfW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"wvsprintfW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharLowerBuffW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharLowerW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharUpperW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetClipboardData\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EmptyClipboard\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseClipboard\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenClipboard\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadImageW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumWindows\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemMetrics\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWindowVisible\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CharUpperBuffW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharNextW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadStringW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharLowerBuffA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CharNextA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CertVerifyCertificateChainPolicy\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"CryptProtectData\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CertFreeCertificateChain\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InternetOpenW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HttpSendRequestW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetCloseHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetReadFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetQueryOptionW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HttpQueryInfoA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HttpOpenRequestA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetCrackUrlA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HttpAddRequestHeadersA\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InternetConnectA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ControlService\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryServiceStatus\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetTokenInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DuplicateToken\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegGetValueA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DPtoLP\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFontIndirectW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateSolidBrush\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetObjectW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteDC\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDeviceCaps\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStockObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleDC\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SelectObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateCompatibleBitmap\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"BitBlt\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetStretchBltMode\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreatePatternBrush\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateRoundRectRgn\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StretchBlt\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RoundRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateStreamOnHGlobal\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoGetClassObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OleUninitialize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OleInitialize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CLSIDFromString\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SHGetKnownFolderPath\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000001.177707.00361000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowTextW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumChildWindows\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowTextLengthW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"KillTimer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadCursorW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetTimer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BeginPaint\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseDC\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InvalidateRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseCapture\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDesktopWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RemoveMenu\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MapDialogRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetCapture\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BringWindowToTop\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFocus\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateAcceleratorTableW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MoveWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSysColor\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTopWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsChild\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyAcceleratorTable\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ClientToScreen\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DestroyIcon\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RedrawWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetWindowTextW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ScreenToClient\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FillRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDC\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFocus\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemMenu\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnableWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnableMenuItem\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWindowEnabled\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCursorPos\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UpdateWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SystemParametersInfoW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSysColorBrush\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsRectEmpty\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FrameRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OffsetRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetActiveWindow\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InflateRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetMenuState\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DrawFocusRect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SizeofResource\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapSize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LockResource\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RaiseException\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindResourceExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DecodePointer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapDestroy\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"NetGetJoinInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NetApiBufferFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerQueryValueW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WTSQuerySessionInformationW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WTSEnumerateSessionsW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WTSFreeMemory\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetShortPathNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetPrivateProfileIntW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OutputDebugStringA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReleaseMutex\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileInformationByHandle\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OutputDebugStringW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLocalTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"lstrcmpiW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcmpW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindFirstFileW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindNextFileW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExpandEnvironmentStringsW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RemoveDirectoryW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjects\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetEnvironmentVariableW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DuplicateHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteFileW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentDirectoryW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LocalFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTempFileNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenMutexW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareFileTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEndOfFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstChangeNotificationW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetFileAttributesW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileAttributesExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FileTimeToSystemTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindCloseChangeNotification\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindNextChangeNotification\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MoveFileExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileSize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemTimeAsFileTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"lstrcpynW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTimeZoneInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FileTimeToLocalFileTime\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SystemTimeToFileTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SystemTimeToTzSpecificLocalTime\";\
+      \ Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"GetStringTypeExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTempPathW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowsDirectoryW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VirtualQuery\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TryEnterCriticalSection\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LeaveCriticalSection\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSection\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateMutexW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateEventW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEvent\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerSetConditionMask\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerifyVersionInfoW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLongPathNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSetInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetPriorityClass\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"K32GetModuleFileNameExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjectsEx\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"K32GetProcessImageFileNameW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateToolhelp32Snapshot\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ProcessIdToSessionId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Process32NextW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Process32FirstW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"K32EnumProcesses\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadProcessMemory\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"K32EnumProcessModules\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetHandleInformation\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeviceIoControl\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreatePipe\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemPowerStatus\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetDiskFreeSpaceExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalMemoryStatusEx\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetProcessWorkingSetSize\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalLock\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalUnlock\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"QueryDosDeviceW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLogicalDriveStringsW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetComputerNameExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenEventW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetPrivateProfileStringW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetCurrentDirectoryW\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetPriorityClass\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateHardLinkW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetThreadLocale\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcmpA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueueUserWorkItem\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeExA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnhandledExceptionFilter\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsProcessorFeaturePresent\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeSListHead\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStringTypeW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EncodePointer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCPInfo\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlUnwind\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InterlockedPushEntrySList\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InterlockedFlushSList\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TlsFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemInfo\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VirtualAlloc\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileType\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetDateFormatW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTimeFormatW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLocaleInfoW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidLocale\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLCID\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsValidCodePage\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetACP\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetOEMCP\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCommandLineA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetEnvironmentStringsW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeEnvironmentStringsW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileSizeEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetConsoleOutputCP\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetConsoleMode\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReadConsoleW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadLibraryExA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetProcessShutdownParameters\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetProcessShutdownParameters\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Thread32Next\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Thread32First\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegisterWaitForSingleObject\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnregisterWaitEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceFrequency\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetDriveTypeW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLangID\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"QueryUnbiasedInterruptTime\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessTimes\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteTimerQueueEx\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateTimerQueue\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryFullProcessImageNameW\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalHandle\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MulDiv\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeResource\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InterlockedPopEntrySList\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlushInstructionCache\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualFree\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SwitchToThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibraryAndExitThread\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateTimerQueueTimer\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteTimerQueueTimer\"; Source: \"\
+      00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReleaseSemaphore\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetDefaultDllDirectories\"; Source:\
+      \ \"00000000-00000648.00000001.177707.00361000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FormatMessageA\"; Source: \"00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTempFileNameW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemInfo\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualQuery\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExA\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"QueryPerformanceCounter\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeSListHead\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageA\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesExW\"; Source: \"\
+      00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetFileInformationByHandle\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AreFileApisANSI\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileInformationByHandleEx\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MultiByteToWideChar\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlUnwind\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"\
+      00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCPInfo\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineA\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; Source: \"\
+      00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeEnvironmentStringsW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleOutputCP\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DecodePointer\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "\"Software\\Microsoft\\Windows\\CurrentVersion\" in Source: Hagitori_0.1.0_x64-setup.exe\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 17111-425-003699F6\n \"ACHINE\\Software\\Microsoft\\EdgeUpdate\\\
+      ClientStateMedium\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Registry\\Machine\\\
+      Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\" in Source:\
+      \ 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n \"MACHINE\\Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"KLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKCU\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\%ws\\UsageStats\\Daily\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKU\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Setup\\State\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in\
+      \ Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\DownloaderLockout\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\CdpNames\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\AdditionalInstallArgs\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\\NetworkCards\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Classes\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution\
+      \ Options\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\%s\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\InternetRegistry\\REGISTRY\\USER\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\proxy\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\http\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\\IEXPLORE.EXE\\shell\\open\\\
+      command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\Applications\\FIREFOX.EXE\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\{0002DF01-0000-0000-C000-000000000046}\\LocalServer32\" in\
+      \ Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKCR\\\
+      Applications\\chrome.exe\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      SQMClient\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"\\SOFTWARE\\Classes\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\" in\
+      \ Source: 00000000-00000648.00000001.177707.00361000.00000020.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Applications\\%1.exe\" in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n\
+      \ 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n \":\\ProgramData\\\
+      Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\\
+      Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\MACHINE\\SOFTWARE\\\
+      Classes\\WOW6432Node\\CLSID\\{B31118B2-1F49-48E5-B6FncesPolicy>IgnoreNew</MultipleInstancesPolicy>\"\
+      \ in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n\
+      \ \"HKLM\\Softwar\" in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n\
+      \ 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001244.00000000.178367.026B0000.00000004.mdmp\n\
+      \ 00000000-00001244.00000001.180289.026B0000.00000004.mdmp\n 00000000-00001244.00000002.182207.026B0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001244.00000000.178367.04240000.00000004.mdmp\n 00000000-00001244.00000001.180289.04240000.00000004.mdmp\n\
+      \ 00000000-00001244.00000002.182207.04240000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"OpenProcessToken\"\
+      \ (Indicator: \"OpenProcess\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: 'Found reference to API "SHFileOperationW" (Indicator: "SHFileOperation";
+      File: "Hagitori_0.1.0_x64-setup.exe")'
+  - EventData: Contains reference to method used by Windows shell items (API string)
+  - EventData: string-269
+  - EventData: "file/memory contains long string(File: \"psmachine_arm64.dll\")\n\
+      \ file/memory contains long string(File: \"psuser_arm64.dll\")\n file/memory\
+      \ contains long string(File: \"psmachine.dll\")\n file/memory contains long\
+      \ string(File: \"psuser.dll\")\n file/memory contains long string(File: \"MicrosoftEdgeUpdateCore.exe\"\
+      )\n file/memory contains long string(File: \"MicrosoftEdgeUpdateComRegisterShell64.exe\"\
+      )\n file/memory contains long string(File: \"MicrosoftEdgeUpdate.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeComRegisterShellARM64.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeUpdateOnDemand.exe\")\n file/memory\
+      \ contains long string(File: \"MicrosoftEdgeUpdateBroker.exe\")\n file/memory\
+      \ contains long string(File: \"CopilotUpdate.exe\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"Hagitori_0.1.0_x64-setup.exe\"\
+      \n Found registry modification API: \"RegCreateKeyTransactedW\" in \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"GetWindowThreadProcessId\"\
+      \ (Indicator: \"GetWindowThreadProcessId\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API \"MoveFileW\" (Indicator: \"MoveFile\"; File:\
+      \ \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"MoveFileExW\"\
+      \ (Indicator: \"MoveFile\"; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found\
+      \ reference to API \"MoveFileExW\" (Indicator: \"MoveFile\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "Found string \"MoveFileW\" (Indicator: \"MoveFileW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; File: \"Hagitori_0.1.0_x64-setup.exe\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileExW\"; File:\
+      \ \"psmachine_arm64.dll\")\n file/memory contains long string with (Indicator:\
+      \ \"MoveFileExW\"; File: \"psuser_arm64.dll\")\n file/memory contains long string\
+      \ with (Indicator: \"MoveFileExW\"; File: \"psmachine.dll\")\n file/memory contains\
+      \ long string with (Indicator: \"MoveFileExW\"; File: \"psuser.dll\")\n file/memory\
+      \ contains long string with (Indicator: \"MoveFileExW\"; File: \"MicrosoftEdgeUpdateCore.exe\"\
+      )\n Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n file/memory contains long string\
+      \ with (Indicator: \"GetLastError\"; File: \"System.dll\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp,\
+      \ 00000000-00000648.00000002.179627.00379000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"CommandLineToArgvW\"\
+      \ (Indicator: \"CommandLineToArgv\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp, 00000000-00000648.00000002.179627.00379000.00000002.mdmp\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00001244.00000002.182207.001B9000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"Hagitori_0.1.0_x64-setup.exe\")\n Found reference to API \"CreateThreadpoolTimer\"\
+      \ (Indicator: \"CreateThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThreadpoolWait\" (Indicator: \"CreateThread\"\
+      ; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateThreadpoolWork\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenThreadToken\" (Indicator: \"OpenThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenThread\" (Indicator: \"OpenThread\"; Source: \"00000000-00000648.00000000.175788.720D9000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "\"ACHINE\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in\
+      \ Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n \"Software\\\
+      Microsoft\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n \"MACHINE\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n \"HKLM\\SYSTEM\\\
+      CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00000648.00000000.175788.02A20000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"KLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKCU\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\%ws\\UsageStats\\Daily\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKU\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Setup\\State\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in\
+      \ Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\DownloaderLockout\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\CdpNames\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\AdditionalInstallArgs\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\\NetworkCards\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Classes\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution\
+      \ Options\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\Clients\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\\ClientState\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Google\\Update\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\%s\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\InternetRegistry\\REGISTRY\\USER\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\proxy\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\http\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Clients\\StartMenuInternet\\IEXPLORE.EXE\\shell\\open\\\
+      command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\SOFTWARE\\Clients\\StartMenuInternet\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\Applications\\FIREFOX.EXE\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\{0002DF01-0000-0000-C000-000000000046}\\LocalServer32\" in\
+      \ Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"HKCR\\\
+      Applications\\chrome.exe\\shell\\open\\command\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      SQMClient\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCR\\CLSID\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"\\SOFTWARE\\Classes\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"HKCU\\Software\\Microsoft\\\" in Source: 00000000-00000648.00000000.175788.720D9000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00000648.00000001.177707.00361000.00000020.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Applications\\%1.exe\" in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n\
+      \ \":\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\\
+      WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{B31118B2-1F49-48E5-B6FncesPolicy>IgnoreNew</MultipleInstancesPolicy>\"\
+      \ in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n \"HKLM\\\
+      Softwar\" in Source: 00000000-00000648.00000001.177707.02A20000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\Applications\\%1.exe\" in Source:\
+      \ 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\\\" in Source: 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n\
+      \ \":\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\\
+      WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{B31118B2-1F49-48E5-B6FncesPolicy>IgnoreNew</MultipleInstancesPolicy>\"\
+      \ in Source: 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n \"HKLM\\\
+      Softwar\" in Source: 00000000-00000648.00000002.179627.02A20000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001244.00000000.178367.026B0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001244.00000000.178367.04240000.00000004.mdmp\n \"\
+      HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001244.00000001.180289.026B0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001244.00000001.180289.04240000.00000004.mdmp\n \"\
+      HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00001244.00000002.182207.026B0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001244.00000002.182207.04240000.00000004.mdmp\n \"\
+      LM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00003756.00000000.176823.15A90000.00000004.mdmp\n\
+      \ \"sWinPEHost: Cannot open reg key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\\
+      Control\\MiniNT. Assuming the host is NOT WinPE. RegOpenKeyExW err\" in Source:\
+      \ 00000000-00003756.00000000.176823.15A90000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\EdgeUpdate\\\" in Source: 00000000-00003756.00000000.176823.15A90000.00000004.mdmp\n\
+      \ \"HHKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00003756.00000000.176823.15A90000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00003760.00000001.177293.02E1B000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00004248.00000000.177638.02DB0000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004248.00000001.177890.02DE3000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004248.00000001.177890.02DE3000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004248.00000001.177890.02DE3000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004248.00000001.177890.02DE3000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00004248.00000001.177890.02DE3000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00004248.00000001.177890.02E55000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00004248.00000001.177890.02E55000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004248.00000001.177890.02E55000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source:\
+      \ 00000000-00004248.00000001.177890.05D80000.00000004.mdmp\n \"LM\\Software\\\
+      Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00004660.00000000.177214.3F580000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\edgeupdate\" in\
+      \ Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\edgeupdatem\" in\
+      \ Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00004968.00000000.175980.03580000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source: 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft\
+      \ Edge Update\" in Source: 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source:\
+      \ 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n \"Software\\Classes\"\
+      \ in Source: 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n \"HKLM\\\
+      Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00005812.00000000.176432.4F888000.00000002.mdmp\n\
+      \ \"sWinPEHost: Cannot open reg key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\\
+      Control\\MiniNT. Assuming the host is NOT WinPE. RegOpenKeyExW err\" in Source:\
+      \ 00000000-00005812.00000000.176432.B29A0000.00000004.mdmp\n \"Y\\MACHINE\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00005812.00000000.176432.B29A0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\EdgeUpdate\" in Source: 00000000-00006184.00000000.175686.00DAC000.00000002.mdmp\n\
+      \ \"Software\\OEM\\MicrosoftEdge\" in Source: 00000000-00006184.00000000.175686.00DAC000.00000002.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00006184.00000000.175686.03350000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\" in\
+      \ Source: 00000000-00006184.00000002.179525.03350000.00000004.mdmp\n \":\\ProgramData\\\
+      Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\\
+      Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\MACHINE\\SOFTWARE\\\
+      Classes\\WOW6432Node\\CLSID\\{ECF5BF46-E3B6-449A-B56\" in Source: 00000000-00006608.00000000.177863.03270000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"HKU\\S-1-5-18\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\PersistedPings\\{D46AD7F3-77C6-4E89-A604-3126B0CABF82}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000001.179783.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\\\
+      CurrentState\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"SYSTEM\\\
+      CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source:\
+      \ 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"HKU\\S-1-5-18\\\
+      Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source:\
+      \ 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\EdgeUpdate\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\" in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientStateMedium\\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\PersistedPings\\{D46AD7F3-77C6-4E89-A604-3126B0CABF82}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00006608.00000002.181703.03270000.00000004.mdmp\n \":\\\
+      ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\\
+      System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{ECF5BF46-E3B6-449A-B56\" in\
+      \ Source: 00000000-00008160.00000000.177679.03250000.00000004.mdmp\n \":\\ProgramData\\\
+      Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\\
+      Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\MACHINE\\SOFTWARE\\\
+      Classes\\WOW6432Node\\CLSID\\{ECF5BF46-E3B6-449A-B56\" in Source: 00000000-00008160.00000001.179599.03250000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00008160.00000001.179599.03250000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00008160.00000001.179599.03250000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00008160.00000001.179599.03250000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\"\
+      \ in Source: 00000000-00008160.00000002.181519.001A1000.00000020.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00008160.00000002.181519.03250000.00000004.mdmp\n\
+      \ \":\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\\
+      WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{ECF5BF46-E3B6-449A-B56\" in\
+      \ Source: 00000000-00008160.00000002.181519.03250000.00000004.mdmp\n \"HKLM\\\
+      Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00008160.00000002.181519.03250000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00008160.00000002.181519.03250000.00000004.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00008160.00000002.181519.03250000.00000004.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\MicrosoftEdge\" in Source:\
+      \ 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\Microsoft Edge Update\" in Source:\
+      \ 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n \"HKLM\\Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source: 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Microsoft\\EdgeUpdateDev\\\" in Source: 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Session Manager\" in Source: 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n\
+      \ \"HKLM\\Software\\Policies\\Microsoft\\EdgeUpdate\\\" in Source: 00000000-00008160.00000002.181519.717D8000.00000002.mdmp\n\
+      \ \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Copilot\" in Source: 00000000-00008160.00000002.181519.717D8000.00000002.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: '"MicrosoftEdgeUpdate_unsigned.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Observed system executable string:\"%WINDIR%\\system32\\UXTHEME.dll\"\
+      \ [Source: 00000000-00006312-00000C2B-1706289017]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\USERENV.dll\" [Source: 00000000-00006312-00000C2B-1706318600]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\SETUPAPI.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1706361256]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\APPHELP.dll\" [Source: 00000000-00006312-00000C2B-1706445496]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\PROPSYS.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1706478285]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\DWMAPI.dll\" [Source: 00000000-00006312-00000C2B-1706508540]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\CRYPTBASE.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1706537021]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\OLEACC.dll\" [Source: 00000000-00006312-00000C2B-1706569565]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\CLBCATQ.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1706597976]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\NTMARTA.dll\" [Source: 00000000-00006312-00000C2B-1706628686]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\VERSION.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1706657411]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\SHFOLDER.dll\" [Source: 00000000-00006312-00000C2B-1706686679]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\RichEd20.dll\" [Source:\
+      \ 00000000-00006312-00000C2B-1707058299]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\kernel32.dll\" [Source: 00000000-00000648-00000C2B-1717284629]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\MDMRegistration.dll\"\
+      \ [Source: 00000000-00000648-00000C2B-1717480352]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\NetApi32.dll\" [Source: 00000000-00000648-00000C2B-1717580375]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\ntdll.dll\" [Source:\
+      \ 00000000-00000648-00000C2B-1744635591]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\wldp.dll\" [Source: 00000000-00000648-00000C2B-1744877459]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\wtsapi32.dll\" [Source:\
+      \ 00000000-00006608-00000C2B-1754634382]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  selection_network:
+  - DestinationHostname: .10.0.16299.15.amd64fre.rs
+  - DestinationHostname: 3.0I.Microsoft.WebBrowser.Installer.EdgeUpdate.Pingq
+  - DestinationHostname: 32.dll
+  - DestinationHostname: 64.dll
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: APPHELP.dll
+  - DestinationHostname: Advapi32.dll
+  - DestinationHostname: CLBCATQ.dll
+  - DestinationHostname: CRYPTBASE.dll
+  - DestinationHostname: CopilotUpdate.exe
+  - DestinationHostname: DWMAPI.dll
+  - DestinationHostname: EUD27B.tmp
+  - DestinationHostname: EdgeUpdate.dat
+  - DestinationHostname: F-cEventInfo.Level
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: Iphlpapi.dll
+  - DestinationHostname: KERNEL32.DLL
+  - DestinationHostname: MDMRegistration.dll
+  - DestinationHostname: MicrosoftEdgeComRegisterShellARM64.exe
+  - DestinationHostname: MicrosoftEdgeUpdate.CoreClass
+  - DestinationHostname: MicrosoftEdgeUpdate.CoreMachineClass
+  - DestinationHostname: MicrosoftEdgeUpdate.CredentialDialogMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassMachineFallback
+  - DestinationHostname: MicrosoftEdgeUpdate.OnDemandCOMClassSvc
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusMachine
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusMachineFallback
+  - DestinationHostname: MicrosoftEdgeUpdate.PolicyStatusSvc
+  - DestinationHostname: MicrosoftEdgeUpdate.ProcessLauncher
+  - DestinationHostname: MicrosoftEdgeUpdate.Update
+  - DestinationHostname: MicrosoftEdgeUpdate.exe
+  - DestinationHostname: MicrosoftEdgeUpdateBroker.exe
+  - DestinationHostname: MicrosoftEdgeUpdateComRegisterShell64.exe
+  - DestinationHostname: MicrosoftEdgeUpdateCore.exe
+  - DestinationHostname: MicrosoftEdgeUpdateOnDemand.exe
+  - DestinationHostname: MicrosoftEdgeUpdateSetup.exe
+  - DestinationHostname: MicrosoftEdgeWebview2Setup.exe
+  - DestinationHostname: NETAPI32.dll
+  - DestinationHostname: NOTICE.TXT
+  - DestinationHostname: NSISdl.dll
+  - DestinationHostname: NTMARTA.dll
+  - DestinationHostname: NetApi32.dll
+  - DestinationHostname: OLEACC.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: RPCRT4.dll
+  - DestinationHostname: RichEd20.dll
+  - DestinationHostname: SETUPAPI.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHFOLDER.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UXTHEME.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WININET.dll
+  - DestinationHostname: Windows.Desktop
+  - DestinationHostname: af.dll
+  - DestinationHostname: am.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: ar.dll
+  - DestinationHostname: arm64.dll
+  - DestinationHostname: as.dll
+  - DestinationHostname: atlthunk.dll
+  - DestinationHostname: az.dll
+  - DestinationHostname: bg.dll
+  - DestinationHostname: bn-IN.dll
+  - DestinationHostname: bn.dll
+  - DestinationHostname: bs.dll
+  - DestinationHostname: ca-Es-VALENCIA.dll
+  - DestinationHostname: ca.dll
+  - DestinationHostname: config.edge.skype.com
+  - DestinationHostname: cs.dll
+  - DestinationHostname: cy.dll
+  - DestinationHostname: da.dll
+  - DestinationHostname: de.dll
+  - DestinationHostname: eUpdateSetup.exe
+  - DestinationHostname: edgeupdate.dll
+  - DestinationHostname: el.dll
+  - DestinationHostname: en-GB.dll
+  - DestinationHostname: en.dll
+  - DestinationHostname: es-419.dll
+  - DestinationHostname: es.dll
+  - DestinationHostname: et.dll
+  - DestinationHostname: eu.dll
+  - DestinationHostname: fa.dll
+  - DestinationHostname: fi.dll
+  - DestinationHostname: fil.dll
+  - DestinationHostname: fr-CA.dll
+  - DestinationHostname: fr.dll
+  - DestinationHostname: ga.dll
+  - DestinationHostname: gd.dll
+  - DestinationHostname: gl.dll
+  - DestinationHostname: gu.dll
+  - DestinationHostname: hi.dll
+  - DestinationHostname: hr.dll
+  - DestinationHostname: hu.dll
+  - DestinationHostname: id.dll
+  - DestinationHostname: is.dll
+  - DestinationHostname: it.dll
+  - DestinationHostname: iw.dll
+  - DestinationHostname: ja.dll
+  - DestinationHostname: ka.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: kk.dll
+  - DestinationHostname: km.dll
+  - DestinationHostname: kn.dll
+  - DestinationHostname: ko.dll
+  - DestinationHostname: kok.dll
+  - DestinationHostname: lb.dll
+  - DestinationHostname: lo.dll
+  - DestinationHostname: lt.dll
+  - DestinationHostname: lv.dll
+  - DestinationHostname: mi.dll
+  - DestinationHostname: mk.dll
+  - DestinationHostname: ml.dll
+  - DestinationHostname: mr.dll
+  - DestinationHostname: ms.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: msedgeupdate.dll
+  - DestinationHostname: mt.dll
+  - DestinationHostname: nb.dll
+  - DestinationHostname: ne.dll
+  - DestinationHostname: netapi32.dll
+  - DestinationHostname: nl.dll
+  - DestinationHostname: nn.dll
+  - DestinationHostname: nsDialogs.dll
+  - DestinationHostname: nsjB1F5.tmp
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: or.dll
+  - DestinationHostname: pa.dll
+  - DestinationHostname: pl.dll
+  - DestinationHostname: psmachine.dll
+  - DestinationHostname: psuser.dll
+  - DestinationHostname: pt-BR.dll
+  - DestinationHostname: pt-PT.dll
+  - DestinationHostname: quz.dll
+  - DestinationHostname: ro.dll
+  - DestinationHostname: ru.dll
+  - DestinationHostname: self.events.data.microsoft.com
+  - DestinationHostname: sk.dll
+  - DestinationHostname: sl.dll
+  - DestinationHostname: slwga.dll
+  - DestinationHostname: sq.dll
+  - DestinationHostname: sr-Cyrl-BA.dll
+  - DestinationHostname: sr-Cyrl-RS.dll
+  - DestinationHostname: sr-Latn-RS.dll
+  - DestinationHostname: sr.dll
+  - DestinationHostname: sv.dll
+  - DestinationHostname: ta.dll
+  - DestinationHostname: te.dll
+  - DestinationHostname: th.dll
+  - DestinationHostname: tr.dll
+  - DestinationHostname: tt.dll
+  - DestinationHostname: ug.dll
+  - DestinationHostname: uk.dll
+  - DestinationHostname: unsigned.pdb
+  - DestinationHostname: ur.dll
+  - DestinationHostname: vi.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wtsapi32.dll
+  - DestinationHostname: x64-setup.exe
+  - DestinationHostname: zh-CN.dll
+  - DestinationHostname: zh-TW.dll
+  - DestinationIp: 1.3.171.37
+  - DestinationIp: 1.3.217.3
+  - DestinationIp: 3.4.254.1
+  - DestinationIp: 51.11.192.49
+  condition: selection_behavior or selection_network

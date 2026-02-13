@@ -1,0 +1,1217 @@
+title: Gen:Variant.Lazy behavior detection (6e8e5573)
+id: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5
+status: experimental
+description: Auto-generated Sigma rule for Gen:Variant.Lazy
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "\"tSoftware\\Adobe\\Adobe Acrobat\\DC\\AcroLogging\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\AcroLogging\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AcroLogging\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\InstallPath\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\InstallPath\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"tSoftware\\Adobe\\Adobe Acrobat\\DC\\Privileged\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\Privileged\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Policies\\Adobe\\%s\\%s\\FeatureLockDown\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\%s\\%s\\Privileged\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\msedge.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\Installer\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\AcroDist.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat\\PDFMaker\\DC\\Word\\Settings\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat\\PDFMaker\\DC\\Excel\\Settings\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\FeatureState\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\FeatureState\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\\
+      TLS 1.2\\Client\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\WebResource\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockdown\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\AcroRd32.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Installer\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\AcroPerf\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat\\Exe\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\\UserChoice\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\Acrobat Reader\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Wow6432Node\\Adobe\\Acrobat Reader\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Wow6432Node\\Adobe\\Adobe Acrobat\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Google\\Chrome\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Google\\Chrome\\Extensions\\efaidnbmnnnibpcajpcglclefindmkaj\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.adobe.acrobat.chrome_webcapture\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Google\\Chrome\\Extensions\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\Installer\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\\\
+      OpenWithList\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\appv\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\CrashDataAtLaunch\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\ExitSection\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Policies\\Microsoft\\Edge\\WebView2\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\BIOS\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\FileSystem\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Language\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Classes\\CLSID\\{054AAE20-4BEA-4347-8A35-64A533254A9D}\\LocalServer32\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\ClusterSettings\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      ifSOFTWARE\\Microsoft\\IMEJP\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\IMEJP\\%s\\directories\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Photoshop.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Illustrator.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Classes\\Applications\\mspaint.exe\\shell\\edit\\command\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\notepad++.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\notepad++.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Brackets.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Brackets.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\devenv.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\devenv.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ConTEXT.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ConTEXT.exe\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\uedit64.exeSOFTWARE\\\
+      WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\uedit64.exeSOFTWARE\\\
+      WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\TextPad.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Classes\\Applications\\notepad.exe\\shell\\edit\\command\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Classes\\Applications\\TextPad.exe\\shell\\edit\\command\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"eSOFTWARE\\Microsoft\\Cryptography\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\NGL\\Config\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HSoftware\\Adobe\\Adobe Acrobat\\DC\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Activation\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"eSYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\\
+      TLS 1.2\\Client\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\https\\\
+      UserChoice\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Classes\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Distiller\\PrinterJobControl\\splwow64.exe\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Classes\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRecentFiles_old\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Adobe\\Acrobat Reader\\11.0\\AVGeneral\\cRecentFiles\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Adobe\\Adobe Acrobat\\11.0\\AVGeneral\\cRecentFiles\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\ApplicationAssociationToasts\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\" in Source:\
+      \ 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n \"\
+      Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\\cFileInfo\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\\cFileInfo\\\
+      cPathInfo\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe ARM\\1.0\\ARM\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Internet Explorer\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"nSoftware\\Adobe\\Adobe Acrobat\\DC\\InstallPath\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\FEAT\\cFeatDir\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Acrobat Reader\\DC\\Privileged*\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\Privileged*\" in\
+      \ Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRecentFiles*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cFavoriteFiles*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cChatFiles*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cAdHocFiles*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRSDraftFiles*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\Installer\\NotificationAppx*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\DiskCabs\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Synchronizer\\DC\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Dunamis\\device\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Dunamis\\users\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat\\PDFMaker\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Elements\\DC\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\CommonFiles\\Usage\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\CommonFiles\\UsageCC\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\CommonFiles\\Usage\\Exchange-Pro DC\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\CommonFiles\\CRLog\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Acrobat Reader\\DC\\InAppPurchase*\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Lotus\\Notes\\Installer*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Lotus\\Notes*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\System\\CurrentControlSet\\Control\\MediaProperties\\\
+      PrivateProperties*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet\
+      \ Settings\\5.0\\Cache*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet\
+      \ Settings\\5.0\\LowCache*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Adobe\\CommonFiles*\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Justsystem\\ATOK\\Setup\\Folder\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Accessibility\\cAccCheckerOptions\\\
+      cChosenPath\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\TouchUp\\\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\\cProtectedModeConfigFiles\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\\cProtectedModeConfigFiles\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\Privileged\\cInAppPurchase\\cFileInfo\\\
+      cPathInfo\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\PlatformViews\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Adobe\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"@SOFTWARE\\Microsoft\\Office\\11.0\\Common\\InstallRoot\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\11.0\\Outlook\\InstallRoot\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"@Software\\Adobe\\Repair\\Adobe Acrobat\\DC\\IOD\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Installer\\IOD\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"@Software\\Adobe\\Adobe Acrobat\\DC\\Private\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION\"\
+      \ in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\SendMail\" in Source: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\n\
+      \ \"USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersionv\" in Source:\
+      \ 00000000-00000256.00000000.196553.7F8A0000.00000004.mdmp\n 00000000-00000256.00000002.200393.7F8A0000.00000004.mdmp\n\
+      \ \"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00001144.00000001.197870.D7CB0000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00001144.00000001.197870.F2190000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00001144.00000001.197870.F2190000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{8BC3F05E-D86B-11D0-A075-00C04FB68820}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{4\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Software\\C[\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{0W\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"> > > > > >\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\\
+      {8BC3F05E-D86B-11D0-A075-00C04FB68820}\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\C\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}o\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API (Indicator: \"GetWindowDC\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SeShutdownPrivilege\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"DisplayVersion\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateProcessWithTokenW\"; File: \"\
+      6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n Found\
+      \ reference to API (Indicator: \"RegSetValueExW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"IsWellKnownSid\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualFreeEx\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcessId\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLCID\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualAllocEx\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"WriteProcessMemory\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateRemoteThread\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlAddFunctionTable\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowsDirectoryW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcatW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"ReadProcessMemory\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"OpenThread\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcpyW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; File: \"\
+      6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n Found\
+      \ reference to API (Indicator: \"RtlPcToFileHeader\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SysFreeString\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SysAllocString\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"VariantClear\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"VariantInit\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteExW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"WSAStartup\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"WSACleanup\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"htons\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlCompressBuffer\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlReleasePebLock\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"NtAllocateVirtualMemory\"; File: \"\
+      6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n Found\
+      \ reference to API (Indicator: \"RtlAcquirePebLock\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlGetCompressionWorkSpaceSize\"; File:\
+      \ \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n\
+      \ Found reference to API (Indicator: \"RtlInitUnicodeString\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CoGetObject\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CLSIDFromString\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"IIDFromString\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CoInitializeSecurity\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"EndUpdateResourceW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"CopyFileW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"UpdateResourceW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLogicalDriveStringsW\"; File: \"\
+      6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n Found\
+      \ reference to API (Indicator: \"EnumResourceNamesW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"BeginUpdateResourceW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"PathAppendW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"PathRemoveFileSpecW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"PathFileExistsW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"PathIsRelativeW\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"BCryptOpenAlgorithmProvider\"; File:\
+      \ \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n\
+      \ Found reference to API (Indicator: \"BCryptCloseAlgorithmProvider\"; File:\
+      \ \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\")\n\
+      \ Found reference to API (Indicator: \"BCryptGenRandom\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimePreciseAsFileTime\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FlsAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"AreFileApisANSI\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetDateFormatEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTimeFormatEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLocaleName\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsValidLocaleName\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCIDToLocaleName\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocaleNameToLCID\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQueryDirectoryFile\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"NtQuerySystemInformation\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NtQueryInformationFile\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SHGetKnownFolderPath\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PathFindFileNameW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapCreate\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Thread32Next\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Thread32First\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SuspendThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateToolhelp32Snapshot\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Sleep\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetThreadContext\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushInstructionCache\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadContext\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemInfo\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualQuery\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlVirtualUnwind\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"QueryPerformanceCounter\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeSListHead\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InterlockedFlushSList\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetLastError\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EncodePointer\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlPcToFileHeader\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCPInfo\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineA\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeEnvironmentStringsW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleOutputCP\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcatW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetWindowsDirectoryW\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"lstrcpyW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteProcessMemory\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessId\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Process32NextW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Process32FirstW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualAllocEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateRemoteThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcmpiW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlAddFunctionTable\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount64\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReadProcessMemory\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualFreeEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualQueryEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CheckTokenMembership\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeSid\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTokenInformation\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConvertSidToStringSidW\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DuplicateTokenEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessWithTokenW\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsWellKnownSid\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LookupPrivilegeValueW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteExW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IIDFromString\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CLSIDFromString\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoGetObject\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeSecurity\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlInitUnicodeString\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"NtAllocateVirtualMemory\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlAcquirePebLock\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlReleasePebLock\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlGetCompressionWorkSpaceSize\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlCompressBuffer\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"AcquireSRWLockExclusive\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TryAcquireSRWLockExclusive\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DecodePointer\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WakeAllConditionVariable\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SleepConditionVariableSRW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsValidLocale\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLCID\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesW\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptExportKey\"; Source: \"00000000-00001144.00000000.196546.D7CB0000.00000004.mdmp,\
+      \ 00000000-00001144.00000001.197870.F2265000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CryptImportKey\"; Source: \"00000000-00001144.00000000.196546.D7CB0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeConditionVariable\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SleepConditionVariableCS\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WakeAllConditionVariable\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoTaskMemAlloc\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExpandEnvironmentStringsW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadUILanguage\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegGetValueW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CloseHandle\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadStringW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerSetConditionMask\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerifyVersionInfoW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetConsoleTitleW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EnterCriticalSection\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LeaveCriticalSection\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DeleteCriticalSection\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetEvent\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"\
+      00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateEventW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlCaptureContext\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlLookupFunctionEntry\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlVirtualUnwind\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnhandledExceptionFilter\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"QueryPerformanceCounter\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemTimeAsFileTime\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsProcessorFeaturePresent\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SearchPathW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDefaultUILanguage\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetUserDefaultUILanguage\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnmapViewOfFile\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateFileMappingW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MapViewOfFile\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyExW\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptImportKey\"; Source: \"00000000-00001988.00000000.196646.892B0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found string - \\\\.\\pipe\\AIPC_SRV\\\n Found string - \\\\.\\pipe\\\
+      AIPC_CLI\\\n Found string - \\\\.\\pipe\\32B6B37A-4A7D-4e00-95F2-6F0BF3DE3E00\n\
+      \ Found string - \\\\.\\pipe\\\n Found string - \\\\.\\pipe\\ACROCOMM\\ACTWIN_\n\
+      \ Found string - \\\\.\\pipe\\adobe_crclient_*\n Found string - \\\\.\\pipe\\\
+      NGLWFPipe_\n Found string - \\\\.\\pipe\\PSHost.134153664297746940.1144.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153664313144127.1988.DefaultAppDomain.powershell"
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: 'Found string "MAPI32.DLL" (Indicator: "MAPI32.dll"; File: "6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin")'
+  - EventData: Contains reference to messaging system library (API string)
+  - EventData: string-571
+  - EventData: "Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"\
+      CreateProcess\"; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\mscoreei.dll\" [Source: 00000000-00001144-00000C2B-2042421761]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\clr.dll\" [Source: 00000000-00001144-00000C2B-2043131512]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      mscoree.dll\" [Source: 00000000-00001144-00000C2B-2043412423]\n Observed system\
+      \ executable string:\"%WINDIR%\\system32\\combase.dll\" [Source: 00000000-00001144-00000C2B-2043706808]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      mscorlib\\fe2524177eb3088c77be666722039f52\\mscorlib.ni.dll\" [Source: 00000000-00001144-00000C2B-2044228038]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\ole32.dll\" [Source: 00000000-00001144-00000C2B-2044339486]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\\
+      api-ms-win-core-winrt-l1-1-0.dll\" [Source: 00000000-00001144-00000C2B-2044423309]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\oleaut32.dll\" [Source: 00000000-00001144-00000C2B-2044570174]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System\\e43dd9c73ab5615e461bf5109c3facd6\\System.ni.dll\" [Source: 00000000-00001144-00000C2B-2044733348]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Core\\0d59b0e237d7519417de10cd84bda4e7\\System.Core.ni.dll\" [Source:\
+      \ 00000000-00001144-00000C2B-2044846567]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework64\\v4.0.30319\\OLEAUT32.dll\" [Source: 00000000-00001144-00000C2B-2045034112]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll\" [Source: 00000000-00001144-00000C2B-2045799103]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\api-ms-win-core-winrt-string-l1-1-0.dll\" [Source: 00000000-00001144-00000C2B-2046359894]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_64\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll\" [Source: 00000000-00001144-00000C2B-2046939663]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\psapi.dll\" [Source: 00000000-00001144-00000C2B-2047073462]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en-US\\mscorrc.dll\" [Source: 00000000-00001144-00000C2B-2047721266]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\en\\mscorrc.dll\" [Source: 00000000-00001144-00000C2B-2047950738]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\ntdll.dll\" [Source: 00000000-00001144-00000C2B-2047975881]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework64\\\
+      v4.0.30319\\mscorrc.dll\" [Source: 00000000-00001144-00000C2B-2048021050]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System.Management.Automation\\v4.0_3.0.0.0__31bf3856ad364e35\\wintrust.dll\"\
+      \ [Source: 00000000-00001144-00000C2B-2048030083]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll\" [Source: 00000000-00001144-00000C2B-2049009897]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\version.dll\" [Source:\
+      \ 00000000-00001144-00000C2B-2049281396]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\en-US\\tzres.dll.mui\" [Source: 00000000-00001144-00000C2B-2050175810]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\crypt32.dll\" [Source: 00000000-00001144-00000C2B-2050437113]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_64\\\
+      System.Data\\7bed49c46de9295a8453db205c60a028\\System.Data.ni.dll\" [Source:\
+      \ 00000000-00001144-00000C2B-2050634466]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: 'Observed system executable string:"%WINDIR%\System32\WindowsPowerShell\v1.0\powershell.exe"
+      [Source: 00000000-00004784-00000BC0-2040808435]'
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "Found registry modification API: \"RegCreateKeyExW\" in file \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found string \"GetCommandLineA\" (Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found string \"GetCommandLineW\" (Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp,\
+      \ 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"OpenThread\" (Indicator: \"OpenThread\";\
+      \ File: \"6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin\"\
+      )\n Found reference to API \"SuspendThread\" (Indicator: \"SuspendThread\";\
+      \ Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source: \"\
+      00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetThreadContext\" (Indicator: \"GetThreadContext\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API \"SetThreadContext\" (Indicator: \"SetThreadContext\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenThread\" (Indicator: \"OpenThread\"; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: 'Found string "processstartinfo" (Source: "00000000-00001144.00000001.197870.22830000.00000004.mdmp")'
+  - EventData: Able to execute applications using .NET process API
+  - EventData: string-934
+  - EventData: "\"USER\\S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersionv\"\
+      \ in Source: 00000000-00000256.00000000.196553.7F8A0000.00000004.mdmp\n \"USER\\\
+      S-1-5-18\\Software\\Microsoft\\Windows NT\\CurrentVersionv\" in Source: 00000000-00000256.00000002.200393.7F8A0000.00000004.mdmp\n\
+      \ \"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00001144.00000001.197870.D7CB0000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00001144.00000001.197870.F2190000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00001144.00000001.197870.F2190000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{D68AF00A-29CB-43FA-8504-CE99A996D9EA}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\CLSID\\{8BC3F05E-D86B-11D0-A075-00C04FB68820}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{4\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Software\\C[\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n \"\\\
+      REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{0W\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"> > > > > >\\Registry\\Machine\\Software\\Classes\\WOW6432Node\\CLSID\\\
+      {8BC3F05E-D86B-11D0-A075-00C04FB68820}\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"\\Registry\\Machine\\Software\\Classes\\C\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-\\Registry\\Machine\\Software\\Classes\\\
+      WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}o\" in Source: 00000000-00001144.00000001.197870.F2770000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\n \"o\
+      \ turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00001988.00000001.198050.A36C0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00001988.00000001.198050.A3785000.00000004.mdmp\n \"\
+      Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00001988.00000001.198050.A3CA0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432Node\" in Source: 00000000-00001988.00000001.198050.A3CA0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\WOW6432NodeP\" in Source: 00000000-00001988.00000001.198050.A3CA0000.00000004.mdmp\n\
+      \ \"REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001988.00000001.198050.A3DD9000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00001988.00000001.198050.A3DD9000.00000004.mdmp\n \"System\\\
+      CurrentControlSet\\Control\\Citrix\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\AcroSpeedLaunch\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\InstallPath\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Acrobat Reader\\DC\\InstallPath\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\Language\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Security\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\Adobe\\\
+      AcroPerf\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AcroLogging\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\AcroLogging\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\InstallPath\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\InstallPath\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\Privileged\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Policies\\Adobe\\%s\\%s\\FeatureLockDown\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\%s\\%s\\Privileged\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe\" in\
+      \ Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\msedge.exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\Installer\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\AcroDist.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Acrobat\\PDFMaker\\DC\\Word\\Settings\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat\\PDFMaker\\DC\\Excel\\Settings\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Reader\\DC\\FeatureState\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\FeatureState\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS 1.2\\Client\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows\\CurrentVersion\\Internet Settings\\WinHttp\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\WebResource\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockdown\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\Adobe\\\
+      Adobe Acrobat\\DC\\AVGeneral\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\AcroRd32.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Adobe Acrobat\\DC\\Installer\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat\\Exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\\UserChoice\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Adobe\\Acrobat Reader\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Wow6432Node\\Adobe\\Acrobat Reader\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Wow6432Node\\Adobe\\Adobe Acrobat\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Google\\Chrome\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Google\\Chrome\\Extensions\\efaidnbmnnnibpcajpcglclefindmkaj\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Google\\Chrome\\NativeMessagingHosts\\com.adobe.acrobat.chrome_webcapture\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Google\\Chrome\\Extensions\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\Installer\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.pdf\\\
+      OpenWithList\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\\Adobe Acrobat\\DC\\appv\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\CrashDataAtLaunch\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\Policies\\\
+      Adobe\\Adobe Acrobat\\DC\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\ExitSection\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\Clients\\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Edge\\WebView2\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\Terminal Server\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\BIOS\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\SystemInformation\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\FileSystem\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Language\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Classes\\CLSID\\{054AAE20-4BEA-4347-8A35-64A533254A9D}\\LocalServer32\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SYSTEM\\\
+      CurrentControlSet\\Control\\Terminal Server\\ClusterSettings\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"ifSOFTWARE\\Microsoft\\IMEJP\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\IMEJP\\%s\\directories\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Photoshop.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\Illustrator.exe\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\Classes\\\
+      Applications\\mspaint.exe\\shell\\edit\\command\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\notepad++.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\notepad++.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\Brackets.exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\Brackets.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\devenv.exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\devenv.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\ConTEXT.exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\App Paths\\ConTEXT.exe\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\uedit64.exeSOFTWARE\\WOW6432Node\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\uedit64.exeSOFTWARE\\WOW6432Node\\\
+      Microsoft\\Windows\\CurrentVersion\\App Paths\\TextPad.exe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Classes\\Applications\\notepad.exe\\shell\\edit\\command\" in\
+      \ Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Classes\\Applications\\TextPad.exe\\shell\\edit\\command\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Cryptography\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\NGL\\Config\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Activation\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\Shell\\Associations\\UrlAssociations\\https\\\
+      UserChoice\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Classes\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Distiller\\PrinterJobControl\\splwow64.exe\" in\
+      \ Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"SOFTWARE\\\
+      Classes\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRecentFiles_old\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\Adobe\\\
+      Acrobat Reader\\11.0\\AVGeneral\\cRecentFiles\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\11.0\\AVGeneral\\cRecentFiles\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\ApplicationAssociationToasts\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\Adobe\\\
+      Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\\cFileInfo\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Privileged\\cInAppPurchase\\cFileInfo\\\
+      cPathInfo\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe ARM\\1.0\\ARM\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Internet Explorer\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\FEAT\\cFeatDir\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Acrobat Reader\\DC\\Privileged*\" in\
+      \ Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Adobe\\Adobe Acrobat\\DC\\Privileged*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRecentFiles*\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cFavoriteFiles*\" in Source:\
+      \ 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cChatFiles*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cAdHocFiles*\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Adobe\\Adobe Acrobat\\DC\\AVGeneral\\cRSDraftFiles*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Adobe Acrobat\\DC\\Installer\\NotificationAppx*\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Adobe Acrobat\\DC\\DiskCabs\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Synchronizer\\DC\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Dunamis\\device\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Dunamis\\users\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat\\PDFMaker\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Acrobat Elements\\DC\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\CommonFiles\\Usage\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\CommonFiles\\UsageCC\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\CommonFiles\\Usage\\Exchange-Pro DC\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\CommonFiles\\CRLog\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Adobe\\Acrobat Reader\\DC\\InAppPurchase*\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"HKEY_CURRENT_USER\\\
+      SOFTWARE\\Lotus\\Notes\\Installer*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Lotus\\Notes*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Speech*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\System\\CurrentControlSet\\Control\\MediaProperties\\\
+      PrivateProperties*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet\
+      \ Settings\\5.0\\Cache*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet\
+      \ Settings\\5.0\\LowCache*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Adobe\\CommonFiles*\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Justsystem\\ATOK\\Setup\\Folder\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Accessibility\\cAccCheckerOptions\\\
+      cChosenPath\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\TouchUp\\\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\\cProtectedModeConfigFiles\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Policies\\Adobe\\Adobe Acrobat\\DC\\FeatureLockDown\\cProtectedModeConfigFiles\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Acrobat Reader\\DC\\Privileged\\cInAppPurchase\\cFileInfo\\cPathInfo\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Adobe Acrobat\\DC\\PlatformViews\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Adobe\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\11.0\\Common\\InstallRoot\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Office\\11.0\\Outlook\\InstallRoot\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Repair\\Adobe Acrobat\\DC\\IOD\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Installer\\IOD\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"Software\\Adobe\\Adobe Acrobat\\DC\\Private\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_BROWSER_EMULATION\"\
+      \ in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp\n \"Software\\\
+      Adobe\\Adobe Acrobat\\DC\\SendMail\" in Source: 00000000-00003748.00000002.199986.403A3000.00000002.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: 'Found string "Write-Error -Message $errorMessage -Category ReadError
+      -ErrorId "FileReadError" -TargetObjectA" (Indicator: "Write-Error"; Source:
+      "00000000-00001144.00000001.197870.F21EB000.00000004.mdmp")'
+  - EventData: Observed Powershell command strings
+  - EventData: string-187
+  - EventData: "Found reference to API \"FindResourceExW\" (Indicator: \"FindResource\"\
+      ; Source: \"00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp\")\n Found\
+      \ reference to API \"LoadResource\" (Indicator: \"LoadResource\"; Source: \"\
+      00000000-00001988.00000000.196646.1BC4A000.00000002.mdmp, 00000000-00001988.00000001.198050.9D232000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")\n Found\
+      \ reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source:\
+      \ \"00000000-00000256.00000000.196553.C5E6D000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  selection_network:
+  - DestinationHostname: 3DBuilder.ResourceResolver.exe
+  - DestinationHostname: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin
+  - DestinationHostname: 6e8e55732876360a13ad052348fe952f5e878a85624d0fd37b255872869a9fb5.bin.exe
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: Access.en
+  - DestinationHostname: Builder3D.exe
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: Excel.en
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: GROOVE.EXE
+  - DestinationHostname: GROOVEMN.EXE
+  - DestinationHostname: Groove.en
+  - DestinationHostname: HxAccounts.exe
+  - DestinationHostname: Icon.B9FB7347.CAE7.494C.A15D.5C1DB5D01BEC.exe
+  - DestinationHostname: Icon.D9679595.74DB.4A19.BF75.158941B688AB.exe
+  - DestinationHostname: ImagingDevices.exe
+  - DestinationHostname: InfoPath.en
+  - DestinationHostname: KERNEL32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: MSASCui.exe
+  - DestinationHostname: MSOSYNC.EXE
+  - DestinationHostname: MSOXMLED.EXE
+  - DestinationHostname: MSTORE.EXE
+  - DestinationHostname: Microsoft.AppV.AppvC
+  - DestinationHostname: Microsoft.AppV.AppvClientComConsumer
+  - DestinationHostname: Microsoft.Getstarted
+  - DestinationHostname: Microsoft.Manag
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native.Unmanaged.DLL
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.MicrosoftOfficeHub
+  - DestinationHostname: Microsoft.MicrosoftSolitaireCollection
+  - DestinationHostname: Microsoft.MicrosoftStickyNotes
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Notes.exe
+  - DestinationHostname: Microsoft.Office.OneNote
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Microsoft.SkypeApp
+  - DestinationHostname: Microsoft.StorePurchaseApp
+  - DestinationHostname: Microsoft.WindowsStore
+  - DestinationHostname: Microsoft.ZuneVideo
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: NisSrv.exe
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: ONELEV.EXE
+  - DestinationHostname: ONENOTE.EXE
+  - DestinationHostname: Office.en
+  - DestinationHostname: Office32.WW
+  - DestinationHostname: Office32.en
+  - DestinationHostname: OneDriveSetup.exe
+  - DestinationHostname: OneNote.en
+  - DestinationHostname: Outlook.en
+  - DestinationHostname: PEStub.dll
+  - DestinationHostname: PPTICO.EXE
+  - DestinationHostname: PSHost.134153664297746940.1144.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153664313144127.1988.DefaultAppDomain.powershell
+  - DestinationHostname: PowerPoint.en
+  - DestinationHostname: Proof.en
+  - DestinationHostname: Proof.es
+  - DestinationHostname: Proof.fr
+  - DestinationHostname: Proofing.en
+  - DestinationHostname: PsPInjector.dll
+  - DestinationHostname: Publisher.en
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: Shell32.dll
+  - DestinationHostname: SkypeBridge.exe
+  - DestinationHostname: Solitaire.exe
+  - DestinationHostname: StoreExperienceHost.exe
+  - DestinationHostname: Symbiote.exe
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.Install
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: Video.UI.ex
+  - DestinationHostname: WINWORD.EXE
+  - DestinationHostname: WhatsNew.Store.exe
+  - DestinationHostname: WinStore.App.exe
+  - DestinationHostname: Word.en
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-handle-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: capinfos.exe
+  - DestinationHostname: cli-32.exe
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cryptography-37.0.2.dist
+  - DestinationHostname: explorer.exe
+  - DestinationHostname: groove.net
+  - DestinationHostname: gui.exe
+  - DestinationHostname: helper.exe
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mi.dll
+  - DestinationHostname: microsoft.system.package.metadata
+  - DestinationHostname: microsoft.windowscommunicationsapps
+  - DestinationHostname: misc.exe
+  - DestinationHostname: mitmproxy.exe
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: normalizer.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: onenoteim.exe
+  - DestinationHostname: pip3.10.exe
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: sedsvc.exe
+  - DestinationHostname: service.exe
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: t32.exe
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: uninstall-wireshark.exe
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: w32.exe
+  - DestinationHostname: wab.exe
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wordpad.exe
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

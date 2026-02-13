@@ -1,0 +1,442 @@
+title: Trojan.SimpleHelp.Win64 behavior detection (c8dab65f)
+id: c8dab65f9d7f679f9a07bc77d93d3963e8fe0a16f041ecdd5c39637359660ab8
+status: experimental
+description: Auto-generated Sigma rule for Trojan.SimpleHelp.Win64
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"\
+      ; File: \"sample.bin\")\n Found reference to API \"CreateFileW\" (Indicator:\
+      \ \"CreateFile\"; File: \"sample.bin\")\n Found reference to API \"CreateFileMappingA\"\
+      \ (Indicator: \"CreateFile\"; File: \"sample.bin\")\n Found reference to API\
+      \ \"CreateFileA\" (Indicator: \"CreateFile\"; Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp, 00000000-00003608.00000002.278292.00443000.00000002.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.009C1000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.54D90000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.553C1000.00000002.mdmp, 00000000-00003608.00000003.280453.FD60C000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryA\" (Indicator: \"CreateDirectory\"\
+      ; File: \"sample.bin\")\n Found reference to API \"CreateDirectoryW\" (Indicator:\
+      \ \"CreateDirectory\"; File: \"sample.bin\")\n Found reference to API \"CreateDirectoryA\"\
+      \ (Indicator: \"CreateDirectory\"; Source: \"00000000-00003608.00000002.278292.00443000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.54D90000.00000002.mdmp, 00000000-00003608.00000003.280453.553C1000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; File: \"sample.bin\")\n Found reference to API \"CreateProcess failed (%d).\"\
+      \ (Indicator: \"CreateProcess\"; File: \"sample.bin\")\n Found reference to\
+      \ API \"CreateProcessW\" (Indicator: \"CreateProcess\"; File: \"sample.bin\"\
+      )\n Found reference to API \"Calling CreateProcess...\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp, 00000000-00003608.00000001.276372.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.02B30000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcess\" (Indicator: \"CreateProcess\";\
+      \ Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp, 00000000-00003608.00000001.276372.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.F8E1A000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateProcessA\" (Indicator: \"CreateProcess\"; Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp, 00000000-00003608.00000002.278292.00443000.00000002.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.54D90000.00000002.mdmp, 00000000-00003608.00000003.280453.553C1000.00000002.mdmp\"\
+      )\n Found reference to API \"79805097022,2816,3142,,CreateProcessA,kernel32.dll,\"\
+      01:11:56.765\",RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00003608.00000001.276372.04770000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcess failed (%d).\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00003608.00000002.278292.00443000.00000002.mdmp\")\n Found\
+      \ reference to API \"148926914410,7952,3142,,CreateProcessA,kernel32.dll,\"\
+      01:12:25.562\",RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00003608.00000002.278292.0067C000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; File: \"sample.bin\")\n Found reference to API \"GetLastError\" (Indicator:\
+      \ \"GetLastError\"; File: \"sample.bin\")\n Found reference to API \"WSAGetLastError\"\
+      \ (Indicator: \"GetLastError\"; File: \"sample.bin\")\n Found reference to API\
+      \ \"JVM_GetLastErrorString\" (Indicator: \"GetLastError\"; File: \"sample.bin\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp, 00000000-00003608.00000001.276372.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000002.278292.00443000.00000002.mdmp, 00000000-00003608.00000002.278292.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.009C1000.00000002.mdmp, 00000000-00003608.00000003.280453.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.54D90000.00000002.mdmp, 00000000-00003608.00000003.280453.553C1000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.F2608000.00000002.mdmp, 00000000-00003608.00000003.280453.F8C00000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.F8E1A000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp, 00000000-00003608.00000002.278292.00443000.00000002.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.009C1000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.54D90000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.F8E1A000.00000002.mdmp\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"MoveFileA\" (Indicator: \"MoveFile\"; File:\
+      \ \"sample.bin\")\n Found reference to API \"MoveFileExA\" (Indicator: \"MoveFile\"\
+      ; File: \"sample.bin\")\n Found reference to API \"[Rename] MoveFileEx worked.\
+      \ Assuming success.\" (Indicator: \"MoveFile\"; File: \"sample.bin\")\n Found\
+      \ reference to API \"MoveFileEx\" (Indicator: \"MoveFile\"; File: \"sample.bin\"\
+      )\n Found reference to API \"[Rename] MoveFileEx worked. Assuming success.\"\
+      \ (Indicator: \"MoveFile\"; Source: \"00000000-00003608.00000002.278292.00443000.00000002.mdmp\"\
+      )\n Found reference to API \"MoveFileEx\" (Indicator: \"MoveFile\"; Source:\
+      \ \"00000000-00003608.00000002.278292.00443000.00000002.mdmp\")\n Found reference\
+      \ to API \"MoveFileExA\" (Indicator: \"MoveFile\"; Source: \"00000000-00003608.00000002.278292.00443000.00000002.mdmp\"\
+      )\n Found reference to API \"MoveFileA\" (Indicator: \"MoveFile\"; Source: \"\
+      00000000-00003608.00000002.278292.00443000.00000002.mdmp, 00000000-00003608.00000003.280453.54D90000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: "file/memory contains long string(File: \"Remote Access.exe\")\n file/memory\
+      \ contains long string(File: \"jwutils_win32.dll\")\n file/memory contains long\
+      \ string(File: \"instrument.dll\")\n file/memory contains long string(File:\
+      \ \"SimpleService.exe\")\n file/memory contains long string(File: \"api-ms-win-core-processenvironment-l1-1-0.dll\"\
+      )\n file/memory contains long string(File: \"pack200.exe\")\n file/memory contains\
+      \ long string(File: \"java-rmi.exe\")\n file/memory contains long string(File:\
+      \ \"jjs.exe\")\n Found string \"GetCommandLineA\" (Source: \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp, 00000000-00003608.00000002.278292.00443000.00000002.mdmp,\
+      \ 00000000-00003608.00000002.278292.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.009C1000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.02B30000.00000004.mdmp, 00000000-00003608.00000003.280453.54D90000.00000002.mdmp\"\
+      )"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"ShowWindow\" (Indicator: \"ShowWindow\";\
+      \ File: \"sample.bin\")\n Found reference to API \"GetShellWindow\" (Indicator:\
+      \ \"GetShellWindow\"; File: \"sample.bin\")\n Found reference to API \"GetWindowThreadProcessId\"\
+      \ (Indicator: \"GetWindowThreadProcessId\"; File: \"sample.bin\")\n Found reference\
+      \ to API \"ShowWindow\" (Indicator: \"ShowWindow\"; Source: \"00000000-00003608.00000002.278292.00443000.00000002.mdmp\"\
+      )\n Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"GetWindowThreadProcessId\"\
+      ; Source: \"00000000-00003608.00000003.280453.009C1000.00000002.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"sample.bin\")\n Found reference to API \"RegCloseKey\" (Indicator:\
+      \ \"RegCloseKey\"; Source: \"00000000-00003608.00000003.280453.009C1000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.553C1000.00000002.mdmp, 00000000-00003608.00000003.280453.F2608000.00000002.mdmp,\
+      \ 00000000-00003608.00000003.280453.F8C00000.00000002.mdmp, 00000000-00003608.00000003.280453.F8E1A000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"LogonUserExA\" (Indicator: \"LogonUser\"\
+      ; File: \"sample.bin\")\n Found reference to API \"LogonUserExA\" (Indicator:\
+      \ \"LogonUser\"; Source: \"00000000-00003608.00000003.280453.009C1000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to impersonate another user on the local machine (API
+      string)
+  - EventData: string-225
+  - EventData: "Found reference to API \"FindResourceW\" (Indicator: \"FindResource\"\
+      ; File: \"sample.bin\")\n Found reference to API \"FindResourceA\" (Indicator:\
+      \ \"FindResource\"; File: \"sample.bin\")\n Found reference to API \"SizeofResource\"\
+      \ (Indicator: \"SizeofResource\"; File: \"sample.bin\")\n Found reference to\
+      \ API \"LoadResource\" (Indicator: \"LoadResource\"; File: \"sample.bin\")\n\
+      \ Found reference to API \"LockResource\" (Indicator: \"LockResource\"; File:\
+      \ \"sample.bin\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "Found registry modification API: \"RegCreateKeyExA\" in file \"sample.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExA\" in \"00000000-00003608.00000000.274450.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp, 00000000-00003608.00000002.278292.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.009C1000.00000002.mdmp, 00000000-00003608.00000003.280453.02B30000.00000004.mdmp,\
+      \ 00000000-00003608.00000003.280453.F8E1A000.00000002.mdmp\"\n Found registry\
+      \ modification API: \"RegCreateKeyEx\" in \"00000000-00003608.00000003.280453.009C1000.00000002.mdmp\"\
+      \n Found registry modification API: \"RegCreateKey\" in \"00000000-00003608.00000003.280453.009C1000.00000002.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: 'Pattern match: "qweadf@athena.mit.edu"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "\"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source:\
+      \ 00000000-00003608.00000000.274450.00600000.00000004.mdmp\n 00000000-00003608.00000001.276372.00600000.00000004.mdmp\n\
+      \ 00000000-00003608.00000002.278292.00600000.00000004.mdmp\n \"Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source: 00000000-00003608.00000000.274450.00600000.00000004.mdmp\n\
+      \ 00000000-00003608.00000001.276372.0067C000.00000004.mdmp\n 00000000-00003608.00000002.278292.0067C000.00000004.mdmp\n\
+      \ 00000000-00003608.00000003.280453.00600000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Services\\\" in Source: 00000000-00003608.00000000.274450.02B30000.00000004.mdmp\n\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp\n 00000000-00003608.00000002.278292.02B30000.00000004.mdmp\n\
+      \ 00000000-00003608.00000003.280453.02B30000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Control\\SafeBoot\\Network\\\" in Source: 00000000-00003608.00000000.274450.02B30000.00000004.mdmp\n\
+      \ 00000000-00003608.00000001.276372.02B30000.00000004.mdmp\n 00000000-00003608.00000002.278292.02B30000.00000004.mdmp\n\
+      \ 00000000-00003608.00000003.280453.02B30000.00000004.mdmp\n \"REGISTRY\\USER\\\
+      S-1-5-21-1271187874-1938232448-3812392235-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00003608.00000001.276372.04770000.00000004.mdmp\n\
+      \ 00000000-00003608.00000002.278292.0477E000.00000004.mdmp\n \"Registry\\Machine\\\
+      Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\SdbUpdates\\\
+      ManifestedMergeStubSdbs\" in Source: 00000000-00003608.00000002.278292.0067C000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\\
+      SdbUpdates\" in Source: 00000000-00003608.00000002.278292.0477E000.00000004.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\EventLog\\\" in Source: 00000000-00003608.00000003.280453.009C1000.00000002.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: 'Observed system executable string:"%WINDIR%\system32\Kernel32.dll"
+      [Source: 00000000-00003608-00000C2B-3263491833]'
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: 'Found string "User-Agent: JWrapperDownloader" (Indicator: "user-agent:
+      "; Source: "00000000-00003608.00000000.274450.00600000.00000004.mdmp")'
+  - EventData: Found user-agent related strings
+  - EventData: string-127
+  - EventData: "\"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote\
+      \ Access (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\logs (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894519-3-app\
+      \ (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\JWrapperTemp-1770894519-3-app\\jwrapperlib (UID: 00000000-00003608)\n\
+      \ \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\\
+      JWrapper-JWrapper-00075795284-complete\\unrestricted (UID: 00000000-00003608)\n\
+      \ \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\\
+      JWrapperTemp-1770894580-4-app (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      bin (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\bin\\server (UID: 00000000-00003608)\n\
+      \ \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\\
+      JWrapperTemp-1770894580-4-app\\lib (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\amd64 (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\lib\\applet (UID: 00000000-00003608)\n\
+      \ \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\\
+      JWrapperTemp-1770894580-4-app\\lib\\cmm (UID: 00000000-00003608)\n \"<Input\
+      \ Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\ext (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\lib\\fonts (UID: 00000000-00003608)\n\
+      \ \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\\
+      JWrapperTemp-1770894580-4-app\\lib\\images (UID: 00000000-00003608)\n \"<Input\
+      \ Sample.exe\" with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\images\\cursors (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter\
+      \ %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\management (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter\
+      \ %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\security (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter\
+      \ %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\security\\policy (UID: 00000000-00003608)\n \"<Input Sample.exe\" with\
+      \ parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\security\\policy\\limited (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ with parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapperTemp-1770894580-4-app\\\
+      lib\\security\\policy\\unlimited (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ with parameter %TEMP%\\\\hsperfdata_OD7f8IE (UID: 00000000-00003608)\n \"\
+      <Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\Oracle\\Java\\.oracle_jre_usage\
+      \ (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter %ALLUSERSPROFILE%\\\
+      Oracle\\Java (UID: 00000000-00003608)\n \"<Input Sample.exe\" with parameter\
+      \ %ALLUSERSPROFILE%\\Oracle (UID: 00000000-00003608)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "\"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 7ffe0ded0000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 7ffe0ded0000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ffe0ded0000\n \"<Input Sample.exe\" loaded module \"KERNEL32\" at\
+      \ base 7ffe10330000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\TEMP\\\
+      VXOLE64.DLL\" at base 7ffde2840000\n \"<Input Sample.exe\" loaded module \"\
+      GDIPLUS.DLL\" at base 7ffddeb90000\n \"<Input Sample.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 7ffe0b3e0000\n \"<Input Sample.exe\"\
+      \ loaded module \"%WINDIR%\\WINSXS\\AMD64_MICROSOFT.WINDOWS.GDIPLUS_6595B64144CCF1DF_1.1.22621.1635_NONE_57FA636ACE18905C\\\
+      GDIPLUS.DLL\" at base 7ffddeb90000\n \"<Input Sample.exe\" loaded module \"\
+      WINDOWSCODECS.DLL\" at base 7ffe09c40000\n \"<Input Sample.exe\" loaded module\
+      \ \"RPCRT4.DLL\" at base 7ffe0f800000\n \"<Input Sample.exe\" loaded module\
+      \ \"KERNEL32.DLL\" at base 7ffe10330000\n \"<Input Sample.exe\" loaded module\
+      \ \"WINHTTP.DLL\" at base 7ffe07760000\n \"<Input Sample.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\ONDEMANDCONNROUTEHELPER.DLL\" at base 7ffdef6e0000\n\
+      \ \"<Input Sample.exe\" loaded module \"SSPICLI.DLL\" at base 7ffe0d050000\n\
+      \ \"<Input Sample.exe\" loaded module \"USER32.DLL\" at base 7ffe0f640000\n\
+      \ \"<Input Sample.exe\" loaded module \"ONDEMANDCONNROUTEHELPER.DLL\" at base\
+      \ 7ffdef6e0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      MSWSOCK.DLL\" at base 7ffe0d270000\n \"<Input Sample.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\RASADHLP.DLL\" at base 7ffe05070000\n \"<Input Sample.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\FWPUCLNT.DLL\" at base 7ffe06210000\n\
+      \ \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\SCHANNEL.DLL\" at\
+      \ base 7ffe0cc70000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      NCRYPTSSLP.DLL\" at base 7ffdfacf0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\BCRYPTPRIMITIVES.DLL\" at base 7ffe0e580000\n \"<Input\
+      \ Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\RSAENH.DLL\" at base 7ffe0cd70000\n\
+      \ \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\CRYPTNET.DLL\" at\
+      \ base 7ffdfd7f0000\n \"<Input Sample.exe\" loaded module \"CRYPTNET.DLL\" at\
+      \ base 7ffdfd7f0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      CRYPT32.DLL\" at base 7ffe0e3a0000\n \"<Input Sample.exe\" loaded module \"\
+      NTDLL.DLL\" at base 7ffe10990000\n \"<Input Sample.exe\" loaded module \"KERNELBASE\"\
+      \ at base 7ffe0ded0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      APPHELP.DLL\" at base 7ffe0b240000\n \"<Input Sample.exe\" loaded module \"\
+      %ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\SERVER\\JVM.DLL\" at base 54de0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\VERIFY.DLL\" at base 7ffe066b0000\n \"<Input Sample.exe\" loaded module\
+      \ \"%ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\JAVA.DLL\" at base 7ffdf8e00000\n \"<Input Sample.exe\" loaded module \"\
+      %ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\ZIP.DLL\" at base 7ffdfd600000\n \"<Input Sample.exe\" loaded module \"\
+      SHELL32.DLL\" at base 7ffe0fb10000\n \"<Input Sample.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\KERNEL32.DLL\" at base 7ffe10330000\n \"<Input Sample.exe\"\
+      \ loaded module \"%ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-JWRAPPER-00075795284-COMPLETE\\\
+      JWUTILS_WIN64.DLL\" at base 9a0000\n \"<Input Sample.exe\" loaded module \"\
+      %ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\SUNEC.DLL\" at base 7ffdf8c10000\n \"<Input Sample.exe\" loaded module\
+      \ \"%ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\NET.DLL\" at base 7ffdf8bf0000\n \"<Input Sample.exe\" loaded module \"\
+      IPHLPAPI.DLL\" at base 7ffe0c920000\n \"<Input Sample.exe\" loaded module \"\
+      %ALLUSERSPROFILE%\\JWRAPPER-REMOTE ACCESS\\JWRAPPER-WINDOWS64JRE-00063527423-COMPLETE\\\
+      BIN\\NIO.DLL\" at base 7ffdf2600000\n \"unpack200.exe\" loaded module \"KERNEL32\"\
+      \ at base 7ffe10330000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-STRING-L1-1-0\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-DATETIME-L1-1-1\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      IMM32.DLL\" at base 7ffe0f920000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ffe0ded0000\n \"unpack200.exe\" loaded module \"%WINDIR%\\TEMP\\\
+      VXOLE64.DLL\" at base 7ffde2840000\n \"windowslauncher.exe\" loaded module \"\
+      KERNEL32\" at base 7ffe10330000\n \"windowslauncher.exe\" loaded module \"API-MS-WIN-CORE-STRING-L1-1-0\"\
+      \ at base 7ffe0ded0000\n \"windowslauncher.exe\" loaded module \"API-MS-WIN-CORE-DATETIME-L1-1-1\"\
+      \ at base 7ffe0ded0000\n \"windowslauncher.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0\"\
+      \ at base 7ffe0ded0000\n \"windowslauncher.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\IMM32.DLL\" at base 7ffe0f920000\n \"windowslauncher.exe\" loaded\
+      \ module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 7ffe0ded0000\n \"windowslauncher.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 7ffe0ded0000\n \"\
+      windowslauncher.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 7ffe0ded0000\n \"windowslauncher.exe\" loaded module \"%WINDIR%\\\
+      TEMP\\VXOLE64.DLL\" at base 7ffde2840000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"<Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00003608)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00003608)\n \"<Input Sample.exe\" called\
+      \ \"LoadLibrary\" with a parameter gdiplus.dll (UID: 00000000-00003608)\n \"\
+      <Input Sample.exe\" called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\\
+      JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\bin\\server\\\
+      jvm.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\\
+      bin\\verify.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\\
+      bin\\java.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\\
+      bin\\zip.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter SHELL32.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter %WINDIR%\\system32\\Kernel32.dll (UID:\
+      \ 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\" with a parameter\
+      \ %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-JWrapper-00075795284-complete\\\
+      jwutils_win64.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"\
+      LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\\
+      bin\\sunec.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote Access\\JWrapper-Windows64JRE-00063527423-complete\\\
+      bin\\net.dll (UID: 00000000-00003608)\n \"<Input Sample.exe\" called \"LoadLibrary\"\
+      \ with a parameter IPHLPAPI.DLL (UID: 00000000-00003608)\n \"<Input Sample.exe\"\
+      \ called \"LoadLibrary\" with a parameter %ALLUSERSPROFILE%\\JWrapper-Remote\
+      \ Access\\JWrapper-Windows64JRE-00063527423-complete\\bin\\nio.dll (UID: 00000000-00003608)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00006756)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00006756)\n \"unpack200.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00006756)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter kernel32 (UID: 00000000-00006756)\n \"unpack200.exe\" called \"\
+      LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00008036)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00008036)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00008036)\n \"\
+      unpack200.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00008036)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00004996)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00004996)\n \"unpack200.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00004996)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter kernel32 (UID: 00000000-00004996)\n \"unpack200.exe\" called \"\
+      LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00007384)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00007384)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00007384)\n \"\
+      unpack200.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007384)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00005728)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00005728)\n \"unpack200.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00005728)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter kernel32 (UID: 00000000-00005728)\n \"unpack200.exe\" called \"\
+      LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00003792)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00003792)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00003792)\n \"\
+      unpack200.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00003792)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00003776)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00003776)\n \"unpack200.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00003776)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter kernel32 (UID: 00000000-00003776)\n \"unpack200.exe\" called \"\
+      LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00001272)\n\
+      \ \"unpack200.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00001272)\n \"unpack200.exe\" called \"LoadLibrary\" with a\
+      \ parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00001272)\n \"\
+      unpack200.exe\" called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00001272)\n\
+      \ \"windowslauncher.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00004248)\n \"windowslauncher.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00004248)\n\
+      \ \"windowslauncher.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00004248)\n \"windowslauncher.exe\" called \"LoadLibrary\"\
+      \ with a parameter kernel32 (UID: 00000000-00004248)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: '"<Input Sample.exe" called "NtCreateNamedPipeFile" with parameter
+      "pipe" - (UID: 00000000-00003608)'
+  - EventData: Calls an API typically used to create an instance of a named pipe
+  - EventData: api-138
+  selection_network:
+  - DestinationHostname: -Djava.class.path
+  - DestinationHostname: -version.txt
+  - DestinationHostname: 03d.log
+  - DestinationHostname: IPHLPAPI.DLL
+  - DestinationHostname: JWrapper-Windows64JRE-version.txt
+  - DestinationHostname: JreNameOverride.afos
+  - DestinationHostname: Kernel32.dll
+  - DestinationHostname: aaa.smartinvoicehub.org
+  - DestinationHostname: access-bridge-64.jar
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: cacls.exe
+  - DestinationHostname: charsets.jar
+  - DestinationHostname: cldrdata.jar
+  - DestinationHostname: deleteme.tmp
+  - DestinationHostname: gdiplus.dll
+  - DestinationHostname: icacls.exe
+  - DestinationHostname: jaccess.jar
+  - DestinationHostname: java.dll
+  - DestinationHostname: java.exe
+  - DestinationHostname: javaw.exe
+  - DestinationHostname: jce.jar
+  - DestinationHostname: jfr.jar
+  - DestinationHostname: jsse.jar
+  - DestinationHostname: jvm.dll
+  - DestinationHostname: jwstandalone.jar
+  - DestinationHostname: jwstandalonelaunch.jar
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: logo.png
+  - DestinationHostname: mp.name
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: nativesplash.png
+  - DestinationHostname: net.dll
+  - DestinationHostname: net.properties
+  - DestinationHostname: nio.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: provider.jar
+  - DestinationHostname: resources.jar
+  - DestinationHostname: rt.jar
+  - DestinationHostname: runner.cfg
+  - DestinationHostname: sample.bin
+  - DestinationHostname: sample.bin.exe
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: sunec.dll
+  - DestinationHostname: sunec.jar
+  - DestinationHostname: sunmscapi.jar
+  - DestinationHostname: sunpkcs11.jar
+  - DestinationHostname: sunrsasign.jar
+  - DestinationHostname: sysMerge.sdb
+  - DestinationHostname: sysmain.sdb
+  - DestinationHostname: unpack200.exe
+  - DestinationHostname: verify.dll
+  - DestinationHostname: verpatch.exe
+  - DestinationHostname: win64.dll
+  - DestinationHostname: windowslauncher.exe
+  - DestinationHostname: zip.dll
+  - DestinationIp: 0.0.254.254
+  - DestinationIp: 136.0.213.214
+  condition: selection_behavior or selection_network

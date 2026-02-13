@@ -1,0 +1,701 @@
+title: Trojan.Win64.Alien behavior detection (f5704d82)
+id: f5704d82341b7ca7cbc13bee260411441b9b8813e88b757099abbe1d0e7b0fd6
+status: experimental
+description: Auto-generated Sigma rule for Trojan.Win64.Alien
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"CreateProcess\"\
+      \ (Indicator: \"CreateProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DA848000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"CreateDirectory\"\
+      \ (Indicator: \"CreateDirectory\"; File: \"GatamiOptimizer.exe\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"CreateFile\" (Indicator:\
+      \ \"CreateFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileMapping\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API (Indicator: \"GetTokenInformation\"; File:\
+      \ \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ConvertSidToStringSidW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ConvertStringSecurityDescriptorToSecurityDescriptorW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"OpenProcessToken\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCommandLineA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetTimeZoneInformation\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TlsAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateSymbolicLinkW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCurrentThreadId\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FindClose\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetDriveTypeW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LCMapStringW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"QueryPerformanceFrequency\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FlsGetValue\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetModuleHandleW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateProcessW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetConsoleCtrlHandler\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"EncodePointer\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCPInfo\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"K32EnumProcessModules\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LocalFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFinalPathNameByHandleW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RtlPcToFileHeader\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateDirectoryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetErrorMode\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WriteFile\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FlsSetValue\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"EnterCriticalSection\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCurrentProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapSize\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"Sleep\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsDebuggerPresent\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FlsFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetEnvironmentVariableW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeSListHead\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFileAttributesExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FlushFileBuffers\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MultiByteToWideChar\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RtlVirtualUnwind\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LeaveCriticalSection\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TlsFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetConsoleWindow\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TlsSetValue\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TlsGetValue\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetACP\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFileType\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCurrentDirectoryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFileSizeEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TerminateProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFullPathNameW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WaitForSingleObject\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetStdHandle\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetProcessHeap\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetConsoleMode\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"VirtualProtect\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RemoveDirectoryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetDllDirectoryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetModuleHandleExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapReAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FreeLibrary\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SystemTimeToTzSpecificLocalTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetProcAddress\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCurrentProcessId\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsValidCodePage\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetStdHandle\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RtlCaptureContext\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FindFirstFileW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetStringTypeW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReadFile\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DeleteCriticalSection\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LoadLibraryExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetConsoleOutputCP\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"K32GetModuleFileNameExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WriteConsoleW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReadConsoleW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetEndOfFile\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetExitCodeProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FindFirstFileExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RaiseException\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetModuleFileNameW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FormatMessageW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FlsAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateFileW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ExitProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetStartupInfoW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CompareStringW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetFilePointerEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WideCharToMultiByte\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetTempPathW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CloseHandle\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DeleteFileW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FreeEnvironmentStringsW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetOEMCP\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"QueryPerformanceCounter\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCommandLineW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"PeekNamedPipe\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FileTimeToSystemTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetFileInformationByHandle\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FindNextFileW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"PeekMessageW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TranslateMessage\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DestroyWindow\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetWindowThreadProcessId\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DispatchMessageW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RegisterClassW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ShowWindow\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DefWindowProcW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MsgWaitForMultipleObjects\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateWindowExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AreFileApisANSI\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CompareStringEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LCMapStringEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LocaleNameToLCID\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LoadLibrary\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateDirectory\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RegisterEventSourceW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReportEventW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DeregisterEventSource\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AcquireSRWLockExclusive\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AcquireSRWLockShared\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ConvertThreadToFiberEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReleaseSRWLockShared\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"VirtualAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSystemTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DeleteFiber\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SwitchToFiber\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateFiberEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ConvertFiberToThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"VirtualFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSystemInfo\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LoadLibraryA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeSRWLock\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReadConsoleA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetConsoleMode\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SystemTimeToFileTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FormatMessageA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSystemDirectoryA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LoadLibraryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"VirtualLock\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetUserObjectInformationW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetProcessWindowStation\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MessageBoxW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"getsockname\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"inet_ntoa\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WSAGetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"closesocket\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"getservbyport\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"inet_addr\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"gethostbyname\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WSASetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WSACleanup\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"getservbyname\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"WSAStartup\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"gethostbyaddr\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"htons\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ntohs\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"getsockopt\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ioctlsocket\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"htonl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"recvfrom\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"BCryptGenRandom\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetConsoleCP\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetNumberOfConsoleInputEvents\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ReadConsoleInputW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"PeekConsoleInputA\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetDateFormatW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetTimeFormatW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"OutputDebugStringW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"UnlockFileEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetFileAttributesW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LockFileEx\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetLogicalDrives\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetDiskFreeSpaceW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetFileTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MoveFileExW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DuplicateHandle\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapCompact\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapQueryInformation\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapValidate\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"HeapWalk\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InterlockedPushEntrySList\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InterlockedFlushSList\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"FreeLibraryAndExitThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsValidLocale\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetUserDefaultLCID\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetLocaleInfoW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"EnumSystemLocalesW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"VirtualQuery\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreatePipe\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetCurrentDirectoryW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ResumeThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CreateThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ExitThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetCurrentThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RtlUnwind\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetLocalTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetLocalTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"TzSpecificLocalTimeToSystemTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DisableThreadLibraryCalls\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DeleteAce\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsTextUnicode\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetSecurityDescriptorOwner\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorLength\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSidSubAuthority\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetAce\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeSecurityDescriptor\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorControl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetSecurityDescriptorSacl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MakeSelfRelativeSD\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsValidSid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetAclInformation\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorSacl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSidSubAuthorityCount\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorDacl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CopySid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"MakeAbsoluteSD\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorGroup\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSecurityDescriptorOwner\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetEntriesInAclW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"EqualSid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetSecurityDescriptorDacl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeSid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetSidIdentifierAuthority\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsValidAcl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeAcl\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"RegCloseKey\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SetSecurityDescriptorGroup\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AddAuditAccessAce\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"IsValidSecurityDescriptor\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"GetLengthSid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"AddAce\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"DosDateTimeToFileTime\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"LocalAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"lstrlenW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"InitializeCriticalSection\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SysAllocStringLen\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SysStringLen\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"SysFreeString\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"wsprintfW\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CoTaskMemFree\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CoCreateGuid\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CLSIDFromString\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"CoTaskMemAlloc\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"StringFromGUID2\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API (Indicator: \"ExpandEnvironmentStrings\"\
+      ; Source: \"00000000-00006780.00000000.271131.7C340000.00000004.mdmp, 00000000-00006780.00000001.273051.7C340000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C340000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; Source: \"00000000-00006780.00000000.271131.7C340000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C340000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C340000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CloseHandle\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp, 00000000-00006780.00000001.273051.EC456000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp, 00000000-00006780.00000002.274970.D6521000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp, 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConnectNamedPipe\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.EC456000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileMapping\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateNamedPipe\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreatePipe\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DA848000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DuplicateHandle\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExitProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000000.271131.ED293000.00000002.mdmp,\
+      \ 00000000-00006780.00000000.271131.ED496000.00000002.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D65F2000.00000002.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6121000.00000002.mdmp, 00000000-00006780.00000001.273051.E6184000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000001.273051.ED1C3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp, 00000000-00006780.00000002.274970.D5E85000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.D64F8000.00000002.mdmp, 00000000-00006780.00000002.274970.D6521000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DA88A000.00000002.mdmp, 00000000-00006780.00000002.274970.DAC17000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DC68D000.00000002.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DE958000.00000002.mdmp, 00000000-00006780.00000002.274970.E5B1E000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC545000.00000002.mdmp, 00000000-00006780.00000002.274970.EC894000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.ECB93000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetExitCodeProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D65F2000.00000002.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6121000.00000002.mdmp, 00000000-00006780.00000001.273051.E6184000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.D6521000.00000002.mdmp, 00000000-00006780.00000002.274970.DC68D000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp, 00000000-00006780.00000002.274970.EC545000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLongPathName\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetModuleFileName\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.7CC90000.00000004.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetVersion\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MapViewOfFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenFileMapping\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PeekNamedPipe\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReadFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetNamedPipeHandleState\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000000.271131.ED293000.00000002.mdmp,\
+      \ 00000000-00006780.00000000.271131.ED496000.00000002.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D65F2000.00000002.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6121000.00000002.mdmp, 00000000-00006780.00000001.273051.E6184000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000001.273051.ED1C3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp, 00000000-00006780.00000002.274970.D5E85000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.D64F8000.00000002.mdmp, 00000000-00006780.00000002.274970.D6521000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DA88A000.00000002.mdmp, 00000000-00006780.00000002.274970.DAC17000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DC68D000.00000002.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DE958000.00000002.mdmp, 00000000-00006780.00000002.274970.E5B1E000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC545000.00000002.mdmp, 00000000-00006780.00000002.274970.EC894000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.ECB93000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnmapViewOfFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjects\"; Source: \"\
+      00000000-00006780.00000000.271131.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WriteFile\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileType\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFile2\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetOverlappedResult\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.EC456000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadLibrary\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6121000.00000002.mdmp, 00000000-00006780.00000002.274970.7C690000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp, 00000000-00006780.00000001.273051.E6121000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6184000.00000002.mdmp, 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp, 00000000-00006780.00000002.274970.EC545000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"gethostname\"; Source: \"00000000-00006780.00000000.271131.7C790000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.7CB90000.00000004.mdmp, 00000000-00006780.00000000.271131.E5959000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp, 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"gethostbyaddr\"; Source: \"00000000-00006780.00000000.271131.7C790000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.7CB90000.00000004.mdmp, 00000000-00006780.00000000.271131.E5959000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp, 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"ntohs\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ntohl\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"htons\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"htonl\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"gethostbyname\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getsockname\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getpeername\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getservbyport\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getservbyname\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getprotobyname\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"inet_ntoa\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"getsockopt\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D1DAB000.00000002.mdmp, 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"recvfrom\"; Source: \"00000000-00006780.00000000.271131.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp,\
+      \ 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\")"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"GetProcessHeap\"\
+      \ (Indicator: \"GetProcessHeap\"; File: \"GatamiOptimizer.exe\")\n Found reference\
+      \ to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.7C690000.00000004.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"GetCommandLineW\"\
+      \ (Indicator: \"GetCommandLine\"; File: \"GatamiOptimizer.exe\")"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: "file/memory contains long string(File: \"api-ms-win-core-processenvironment-l1-1-0.dll\"\
+      )\n file/memory contains long string(File: \"win32api.pyd\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"SetLastError\" (Indicator:\
+      \ \"SetLastError\"; File: \"GatamiOptimizer.exe\")\n Found reference to API\
+      \ \"WSAGetLastError\" (Indicator: \"GetLastError\"; File: \"GatamiOptimizer.exe\"\
+      )\n Found reference to API \"WSASetLastError\" (Indicator: \"SetLastError\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"GetLastError\" (Indicator:\
+      \ \"GetLastError\"; Source: \"00000000-00006780.00000000.271131.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000000.271131.E5959000.00000002.mdmp, 00000000-00006780.00000001.273051.7C690000.00000004.mdmp,\
+      \ 00000000-00006780.00000001.273051.D65F2000.00000002.mdmp, 00000000-00006780.00000001.273051.D66D4000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.DA848000.00000002.mdmp, 00000000-00006780.00000001.273051.DABF3000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.E6121000.00000002.mdmp, 00000000-00006780.00000001.273051.E6184000.00000002.mdmp,\
+      \ 00000000-00006780.00000001.273051.EC456000.00000002.mdmp, 00000000-00006780.00000001.273051.F48E3000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.7C690000.00000004.mdmp, 00000000-00006780.00000002.274970.D1EF2000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.D6521000.00000002.mdmp, 00000000-00006780.00000002.274970.DC68D000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.DDA1D000.00000002.mdmp, 00000000-00006780.00000002.274970.EC545000.00000002.mdmp,\
+      \ 00000000-00006780.00000002.274970.EC894000.00000002.mdmp\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"\
+      GetWindowThreadProcessId\"; File: \"GatamiOptimizer.exe\")\n Found reference\
+      \ to API \"ShowWindow\" (Indicator: \"ShowWindow\"; File: \"GatamiOptimizer.exe\"\
+      )"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; File:
+      "GatamiOptimizer.exe")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"Tcl_CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"GatamiOptimizer.exe\")\n Found reference to API \"ResumeThread\" (Indicator:\
+      \ \"ResumeThread\"; File: \"GatamiOptimizer.exe\")\n Found reference to API\
+      \ \"CreateThread\" (Indicator: \"CreateThread\"; File: \"GatamiOptimizer.exe\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "file/memory contains long string with (Indicator: \"MoveFileW\"; File:\
+      \ \"api-ms-win-core-file-l2-1-0.dll\")\n Found string \"MoveFileExW\" (Indicator:\
+      \ \"MoveFileExW\"; File: \"GatamiOptimizer.exe\")"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found string \"%WINDIR%\\system32\\cmd.exe /c \"ver\"\" (Indicator:\
+      \ \"\\system32\\cmd.exe /c \"; Source: \"00000000-00006780-00000C47-23438074067\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c \"ver\"\" (Indicator: \"cmd.exe\
+      \ /c\"; Source: \"00000000-00006780-00000C47-23438074067\")\n Found string \"\
+      %WINDIR%\\system32\\cmd.exe /c title\" (Indicator: \"\\system32\\cmd.exe /c\
+      \ \"; Source: \"00000000-00006780-00000C47-28642734176\")\n Found string \"\
+      %WINDIR%\\system32\\cmd.exe /c title\" (Indicator: \"cmd.exe /c\"; Source: \"\
+      00000000-00006780-00000C47-28642734176\")\n Found string \"%WINDIR%\\system32\\\
+      cmd.exe /c color 0b\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00006780-00000C47-32640610354\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c color 0b\" (Indicator: \"\
+      cmd.exe /c\"; Source: \"00000000-00006780-00000C47-32640610354\")"
+  - EventData: Contains ability to executes commands or batch file
+  - EventData: string-174
+  - EventData: "Pattern match: \"mal@lemburg.com\"\n Pattern match: \"ping@lfw.org\"\
+      \n Pattern match: \"yselivanov@sprymix.com\"\n Pattern match: \"vinay_sajip@red-dove.com\"\
+      \n Pattern match: \"nadeem.vawda@gmail.com\""
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "\"https://github.com/python/cpython/blob/3.9/Lib/importlib/_bootstrap_external.py#L679-L688\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/Unidata/MetPy/blob/a3424de66a44bf3a92b0dcacf4dff82ad7b86712/src/metpy/plots/wx_symbols.py#L24-L25\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/tensorflow/datasets/blob/master/tensorflow_datasets/core/utils/resource_utils.py#L81-L97\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/readers.py#L11\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/abc.py#L422\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/cpython/blob/839d7893943782ee803536a47f1d4de160314f85/Lib/importlib/abc.py#L312\"\
+      \ (Indicator: \"github.com\")\n \"argument types, see https://github.com/python/cpython/issues/86361.\"\
+      \ (Indicator: \"github.com\")\n \"https://github.com/python/importlib_metadata/wiki/Development-Methodology\"\
+      \ (Indicator: \"github.com\")"
+  - EventData: Found well known domains (string)
+  - EventData: string-135
+  - EventData: "\"SYSTEM\\CurrentControlSet\\Control\\Power\\PowerSettings\\54533251-82be-4824-96c1-47b60b740d00\\\
+      be337238-0d82-4146-a960-4f3749d470c7\" in Source: 00000000-00006780.00000000.271131.7CA90000.00000004.mdmp\n\
+      \ 00000000-00006780.00000001.273051.7CA90000.00000004.mdmp\n 00000000-00006780.00000002.274970.7CA90000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options\\\
+      csrss.exe\\PerfOptions\" in Source: 00000000-00006780.00000000.271131.7CB90000.00000004.mdmp\n\
+      \ 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp\n 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp\n\
+      \ \"reg add \"HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Privacy\"\
+      \ /v AdId /t REG_SZ /d \"\" /f\" in Source: 00000000-00006780.00000000.271131.7CB90000.00000004.mdmp\n\
+      \ 00000000-00006780.00000001.273051.7CB90000.00000004.mdmp\n 00000000-00006780.00000002.274970.7CB90000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "\"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002 (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\click-8.3.0.dist-info\
+      \ (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\click-8.3.0.dist-info\\licenses (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\"\
+      \ with parameter %TEMP%\\_MEI83002\\config (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\"\
+      \ with parameter %TEMP%\\_MEI83002\\cryptography-46.0.3.dist-info (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\cryptography-46.0.3.dist-info\\\
+      licenses (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\cryptography (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with\
+      \ parameter %TEMP%\\_MEI83002\\cryptography\\hazmat (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\cryptography\\hazmat\\\
+      bindings (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\flask-2.3.3.dist-info (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\"\
+      \ with parameter %TEMP%\\_MEI83002\\importlib_metadata-8.7.0.dist-info (UID:\
+      \ 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\\
+      importlib_metadata-8.7.0.dist-info\\licenses (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\"\
+      \ with parameter %TEMP%\\_MEI83002\\itsdangerous-2.2.0.dist-info (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\markupsafe-3.0.3.dist-info\
+      \ (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\markupsafe-3.0.3.dist-info\\licenses (UID: 00000000-00008300)\n \"\
+      GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\markupsafe (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\psutil (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\pywin32_system32\
+      \ (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\static (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter\
+      \ %TEMP%\\_MEI83002\\static\\css (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\"\
+      \ with parameter %TEMP%\\_MEI83002\\static\\js (UID: 00000000-00008300)\n \"\
+      GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\templates (UID: 00000000-00008300)\n\
+      \ \"GatamiOptimizer.exe\" with parameter %TEMP%\\_MEI83002\\werkzeug-3.1.3.dist-info\
+      \ (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter %TEMP%\\\
+      _MEI83002\\win32 (UID: 00000000-00008300)\n \"GatamiOptimizer.exe\" with parameter\
+      \ C:\\config (UID: 00000000-00006780)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: 'Found reference to API "MoveFileExW" (Indicator: "MoveFile"; File:
+      "GatamiOptimizer.exe")'
+  - EventData: Contains ability to move file or directory (API string)
+  - EventData: string-322
+  - EventData: 'Observed system executable string:"%WINDIR%\system32\version.dll"
+      [Source: 00000000-00006780-00000C2B-3180209115]'
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Observed system executable string:\"\\Device\\HarddiskVolume3\\Windows\\\
+      System32\\conhost.exe\" [Source: 00000000-00008300-00000BC0-3160233208]\n Observed\
+      \ system executable string:\"\\Device\\HarddiskVolume3\\Windows\\System32\\\
+      cmd.exe\" [Source: 00000000-00006780-00000BC1-3180043775]\n Observed system\
+      \ executable string:\"%WINDIR%\\system32\\cmd.exe\" [Source: 00000000-00006780-00000C47-23438074067]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c \"ver\"\
+      \" [Source: 00000000-00006780-00000C47-23438074067]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\cmd.exe /c title\" [Source: 00000000-00006780-00000C47-28642734176]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c color 0b\"\
+      \ [Source: 00000000-00006780-00000C47-32640610354]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  selection_network:
+  - DestinationHostname: 1.dll
+  - DestinationHostname: AdvAPI32.dll
+  - DestinationHostname: GatamiOptimizer.exe
+  - DestinationHostname: MLANG.dll
+  - DestinationHostname: Outlook.Application
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: Psapi.dll
+  - DestinationHostname: VCRUNTIME140.dll
+  - DestinationHostname: WININET.dll
+  - DestinationHostname: amd64.pyd
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-downlevel-ole32-l1-1-0.dll
+  - DestinationHostname: api-ms-win-downlevel-shlwapi-l2-1-0.dll
+  - DestinationHostname: asyncio.pyd
+  - DestinationHostname: bz2.pyd
+  - DestinationHostname: chromewebstore.googleapis.com
+  - DestinationHostname: click-8.3.0.dist
+  - DestinationHostname: clients2.googleusercontent.com
+  - DestinationHostname: cmd.exe
+  - DestinationHostname: comctl32.dll
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: cryptography-46.0.3.dist
+  - DestinationHostname: ctypes.pyd
+  - DestinationHostname: decimal.pyd
+  - DestinationHostname: flask-2.3.3.dist
+  - DestinationHostname: fonts.googleapis.com
+  - DestinationHostname: fonts.gstatic.com
+  - DestinationHostname: hashlib.pyd
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: itsdangerous-2.2.0.dist
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: library.zip
+  - DestinationHostname: lzma.pyd
+  - DestinationHostname: markupsafe-3.0.3.dist
+  - DestinationHostname: metadata-8.7.0.dist
+  - DestinationHostname: msedge.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: overlapped.pyd
+  - DestinationHostname: python312.dll
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: select.pyd
+  - DestinationHostname: socket.pyd
+  - DestinationHostname: speedups.cp
+  - DestinationHostname: ssl.pyd
+  - DestinationHostname: sysMerge.sdb
+  - DestinationHostname: sysmain.sdb
+  - DestinationHostname: ucrtbase.dll
+  - DestinationHostname: unicodedata.pyd
+  - DestinationHostname: user32.dll
+  - DestinationHostname: uuid.pyd
+  - DestinationHostname: version.dll
+  - DestinationHostname: werkzeug-3.1.3.dist
+  - DestinationHostname: win32api.pyd
+  - DestinationHostname: win32process.pyd
+  - DestinationHostname: windows.pyd
+  - DestinationHostname: wmi.pyd
+  - DestinationHostname: wtsapi32.dll
+  - DestinationIp: 0.0.0.0
+  - DestinationIp: 127.0.0.1
+  - DestinationIp: 142.250.190.234
+  - DestinationIp: 142.250.217.131
+  - DestinationIp: 142.250.217.138
+  - DestinationIp: 142.250.80.1
+  - DestinationIp: 52.123.255.130
+  condition: selection_behavior or selection_network

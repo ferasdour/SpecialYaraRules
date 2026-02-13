@@ -1,0 +1,536 @@
+title: evasive behavior detection (369e5f4d)
+id: 369e5f4d60dda23b62aabe953ef5b648a5ed4525b1d4b0f33b61775591b55f3d
+status: experimental
+description: Auto-generated Sigma rule for evasive
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "\"Software\\Policies\\Microsoft\\Windows\\Installer\" in Source: Lagswitch_2.0.3_x86_en-US.msi\n\
+      \ \"uSoftware\\Policies\\Microsoft\\Windows\\Installer\" in Source: Lagswitch_2.0.3_x86_en-US.msi\n\
+      \ \"SOFTWARE\\Mic\" in Source: 00000000-00000788.00000001.274003.0FE2C000.00000004.mdmp\n\
+      \ 00000000-00000788.00000002.275923.0FE2C000.00000004.mdmp\n \"-1001\\Software\\\
+      Microsoft\\Direct3D\" in Source: 00000000-00000788.00000001.274003.0FEDD000.00000004.mdmp\n\
+      \ 00000000-00000788.00000002.275923.0FEDD000.00000004.mdmp\n \"Y\\MACHINE\\\
+      SOFTWARE\\Microsoft\\WindowsRuntime\\ActivatableClassId\\Windows.UI.Composition.Core.CompositorController\\\
+      CustomAttributes\" in Source: 00000000-00000788.00000001.274003.0FEDD000.00000004.mdmp\n\
+      \ 00000000-00000788.00000002.275923.0FEDD000.00000004.mdmp\n \"Found no registry\
+      \ files in HKEY_CURRENT_USER\\SOFTWARE\\Khronos\\Vulkan\\ImplicitLayers\" in\
+      \ Source: 00000000-00000788.00000001.274003.48DEF000.00000004.mdmp\n 00000000-00000788.00000002.275923.48DEF000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ \"Microsoft\\SOFTWARE\\Microsoft\\Shared Tools\\MSInfo\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Policies\\\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ \"Software\\\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows NT\\CurrentVersion\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\n \"Software\\Microsoft\\\
+      EdgeUpdate\\Clients\\\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientState\\\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\EdgeUpdate\\ClientStateMedium\\\" in Source: 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "file/memory contains long string(File: \"Lag Switch.dll\")\n file/memory\
+      \ contains long string(File: \"MSI6058.tmp\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00000788.00000001.274003.6C560000.00000002.mdmp, 00000000-00000788.00000001.274003.6CB7A000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000001.274003.8EDC7000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.93051000.00000002.mdmp, 00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFile\" (Indicator: \"CreateFile\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileFromAppW\" (Indicator: \"CreateFile\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: 'Pattern match: "appro@openssl.org"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found reference to API \"CreateDirectoryAndGetError\" (Indicator:\
+      \ \"CreateDirectory\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcess\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateProcessAsUserW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateProcessWithTokenW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; Source:
+      "00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000001.274003.8EDC7000.00000002.mdmp,
+      00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: 'Found reference to API "ShellExecuteExW" (Indicator: "ShellExecute";
+      Source: "00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp")'
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "\"msiexec.exe\" loaded module \"%WINDIR%\\System32\\bcrypt.dll\" at\
+      \ BD1F0000\n \"msiexec.exe\" loaded module \"%WINDIR%\\System32\\bcryptprimitives.dll\"\
+      \ at BDAD0000\n \"MsiExec.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 75800000\n \"MsiExec.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72910000\n \"Lagswitch.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 75800000\n \"Lagswitch.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72DF0000\n \"msedgewebview2.exe\" loaded module \"%WINDIR%\\System32\\\
+      bcryptprimitives.dll\" at BDAD0000\n \"msedgewebview2.exe\" loaded module \"\
+      %WINDIR%\\System32\\bcrypt.dll\" at BD1F0000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "\"Lagswitch.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch (UID:\
+      \ 00000000-00006468)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with\
+      \ parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Crashpad (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      Crashpad\\reports (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter\
+      \ %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Crashpad\\attachments (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      BrowserMetrics (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter\
+      \ %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\ShaderCache (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      Default (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Default\\Cache (UID: 00000000-00008960)\n \"msedgewebview2.exe\"\
+      \ with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Default\\Cache\\Cache_Data\
+      \ (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Default\\Sync Data (UID: 00000000-00008960)\n \"msedgewebview2.exe\"\
+      \ with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Default\\Sync Data\\\
+      LevelDB (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Default\\Shared Dictionary (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      Default\\Network (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter\
+      \ %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Default\\Site Characteristics Database\
+      \ (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Default\\parcel_tracking_db (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      Default\\discounts_db (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with\
+      \ parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Default\\commerce_subscription_db\
+      \ (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Default\\PersistentOriginTrials (UID: 00000000-00008960)\n\
+      \ \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\\
+      CertificateRevocation (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with\
+      \ parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Default\\Extension Rules\
+      \ (UID: 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\hyphen-data (UID: 00000000-00008960)\n \"msedgewebview2.exe\"\
+      \ with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\OriginTrials (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" with parameter %LOCALAPPDATA%\\\
+      io.lagswitch\\EBWebView\\Speech Recognition (UID: 00000000-00008960)\n \"msedgewebview2.exe\"\
+      \ with parameter %LOCALAPPDATA%\\io.lagswitch\\EBWebView\\Subresource Filter\
+      \ (UID: 00000000-00008960)"
+  - EventData: Creates directory on disk
+  - EventData: api-318
+  - EventData: "\"Lagswitch.exe\" called \"NtCreateNamedPipeFile\" with parameter\
+      \ \"pipe\\LOCAL\\mojo.6468.6732.11872481288375465124\" - (UID: 00000000-00006468)\n\
+      \ \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\" with parameter \"\
+      pipe\\crashpad_8960_MCGUWKYTCROJJJKU\" - (UID: 00000000-00008960)\n \"msedgewebview2.exe\"\
+      \ called \"NtCreateNamedPipeFile\" with parameter \"pipe\\LOCAL\\mojo.8960.5016.2891436057055626806\"\
+      \ - (UID: 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5016.5851722114386162456\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5016.5704133001672200083\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5016.18305507176986744047\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5232.9255398816373220539\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5232.16366042502289205804\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5232.15245450183384745748\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5232.6024643277059330556\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5016.8457802980483772125\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5232.3786087209017288222\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\LOCAL\\mojo.8960.5016.9144681000462761779\" - (UID:\
+      \ 00000000-00008960)\n \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\"\
+      \ with parameter \"pipe\\crashpad_8960_MCGUWKYTCROJJJKU\" - (UID: 00000000-00001604)\n\
+      \ \"msedgewebview2.exe\" called \"NtCreateNamedPipeFile\" with parameter \"\
+      pipe\\LOCAL\\edge.sync.3732.8264.4246930177\" - (UID: 00000000-00003732)"
+  - EventData: Calls an API typically used to create an instance of a named pipe
+  - EventData: api-138
+  - EventData: "Process Lagswitch.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      WinDivertDriverInstallMutex\"\n Process Lagswitch.exe created mutex with name\
+      \  \"SM0:6468:64:WilError_03\"\n Process Lagswitch.exe created mutex with name\
+      \  \"WinDivertDriverInstallMutex\"\n Process Lagswitch.exe created mutex with\
+      \ name  \"Local\\SM0:6468:64:WilError_03\"\n Process Lagswitch.exe created mutex\
+      \ with name  \"Local\\SM0:6468:168:WilStaging_02\"\n Process Lagswitch.exe created\
+      \ mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\SM0:6468:64:WilError_03\"\
+      \n Process Lagswitch.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:6468:168:WilStaging_02\"\n Process Lagswitch.exe created mutex with\
+      \ name  \"\\Sessions\\1\\BaseNamedObjects\\Local\\SM0:6468:64:WilError_03\"\n\
+      \ Process msedgewebview2.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:8960:304:WilStaging_02\"\n Process msedgewebview2.exe created mutex\
+      \ with name  \"DBWinMutex\"\n Process msedgewebview2.exe created mutex with\
+      \ name  \"SM0:8960:120:WilError_03\"\n Process msedgewebview2.exe created mutex\
+      \ with name  \"Local\\SM0:8960:120:WilError_03\"\n Process msedgewebview2.exe\
+      \ created mutex with name  \"Local\\SM0:8960:304:WilStaging_02\"\n Process msedgewebview2.exe\
+      \ created mutex with name  \"__OMADM_NAMED_MUTEX__\"\n Process msedgewebview2.exe\
+      \ created mutex with name  \"ChromeProcessSingletonStartup!\"\n Process msedgewebview2.exe\
+      \ created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\Local\\SM0:8960:120:WilError_03\"\
+      \n Process msedgewebview2.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      DBWinMutex\"\n Process msedgewebview2.exe created mutex with name  \"\\Sessions\\\
+      1\\BaseNamedObjects\\ChromeProcessSingletonStartup!\"\n Process msedgewebview2.exe\
+      \ created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\__OMADM_NAMED_MUTEX__\"\
+      \n Process msedgewebview2.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      SM0:8960:120:WilError_03\"\n Process msedgewebview2.exe created mutex with name\
+      \  \"\\Sessions\\1\\BaseNamedObjects\\Local\\SM0:1604:304:WilStaging_02\"\n\
+      \ Process msedgewebview2.exe created mutex with name  \"Local\\SM0:1604:304:WilStaging_02\"\
+      \n Process msedgewebview2.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:788:304:WilStaging_02\"\n Process msedgewebview2.exe created mutex\
+      \ with name  \"\\Sessions\\1\\BaseNamedObjects\\SM0:788:120:WilError_03\"\n\
+      \ Process msedgewebview2.exe created mutex with name  \"\\Sessions\\1\\BaseNamedObjects\\\
+      Local\\SM0:788:120:WilError_03\""
+  - EventData: Creates mutants
+  - EventData: mutant-0
+  - EventData: "\"Lagswitch.exe\" touched \"Task Bar Communication\" (Path: \"HKCU\\\
+      WOW6432NODE\\CLSID\\{56FDF344-FD6D-11D0-958A-006097C9A090}\")\n \"Lagswitch.exe\"\
+      \ touched \"Memory Mapped Cache Mgr\" (Path: \"HKCU\\WOW6432NODE\\CLSID\\{1F486A52-3CB1-48FD-8F50-B8DC300D9F9D}\\\
+      TREATAS\")\n \"Lagswitch.exe\" touched \"UIHostNoLaunch Class\" (Path: \"HKCU\\\
+      WOW6432NODE\\CLSID\\{4CE576FA-83DC-4F88-951C-9D0782B4E376}\\TREATAS\")\n \"\
+      msedgewebview2.exe\" touched \"MMDeviceEnumerator class\" (Path: \"HKCU\\CLSID\\\
+      {BCDE0395-E52F-467C-8E3D-C4579291692E}\")\n \"msedgewebview2.exe\" touched \"\
+      NetworkListManager\" (Path: \"HKCU\\CLSID\\{DCB00C01-570F-4A9B-8D69-199FDBA5723B}\\\
+      TREATAS\")\n \"msedgewebview2.exe\" touched \"Network List Manager\" (Path:\
+      \ \"HKCU\\CLSID\\{A47979D2-C419-11D9-A5B4-001185AD2B89}\\TREATAS\")\n \"msedgewebview2.exe\"\
+      \ touched \"PSFactoryBuffer\" (Path: \"HKCU\\CLSID\\{1299CF18-C4F5-4B6A-BB0F-2299F0398E27}\\\
+      TREATAS\")\n \"msedgewebview2.exe\" touched \"TF_InputProcessorProfiles\" (Path:\
+      \ \"HKCU\\CLSID\\{33C53A50-F456-4884-B049-85FD643ECFED}\\TREATAS\")\n \"msedgewebview2.exe\"\
+      \ touched \"TF_ThreadMgr\" (Path: \"HKCU\\CLSID\\{529A9E6B-6587-4F23-AB9E-9C7D683E3C50}\\\
+      TREATAS\")\n \"msedgewebview2.exe\" touched \"TF_CategoryMgr\" (Path: \"HKCU\\\
+      CLSID\\{A4B544A1-438D-4B41-9325-869523E2D6C7}\\TREATAS\")\n \"msedgewebview2.exe\"\
+      \ touched \"TF_DisplayAttributeMgr\" (Path: \"HKCU\\CLSID\\{3CE74DE4-53D3-4D74-8B83-431B3828BA53}\\\
+      TREATAS\")\n \"msedgewebview2.exe\" touched \"Shortcut\" (Path: \"HKCU\\CLSID\\\
+      {00021401-0000-0000-C000-000000000046}\\TREATAS\")\n \"msedgewebview2.exe\"\
+      \ touched \"@%SystemRoot%\\system32\\shell32.dll,-22067\" (Path: \"HKCU\\CLSID\\\
+      {52205FD8-5DFB-447D-801A-D0B52F2E83E1}\\SHELLFOLDER\")\n \"msedgewebview2.exe\"\
+      \ touched \"Property System Both Class Factory\" (Path: \"HKCU\\CLSID\\{76765B11-3F95-4AF2-AC9D-EA55D8994F1A}\\\
+      TREATAS\")\n \"msedgewebview2.exe\" touched \"Computer\" (Path: \"HKCU\\CLSID\\\
+      {20D04FE0-3AEA-1069-A2D8-08002B30309D}\\SHELLFOLDER\")\n \"msedgewebview2.exe\"\
+      \ touched \"Ptype_PSFactory\" (Path: \"HKCU\\CLSID\\{11659A23-5884-4D1B-9CF6-67D6F4F90B36}\\\
+      TREATAS\")"
+  - EventData: Overview of unique CLSIDs touched in registry
+  - EventData: registry-72
+  - EventData: "\"msedgewebview2.exe\" reads file \"C:\\Users\\%OSUSER%\\AppData\\\
+      Roaming\\Microsoft\\Internet Explorer\\Quick Launch\\User Pinned\\TaskBar\\\
+      desktop.ini\"\n \"msedgewebview2.exe\" reads file \"C:\\Program Files (x86)\\\
+      desktop.ini\""
+  - EventData: Reads configuration files (.ini files)
+  - EventData: api-6
+  - EventData: '"msedgewebview2.exe" writes to a file "C:\Users\%OSUSER%\AppData\Local\Temp\b39abe92-edb3-4f3d-a211-5367dc2f26bf.tmp"'
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  - EventData: "\"Lagswitch.exe\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE\n\
+      \ \"Lag Switch.dll\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE\n\
+      \ \"WinDivert.dll\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE\n\
+      \ \"MSI964E.tmp\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE\n\
+      \ \"MSI6058.tmp\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE\n\
+      \ \"WinDivert32.sys\" has flags like  IMAGE_FILE_32BIT_MACHINE\n IMAGE_FILE_EXECUTABLE"
+  - EventData: Uses 32 bit executable PE
+  - EventData: static-153
+  - EventData: "\"SELECT `WixCloseApplication`, `Target`, `Description`, `Condition`,\
+      \ `Attributes`, `Property`, `TerminateExitCode`, `Timeout` FROM `WixCloseApplication`\
+      \ ORDER BY `Sequence`\" (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator: \"\
+      select `wixcloseapplication`, `target`, `description`, `condition`, `attributes`,\
+      \ `property`, `terminateexitcode`, `timeout` from `wixcloseapplication` order\
+      \ by `sequence`\")\n \"SELECT `WixRemoveFolderEx`, `Component_`, `Property`,\
+      \ `InstallMode` FROM `WixRemoveFolderEx`\" (Source: Lagswitch_2.0.3_x86_en-US.msi,\
+      \ Indicator: \"select `wixremovefolderex`, `component_`, `property`, `installmode`\
+      \ from `wixremovefolderex`\")\n \"SELECT `SecureObjects`.`SecureObject`, `SecureObjects`.`Table`,\
+      \ `SecureObjects`.`Domain`, `SecureObjects`.`User`, `SecureObjects`.`Permission`,\
+      \ `SecureObjects`.`Component_`, `Component`.`Attributes` FROM `SecureObjects`,`Component`\
+      \ WHERE `SecureObjects`.`Component_`=`Component`.`Component`\" (Source: Lagswitch_2.0.3_x86_en-US.msi,\
+      \ Indicator: \"select `secureobjects`.`secureobject`, `secureobjects`.`table`,\
+      \ `secureobjects`.`domain`, `secureobjects`.`user`, `secureobjects`.`permission`,\
+      \ `secureobjects`.`component_`, `component`.`attributes` from `secureobjects`,`component`\
+      \ where `secureobjects`.`component_`=`component`.`component`\")\n \"SELECT `Registry`.`Registry`,\
+      \ `Registry`.`Root`, `Registry`.`Key` FROM `Registry` WHERE `Registry`.`Registry`=?\"\
+      \ (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator: \"select `registry`.`registry`,\
+      \ `registry`.`root`, `registry`.`key` from `registry` where `registry`.`registry`=?\"\
+      )\n \"SELECT `ServiceInstall`.`Name` FROM `ServiceInstall` WHERE `ServiceInstall`.`ServiceInstall`=?\"\
+      \ (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator: \"select `serviceinstall`.`name`\
+      \ from `serviceinstall` where `serviceinstall`.`serviceinstall`=?\")\n \"SELECT\
+      \ `ServiceName`, `Component_`, `NewService`, `FirstFailureActionType`, `SecondFailureActionType`,\
+      \ `ThirdFailureActionType`, `ResetPeriodInDays`, `RestartServiceDelayInSeconds`,\
+      \ `ProgramCommandLine`, `RebootMessage` FROM `ServiceConfig`\" (Source: Lagswitch_2.0.3_x86_en-US.msi,\
+      \ Indicator: \"select `servicename`, `component_`, `newservice`, `firstfailureactiontype`,\
+      \ `secondfailureactiontype`, `thirdfailureactiontype`, `resetperiodindays`,\
+      \ `restartservicedelayinseconds`, `programcommandline`, `rebootmessage` from\
+      \ `serviceconfig`\")\n \"SELECT `Data` FROM `Binary` WHERE `Name`='%s'\" (Source:\
+      \ Lagswitch_2.0.3_x86_en-US.msi, Indicator: \"select `data` from `binary` where\
+      \ `name`='%s'\")\n \"SELECT `XmlFile`.`XmlFile`, `XmlFile`.`File`, `XmlFile`.`ElementPath`,\
+      \ `XmlFile`.`Name`, `XmlFile`.`Value`, `XmlFile`.`Flags`, `XmlFile`.`Component_`,\
+      \ `Component`.`Attributes` FROM `XmlFile`,`Component` WHERE `XmlFile`.`Component_`=`Component`.`Component`\
+      \ ORDER BY `File`, `Sequence`\" (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator:\
+      \ \"select `xmlfile`.`xmlfile`, `xmlfile`.`file`, `xmlfile`.`elementpath`, `xmlfile`.`name`,\
+      \ `xmlfile`.`value`, `xmlfile`.`flags`, `xmlfile`.`component_`, `component`.`attributes`\
+      \ from `xmlfile`,`component` where `xmlfile`.`component_`=`component`.`component`\
+      \ order by `file`, `sequence`\")\n \"SELECT `XmlConfig`.`XmlConfig`, `XmlConfig`.`File`,\
+      \ `XmlConfig`.`ElementPath`, `XmlConfig`.`VerifyPath`, `XmlConfig`.`Name`, `XmlConfig`.`Value`,\
+      \ `XmlConfig`.`Flags`, `XmlConfig`.`Component_`, `Component`.`Attributes` FROM\
+      \ `XmlConfig`,`Component` WHERE `XmlConfig`.`Component_`=`Component`.`Component`\
+      \ ORDER BY `File`, `Sequence`\" (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator:\
+      \ \"select `xmlconfig`.`xmlconfig`, `xmlconfig`.`file`, `xmlconfig`.`elementpath`,\
+      \ `xmlconfig`.`verifypath`, `xmlconfig`.`name`, `xmlconfig`.`value`, `xmlconfig`.`flags`,\
+      \ `xmlconfig`.`component_`, `component`.`attributes` from `xmlconfig`,`component`\
+      \ where `xmlconfig`.`component_`=`component`.`component` order by `file`, `sequence`\"\
+      )\n \"SELECT * FROM `%s`\" (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator:\
+      \ \"select * from `%s`\")\n \"SELECT `Text` FROM `Control` WHERE `Control`='LicenseText'\"\
+      \ (Source: Lagswitch_2.0.3_x86_en-US.msi, Indicator: \"select `text` from `control`\
+      \ where `control`='licensetext'\")"
+  - EventData: Contains SQL queries
+  - EventData: string-16
+  - EventData: "Observed system executable string:\"%WINDIR%\\system32\\edputil.dll\"\
+      \ [Source: 00000000-00006468-00000C2B-3174893962]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\dbghelp.dll\" [Source: 00000000-00006468-00000C2B-3194743190]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\ntmarta.dll\" [Source:\
+      \ 00000000-00008960-00000C2B-3177162985]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\dwrite.dll\" [Source: 00000000-00008960-00000C2B-3179959802]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\shcore.dll\" [Source:\
+      \ 00000000-00008960-00000C2B-3193453990]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\wldp.dll\" [Source: 00000000-00008960-00000C2B-3195888981]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\hevcdecoder.dll\"\
+      \ [Source: 00000000-00008960-00000C2B-3246713985]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\TenantRestrictionsPlugin.dll\" [Source: 00000000-00008960-00000C2B-3247264257]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\netapi32.dll\" [Source:\
+      \ 00000000-00008960-00000C2B-3275711112]\n Observed system executable string:\"\
+      %WINDIR%\\system32\\DolbyDecMFT.dll\" [Source: 00000000-00000788-00000C2B-3190286237]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\dxgi.dll\" [Source:\
+      \ 00000000-00000788-00000C2B-3191700137]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; Source: \"00000000-00000788.00000001.274003.6C560000.00000002.mdmp, 00000000-00000788.00000001.274003.6CB7A000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp, 00000000-00000788.00000001.274003.8EDC7000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.93051000.00000002.mdmp, 00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00000788.00000001.274003.6C560000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.6CB7A000.00000002.mdmp, 00000000-00000788.00000001.274003.8D09D000.00000002.mdmp,\
+      \ 00000000-00000788.00000001.274003.8EDC7000.00000002.mdmp, 00000000-00000788.00000001.274003.93051000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.6D0CF000.00000002.mdmp, 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\"\
+      )\n Found reference to API \"D3D Compiler LoadLibrary failed. GetLastError=\"\
+      \ (Indicator: \"GetLastError\"; Source: \"00000000-00000788.00000001.274003.6CB7A000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetWindowThreadProcessId\" (Indicator: \"\
+      GetWindowThreadProcessId\"; Source: \"00000000-00000788.00000001.274003.6CB7A000.00000002.mdmp,\
+      \ 00000000-00000788.00000002.275923.ED855000.00000002.mdmp\")\n Found reference\
+      \ to API \"ShowWindow\" (Indicator: \"ShowWindow\"; Source: \"00000000-00000788.00000001.274003.8D09D000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  selection_network:
+  - DestinationHostname: 000001.dbtmp
+  - DestinationHostname: 32.dll
+  - DestinationHostname: 43b52f3e-d8a7-42b0-ab76-bf70042ee0e3.tmp
+  - DestinationHostname: 47.dll
+  - DestinationHostname: 571a84d8-5a3c-4da7-8138-9e13db92d5d4.tmp
+  - DestinationHostname: 69803c17-33c5-47f8-8c18-5f569f49243d.tmp
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: BrowserMetrics-698DB5C8-2300.pma
+  - DestinationHostname: BrowserMetrics-spare.pma
+  - DestinationHostname: BrowserMetrics-spare.pma.tmp
+  - DestinationHostname: COMCTL32.dll
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: CoreMessaging.dll
+  - DestinationHostname: DirectXApps.sdb
+  - DestinationHostname: DolbyDecMFT.dll
+  - DestinationHostname: EmbeddedBrowserWebView.dll
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: IMM32.dll
+  - DestinationHostname: IPHLPAPI.DLL
+  - DestinationHostname: Lagswitch.exe
+  - DestinationHostname: MDMRegistration.dll
+  - DestinationHostname: OLEACC.dll
+  - DestinationHostname: SETUPAPI.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: Secur32.dll
+  - DestinationHostname: TenantRestrictionsPlugin.dll
+  - DestinationHostname: UIAutomationCore.DLL
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WINHTTP.dll
+  - DestinationHostname: WTSAPI32.dll
+  - DestinationHostname: WinDivert64.sys
+  - DestinationHostname: Windows.Foundation.UniversalApiContract
+  - DestinationHostname: acpiz.dll
+  - DestinationHostname: activedetect32.dll
+  - DestinationHostname: activedetect64.dll
+  - DestinationHostname: adialhk.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: airfoilinject3.dll
+  - DestinationHostname: akinsofthook32.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-wow64-l1-1-1.dll
+  - DestinationHostname: api-ms-win-downlevel-shell32-l1-1-0.dll
+  - DestinationHostname: api-ms-win-downlevel-shlwapi-l1-1-0.dll
+  - DestinationHostname: api-ms-win-shcore-scaling-l1-1-1.dll
+  - DestinationHostname: apphelp.dll
+  - DestinationHostname: atcuf64.dll
+  - DestinationHostname: audio.mojom.AudioService
+  - DestinationHostname: avcuf64.dll
+  - DestinationHostname: avgrsstx.dll
+  - DestinationHostname: babylonchromepi.dll
+  - DestinationHostname: bcryptprimitives.dll
+  - DestinationHostname: browser.show
+  - DestinationHostname: btkeyind.dll
+  - DestinationHostname: c72167bd-cc65-4451-b5d7-3f0df16c2230.tmp
+  - DestinationHostname: cmcsyshk.dll
+  - DestinationHostname: cmsetac.dll
+  - DestinationHostname: cooliris.dll
+  - DestinationHostname: cplushook.dll
+  - DestinationHostname: d0a43dea-b1b4-44c3-a2da-0c97a345da42.tmp
+  - DestinationHostname: d3d11.dll
+  - DestinationHostname: d3d12.dll
+  - DestinationHostname: data.template
+  - DestinationHostname: dbghelp.dll
+  - DestinationHostname: dcomp.dll
+  - DestinationHostname: dhcpcsvc.DLL
+  - DestinationHostname: dockshellhook.dll
+  - DestinationHostname: dwmapi.dll
+  - DestinationHostname: dwrite.dll
+  - DestinationHostname: dxgi.dll
+  - DestinationHostname: e20512d3-ba83-4acd-9752-361c3d84334a.tmp
+  - DestinationHostname: easyhook32.dll
+  - DestinationHostname: easyhook64.dll
+  - DestinationHostname: edge.services.account
+  - DestinationHostname: edge.services.last
+  - DestinationHostname: edge.sync
+  - DestinationHostname: edputil.dll
+  - DestinationHostname: esspd.dll
+  - DestinationHostname: extensions.settings
+  - DestinationHostname: ffmpeg.dll
+  - DestinationHostname: fonts.googleapis.com
+  - DestinationHostname: fwhook.dll
+  - DestinationHostname: gdi32.dll
+  - DestinationHostname: googledesktopnetwork3.dll
+  - DestinationHostname: guard64.dll
+  - DestinationHostname: hevcdecoder.dll
+  - DestinationHostname: hookprintapis.dll
+  - DestinationHostname: hookprocesscreation.dll
+  - DestinationHostname: hookterminateapis.dll
+  - DestinationHostname: icatcdll.dll
+  - DestinationHostname: icdcnl.dll
+  - DestinationHostname: imon.dll
+  - DestinationHostname: io.lagswitch
+  - DestinationHostname: ioloHL.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: kloehk.dll
+  - DestinationHostname: lawenforcer.dll
+  - DestinationHostname: libdivx.dll
+  - DestinationHostname: libegl.dll
+  - DestinationHostname: libglesv2.dll
+  - DestinationHostname: lvprcinj01.dll
+  - DestinationHostname: madchook.dll
+  - DestinationHostname: mdnsnsp.dll
+  - DestinationHostname: media.cdm.origin
+  - DestinationHostname: media.storage
+  - DestinationHostname: metrics.stability.exited
+  - DestinationHostname: mf.dll
+  - DestinationHostname: mfplat.dll
+  - DestinationHostname: moonsysh.dll
+  - DestinationHostname: mpk.dll
+  - DestinationHostname: msedge.dll
+  - DestinationHostname: msedgewebview2.exe
+  - DestinationHostname: n64hooks.dll
+  - DestinationHostname: ncrypt.dll
+  - DestinationHostname: netapi32.dll
+  - DestinationHostname: network.mojom.NetworkService
+  - DestinationHostname: npdivx32.dll
+  - DestinationHostname: npggNT.des
+  - DestinationHostname: npggNT.dll
+  - DestinationHostname: nphooks.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ntmarta.dll
+  - DestinationHostname: oawatch.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oneds.dll
+  - DestinationHostname: opls64.dll
+  - DestinationHostname: pastali32.dll
+  - DestinationHostname: pavhook.dll
+  - DestinationHostname: pavlsphook.dll
+  - DestinationHostname: pavshook.dll
+  - DestinationHostname: pavshookwow.dll
+  - DestinationHostname: pctavhook.dll
+  - DestinationHostname: pctgmhk.dll
+  - DestinationHostname: picrmi32.dll
+  - DestinationHostname: picrmi64.dll
+  - DestinationHostname: pmls64.dll
+  - DestinationHostname: prefs.preference
+  - DestinationHostname: prls64.dll
+  - DestinationHostname: prntrack.dll
+  - DestinationHostname: prochook.dll
+  - DestinationHostname: protector.dll
+  - DestinationHostname: r3hook.dll
+  - DestinationHostname: radhslib.dll
+  - DestinationHostname: radprlib.dll
+  - DestinationHostname: rapportnikko.dll
+  - DestinationHostname: rlhook.dll
+  - DestinationHostname: rlls.dll
+  - DestinationHostname: rlls64.dll
+  - DestinationHostname: rndlpepperbrowserrecordhelper.dll
+  - DestinationHostname: rooksdol.dll
+  - DestinationHostname: rpchromebrowserrecordhelper.dll
+  - DestinationHostname: safebrowsing.incidents
+  - DestinationHostname: sahook.dll
+  - DestinationHostname: sbrige.dll
+  - DestinationHostname: sc2hook.dll
+  - DestinationHostname: sdhook32.dll
+  - DestinationHostname: session.restore
+  - DestinationHostname: session.startup
+  - DestinationHostname: sftldr.dll
+  - DestinationHostname: sguard.dll
+  - DestinationHostname: shcore.dll
+  - DestinationHostname: smum32.dll
+  - DestinationHostname: smumhook.dll
+  - DestinationHostname: ssldivx.dll
+  - DestinationHostname: storage.mojom.StorageService
+  - DestinationHostname: swiftshader.dll
+  - DestinationHostname: syncor11.dll
+  - DestinationHostname: sysMerge.sdb
+  - DestinationHostname: sysmain.sdb
+  - DestinationHostname: systools.dll
+  - DestinationHostname: telclient.dll
+  - DestinationHostname: tfwah.dll
+  - DestinationHostname: tmmon64.dll
+  - DestinationHostname: tmmonmgr64.dll
+  - DestinationHostname: user32.dll
+  - DestinationHostname: uxtheme.dll
+  - DestinationHostname: verifier.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: vulkan-1.dll
+  - DestinationHostname: wbhelp.dll
+  - DestinationHostname: wblind.dll
+  - DestinationHostname: wevtapi.dll
+  - DestinationHostname: windowsapihookdll32.dll
+  - DestinationHostname: windowsapihookdll64.dll
+  - DestinationHostname: winstylerthemehelper.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: wow64.dll
+  - DestinationHostname: x64.dll
+  - DestinationIp: 142.250.217.138
+  - DestinationIp: 150.171.22.17
+  condition: selection_behavior or selection_network

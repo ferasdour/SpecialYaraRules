@@ -1,0 +1,834 @@
+title: Agent.DJP behavior detection (4ca0636e)
+id: 4ca0636e5c10cc7baeb7ee8e390b8942939384c8982a997728285831924a0752
+status: experimental
+description: Auto-generated Sigma rule for Agent.DJP
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "file/memory contains long string with (Indicator: \"Invoke-Expression\"\
+      ; File: \"AMSI\")\n file/memory contains long string with (Indicator: \"Invoke-Expression\"\
+      ; File: \"powershell.exe\")\n file/memory contains long string with (Indicator:\
+      \ \"Invoke-Expression\"; Source: \"00000000-00001676.00000000.187728.030C0000.00000004.mdmp,\
+      \ 00000000-00001676.00000000.187728.03140000.00000004.mdmp, 00000000-00001676.00000000.187728.04A50000.00000004.mdmp,\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp, 00000000-00001676.00000000.187728.07812000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.030C0000.00000004.mdmp, 00000000-00001676.00000001.188326.03140000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.04A50000.00000004.mdmp, 00000000-00001676.00000001.188326.07812000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.09480000.00000004.mdmp\")\n file/memory\
+      \ contains long string with (Indicator: \"Invoke-Expression\"; Source: \"00000000-00001676.00000000.187728.03140000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.03140000.00000004.mdmp\")\n Found string\
+      \ \"Invoke-Expression\" (Indicator: \"Invoke-Expression\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n file/memory contains long string with (Indicator: \"Invoke-Expression\"\
+      ; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")"
+  - EventData: Contains ability to run commands or expressions (Powershell command
+      string)
+  - EventData: string-288
+  - EventData: "\"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 51452-159-00BDD560\n \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\"\
+      \ in Source: 51452-194-00BD8190\n \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\"\
+      \ in Source: 51452-194-00BD8190\n \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\\
+      PowerShellEngine\" in Source: 51452-194-00BD8190\n \"SOFTWARE\\Microsoft\\PowerShell\\\
+      3\" in Source: 51452-196-00BDBFA2\n \"SOFTWARE\\Microsoft\\PowerShell\" in Source:\
+      \ 51452-207-00BD8AF0\n \"o enable assembly bind failure logging, set the registry\
+      \ value [HKLM\\Software\\Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source:\
+      \ 00000000-00001676.00000000.187728.03140000.00000004.mdmp\n 00000000-00001676.00000001.188326.03140000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Nls\\RegionMapping\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\PowerShell\\\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\\
+      Microsoft\\PowerShell\\3\\PowerShellEngine\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\PowerShell\\3\\PowerShellEngine\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Windows\\PowerShell\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Windows\\PowerShell\\Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\\Dynamic\
+      \ DST\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\\Dynamic DST\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"o turn this feature\
+      \ off, remove the registry value [HKLM\\Software\\Microsoft\\Fusion!EnableLog].\"\
+      \ in Source: 00000000-00001676.00000000.187728.07812000.00000004.mdmp\n 00000000-00001676.00000001.188326.07812000.00000004.mdmp\n\
+      \ \"Read?HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\"\
+      \ in Source: 00000000-00001676.00000001.188326.03110000.00000004.mdmp\n \"Read3HKEY_LOCAL_MACHINE\\\
+      SOFTWARE\\Microsoft\\.NETFramework\" in Source: 00000000-00001676.00000001.188326.03110000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001676.00000001.188326.03140000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found string \"Import-Module\" (Indicator: \"Import-Module\"; Source:\
+      \ \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found string\
+      \ \"# Default prefix for commands exported from this module. Override the default\
+      \ prefix using Import-Module -Prefix.\" (Indicator: \"Import-Module\"; Source:\
+      \ \"00000000-00001676.00000001.188326.08DB0000.00000004.mdmp, 00000000-00001676.00000001.188326.09480000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to add modules to the current session (Powershell
+      command string)
+  - EventData: string-348
+  - EventData: "file/memory contains long string with (Indicator: \"New-Object\";\
+      \ File: \"00000000-00001676\")\n file/memory contains long string with (Indicator:\
+      \ \"New-Object\"; File: \"AMSI\")\n Found string \"powershell_ise.exe\" (Indicator:\
+      \ \"powershell_ise.exe\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Variable to hold all default <cmdlet:parameter, value> pairse\
+      \ used instead of the HostName parameter in the Send-MailMessage cmd\" (Indicator:\
+      \ \"Send-MailMessage\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Join-Path\" (Indicator: \"Join-Path\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Always resolve file paths using Resolve-Path -Relative.\"\
+      \ (Indicator: \"Resolve-Path\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Variable to contain the name of the email server. This can\
+      \ be used instead of the HostName parameter in the Send-MailMessage cmdlet.ater\
+      \ than $ConfirmPreference. If $ConfirmPreference is None, actions will only\
+      \ be confirmed when Confirm is specified.\" (Indicator: \"Send-MailMessage\"\
+      ; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found\
+      \ string \"Variable to contain the name of the email server. This can be used\
+      \ instead of the HostName parameter in the Send-MailMessage cmdlet.\" (Indicator:\
+      \ \"Send-MailMessage\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Resolve-Path\" (Indicator: \"Resolve-Path\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Write-Output\" (Indicator: \"Write-Output\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Show-Command\" (Indicator: \"Show-Command\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Trace-Command\" (Indicator: \"Trace-Command\"; Source: \"\
+      00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found string \"\
+      Pop-Location\" (Indicator: \"Pop-Location\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Push-Location\" (Indicator: \"Push-Location\"; Source: \"\
+      00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found string \"\
+      Select-String\" (Indicator: \"Select-String\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Enter-PSHostProcess\" (Indicator: \"Enter-PSHostProcess\"\
+      ; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found\
+      \ string \"Exit-PSHostProcess\" (Indicator: \"Exit-PSHostProcess\"; Source:\
+      \ \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n Found string\
+      \ \"Save-Help\" (Indicator: \"Save-Help\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found string \"Test-ModuleManifest\" (Indicator: \"Test-ModuleManifest\"\
+      ; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")"
+  - EventData: Observed Powershell command strings
+  - EventData: string-187
+  - EventData: "Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\\
+      v4.0.30319\\mscoreei.dll\" [Source: 00000000-00001676-00000C2E-876278698]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      clr.dll\" [Source: 00000000-00001676-00000C2B-1904989520]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\mscoree.dll\"\
+      \ [Source: 00000000-00001676-00000C2B-1905095052]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\combase.dll\" [Source: 00000000-00001676-00000C2B-1905163719]\n\
+      \ Observed system executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\\
+      mscorlib\\36eaccfde177c2e7b93b8dbdde4e012a\\mscorlib.ni.dll\" [Source: 00000000-00001676-00000C2B-1905316908]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      ole32.dll\" [Source: 00000000-00001676-00000C2B-1905386106]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\api-ms-win-core-winrt-l1-1-0.dll\"\
+      \ [Source: 00000000-00001676-00000C2B-1905459037]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_32\\mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\\
+      oleaut32.dll\" [Source: 00000000-00001676-00000C2B-1905520250]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\clrjit.dll\"\
+      \ [Source: 00000000-00001676-00000C2B-1905682206]\n Observed system executable\
+      \ string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\OLEAUT32.dll\" [Source:\
+      \ 00000000-00001676-00000C2B-1905715767]\n Observed system executable string:\"\
+      %WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\System\\2c3c912ea8f058f9d04c4650128feb3f\\\
+      System.ni.dll\" [Source: 00000000-00001676-00000C2B-1905982556]\n Observed system\
+      \ executable string:\"%WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\System.Core\\\
+      31fae3290fad30c31c98651462d22724\\System.Core.ni.dll\" [Source: 00000000-00001676-00000C2B-1906017460]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_32\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\combase.dll\" [Source: 00000000-00001676-00000C2B-1906070013]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      api-ms-win-core-winrt-string-l1-1-0.dll\" [Source: 00000000-00001676-00000C2B-1906176725]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\psapi.dll\" [Source: 00000000-00001676-00000C2B-1906389661]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_32\\\
+      mscorlib\\v4.0_4.0.0.0__b77a5c561934e089\\shell32.dll\" [Source: 00000000-00001676-00000C2B-1906455815]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      en-US\\mscorrc.dll\" [Source: 00000000-00001676-00000C2B-1906835015]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\wintrust.dll\" [Source: 00000000-00001676-00000C2B-1906984373]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      en\\mscorrc.dll\" [Source: 00000000-00001676-00000C2B-1907008823]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      mscorrc.dll\" [Source: 00000000-00001676-00000C2B-1907070323]\n Observed system\
+      \ executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System.Management.Automation\\\
+      v4.0_3.0.0.0__31bf3856ad364e35\\amsi.dll\" [Source: 00000000-00001676-00000C2B-1907155407]\n\
+      \ Observed system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\\
+      System\\v4.0_4.0.0.0__b77a5c561934e089\\ntdll.dll\" [Source: 00000000-00001676-00000C2B-1907157934]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\version.dll\" [Source:\
+      \ 00000000-00001676-00000C2B-1907432498]\n Observed system executable string:\"\
+      %WINDIR%\\assembly\\NativeImages_v4.0.30319_32\\System.Xml\\15af16d373cf0528cb74fc73d365fdbf\\\
+      System.Xml.ni.dll\" [Source: 00000000-00001676-00000C2B-1907756648]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.Net\\assembly\\GAC_MSIL\\System\\\
+      v4.0_4.0.0.0__b77a5c561934e089\\crypt32.dll\" [Source: 00000000-00001676-00000C2B-1907757561]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Observed system executable string:\"%WINDIR%\\SysWOW64\\WindowsPowerShell\\\
+      v1.0\\powershell.exe\" [Source: 00000000-00001676-00000BC0-1908203034]\n Observed\
+      \ system executable string:\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      RegAsm.exe\" [Source: 00000000-00001676-00000C46-32564985198]\n Observed system\
+      \ executable string:\"\"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\RegAsm.exe\"\
+      \" [Source: 00000000-00001676-00000C46-32564985198]\n Observed system executable\
+      \ string:\"-ExecutionPolicy Bypass Add-MpPreference -ExclusionPath '%WINDIR%\\\
+      Microsoft.NET\\Framework\\v4.0.30319\\RegAsm.exe'\" [Source: powershell.exe]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "Found string - \\\\.\\pipe\\PSHost.134153671449930129.1676.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153673614756766.2472.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153675294359191.5404.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153676934239363.6528.DefaultAppDomain.powershell\n\
+      \ Found string - \\\\.\\pipe\\PSHost.134153678443925251.4668.DefaultAppDomain.powershell"
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: '"powershell.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; Source:
+      "00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "\"o enable assembly bind failure logging, set the registry value [HKLM\\\
+      Software\\Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00001676.00000000.187728.03140000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Nls\\RegionMapping\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\PowerShell\\\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\\
+      Microsoft\\PowerShell\\3\\PowerShellEngine\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\PowerShell\\3\\PowerShellEngine\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Windows\\PowerShell\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Windows\\PowerShell\\Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\\Dynamic\
+      \ DST\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\\Dynamic DST\" in Source: 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00001676.00000000.187728.05590000.00000004.mdmp\n \"o turn this feature\
+      \ off, remove the registry value [HKLM\\Software\\Microsoft\\Fusion!EnableLog].\"\
+      \ in Source: 00000000-00001676.00000000.187728.07812000.00000004.mdmp\n \"Read?HKEY_LOCAL_MACHINE\\\
+      Software\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001676.00000001.188326.03110000.00000004.mdmp\n\
+      \ \"Read3HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\" in Source:\
+      \ 00000000-00001676.00000001.188326.03110000.00000004.mdmp\n \"o enable assembly\
+      \ bind failure logging, set the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00001676.00000001.188326.03140000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001676.00000001.188326.03140000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00001676.00000001.188326.07812000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\"\
+      \ in Source: 00000000-00001676.00000001.188326.09480000.00000004.mdmp\n \"SOFTWARE\\\
+      Policies\\Microsoft\" in Source: 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\n\
+      \ \"Software\\Microsoft\\RemovalTools\\MRT\" in Source: 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\n\
+      \ \"HKLM\\\" in Source: 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\OOBE\\Stats\" in Source: 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00002472.00000000.188700.03320000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00002472.00000000.188700.03320000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\Interface\\{D4781CD6-E5D3-44DF-AD94-930EFE48A887}\"\
+      \ in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{E7D35CFA-348B-485E-B524-252725D697CA}\"\
+      \ in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{F309AD18-D86A-11D0-A075-00C04FB68820}\"\
+      \ in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{7C857801-7381-11CF-884D-00AA004B2E24}\"\
+      \ in Source: 00000000-00002472.00000001.189119.03320000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source:\
+      \ 00000000-00002472.00000001.189119.07A40000.00000004.mdmp\n \"o enable assembly\
+      \ bind failure logging, set the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00004668.00000000.190887.031E0000.00000004.mdmp\n\
+      \ \":\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\\
+      WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{8BC3F05E-D86B-11D0-A07\" in\
+      \ Source: 00000000-00004668.00000000.190887.031E0000.00000004.mdmp\n \"o turn\
+      \ this feature off, remove the registry value [HKLM\\Software\\Microsoft\\Fusion!EnableLog].\"\
+      \ in Source: 00000000-00004668.00000000.190887.031E0000.00000004.mdmp\n \"o\
+      \ enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00004668.00000001.191270.03203000.00000004.mdmp\n\
+      \ \":\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\\
+      WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\\\REGISTRY\\\
+      MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{8BC3F05E-D86B-11D0-A07\" in\
+      \ Source: 00000000-00004668.00000001.191270.03203000.00000004.mdmp\n \"o turn\
+      \ this feature off, remove the registry value [HKLM\\Software\\Microsoft\\Fusion!EnableLog].\"\
+      \ in Source: 00000000-00004668.00000001.191270.03203000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{F309AD18-D86A-11D0-A075-00C04FB68820}\"\
+      \ in Source: 00000000-00004668.00000001.191270.0818E000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{D4781CD6-E5D3-44DF-AD94-930EFE48A887}\"\
+      \ in Source: 00000000-00004668.00000001.191270.0818E000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{E7D35CFA-348B-485E-B524-252725D697CA}\"\
+      \ in Source: 00000000-00004668.00000001.191270.0818E000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{7C857801-7381-11CF-884D-00AA004B2E24}\"\
+      \ in Source: 00000000-00004668.00000001.191270.0818E000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\" in Source:\
+      \ 00000000-00004668.00000001.191270.090C0000.00000004.mdmp\n \"o enable assembly\
+      \ bind failure logging, set the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00005404.00000000.189453.00A70000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00005404.00000000.189453.00A70000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00005404.00000001.189852.00A93000.00000004.mdmp\n\
+      \ \"Registry\\Machine\\Software\\Classes\\Interface\\{7C857801-7381-11CF-884D-00AA004B2E24}\"\
+      \ in Source: 00000000-00005404.00000001.189852.00A93000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{9556DC99-828C-11CF-A37E-00AA003240C7}\"\
+      \ in Source: 00000000-00005404.00000001.189852.00A93000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{E7D35CFA-348B-485E-B524-252725D697CA}\"\
+      \ in Source: 00000000-00005404.00000001.189852.00A93000.00000004.mdmp\n \"Registry\\\
+      Machine\\Software\\Classes\\Interface\\{F309AD18-D86A-11D0-A075-00C04FB68820}\"\
+      \ in Source: 00000000-00005404.00000001.189852.00A93000.00000004.mdmp\n \"o\
+      \ turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00005404.00000001.189852.00AFD000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00005404.00000001.189852.07370000.00000004.mdmp\n \"\
+      o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00006528.00000000.190184.02E00000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00006528.00000000.190184.02E00000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Nls\\RegionMapping\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\PowerShell\\\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\WSMAN\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"Software\\\
+      Microsoft\\PowerShell\\3\\PowerShellEngine\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Microsoft\\PowerShell\\3\\PowerShellEngine\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Windows\\PowerShell\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ModuleLogging\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Windows\\PowerShell\\Transcription\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\PowerShell\\\
+      Transcription\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_CURRENT_USER\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Policies\\Microsoft\\Windows\\PowerShell\\ConsoleSessionConfiguration\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\PowerShell\\\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\1\\ShellIds\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\1\\ShellIds\\\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard\
+      \ Time\\Dynamic DST\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard Time\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\\Dynamic DST\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      System\\CurrentControlSet\\Control\\Session Manager\\Environment\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"SYSTEM\\CurrentControlSet\\\
+      Services\\EventLog\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\\HardwareEvents\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Internet Explorer\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\Key Management Service\" in Source:\
+      \ 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\OAlerts\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\\Security\"\
+      \ in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SYSTEM\\CurrentControlSet\\Services\\EventLog\\System\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\\Windows\
+      \ PowerShell\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\EventLog\\Windows\
+      \ PowerShell\\PowerShell\" in Source: 00000000-00006528.00000000.190184.04C40000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00006528.00000001.190555.00BD1000.00000020.mdmp\n \"o\
+      \ turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00006528.00000001.190555.02E00000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00006528.00000001.190555.02E00000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006528.00000001.190555.07570000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "Found reference to API \"[Parameter(ParameterSetName='ShowWindow',\
+      \ Mandatory=$true)]\" (Indicator: \"ShowWindow\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\"\
+      )\n Found reference to API \"${ShowWindow})\" (Indicator: \"ShowWindow\"; Source:\
+      \ \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")"
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API (Indicator: \"SeDebugPrivilege\"; Source: \"\
+      00000000-00001676.00000000.187728.05590000.00000004.mdmp, 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process\"; Source: \"00000000-00001676.00000000.187728.05590000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptEncrypt\"; Source: \"00000000-00001676.00000000.187728.07812000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeConditionVariable\"; Source:\
+      \ \"00000000-00001676.00000000.187728.71841000.00000020.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"SleepConditionVariableCS\"; Source:\
+      \ \"00000000-00001676.00000000.187728.71841000.00000020.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"WakeAllConditionVariable\"; Source:\
+      \ \"00000000-00001676.00000000.187728.71841000.00000020.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"EventRegister\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EventUnregister\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileVersionInfoSizeExW\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeW\"; Source:\
+      \ \"00000000-00001676.00000000.187728.71841000.00000020.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoW\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileVersionInfoExW\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerQueryValueW\"; Source: \"00000000-00001676.00000000.187728.71841000.00000020.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimePreciseAsFileTime\"; Source:\
+      \ \"00000000-00001676.00000000.187728.71841000.00000020.mdmp, 00000000-00001676.00000001.188326.6FF41000.00000020.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegQueryValueExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoInitialize\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemAlloc\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExpandEnvironmentStringsW\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadUILanguage\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegGetValueW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindClose\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateFileW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadStringW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerSetConditionMask\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerifyVersionInfoW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetConsoleTitleW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EnterCriticalSection\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LeaveCriticalSection\"; Source: \"\
+      00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DeleteCriticalSection\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEvent\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ResetEvent\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateEventW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"UnhandledExceptionFilter\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SearchPathW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDefaultUILanguage\"; Source:\
+      \ \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetUserDefaultUILanguage\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnmapViewOfFile\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindResourceExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.0A1D0000.00000004.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateFileMappingW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MapViewOfFile\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyExW\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp\")"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found string \"Start-Process\" (Indicator: \"Start-Process\"; Source:\
+      \ \"00000000-00001676.00000000.187728.05590000.00000004.mdmp\")\n file/memory\
+      \ contains long string with (Indicator: \"Start-Process\"; Source: \"00000000-00001676.00000001.188326.07812000.00000004.mdmp,\
+      \ 00000000-00001676.00000001.188326.08DB0000.00000004.mdmp, 00000000-00001676.00000001.188326.09480000.00000004.mdmp\"\
+      )\n Found string \"ence='SilentlyContinue'; Invoke-WebRequest -Uri 'URL' -OutFile\
+      \ 'C:\\Users\\Public\\Downloads\\\\Name_File.hta'; Start-Process 'C:\\Users\\\
+      Public\\Downloads\\\\Name_File.hta' -WindowStyle Hidden\"</Arguments>\" (Indicator:\
+      \ \"Start-Process\"; Source: \"00000000-00001676.00000001.188326.07812000.00000004.mdmp\"\
+      ), Found string \"e 'C:\\Users\\Public\\Downloads\\\\Name_File.hta'; Start-Process\
+      \ 'C:\\Users\\Public\\Downloads\\\\Name_File.hta' -WindowStyle H\" (Indicator:\
+      \ \"Start-Process\"; Source: \"00000000-00001676.00000001.188326.07812000.00000004.mdmp\"\
+      ), file/memory contains long string with (Indicator: \"Start-Process\"; Source:\
+      \ \"00000000-00001676.00000001.188326.08DB0000.00000004.mdmp\")"
+  - EventData: Contains ability to start a process (Powershell command string)
+  - EventData: string-250
+  - EventData: "\"mshta.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 76010000\n \"mshta.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72D60000\n \"powershell.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 76010000\n \"powershell.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72D60000\n \"RegAsm.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 76010000\n \"RegAsm.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 72D60000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: 'Found string "Start-Service" (Indicator: "Start-Service"; Source:
+      "00000000-00001676.00000000.187728.05590000.00000004.mdmp")'
+  - EventData: Contains ability to start services (Powershell command string)
+  - EventData: string-332
+  - EventData: 'Found string "Invoke-WMIMethod" (Indicator: "Invoke-WmiMethod"; Source:
+      "00000000-00001676.00000000.187728.05590000.00000004.mdmp")'
+  - EventData: Contains ability to call WMI method (Powershell command string)
+  - EventData: string-296
+  - EventData: 'Found string "Invoke-Command" (Indicator: "Invoke-Command"; Source:
+      "00000000-00001676.00000000.187728.05590000.00000004.mdmp")'
+  - EventData: Contains ability to run commands (Powershell command string)
+  - EventData: string-287
+  - EventData: "Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"\
+      ; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp, 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.71855000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00001676.00000001.188326.00BE1000.00000002.mdmp,\
+      \ 00000000-00001676.00000001.188326.6FFD1000.00000002.mdmp, 00000000-00001676.00000001.188326.71855000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  selection_network:
+  - DestinationHostname: .Data.Common
+  - DestinationHostname: .Diagnostics.DiagnosticSource
+  - DestinationHostname: .Diagnostics.TextWriterTraceListener
+  - DestinationHostname: .IO.FileSystem.Watcher
+  - DestinationHostname: .IO.Packaging
+  - DestinationHostname: .Private.Uri
+  - DestinationHostname: .Resources.ResourceManager
+  - DestinationHostname: .Security.Cryptography.Primitives
+  - DestinationHostname: .Xml.XPath
+  - DestinationHostname: 20260209230301.txt
+  - DestinationHostname: 32.dll
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: Microsoft.AppV.AppvC
+  - DestinationHostname: Microsoft.AppV.AppvClientComConsumer
+  - DestinationHostname: Microsoft.CSharp
+  - DestinationHostname: Microsoft.Manag
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native
+  - DestinationHostname: Microsoft.Management.Infrastructure.Native.Unmanaged.DLL
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: Model.Primitives
+  - DestinationHostname: Model.Security
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PSHost.134153671449930129.1676.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153673614756766.2472.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153675294359191.5404.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153676934239363.6528.DefaultAppDomain.powershell
+  - DestinationHostname: PSHost.134153678443925251.4668.DefaultAppDomain.powershell
+  - DestinationHostname: PowerShell.lnk
+  - DestinationHostname: RegAsm.exe
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.Collections.Concurrent
+  - DestinationHostname: System.ComponentModel.TypeConverter
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Convert
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Dynamic.Runtime
+  - DestinationHostname: System.IO.Compression.ZipFile
+  - DestinationHostname: System.IO.UnmanagedMemoryStream
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Net.WebHeaderCollection
+  - DestinationHostname: System.Net.WebSockets
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Private.CoreLib
+  - DestinationHostname: System.Runtime.Extensions
+  - DestinationHostname: System.Runtime.InteropServices
+  - DestinationHostname: System.Runtime.Numerics
+  - DestinationHostname: System.Text.Encoding
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.Linq
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: UTF8.GetString
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: aphy.Pkcs
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-handle-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: asks.Parallel
+  - DestinationHostname: balization.Extensions
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: bin.exe
+  - DestinationHostname: ceModel.Duplex
+  - DestinationHostname: ceModel.Http
+  - DestinationHostname: ceModel.Web
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: codings.Web
+  - DestinationHostname: combase.dll
+  - DestinationHostname: conhost.exe
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cs.Debug
+  - DestinationHostname: ction.Extensions
+  - DestinationHostname: del.Annotations
+  - DestinationHostname: ding.Extensions
+  - DestinationHostname: ding.Tasks.Extensions
+  - DestinationHostname: ding.Thread
+  - DestinationHostname: eading.ThreadPool
+  - DestinationHostname: ecurity.Claims
+  - DestinationHostname: ecurity.Cryptography.OpenSsl
+  - DestinationHostname: eflection.DispatchProxy
+  - DestinationHostname: em.Diagnostics.Process
+  - DestinationHostname: em.Linq.Parallel
+  - DestinationHostname: em.Net.Primitives
+  - DestinationHostname: em.Numerics.Vectors
+  - DestinationHostname: em.Reflection.Emit
+  - DestinationHostname: em.Threading.Overlapped
+  - DestinationHostname: em.Windows
+  - DestinationHostname: em.Xml.XmlDocument
+  - DestinationHostname: es.Reader
+  - DestinationHostname: et.NetworkInformation
+  - DestinationHostname: gistry.AccessControl
+  - DestinationHostname: gnostics.Contracts
+  - DestinationHostname: hreading.Tasks
+  - DestinationHostname: hy.Cng
+  - DestinationHostname: hy.Encoding
+  - DestinationHostname: iagnostics.TraceSource
+  - DestinationHostname: ices.RuntimeInformation
+  - DestinationHostname: ion.Emit.ILGeneration
+  - DestinationHostname: ion.Metadata
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: ise.exe
+  - DestinationHostname: it.Lightweight
+  - DestinationHostname: ity.Cryptography.Algorithms
+  - DestinationHostname: ity.Principal
+  - DestinationHostname: ity.Principal.Windows
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: lection.Primitives
+  - DestinationHostname: lections.Specialized
+  - DestinationHostname: lp01powershell.exe
+  - DestinationHostname: mi.dll
+  - DestinationHostname: ml.Serialization
+  - DestinationHostname: ml.XPath.XDocument
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: msvcrt.dll
+  - DestinationHostname: n.TypeExtensions
+  - DestinationHostname: nentModel.DataAnnotations
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: oft.PowerShell.UnmanagedPSEntry
+  - DestinationHostname: oft.Win32.Primitives
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: ollections.Immutable
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: powershell.pdb
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: rServices.VisualC
+  - DestinationHostname: rasapi32.dll
+  - DestinationHostname: res.cloudinary.com
+  - DestinationHostname: s.mui
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: stem.AccessControl
+  - DestinationHostname: stem.AppContext
+  - DestinationHostname: stem.ComponentModel.EventBasedAsync
+  - DestinationHostname: stem.IO.FileSystem.DriveInfo
+  - DestinationHostname: stem.Net.Http
+  - DestinationHostname: stem.Net.Security
+  - DestinationHostname: stem.Runtime.Serialization.Json
+  - DestinationHostname: stem.Security.Cryptography.Csp
+  - DestinationHostname: t.PowerShell.CoreCLR.AssemblyLoadContext
+  - DestinationHostname: t.RegularExpressions
+  - DestinationHostname: teamrising.ae
+  - DestinationHostname: time.Serialization.Xml
+  - DestinationHostname: ttp.WinHttpHandler
+  - DestinationHostname: tvu7as.jpg
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: viceModel.NetTcp
+  - DestinationHostname: viceProcess.ServiceController
+  - DestinationHostname: winhttp.dll
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationIp: 178.16.55.121
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  - DestinationIp: 212.95.51.38
+  - DestinationIp: 23.56.162.51
+  condition: selection_behavior or selection_network

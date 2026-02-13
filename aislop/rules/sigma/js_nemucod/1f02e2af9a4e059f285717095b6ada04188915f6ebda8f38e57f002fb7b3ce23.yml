@@ -1,0 +1,1315 @@
+title: JS.Nemucod behavior detection (1f02e2af)
+id: 1f02e2af9a4e059f285717095b6ada04188915f6ebda8f38e57f002fb7b3ce23
+status: experimental
+description: Auto-generated Sigma rule for JS.Nemucod
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "\"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00007152.00000000.181654.65830000.00000004.mdmp\n\
+      \ 00000000-00007152.00000001.183574.65830000.00000004.mdmp\n 00000000-00007152.00000002.185494.65830000.00000004.mdmp\n\
+      \ 00000000-00007152.00000003.190606.6585D000.00000004.mdmp\n \"o enable assembly\
+      \ bind failure logging, set the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00007152.00000000.181654.7FC70000.00000004.mdmp\n\
+      \ 00000000-00007152.00000001.183574.7FC70000.00000004.mdmp\n 00000000-00007152.00000002.185494.7FC70000.00000004.mdmp\n\
+      \ 00000000-00007152.00000003.190606.7FC70000.00000004.mdmp\n \"o turn this feature\
+      \ off, remove the registry value [HKLM\\Software\\Microsoft\\Fusion!EnableLog].\"\
+      \ in Source: 00000000-00007152.00000000.181654.7FC70000.00000004.mdmp\n 00000000-00007152.00000001.183574.7FC70000.00000004.mdmp\n\
+      \ 00000000-00007152.00000002.185494.7FC70000.00000004.mdmp\n 00000000-00007152.00000003.190606.7FC70000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007152.00000001.183574.004E0000.00000004.mdmp\n\
+      \ 00000000-00007152.00000002.185494.004E0000.00000004.mdmp\n 00000000-00007152.00000003.190606.004FB000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Microsoft\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"HKLM\\\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\OOBE\\Stats\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Server\\ServerLevels\"\
+      \ in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: 'Pattern match: "premium-server@thawte.com"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Observed system executable string:\"%WINDIR%\\System32\\WindowsPowerShell\\\
+      v1.0\\powershell.exe\" [Source: 00000000-00006240-00000BC1-1806621571]\n Observed\
+      \ system executable string:\"\"%WINDIR%\\System32\\WindowsPowerShell\\v1.0\\\
+      powershell.exe\" -nop -ep bypass -file \"C:\\Temp\\FI7RFN28.ps1\"\" [Source:\
+      \ 00000000-00006240-00000C47-14443903435]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\aspnet_compiler.exe\" [Source:\
+      \ 00000000-00007152-00000BC0-1822566203]\n Observed system executable string:\"\
+      %WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\Aspnet_compiler.exe\" [Source:\
+      \ 00000000-00007152-00000C46-37771066759]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileMappingW\" (Indicator: \"CreateFile\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: Found string - \\.\pipe\PSHost.134153672909775024.7152.DefaultAppDomain.powershell
+  - EventData: Found named pipe like strings
+  - EventData: string-146
+  - EventData: 'Found reference to API "CreateDirectoryW" (Indicator: "CreateDirectory";
+      Source: "00000000-00007152.00000002.185494.54178000.00000002.mdmp")'
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "\"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00007152.00000000.181654.65830000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00007152.00000000.181654.7FC70000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00007152.00000000.181654.7FC70000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007152.00000001.183574.004E0000.00000004.mdmp\n\
+      \ \"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00007152.00000001.183574.65830000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00007152.00000001.183574.7FC70000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00007152.00000001.183574.7FC70000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007152.00000002.185494.004E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Policies\\Microsoft\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"HKLM\\\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\OOBE\\Stats\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Server\\ServerLevels\"\
+      \ in Source: 00000000-00007152.00000002.185494.54178000.00000002.mdmp\n \"SOFTWARE\\\
+      Microsoft\\PowerShell\\%1!ls!\\PowerShellEngine\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\%1!ls!\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Control\\MiniNT\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\PowerShell\\3\" in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\{89820200-ECBD-11CF-8B85-00AA005B4383}\"\
+      \ in Source: 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\n \"Machine\\\
+      Software\\Classes\\CLSID\" in Source: 00000000-00007152.00000002.185494.65830000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00007152.00000002.185494.7FC70000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00007152.00000002.185494.7FC70000.00000004.mdmp\n\
+      \ \"REGISTRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\\
+      Policies\\Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00007152.00000003.190606.004FB000.00000004.mdmp\n\
+      \ \"Machine\\Software\\Classes\\CLSID\" in Source: 00000000-00007152.00000003.190606.6585D000.00000004.mdmp\n\
+      \ \"o enable assembly bind failure logging, set the registry value [HKLM\\Software\\\
+      Microsoft\\Fusion!EnableLog] (DWORD) to 1.\" in Source: 00000000-00007152.00000003.190606.7FC70000.00000004.mdmp\n\
+      \ \"o turn this feature off, remove the registry value [HKLM\\Software\\Microsoft\\\
+      Fusion!EnableLog].\" in Source: 00000000-00007152.00000003.190606.7FC70000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: 'Found reference to API "RegCloseKey" (Indicator: "RegCloseKey"; Source:
+      "00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp")'
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API (Indicator: \"CryptEncrypt\"; Source: \"00000000-00007152.00000000.181654.7FC70000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptDecrypt\"; Source: \"00000000-00007152.00000001.183574.004E0000.00000004.mdmp,\
+      \ 00000000-00007152.00000002.185494.004E0000.00000004.mdmp, 00000000-00007152.00000003.190606.004FB000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptExportKey\"; Source: \"00000000-00007152.00000001.183574.004E0000.00000004.mdmp,\
+      \ 00000000-00007152.00000002.185494.004E0000.00000004.mdmp, 00000000-00007152.00000003.190606.004FB000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeConditionVariable\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SleepConditionVariableCS\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WakeAllConditionVariable\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EventRegister\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EventUnregister\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileVersionInfoSizeExW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeW\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileVersionInfoExW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VerQueryValueW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemTimePreciseAsFileTime\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DeleteCriticalSection\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeCriticalSection\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EnterCriticalSection\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LeaveCriticalSection\"; Source: \"\
+      00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CloseHandle\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcessTimes\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLastError\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceCounter\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetCurrentThreadId\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetTickCount\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlCaptureContext\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RtlLookupFunctionEntry\"; Source: \"\
+      00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlVirtualUnwind\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetUnhandledExceptionFilter\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp,\
+      \ 00000000-00007152.00000003.190606.00840000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoCreateInstance\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetFileSizeEx\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetLastError\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTempPathW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateEventW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DisableThreadLibraryCalls\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"EncodePointer\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DecodePointer\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsDebuggerPresent\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; Source:\
+      \ \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoTaskMemAlloc\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SizeofResource\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LockResource\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadResource\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceW\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapFree\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"HeapAlloc\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetProcessHeap\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlGetVersion\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlNtStatusToDosError\"; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"EventWrite\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InstallELAMCertificateInfo\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WSACleanup\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WSAStartup\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFinalPathNameByHandleW\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsWow64Process\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"BCryptGetProperty\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptDestroyHash\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptCreateHash\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptFinishHash\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptHashData\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptOpenAlgorithmProvider\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"BCryptGenRandom\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"BCryptCloseAlgorithmProvider\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CryptDestroyHash\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptCreateHash\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptGetHashParam\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptHashData\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptReleaseContext\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptAcquireContextW\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CryptGenRandom\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SHGetFolderPathW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptCATAdminCalcHashFromFileHandle\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"CryptCATAdminAcquireContext\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CryptCATAdminEnumCatalogFromHash\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"CryptCATAdminReleaseContext\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RpcBindingFromStringBindingW\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RpcBindingSetAuthInfoExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RpcBindingSetOption\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RpcBindingFree\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RpcSmDestroyClientContext\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RpcStringFreeW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RpcStringBindingComposeW\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DebugBreak\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObjectEx\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp, 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForSingleObject\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjects\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReleaseMutex\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesExW\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetEvent\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateThread\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnregisterWaitEx\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegisterWaitForSingleObject\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenProcess\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UnmapViewOfFile\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FormatMessageW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LocalFree\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SwitchToThread\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DeleteFileW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushViewOfFile\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FlushFileBuffers\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteTimerQueueTimer\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateDirectoryW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"FindNextFileW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000003.190606.00840000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetSystemInfo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SystemTimeToFileTime\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalFileTimeToFileTime\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CompareFileTime\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableW\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLocalTime\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RemoveDirectoryW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExpandEnvironmentStringsW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CopyFileW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount64\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenServiceW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryServiceStatus\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseServiceHandle\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryServiceConfigW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LookupAccountSidW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetLengthSid\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopySid\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReportEventW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegisterEventSourceW\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ConvertStringSidToSidW\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DeregisterEventSource\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenThreadToken\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTokenInformation\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ChangeServiceConfigW\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"InitializeAcl\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FreeSid\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CheckTokenMembership\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IIDFromString\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadStringW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"IsWindow\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastActivePopup\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"NdrClientCall3\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UuidCreate\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UuidToStringW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"UuidFromStringW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CertVerifyCertificateChainPolicy\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API (Indicator: \"ReadFile\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateTimerQueueTimer\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ReleaseSemaphore\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"OpenEventW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenFileMappingW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DuplicateHandle\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateSemaphoreW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileMappingW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"MapViewOfFile\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VirtualQuery\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualLock\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"QueryPerformanceFrequency\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetQueuedCompletionStatus\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"PostQueuedCompletionStatus\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateIoCompletionPort\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"TryEnterCriticalSection\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"DuplicateToken\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetEntriesInAclW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumValueW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegSetValueExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegCreateKeyExW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryInfoKeyW\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegNotifyChangeKeyValue\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoInitializeEx\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp,\
+      \ 00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CoGetObject\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CancelSynchronousIo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LocalAlloc\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpoolWork\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpool\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartThreadpoolIo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpool\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpoolIo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForThreadpoolIoCallbacks\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"WaitForThreadpoolTimerCallbacks\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CancelThreadpoolIo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForThreadpoolWorkCallbacks\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadpoolThreadMinimum\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpoolWait\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WaitForThreadpoolWaitCallbacks\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SetThreadpoolThreadMaximum\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseThreadpoolTimer\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateThreadpoolWait\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadpoolTimer\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadpoolWait\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThreadpoolTimer\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CloseThreadpoolIo\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SubmitThreadpoolWork\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateThreadpoolWork\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapCreate\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapValidate\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"HeapDestroy\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExA\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ReleaseSRWLockExclusive\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"AcquireSRWLockExclusive\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadUILanguage\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegGetValueW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerSetConditionMask\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VerifyVersionInfoW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetConsoleTitleW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SearchPathW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDefaultUILanguage\"; Source:\
+      \ \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetUserDefaultUILanguage\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceExW\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00007152.00000002.185494.63ADA000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: 'Found reference to API "CreateProcessW" (Indicator: "CreateProcess";
+      Source: "00000000-00007152.00000002.185494.54178000.00000002.mdmp")'
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; Source: \"00000000-00007152.00000001.183574.51972000.00000002.mdmp, 00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenThreadToken\" (Indicator: \"OpenThread\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateThreadpool\" (Indicator: \"CreateThread\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThreadpoolIo\" (Indicator: \"CreateThread\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateThreadpoolWait\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateThreadpoolTimer\" (Indicator: \"CreateThread\"; Source: \"\
+      00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateThreadpoolWork\" (Indicator: \"CreateThread\"; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"QueryServiceStatus\" (Indicator: \"QueryServiceStatus\"\
+      ; Source: \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenSCManagerW\" (Indicator: \"OpenSCManager\"; Source:\
+      \ \"00000000-00007152.00000002.185494.54178000.00000002.mdmp\")"
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: 'Found reference to API "CloseServiceHandle" (Indicator: "CloseServiceHandle";
+      Source: "00000000-00007152.00000002.185494.54178000.00000002.mdmp")'
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: 'Found reference to API "StartServiceW" (Indicator: "StartService";
+      Source: "00000000-00007152.00000002.185494.54178000.00000002.mdmp")'
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "\"WScript.exe\" called \"GetProcAddress\" with a parameter InitializeCriticalSectionEx\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlsAlloc (UID: 00000000-00006240)\n \"WScript.exe\" called \"\
+      GetProcAddress\" with a parameter FlsSetValue (UID: 00000000-00006240)\n \"\
+      WScript.exe\" called \"GetProcAddress\" with a parameter FlsGetValue (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter LCMapStringEx (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ FlsFree (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitOnceExecuteOnce (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSemaphoreExW (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00006240)\n \"\
+      WScript.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWait (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlushProcessWriteBuffers (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcessorNumber (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackageId\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTickCount64 (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetFileInformationByHandleEx (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00006240)\n \"WScript.exe\" called \"\
+      GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00006240)\n \"WScript.exe\" called \"\
+      GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter HeapSetInformation (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter QueryProtectedPolicy (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter AmsiInitialize\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter AmsiScanString (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetFileVersionInfoSizeExW (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter GetFileVersionInfoExW\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter VerQueryValueW (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter WldpGetLockdownPolicy (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter WldpIsClassInApprovedList\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter SaferIdentifyLevel (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter SaferComputeTokenFromLevel (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ SaferCloseLevel (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoInitialize (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter StgOpenStorage (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter CoUninitialize\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpManagerOpen (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpHandleClose (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpFreeMemory (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ MpScanStart (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\"\
+      \ with a parameter MpMemoryScanStart (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter MpScanResult (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpThreatOpen (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ MpThreatEnumerate (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\"\
+      \ with a parameter MpConfigOpen (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpConfigGetValue (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpConfigGetValueAlloc\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpConfigClose (UID: 00000000-00006240)\n \"WScript.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpFastMemoryScanOpen (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpFastMemoryScan\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpTelemetryInitialize (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter MpTelemetryUninitialize (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpTelemetryAddToAverageDWORD\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpAmsiScan (UID: 00000000-00006240)\n \"WScript.exe\" called \"\
+      GetProcAddress\" with a parameter MpAmsiCloseSession (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter MpConfigRegisterForNotifications\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpConfigUnregisterNotifications (UID: 00000000-00006240)\n \"\
+      WScript.exe\" called \"GetProcAddress\" with a parameter MpClientUtilExportFunctions\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpManagerVersionQuery (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter EventWrite (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter EventRegister (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ EventUnregister (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\"\
+      \ with a parameter IsWow64Process (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterGPNotification (UID: 00000000-00006240)\n\
+      \ \"WScript.exe\" called \"GetProcAddress\" with a parameter EventWriteTransfer\
+      \ (UID: 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with\
+      \ a parameter EventSetInformation (UID: 00000000-00006240)\n \"WScript.exe\"\
+      \ called \"GetProcAddress\" with a parameter UnregisterGPNotification (UID:\
+      \ 00000000-00006240)\n \"WScript.exe\" called \"GetProcAddress\" with a parameter\
+      \ ShellExecuteExW (UID: 00000000-00006240)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeCriticalSectionEx (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter FlsSetValue\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlsGetValue (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter LCMapStringEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter FlsFree (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitOnceExecuteOnce (UID: 00000000-00007152)\n \"powershell.exe\" called \"\
+      GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateSemaphoreExW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWait (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter FlushProcessWriteBuffers (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcessorNumber (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackageId\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTickCount64 (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetFileInformationByHandleEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetFileInformationByHandle\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemTimePreciseAsFileTime (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeConditionVariable (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ WakeConditionVariable (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter WakeAllConditionVariable (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SleepConditionVariableCS\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseSRWLockExclusive (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateThreadpoolWork (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RtlGetVersion (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CoGetClassObject (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegOpenKeyExW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegQueryInfoKeyW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RegEnumKeyExW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegEnumValueW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegCloseKey (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RegQueryValueExW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter AddDllDirectory (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter EventRegister (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter EventSetInformation\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegisterShimImplCallback (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterShimImplCleanupCallback\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetShellShimInstance (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter OnShimDllMainCalled (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CorBindToRuntimeEx_RetAddr\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CorBindToRuntimeEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter UrlIsW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter AppPolicyGetClrCompat\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentPackageInfo (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentPackagePath (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter OpenProcessToken\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTokenInformation (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileVersionInfoSizeW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetFileVersionInfoW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter VerQueryValueW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter SetRuntimeInfo (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetProcessWindowStation\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetUserObjectInformationW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter DllGetClassObjectInternal (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ QuirkIsEnabled3 (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter QuirkGetData2 (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateConfigStream (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CreateConfigStream_RetAddr\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetNumaHighestNodeNumber (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlVirtualUnwind (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetSystemWindowsDirectoryW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter AllocateAndInitializeSid (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeAcl (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter AddAccessAllowedAce\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeSid (UID: 00000000-00007152)\n \"powershell.exe\" called \"\
+      GetProcAddress\" with a parameter RoInitialize (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter AddSIDToBoundaryDescriptor\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateBoundaryDescriptorW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreatePrivateNamespaceW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter OpenPrivateNamespaceW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter DeleteBoundaryDescriptor (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter WerRegisterRuntimeExceptionModule\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RaiseException (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoInitializeEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RoUninitialize\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetProcessExecutableHeap (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetProcessExecutableHeap_RetAddr\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetSystemFileCacheSize (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter NtSetSystemInformation (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter PrivIsDllSynchronizationHeld\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SysStringByteLen (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter LocaleNameToLCID (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RoGetActivationFactory\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WindowsCreateStringReference (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetContextToken (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter WindowsDeleteString\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WindowsCreateString (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter NtQueryInformationThread (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ NtQuerySystemInformation (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CreateWaitableTimerExW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetWaitableTimerEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter EventActivityIdControl (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter EventWriteTransfer (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RegOpenKeyEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter LocalFree (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter LocalAlloc (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetFullPathNameW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetThreadErrorMode (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileAttributesEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetFileAttributesExW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetFileVersionInfoSize (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileVersionInfo (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter VerQueryValue\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetUserDefaultLocaleName (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter LCIDToLocaleName (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetUserPreferredUILanguages\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter VerLanguageName (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter VerLanguageNameW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcessId\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcessIdW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter LookupPrivilegeValue (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter LookupPrivilegeValueW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentProcess (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter OpenProcessTokenW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter AdjustTokenPrivileges\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter AdjustTokenPrivilegesW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CloseHandle (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter OpenProcess\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter OpenProcessW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoUninitialize (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter ResolveLocaleName\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CompareStringOrdinal (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFullPathName (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter FindNLSStringEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegQueryValueEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumProcessModules (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter EnumProcessModulesW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetModuleInformation (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetModuleInformationW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetModuleBaseName\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetModuleBaseNameW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoTaskMemAlloc (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CoTaskMemFree\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetModuleFileNameEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetModuleFileNameExW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetExitCodeProcess\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetExitCodeProcessW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHGetFolderPath (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SHGetFolderPathW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter EnumWindows (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumWindowsW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetWindowThreadProcessId\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetWindowThreadProcessIdW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetWindow (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter IsWindowVisible\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter IsWindowVisibleW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileAttributes (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetFileAttributesW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetEnvironmentVariable (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetEnvironmentVariableW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CreateFile (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ CreateFileW (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileType (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter WTGetSignatureInfo (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter NtQuerySystemInformationW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WerSetFlags (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter SetThreadPreferredUILanguages (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetThreadPreferredUILanguagesW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetThreadPreferredUILanguages (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetThreadPreferredUILanguagesW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetUserDefaultLocaleNameW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoCreateGuid (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetConsoleCP\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetConsoleCPW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter AmsiInitialize (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetCurrentConsoleFontEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentConsoleFontExW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileVersionInfoSizeExW (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetFileVersionInfoExW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetConsoleMode (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetConsoleModeW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetConsoleScreenBufferInfo (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetConsoleScreenBufferInfoW (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetCurrentProcessW (UID: 00000000-00007152)\n \"powershell.exe\" called \"\
+      GetProcAddress\" with a parameter GetTokenInformationW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter LocalAllocW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter DuplicateTokenEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter DuplicateTokenExW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CheckTokenMembership\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CheckTokenMembershipW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetConsoleTitle (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetConsoleTitleW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetConsoleMode (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter SetConsoleModeW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetConsoleCtrlHandler\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetConsoleCtrlHandlerW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetStdHandle (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetEnvironmentVariable\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetEnvironmentVariableW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CertFreeCertificateContext (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetProcessTimes (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetProcessTimesW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetConsoleTitle (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetConsoleTitleW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CertDuplicateCertificateContext (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter CertGetCertificateContextProperty\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CertDuplicateCertificateContextW (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter WTHelperProvDataFromStateData\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WTHelperProvDataFromStateDataW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter WTHelperGetProvSignerFromChain\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WTHelperGetProvSignerFromChainW (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter WTHelperGetProvCertFromChain\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WTHelperGetProvCertFromChainW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinVerifyTrust (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter WinVerifyTrustW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CertFreeCertificateContextW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDynamicTimeZoneInformation (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ GetFileMUIPath (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter LoadLibraryEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter LoadLibraryExW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter FreeLibrary\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter FreeLibraryW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter LoadStringW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter _CorDllMain_RetAddr\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter _CorDllMain (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetTokenForVTableEntry (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetTargetForVTableEntry\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTargetForVTableEntry (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTokenForVTableEntry_RetAddr\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetTargetForVTableEntry_RetAddr (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter CreateWellKnownSid\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateNamedPipe (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateNamedPipeW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CreateEvent\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateEventW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter ConnectNamedPipe (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetEnabledXStateFeatures\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter sxsJitStartup (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter jitStartup (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter getJit (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ ExpandEnvironmentStrings (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter ExpandEnvironmentStringsW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetTimeZoneInformation\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RegQueryInfoKey (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegEnumKeyEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetUserNameEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetUserNameExW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetUserName (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetUserNameW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter EnumCalendarInfoExEx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCalendarInfoEx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter EnumTimeFormatsEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseMutex (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegisterEventSource (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter RegisterEventSourceW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter DeregisterEventSource (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReportEvent (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter ReportEventW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetLogicalDrives (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDriveType (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetDriveTypeW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetVolumeInformation (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetVolumeInformationW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter PathIsNetworkPath\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter PathIsNetworkPathW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetConsoleTextAttribute (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetConsoleTextAttributeW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WriteConsole (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter WriteConsoleW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetCurrentDirectoryW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetSystemDirectory (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemDirectoryW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter WldpGetLockdownPolicy\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTempPath (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetTempPathW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter WriteFile (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ SaferIdentifyLevel (UID: 00000000-00007152)\n \"powershell.exe\" called \"\
+      GetProcAddress\" with a parameter SaferComputeTokenFromLevel (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SaferCloseLevel\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter DeleteFile (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter DeleteFileW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetSystemInfo\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetEvent (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CoWaitForMultipleHandles (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetThreadUILanguage\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetThreadUILanguageW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetACP (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter UnmapViewOfFile\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetFilePointer (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter ReadFile (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter AmsiOpenSession\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter AmsiScanBuffer (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpManagerOpen (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpHandleClose\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpFreeMemory (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpScanStart (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpMemoryScanStart\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpScanResult (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpThreatOpen (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpThreatEnumerate\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpConfigOpen (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpConfigGetValue (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpConfigGetValueAlloc\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpConfigClose (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpFastMemoryScanOpen (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpFastMemoryScan\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpTelemetryInitialize (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter MpTelemetryUninitialize (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpTelemetryAddToAverageDWORD\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpAmsiScan (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter MpAmsiCloseSession (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter MpConfigRegisterForNotifications\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpConfigUnregisterNotifications (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter MpClientUtilExportFunctions\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter MpManagerVersionQuery (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter EventWrite (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter EventUnregister\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter IsWow64Process (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter RegisterGPNotification (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter UnregisterGPNotification\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter RoGetParameterizedTypeInstanceIID (UID: 00000000-00007152)\n \"\
+      powershell.exe\" called \"GetProcAddress\" with a parameter FindFirstFile (UID:\
+      \ 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with a parameter\
+      \ FindFirstFileW (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindClose (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter FindNextFile (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter FindNextFileW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter QueryUnbiasedInterruptTime (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter AmsiCloseSession (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter ConvertSidToStringSidW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter BCryptGetFipsAlgorithmMode (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CryptAcquireContext (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CryptAcquireContextW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CryptReleaseContext (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CryptGetProvParam (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CryptContextAddRef\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CryptImportKey (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CryptDuplicateKey (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter CryptSetKeyParam\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CryptDecrypt (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter CryptDestroyKey (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetTempFileName\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTempFileNameW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter WldpIsDynamicCodePolicyEnabled\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetLastError (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter EncodePointer (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter LoadLibraryW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter LoadLibraryWW (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter GetProcAddress (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter WideCharToMultiByte\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter ResumeThread (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter Wow64SetThreadContext (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter SetThreadContext\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter Wow64GetThreadContext (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetThreadContext (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter VirtualAllocEx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter WriteProcessMemory (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReadProcessMemory (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter ZwUnmapViewOfSection\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateProcessA (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter DllGetClassObject (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetConsoleOutputCP\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetConsoleOutputCPW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter TranslateCharsetInfo (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter TranslateCharsetInfoW\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter EnumProcesses (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter EnumProcessesW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter DuplicateHandle\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter TerminateProcess (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter TerminateProcessW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter GetModuleFileName\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetModuleFileNameW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileSize (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter OutputDebugString\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter OutputDebugStringW (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateActCtxW (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter AddRefActCtx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter ReleaseActCtx (UID: 00000000-00007152)\n \"powershell.exe\" called\
+      \ \"GetProcAddress\" with a parameter ActivateActCtx (UID: 00000000-00007152)\n\
+      \ \"powershell.exe\" called \"GetProcAddress\" with a parameter DeactivateActCtx\
+      \ (UID: 00000000-00007152)\n \"powershell.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetCurrentActCtx (UID: 00000000-00007152)\n \"powershell.exe\"\
+      \ called \"GetProcAddress\" with a parameter QueryActCtxW (UID: 00000000-00007152)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "\"19001a009600000040c79773fa7f0000@ntdll.dll\"\n \"220023009600000018c79773fa7f0000@ntdll.dll\"\
+      \n \"19001a000000000040c79773fa7f0000@ntdll.dll\"\n \"220023000000000018c79773fa7f0000@ntdll.dll\""
+  - EventData: Looks up procedures from modules (excluding apphelp.dll, kernel32.dll,
+      user32.dll, gdi32.dll, ole32.dll, comctl32.dll, uxtheme.dll, oleaut32.dll, version.dll,
+      msctfime.ime)
+  - EventData: api-8
+  - EventData: '"WScript.exe" called "CreateDirectoryW" with parameter C:\Temp\ (UID:
+      00000000-00006240)'
+  - EventData: Calls an API typically used to create a directory
+  - EventData: api-122
+  - EventData: "\"WScript.exe\" called \"CreateProcessW\" with parameter \"\"%WINDIR%\\\
+      System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -nop -ep bypass -file \"\
+      C:\\Temp\\FI7RFN28.ps1\"\" - (UID: 00000000-00006240)\n \"powershell.exe\" called\
+      \ \"CreateProcessA\" with parameter \"%WINDIR%\\Microsoft.NET\\Framework\\v4.0.30319\\\
+      Aspnet_compiler.exe\" - (UID: 00000000-00007152)"
+  - EventData: Calls an API typically used to create a process
+  - EventData: api-128
+  - EventData: "\"WScript.exe\" writes to a file \"C:\\Temp\\FI7RFN28.ps1\"\n \"powershell.exe\"\
+      \ writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\__PSScriptPolicyTest_shi5f2zt.esb.ps1\"\
+      \n \"powershell.exe\" writes to a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\\
+      Temp\\__PSScriptPolicyTest_pk3oovdp.xnj.psm1\"\n \"powershell.exe\" writes to\
+      \ a file \"C:\\Users\\%OSUSER%\\AppData\\Local\\Temp\\tmp5D32.tmp.ps1\""
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  selection_network:
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: ENCRYPTED.ps
+  - DestinationHostname: FI7RFN28.ps
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: MPCLIENT.DLL
+  - DestinationHostname: Microsoft.Management.Infrastr
+  - DestinationHostname: Microsoft.Mf
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Pae
+  - DestinationHostname: Microsoft.Pb
+  - DestinationHostname: Microsoft.PowerShell.Commands
+  - DestinationHostname: Microsoft.PowerShell.ConsoleH
+  - DestinationHostname: Microsoft.PowerShell.Management
+  - DestinationHostname: Microsoft.PowerShell.Operation.Validation
+  - DestinationHostname: Microsoft.PowerShell.Security
+  - DestinationHostname: Microsoft.PowerShell.Utility
+  - DestinationHostname: MsMpLics.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PSHost.134153672909775024.7152.DefaultAppDomain.powershell
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: System.Confe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.Install
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Data
+  - DestinationHostname: System.Data.dll
+  - DestinationHostname: System.Data.ni.dll
+  - DestinationHostname: System.DirectoryServices.ni
+  - DestinationHostname: System.Dired
+  - DestinationHostname: System.Manaa
+  - DestinationHostname: System.Management
+  - DestinationHostname: System.Management.Automation
+  - DestinationHostname: System.Management.ni.dll
+  - DestinationHostname: System.Numerics
+  - DestinationHostname: System.Numerics.ni.dll
+  - DestinationHostname: System.Transactions
+  - DestinationHostname: System.Transactions.dll
+  - DestinationHostname: System.Transactions.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: T505977.js
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: USERENV.dll
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: WLDP.DLL
+  - DestinationHostname: WScript.exe
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: amsi.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-libraryloader-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-memory-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: compiler.exe
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: diasymreader.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: mscorrc.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleaut32.dll
+  - DestinationHostname: powershell.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shlwapi.dll
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: version.dll
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wldp.dll
+  - DestinationHostname: xingyleather.com
+  - DestinationIp: 185.253.218.211
+  - DestinationIp: 2.5.29.35
+  - DestinationIp: 2.5.29.37
+  condition: selection_behavior or selection_network

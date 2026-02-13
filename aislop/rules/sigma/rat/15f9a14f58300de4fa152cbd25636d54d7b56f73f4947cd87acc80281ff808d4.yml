@@ -1,0 +1,584 @@
+title: rat behavior detection (15f9a14f)
+id: 15f9a14f58300de4fa152cbd25636d54d7b56f73f4947cd87acc80281ff808d4
+status: experimental
+description: Auto-generated Sigma rule for rat
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found string \"withyoutube.com\" (Indicator: \"youtube\"; File: \"\
+      TubeMate3-3.4.18.1531.apk\")\n Found string \"Mobile YouTube Crash\" (Indicator:\
+      \ \"youtube\"; File: \"App.smali\")\n Found string \"http://www.youtube.com/?app=desktop&persist_app=1\"\
+      \ (Indicator: \"youtube\"; File: \"TubeMate.smali\")\n Found string \"youtube.com/#/\"\
+      \ (Indicator: \"youtube\"; File: \"TubeMate.smali\")\n Found string \"youtube.com/\"\
+      \ (Indicator: \"youtube\"; File: \"TubeMate.smali\")\n Found string \"http://m.youtube.com/select_site\"\
+      \ (Indicator: \"youtube\"; File: \"TubeMate.smali\")\n Found string \"vnd.youtube\"\
+      \ (Indicator: \"youtube\"; File: \"TubeMate.smali\")"
+  - EventData: Found a reference to a known community page
+  - EventData: string-10
+  - EventData: "\"SELECT name FROM sqlite_master WHERE type = \\'trigger\\'\" (Source:\
+      \ x0.c.smali, Indicator: \"select name from sqlite_master where type = \\'trigger\\\
+      '\")\n \"INSERT OR REPLACE INTO `Preference` (`key`, `long_value`) VALUES (@key,\
+      \ @long_value)\" (Source: r1.h.smali, Indicator: \"insert or replace into `preference`\
+      \ (`key`, `long_value`) values (@key, @long_value)\"), \"INSERT into TB_FILE_INFO\\\
+      t(id, filename, path, total_size, site, vid, fmt,  img_url, c_date ) values\
+      \ (?, \\'\\', ?, ?, ?, ?, ?, ?, ?)\" (Source: fd.a.smali, Indicator: \"insert\
+      \ into tb_file_info\\t(id, filename, path, total_size, site, vid, fmt,  img_url,\
+      \ c_date ) values (?, \\'\\', ?, ?, ?, ?, ?, ?, ?)\"), \"UPDATE TB_FILE_INFO\
+      \ SET total_size = ? WHERE id = ?\" (Source: fd.a.smali, Indicator: \"update\
+      \ tb_file_info set total_size = ? where id = ?\"), \"UPDATE TB_FILE_INFO SET\
+      \ path = ? WHERE id = ?\" (Source: fd.a.smali, Indicator: \"update tb_file_info\
+      \ set path = ? where id = ?\"), \"UPDATE TB_FILE_INFO SET img_url = ? WHERE\
+      \ id = ?\" (Source: fd.a.smali, Indicator: \"update tb_file_info set img_url\
+      \ = ? where id = ?\"), \"DELETE FROM TB_FILE_INFO WHERE id = ?\" (Source: fd.a.smali,\
+      \ Indicator: \"delete from tb_file_info where id = ?\"), \"UPDATE TB_FILE_INFO\
+      \ SET vid=\\'local\\' where vid  = \\'mp3\\'\" (Source: fd.a.smali, Indicator:\
+      \ \"update tb_file_info set vid=\\'local\\' where vid  = \\'mp3\\'\"), \"UPDATE\
+      \ TB_FILE_INFO SET site=1 where vid !=  \\'local\\'\" (Source: fd.a.smali, Indicator:\
+      \ \"update tb_file_info set site=1 where vid !=  \\'local\\'\"), \"UPDATE TB_FILE_INFO\
+      \ SET site=0 where vid =  \\'local\\'\" (Source: fd.a.smali, Indicator: \"update\
+      \ tb_file_info set site=0 where vid =  \\'local\\'\"), \"SELECT MAX(id) FROM\
+      \ TB_FILE_INFO\" (Source: fd.a.smali, Indicator: \"select max(id) from tb_file_info\"\
+      )"
+  - EventData: Contains SQL queries
+  - EventData: string-16
+  - EventData: "YARA signature for AES encryption matched on file \"libsqlcipher.so_\"\
+      \n YARA signature for AES encryption matched on file \"libsqlcipher.so\""
+  - EventData: YARA signature match - AES encryption
+  - EventData: yara-103
+  - EventData: "\"libavcodec.so_1770863525906\" has type \"ELF 32-bit LSB shared object\
+      \ ARM EABI5 version 1 (SYSV) dynamically linked for Android 16 built by NDK\
+      \ r21d (6528147) stripped\"- [targetUID: N/A]\n \"libavcodec.so\" has type \"\
+      ELF 64-bit LSB shared object ARM aarch64 version 1 (SYSV) dynamically linked\
+      \ for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n\
+      \ \"libsqlcipher.so\" has type \"ELF 64-bit LSB shared object ARM aarch64 version\
+      \ 1 (SYSV) dynamically linked for Android 21 built by NDK r25c (9519653) BuildID[sha1]=0b64c232e6e48958b3871eb59feb5d69cab3865f\
+      \ stripped\"- [targetUID: N/A]\n \"libsqlcipher.so_1770863525905\" has type\
+      \ \"ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked\
+      \ for Android 21 built by NDK r25c (9519653) BuildID[sha1]=6860802c110ec231374f7c12cdc22db7ad1f2c1c\
+      \ stripped\"- [targetUID: N/A]\n \"libavformat.so_1770863525905\" has type \"\
+      ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked for\
+      \ Android 16 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"libavformat.so\"\
+      \ has type \"ELF 64-bit LSB shared object ARM aarch64 version 1 (SYSV) dynamically\
+      \ linked for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID:\
+      \ N/A]\n \"libavfilter.so\" has type \"ELF 64-bit LSB shared object ARM aarch64\
+      \ version 1 (SYSV) dynamically linked for Android 21 built by NDK r21d (6528147)\
+      \ stripped\"- [targetUID: N/A]\n \"libavfilter.so_1770863525906\" has type \"\
+      ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked for\
+      \ Android 16 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"libtensorflowlite_jni_gms_client.so\"\
+      \ has type \"ELF 64-bit LSB shared object ARM aarch64 version 1 (SYSV) dynamically\
+      \ linked for Android 21 built by NDK r27b (12297006) BuildID[md5/uuid]=a3cc2a22ae27145141dc2c3921a1e92a\
+      \ stripped\"- [targetUID: N/A]\n \"libmobileffmpeg.so_1770863525905\" has type\
+      \ \"ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked\
+      \ for Android 16 built by NDK r21d (6528147) BuildID[sha1]=b55f4bfc3bde781fd268ab2b65be2b03021240a4\
+      \ stripped\"- [targetUID: N/A]\n \"libmobileffmpeg.so\" has type \"ELF 64-bit\
+      \ LSB shared object ARM aarch64 version 1 (SYSV) dynamically linked BuildID[sha1]=292fd3a0154eba8c181292f875367c1cb02a41be\
+      \ for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n\
+      \ \"libtensorflowlite_jni_gms_client.so_1770863525904\" has type \"ELF 32-bit\
+      \ LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked for Android\
+      \ 21 built by NDK r27b (12297006) BuildID[md5/uuid]=2b8ae4c3cd822ecb6a0f71cf1270f020\
+      \ stripped\"- [targetUID: N/A]\n \"libswscale.so_1770863525906\" has type \"\
+      ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked for\
+      \ Android 16 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"libavutil.so_1770863525905\"\
+      \ has type \"ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically\
+      \ linked for Android 16 built by NDK r21d (6528147) stripped\"- [targetUID:\
+      \ N/A]\n \"libavutil.so\" has type \"ELF 64-bit LSB shared object ARM aarch64\
+      \ version 1 (SYSV) dynamically linked for Android 21 built by NDK r21d (6528147)\
+      \ stripped\"- [targetUID: N/A]\n \"libswscale.so\" has type \"ELF 64-bit LSB\
+      \ shared object ARM aarch64 version 1 (SYSV) dynamically linked for Android\
+      \ 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"CERT.SF\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"MANIFEST.MF\" has type \"Unknown\"\
+      - [targetUID: N/A]\n \"libswresample.so_1770863525906\" has type \"ELF 32-bit\
+      \ LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked for Android\
+      \ 16 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"libswresample.so\"\
+      \ has type \"ELF 64-bit LSB shared object ARM aarch64 version 1 (SYSV) dynamically\
+      \ linked for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID:\
+      \ N/A]\n \"AndroidManifest.xml\" has type \"Unknown\"- [targetUID: N/A]\n \"\
+      libcpufeatures.so_1770863525906\" has type \"ELF 32-bit LSB shared object ARM\
+      \ EABI5 version 1 (SYSV) dynamically linked for Android 16 built by NDK r21d\
+      \ (6528147) BuildID[sha1]=c39bc526be4eb66d73e1de9a2de8aba7637efbe1 stripped\"\
+      - [targetUID: N/A]\n \"libmobileffmpeg_abidetect.so_1770863525905\" has type\
+      \ \"ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically linked\
+      \ for Android 16 built by NDK r21d (6528147) BuildID[sha1]=3168fe20ff62c7c7a5c7334cba489f18d0de600b\
+      \ stripped\"- [targetUID: N/A]\n \"libtubemate.so\" has type \"ELF 64-bit LSB\
+      \ shared object ARM aarch64 version 1 (SYSV) dynamically linked for Android\
+      \ 21 built by NDK r25b (8937393) BuildID[sha1]=18a1637c7891dc4dcbef31978edaa388e8cd4840\
+      \ stripped\"- [targetUID: N/A]\n \"libavdevice.so\" has type \"ELF 64-bit LSB\
+      \ shared object ARM aarch64 version 1 (SYSV) dynamically linked for Android\
+      \ 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n \"libavdevice.so_1770863525905\"\
+      \ has type \"ELF 32-bit LSB shared object ARM EABI5 version 1 (SYSV) dynamically\
+      \ linked for Android 16 built by NDK r21d (6528147) stripped\"- [targetUID:\
+      \ N/A]\n \"libtubemate.so_1770863525906\" has type \"ELF 32-bit LSB shared object\
+      \ ARM EABI5 version 1 (SYSV) dynamically linked for Android 19 built by NDK\
+      \ r25b (8937393) BuildID[sha1]=fca6301a85c2b2637aee718da10699597a07ed62 stripped\"\
+      - [targetUID: N/A]\n \"libmobileffmpeg_abidetect.so\" has type \"ELF 64-bit\
+      \ LSB shared object ARM aarch64 version 1 (SYSV) dynamically linked BuildID[sha1]=5e4e3cee7d37608b50e6cae4d449e37bfa5b40cb\
+      \ for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n\
+      \ \"libcpufeatures.so\" has type \"ELF 64-bit LSB shared object ARM aarch64\
+      \ version 1 (SYSV) dynamically linked BuildID[sha1]=456c382ee2e7218a1ac83dfcedabebcdf38174a7\
+      \ for Android 21 built by NDK r21d (6528147) stripped\"- [targetUID: N/A]\n\
+      \ \"client_analytics.proto\" has type \"Unknown\"- [targetUID: N/A]\n \"CERT.RSA\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"default-mimetypes.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlin-tooling-metadata.json\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"com.smaato.sdk.core.framework.SimpleModuleInterface\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"com.smaato.sdk.core.framework.SdkInitialisationObserver\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"com.google.protobuf.GeneratedExtensionRegistryLoader\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-tagmanager-v4-impl.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"firebase-measurement-connector.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-measurement-impl.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-measurement-api.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-analytics-impl.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-ads-identifier.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-tflite-java.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-measurement.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-viewmodel-savedstate.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"firebase-encoders-proto.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-analytics.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-livedata-core-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-location.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-basement.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"firebase-annotations.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-cronet.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-livedata-core.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-viewmodel-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-runtime-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-tasks.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-stats.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"play-services-base.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"firebase-analytics.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-viewmodel.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"mimetypes.properties\" has type\
+      \ \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-livedata.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-service.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-runtime.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"firebase-encoders.properties\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.lifecycle_lifecycle-process.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.arch.core_core-runtime.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"image.properties\" has type \"\
+      Unknown\"- [targetUID: N/A]\n \"com.smaato.sdk.core.openmeasurement.ViewabilityPlugin\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidsupportmultidexversion.txt\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.javascriptengine_javascriptengine.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"android.support.design_material.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"com.google.android.material_material.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.media_media.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.work_work-runtime.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.datastore_datastore.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.customview_customview.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.fragment_fragment-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.preference_preference-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.core_core-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.sqlite_sqlite.version\"\
+      \ has type \"ASCII text\"- [targetUID: N/A]\n \"androidx.webkit_webkit.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.appcompat_appcompat-resources.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.startup_startup-runtime.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.activity_activity-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.transition_transition.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.slidingpanelayout_slidingpanelayout.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlinx_coroutines_play_services.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlinx.coroutines.k0\" has type\
+      \ \"Unknown\"- [targetUID: N/A]\n \"androidx.databinding_viewbinding.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlinx.coroutines.internal.r\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.localbroadcastmanager_localbroadcastmanager.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.drawerlayout_drawerlayout.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.asynclayoutinflater_asynclayoutinflater.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.vectordrawable_vectordrawable.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.legacy_legacy-support-core-ui.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.cardview_cardview.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.cursoradapter_cursoradapter.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.sqlite_sqlite-framework.version\"\
+      \ has type \"ASCII text\"- [targetUID: N/A]\n \"androidx.recyclerview_recyclerview.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.savedstate_savedstate.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.preference_preference.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.documentfile_documentfile.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.datastore_datastore-preferences.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.legacy_legacy-support-v4.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.savedstate_savedstate-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.window_window.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.coordinatorlayout_coordinatorlayout.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.swiperefreshlayout_swiperefreshlayout.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.palette_palette.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.fragment_fragment.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.core_core.version\" has\
+      \ type \"Unknown\"- [targetUID: N/A]\n \"androidx.tracing_tracing.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.legacy_legacy-support-core-utils.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.versionedparcelable_versionedparcelable.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.appcompat_appcompat.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.loader_loader.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.print_print.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.work_work-runtime-ktx.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.interpolator_interpolator.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.viewpager_viewpager.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.room_room-runtime.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.mediarouter_mediarouter.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.activity_activity.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"androidx.vectordrawable_vectordrawable-animated.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlinx_coroutines_android.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]\n \"kotlinx_coroutines_core.version\"\
+      \ has type \"Unknown\"- [targetUID: N/A]"
+  - EventData: Dropped files
+  - EventData: binary-0
+  - EventData: '"AndroidManifest.xml" has type "Unknown"'
+  - EventData: Drops XML files
+  - EventData: binary-39
+  - EventData: "file/memory contains long string with (Indicator: \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+\"\
+      ; File: \"libavutil.so_1770863525905\")\n file/memory contains long string with\
+      \ (Indicator: \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\"\
+      ; File: \"libavutil.so_1770863525905\")\n file/memory contains long string with\
+      \ (Indicator: \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+\"\
+      ; File: \"libavutil.so\")\n file/memory contains long string with (Indicator:\
+      \ \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\"; File:\
+      \ \"libavutil.so\")"
+  - EventData: Contains ability to perform Base64 encoding/decoding
+  - EventData: string-338
+  - EventData: "Found string \"withyoutube.com\" (Indicator: \"youtube.com\"; File:\
+      \ \"TubeMate3-3.4.18.1531.apk\")\n Found string \"http://www.youtube.com/?app=desktop&persist_app=1\"\
+      \ (Indicator: \"youtube.com\"; File: \"TubeMate.smali\")\n Found string \"youtube.com/#/\"\
+      \ (Indicator: \"youtube.com\"; File: \"TubeMate.smali\")\n Found string \"youtube.com/\"\
+      \ (Indicator: \"youtube.com\"; File: \"TubeMate.smali\")\n Found string \"http://m.youtube.com/select_site\"\
+      \ (Indicator: \"youtube.com\"; File: \"TubeMate.smali\")"
+  - EventData: Able to access user sensitive domain
+  - EventData: string-761
+  - EventData: '"countryCode" (Indicator: "countrycode") in Source: com.google.firebase.remoteconfig.internal.ConfigFetchHttpClient.smali'
+  - EventData: Contains ability to retrieve geographical location
+  - EventData: string-575
+  - EventData: "Found string \";base64\" (Indicator: \"base64\"; File: \"m.smali\"\
+      )\n Found string \"Error while parsing Base64 encoded string:\" (Indicator:\
+      \ \"base64\"; File: \"m.smali\")\n Found string \"AESSettingsCipherMode\" (Indicator:\
+      \ \"aes\"; File: \"e.smali\")\n Found string \"\\'. Assuming AES-CTR crypto\
+      \ mode.\" (Indicator: \"aes\"; File: \"p.smali\")\n file/memory contains long\
+      \ string with (Indicator: \"aes\"; File: \"libavutil.so_1770863525905\")\n file/memory\
+      \ contains long string with (Indicator: \"base64\"; File: \"libavutil.so_1770863525905\"\
+      )\n file/memory contains long string with (Indicator: \"blowfish\"; File: \"\
+      libavutil.so_1770863525905\")\n file/memory contains long string with (Indicator:\
+      \ \"cast5\"; File: \"libavutil.so_1770863525905\")\n file/memory contains long\
+      \ string with (Indicator: \"twofish\"; File: \"libavutil.so_1770863525905\"\
+      )\n file/memory contains long string with (Indicator: \"aes\"; File: \"libavutil.so\"\
+      )\n file/memory contains long string with (Indicator: \"base64\"; File: \"libavutil.so\"\
+      )\n file/memory contains long string with (Indicator: \"blowfish\"; File: \"\
+      libavutil.so\")\n file/memory contains long string with (Indicator: \"cast5\"\
+      ; File: \"libavutil.so\")\n file/memory contains long string with (Indicator:\
+      \ \"twofish\"; File: \"libavutil.so\")"
+  - EventData: Contains CRYPTO related strings
+  - EventData: string-57
+  - EventData: "Heuristic match: \"vfs.cloud9.ap-east-1.amazonaws.com\"\n Heuristic\
+      \ match: \"platter-app.com\"\n Heuristic match: \"playstation-cloud.com\"\n\
+      \ Heuristic match: \"is-a-libertarian.com\"\n Pattern match: \"http://tizen.org/system/model_name\"\
+      \n Heuristic match: \"is-a-therapist.com\"\n Heuristic match: \"simplesite.pl\"\
+      \n Heuristic match: \"simple-url.com\"\n Heuristic match: \"is-a-lawyer.com\"\
+      \n Heuristic match: \"dev-myqnapcloud.com\"\n Heuristic match: \"is-a-cubicle-slave.com\"\
+      \n Heuristic match: \"is-a-liberal.com\"\n Heuristic match: \"isa-geek.com\"\
+      \n Pattern match: \"www.ro\"\n Heuristic match: \"us.com\"\n Heuristic match:\
+      \ \"us-1.evennode.com\"\n Heuristic match: \"unicloud.pl\"\n Heuristic match:\
+      \ \"hidora.com\"\n Heuristic match: \"from-id.com\"\n Heuristic match: \"skygearapp.com\"\
+      \n Heuristic match: \"type.googleapis.com\"\n Heuristic match: \"theworkpc.com\"\
+      \n Heuristic match: \"discordsez.com\"\n Heuristic match: \"is-a-rockstar.com\"\
+      \n Heuristic match: \"wpdevcloud.com\"\n Heuristic match: \"from-ca.com\"\n\
+      \ Heuristic match: \"s3.dualstack.us-east-1.amazonaws.com\"\n Heuristic match:\
+      \ \"is-a-green.com\"\n Heuristic match: \"1kapp.com\"\n Heuristic match: \"\
+      is-a-guru.com\"\n Heuristic match: \"operaunite.com\"\n Heuristic match: \"\
+      outsystemscloud.com\"\n Pattern match: \"type.googleapis.com/google.protobuf.duration\"\
+      \n Heuristic match: \"is-with-theband.com\"\n Heuristic match: \"is-a-blogger.com\"\
+      \n Heuristic match: \"s3-website.us-east-2.amazonaws.com\"\n Heuristic match:\
+      \ \"from-md.com\"\n Heuristic match: \"s3-us-east-2.amazonaws.com\"\n Heuristic\
+      \ match: \"s3-ap-southeast-1.amazonaws.com\"\n Heuristic match: \"gotdns.com\"\
+      \n Heuristic match: \"s3-eu-west-1.amazonaws.com\"\n Heuristic match: \"is-an-anarchist.com\"\
+      \n Heuristic match: \"blogsyte.com\"\n Pattern match: \"https://www.ietf.org/rfc/rfc3339.txt\"\
+      \n Heuristic match: \"boutir.com\"\n Heuristic match: \"sells-for-less.com\"\
+      \n Heuristic match: \"fastly-terrarium.com\"\n Heuristic match: \"withyoutube.com\"\
+      \n Heuristic match: \"bip.sh\"\n Heuristic match: \"pages.wiardweb.com\"\n Pattern\
+      \ match: \"https://docs.python.org/2/library/time.html#time.strftime\"\n Pattern\
+      \ match: \"type.googleapis.com/full.type.name\"\n Heuristic match: \"gda.pl\"\
+      \n Pattern match: \"type.googleapis.com/google.protobuf.timestamp\"\n Heuristic\
+      \ match: \"s3.eu-west-3.amazonaws.com\"\n Pattern match: \"http://semver.org\"\
+      \n Heuristic match: \"googlecode.com\"\n Heuristic match: \"ecommerce-shop.pl\"\
+      \n Heuristic match: \"paywhirl.com\"\n Heuristic match: \"postman-echo.com\"\
+      \n Heuristic match: \"dopaas.com\"\n Heuristic match: \"from-nh.com\"\n Heuristic\
+      \ match: \"s3-website.eu-central-1.amazonaws.com\"\n Heuristic match: \"s3.dualstack.ap-southeast-2.amazonaws.com\"\
+      \n Heuristic match: \"homelinux.com\"\n Heuristic match: \"blogspot.com\"\n\
+      \ Heuristic match: \"is-a-llama.com\"\n Heuristic match: \"applinzi.com\"\n\
+      \ Heuristic match: \"dynns.com\"\n Heuristic match: \"from-al.com\"\n Heuristic\
+      \ match: \"myspreadshop.com\"\n Heuristic match: \"servebeer.com\"\n Heuristic\
+      \ match: \"pixolino.com\"\n Heuristic match: \"sells-for-u.com\"\n Heuristic\
+      \ match: \"blogspot.com.mt\"\n Heuristic match: \"discordsays.com\"\n Heuristic\
+      \ match: \"servemp3.com\"\n Heuristic match: \"s3-ap-southeast-2.amazonaws.com\"\
+      \n Heuristic match: \"kilatiron.com\"\n Heuristic match: \"s3-fips-us-gov-west-1.amazonaws.com\"\
+      \n Heuristic match: \"vfs.cloud9.ap-northeast-1.amazonaws.com\"\n Heuristic\
+      \ match: \"dyndns-work.com\"\n Heuristic match: \"is-leet.com\"\n Heuristic\
+      \ match: \"appspot.com\"\n Heuristic match: \"s3.dualstack.ap-northeast-2.amazonaws.com\"\
+      \n Heuristic match: \"temp-dns.com\"\n Heuristic match: \"codespot.com\"\n Heuristic\
+      \ match: \"mytabit.com\"\n Heuristic match: \"iamallama.com\"\n Heuristic match:\
+      \ \"blogspot.com.ng\"\n Heuristic match: \"gdynia.pl\"\n Heuristic match: \"\
+      s3-website.ca-central-1.amazonaws.com\"\n Heuristic match: \"dyndns-web.com\"\
+      \n Heuristic match: \"dyndns-free.com\"\n Heuristic match: \"from-va.com\"\n\
+      \ Heuristic match: \"members.linode.com\"\n Heuristic match: \"vfs.cloud9.ap-northeast-2.amazonaws.com\"\
+      \n Heuristic match: \"s3-sa-east-1.amazonaws.com\"\n Heuristic match: \"freemyip.com\"\
+      \n Heuristic match: \"onfabrica.com\"\n Heuristic match: \"s3.dualstack.ap-southeast-1.amazonaws.com\"\
+      \n Heuristic match: \"vxl.sh\"\n Heuristic match: \"gentapps.com\"\n Heuristic\
+      \ match: \"isa-hockeynut.com\"\n Heuristic match: \"cafjs.com\"\n Heuristic\
+      \ match: \"dyndns-at-home.com\"\n Heuristic match: \"is-a-photographer.com\"\
+      \n Heuristic match: \"is-a-student.com\"\n Heuristic match: \"static.observableusercontent.com\"\
+      \n Heuristic match: \"from-nv.com\"\n Heuristic match: \"vfs.cloud9.af-south-1.amazonaws.com\"\
+      \n Heuristic match: \"is-a-anarchist.com\"\n Heuristic match: \"ddnsfree.com\"\
+      \n Pattern match: \"http://joda-time.sourceforge.net/apidocs/org/joda/time/format/isodatetimeformat.html#datetime\"\
+      \n Heuristic match: \"from-mi.com\"\n Heuristic match: \"hostedpi.com\"\n Heuristic\
+      \ match: \"eu-1.evennode.com\"\n Heuristic match: \"s3-ap-south-1.amazonaws.com\"\
+      \n Heuristic match: \"is-a-republican.com\"\n Heuristic match: \"fastvps-server.com\"\
+      \n Heuristic match: \"onza.mythic-beasts.com\"\n Heuristic match: \"orsites.com\"\
+      \n Heuristic match: \"net-freaks.com\"\n Heuristic match: \"s3-ap-northeast-1.amazonaws.com\"\
+      \n Heuristic match: \"point2this.com\"\n Heuristic match: \"from-ak.com\"\n\
+      \ Heuristic match: \"kasserver.com\"\n Heuristic match: \"stackhero-network.com\"\
+      \n Heuristic match: \"authgear-staging.com\"\n Heuristic match: \"s3.dualstack.eu-west-1.amazonaws.com\"\
+      \n Heuristic match: \"krasnik.pl\"\n Heuristic match: \"is-a-designer.com\"\n\
+      \ Heuristic match: \"myqnapcloud.com\"\n Heuristic match: \"messwithdns.com\"\
+      \n Heuristic match: \"lpusercontent.com\"\n Heuristic match: \"simplesite.com\"\
+      \n Heuristic match: \"vfs.cloud9.eu-central-1.amazonaws.com\"\n Heuristic match:\
+      \ \"s3.dualstack.ap-northeast-1.amazonaws.com\"\n Heuristic match: \"s3.eu-central-1.amazonaws.com\"\
+      \n Heuristic match: \"gdansk.pl\"\n Heuristic match: \"s3-website-us-west-2.amazonaws.com\"\
+      \n Heuristic match: \"servecounterstrike.com\"\n Heuristic match: \"dyndns-at-work.com\"\
+      \n Heuristic match: \"is-a-democrat.com\"\n Heuristic match: \"ocelot.mythic-beasts.com\"\
+      \n Heuristic match: \"gov.pl\"\n Heuristic match: \"sphinx.mythic-beasts.com\"\
+      \n Heuristic match: \"from-sd.com\"\n Heuristic match: \"from-pr.com\"\n Heuristic\
+      \ match: \"cloudcontrolapp.com\"\n Heuristic match: \"from-wy.com\"\n Heuristic\
+      \ match: \"is-a-hard-worker.com\"\n Heuristic match: \"googleapis.com\"\n Heuristic\
+      \ match: \"yolasite.com\"\n Heuristic match: \"s3-external-1.amazonaws.com\"\
+      \n Heuristic match: \"s3-ca-central-1.amazonaws.com\"\n Heuristic match: \"\
+      s3.dualstack.ap-south-1.amazonaws.com\"\n Heuristic match: \"mex.com\"\n Heuristic\
+      \ match: \"vfs.cloud9.eu-north-1.amazonaws.com\"\n Heuristic match: \"s3-website-ap-southeast-2.amazonaws.com\"\
+      \n Heuristic match: \"homesklep.pl\"\n Heuristic match: \"lubartow.pl\"\n Heuristic\
+      \ match: \"adobeaemcloud.com\"\n Heuristic match: \"art.pl\"\n Pattern match:\
+      \ \"https://publicsuffix.org/list/public_suffix_list.dat\"\n Heuristic match:\
+      \ \"s3.dualstack.us-east-2.amazonaws.com\"\n Heuristic match: \"from-mt.com\"\
+      \n Heuristic match: \"is-a-socialist.com\"\n Heuristic match: \"dyndns-office.com\"\
+      \n Heuristic match: \"s3-website.ap-south-1.amazonaws.com\"\n Heuristic match:\
+      \ \"geekgalaxy.com\"\n Heuristic match: \"s3.dualstack.eu-central-1.amazonaws.com\"\
+      \n Heuristic match: \"vfs.cloud9.ap-south-1.amazonaws.com\"\n Heuristic match:\
+      \ \"from-vt.com\"\n Heuristic match: \"from-ar.com\"\n Heuristic match: \"vfs.cloud9.us-east-1.amazonaws.com\"\
+      \n Heuristic match: \"is-into-anime.com\"\n Heuristic match: \"s3.us-east-2.amazonaws.com\"\
+      \n Heuristic match: \"beep.pl\"\n Heuristic match: \"miniserver.com\"\n Heuristic\
+      \ match: \"builtwithdark.com\"\n Heuristic match: \"s3.dualstack.eu-west-2.amazonaws.com\"\
+      \n Heuristic match: \"s3-ap-northeast-2.amazonaws.com\"\n Heuristic match: \"\
+      wpmucdn.com\"\n Heuristic match: \"dyn-o-saur.com\"\n Heuristic match: \"gotpantheon.com\"\
+      \n Heuristic match: \"barsycenter.com\"\n Heuristic match: \"krakow.pl\"\n Heuristic\
+      \ match: \"s3.eu-west-2.amazonaws.com\"\n Heuristic match: \"blogspot.com.tr\"\
+      \n Heuristic match: \"pagexl.com\"\n Heuristic match: \"s3-website-ap-southeast-1.amazonaws.com\"\
+      \n Heuristic match: \"zakopane.pl\"\n Heuristic match: \"est-a-la-masion.com\"\
+      \n Heuristic match: \"siiites.com\"\n Heuristic match: \"us.platform.sh\"\n\
+      \ Heuristic match: \"eu.com\"\n Heuristic match: \"s3-website-us-west-1.amazonaws.com\"\
+      \n Heuristic match: \"homesecuritymac.com\"\n Heuristic match: \"space-to-rent.com\"\
+      \n Heuristic match: \"vipsinaapp.com\"\n Heuristic match: \"dyndns-server.com\"\
+      \n Heuristic match: \"blogspot.com.uy\"\n Heuristic match: \"homeunix.com\"\n\
+      \ Heuristic match: \"apps.fbsbx.com\"\n Heuristic match: \"is-a-teacher.com\"\
+      \n Pattern match: \"https://developers.google.com/time/smear\"\n Heuristic match:\
+      \ \"is-an-accountant.com\"\n Heuristic match: \"is-a-conservative.com\"\n Pattern\
+      \ match: \"www.ck\"\n Heuristic match: \"from-ok.com\"\n Heuristic match: \"\
+      s3-website-ap-northeast-1.amazonaws.com\"\n Pattern match: \"http://youtu.be/xasdasfasdasd\"\
+      \n Heuristic match: \"try-snowplow.com\"\n Heuristic match: \"myiphost.com\"\
+      \n Heuristic match: \"is-slick.com\"\n Heuristic match: \"vfs.cloud9.me-south-1.amazonaws.com\"\
+      \n Heuristic match: \"giize.com\"\n Heuristic match: \"fldrv.com\"\n Heuristic\
+      \ match: \"is-an-entertainer.com\"\n Heuristic match: \"bplaced.com\"\n Heuristic\
+      \ match: \"from-ma.com\"\n Heuristic match: \"from-ri.com\"\n Heuristic match:\
+      \ \"ownprovider.com\"\n Heuristic match: \"s3.dualstack.sa-east-1.amazonaws.com\"\
+      \n Heuristic match: \"eu.meteorapp.com\"\n Heuristic match: \"from-ms.com\"\n\
+      \ Heuristic match: \"sdscloud.pl\"\n Heuristic match: \"wphostedmail.com\"\n\
+      \ Heuristic match: \"pythonanywhere.com\"\n Heuristic match: \"est-a-la-maison.com\"\
+      \n Heuristic match: \"appchizi.com\"\n Heuristic match: \"serveftp.com\"\n Heuristic\
+      \ match: \"pgfog.com\"\n Heuristic match: \"s3.dualstack.eu-west-3.amazonaws.com\"\
+      \n Heuristic match: \"myshopify.com\"\n Heuristic match: \"from-dc.com\"\n Heuristic\
+      \ match: \"ddnsgeek.com\"\n Heuristic match: \"s3.cn-north-1.amazonaws.com.cn\"\
+      \n Heuristic match: \"dyndns-ip.com\"\n Heuristic match: \"neat-url.com\"\n\
+      \ Heuristic match: \"rackmaze.com\"\n Heuristic match: \"lynx.mythic-beasts.com\"\
+      \n Heuristic match: \"swidnik.pl\"\n Heuristic match: \"js.wpenginepowered.com\"\
+      \n Heuristic match: \"mydatto.com\"\n Heuristic match: \"africa.com\"\n Heuristic\
+      \ match: \"hashbang.sh\"\n Heuristic match: \"vfs.cloud9.ap-southeast-2.amazonaws.com\"\
+      \n Heuristic match: \"dnsalias.com\"\n Heuristic match: \"pro.typeform.com\"\
+      \n Heuristic match: \"from-wi.com\"\n Heuristic match: \"gleeze.com\"\n Heuristic\
+      \ match: \"is-a-caterer.com\"\n Heuristic match: \"dyndns-mail.com\"\n Heuristic\
+      \ match: \"is-a-painter.com\"\n Heuristic match: \"no.com\"\n Heuristic match:\
+      \ \"vfs.cloud9.eu-south-1.amazonaws.com\"\n Heuristic match: \"simplesite.com.br\"\
+      \n Heuristic match: \"townnews-staging.com\"\n Heuristic match: \"withgoogle.com\"\
+      \n Heuristic match: \"saves-the-whales.com\"\n Heuristic match: \"vfs.cloud9.us-east-2.amazonaws.com\"\
+      \n Heuristic match: \"s3-website-eu-west-1.amazonaws.com\"\n Heuristic match:\
+      \ \"s3.dualstack.ca-central-1.amazonaws.com\"\n Heuristic match: \"eu.pythonanywhere.com\"\
+      \n Heuristic match: \"securitytactics.com\"\n Heuristic match: \"is-a-cpa.com\"\
+      \n Heuristic match: \"poznan.pl\"\n Heuristic match: \"servesarcasm.com\"\n\
+      \ Heuristic match: \"from-ct.com\"\n Heuristic match: \"is-uberleet.com\"\n\
+      \ Heuristic match: \"quicksytes.com\"\n Heuristic match: \"myspreadshop.pl\"\
+      \n Heuristic match: \"s3.ca-central-1.amazonaws.com\"\n Heuristic match: \"\
+      leczna.pl\"\n Heuristic match: \"mydobiss.com\"\n Heuristic match: \"myshopblocks.com\"\
+      \n Heuristic match: \"from-ia.com\"\n Heuristic match: \"is-a-geek.com\"\n Heuristic\
+      \ match: \"serveirc.com\"\n Heuristic match: \"now.sh\"\n Heuristic match: \"\
+      serveexchange.com\"\n Heuristic match: \"is-an-actor.com\"\n Heuristic match:\
+      \ \"cn.com\"\n Heuristic match: \"is-into-cartoons.com\"\n Heuristic match:\
+      \ \"health-carereform.com\"\n Heuristic match: \"dyndns-wiki.com\"\n Heuristic\
+      \ match: \"vfs.cloud9.ca-central-1.amazonaws.com\"\n Heuristic match: \"dyndns-home.com\"\
+      \n Heuristic match: \"doesntexist.com\"\n Pattern match: \"https://serving.stat-rock.com/player/smaato.js\"\
+      \n Heuristic match: \"unusualperson.com\"\n Heuristic match: \"eu-4.evennode.com\"\
+      \n Heuristic match: \"from-ne.com\"\n Heuristic match: \"gentlentapis.com\"\n\
+      \ Heuristic match: \"lublin.pl\"\n Heuristic match: \"blogdns.com\"\n Heuristic\
+      \ match: \"vfs.cloud9.ap-southeast-1.amazonaws.com\"\n Heuristic match: \"servegame.com\"\
+      \n Heuristic match: \"homesecuritypc.com\"\n Pattern match: \"https://developer.mozilla.org/en-us/docs/web/javascript/reference/global_objects/date/toisostring\"\
+      \n Heuristic match: \"from-in.com\"\n Heuristic match: \"digitaloceanspaces.com\"\
+      \n Heuristic match: \"kozow.com\"\n Pattern match: \"https://cloud.google.com/apis/design/glossary\"\
+      \n Heuristic match: \"teaches-yoga.com\"\n Heuristic match: \"hobby-site.com\"\
+      \n Pattern match: \"type.googleapis.com/google.profile.person\"\n Heuristic\
+      \ match: \"vfs.cloud9.sa-east-1.amazonaws.com\"\n Heuristic match: \"stufftoread.com\"\
+      \n Heuristic match: \"is-an-artist.com\"\n Pattern match: \"http://www.w3.org/2000/svg\"\
+      \n Heuristic match: \"is-not-certified.com\"\n Heuristic match: \"selfip.com\"\
+      \n Heuristic match: \"betainabox.com\"\n Heuristic match: \"from-ks.com\"\n\
+      \ Heuristic match: \"dreamhosters.com\"\n Heuristic match: \"from-ky.com\"\n\
+      \ Heuristic match: \"loseyourip.com\"\n Heuristic match: \"from-wa.com\"\n Heuristic\
+      \ match: \"from-hi.com\"\n Heuristic match: \"doomdns.com\"\n Heuristic match:\
+      \ \"sinaapp.com\"\n Heuristic match: \"servepics.com\"\n Heuristic match: \"\
+      nfshost.com\"\n Heuristic match: \"mytuleap.com\"\n Heuristic match: \"is-a-hunter.com\"\
+      \n Heuristic match: \"appspaceusercontent.com\"\n Heuristic match: \"dynalias.com\"\
+      \n Pattern match: \"https://developers.google.com/protocol-buffers\"\n Heuristic\
+      \ match: \"servequake.com\"\n Heuristic match: \"vfs.cloud9.eu-west-2.amazonaws.com\"\
+      \n Heuristic match: \"likescandy.com\"\n Heuristic match: \"de.com\"\n Heuristic\
+      \ match: \"s3.ap-south-1.amazonaws.com\"\n Heuristic match: \"trycloudflare.com\"\
+      \n Heuristic match: \"yali.mythic-beasts.com\"\n Heuristic match: \"authgearapps.com\"\
+      \n Heuristic match: \"mysecuritycamera.com\"\n Heuristic match: \"from-pa.com\"\
+      \n Heuristic match: \"vfs.cloud9.eu-west-1.amazonaws.com\"\n Heuristic match:\
+      \ \"from-or.com\"\n Heuristic match: \"rhcloud.com\"\n Heuristic match: \"from-nd.com\"\
+      \n Heuristic match: \"alpha-myqnapcloud.com\"\n Heuristic match: \"framercanvas.com\"\
+      \n Heuristic match: \"jpn.com\"\n Heuristic match: \"3utilities.com\"\n Heuristic\
+      \ match: \"drayddns.com\"\n Heuristic match: \"streamlitapp.com\"\n Heuristic\
+      \ match: \"from-nm.com\"\n Heuristic match: \"onthewifi.com\"\n Heuristic match:\
+      \ \"app.lmpm.com\"\n Heuristic match: \"is-a-nurse.com\"\n Heuristic match:\
+      \ \"from-sc.com\"\n Heuristic match: \"is-an-engineer.com\"\n Heuristic match:\
+      \ \"sopot.pl\"\n Heuristic match: \"vfs.cloud9.ap-northeast-3.amazonaws.com\"\
+      \n Heuristic match: \"myspreadshop.com.au\"\n Heuristic match: \"woltlab-demo.com\"\
+      \n Heuristic match: \"from-wv.com\"\n Heuristic match: \"herokussl.com\"\n Heuristic\
+      \ match: \"reservd.com\"\n Heuristic match: \"quipelements.com\"\n Heuristic\
+      \ match: \"s3-website-sa-east-1.amazonaws.com\"\n Heuristic match: \"s3.amazonaws.com\"\
+      \n Heuristic match: \"s3-eu-west-3.amazonaws.com\"\n Heuristic match: \"co.pl\"\
+      \n Heuristic match: \"s3-website-us-east-1.amazonaws.com\"\n Heuristic match:\
+      \ \"appspacehosted.com\"\n Heuristic match: \"est-le-patron.com\"\n Heuristic\
+      \ match: \"hotelwithflight.com\"\n Heuristic match: \"getmyip.com\"\n Heuristic\
+      \ match: \"wafflecell.com\"\n Heuristic match: \"oncilla.mythic-beasts.com\"\
+      \n Heuristic match: \"is-a-musician.com\"\n Heuristic match: \"ooguy.com\"\n\
+      \ Heuristic match: \"firebaseapp.com\"\n Heuristic match: \"onrender.com\"\n\
+      \ Heuristic match: \"cechire.com\"\n Heuristic match: \"dyndns-remote.com\"\n\
+      \ Heuristic match: \"from-fl.com\"\n Heuristic match: \"vfs.cloud9.eu-west-3.amazonaws.com\"\
+      \n Heuristic match: \"from-de.com\"\n Heuristic match: \"is-a-bookkeeper.com\"\
+      \n Pattern match: \"http://tizen.org/feature/platform.version\"\n Heuristic\
+      \ match: \"s3-us-west-1.amazonaws.com\"\n Heuristic match: \"s3-website.eu-west-2.amazonaws.com\"\
+      \n Heuristic match: \"blogspot.com.ar\"\n Heuristic match: \"blogspot.com.au\"\
+      \n Heuristic match: \"ciscofreak.com\"\n Heuristic match: \"mydrobo.com\"\n\
+      \ Heuristic match: \"workisboring.com\"\n Heuristic match: \"is-a-doctor.com\"\
+      \n Heuristic match: \"dyndns-blog.com\"\n Heuristic match: \"from-nc.com\"\n\
+      \ Heuristic match: \"s3-us-west-2.amazonaws.com\"\n Heuristic match: \"blogspot.com.by\"\
+      \n Heuristic match: \"mymailer.com.tw\"\n Heuristic match: \"is-a-landscaper.com\"\
+      \n Heuristic match: \"blogspot.com.br\"\n Heuristic match: \"is-gone.com\"\n\
+      \ Pattern match: \"https://mozilla.org/mpl/2.0\"\n Heuristic match: \"br.com\"\
+      \n Heuristic match: \"servehumour.com\"\n Heuristic match: \"eu-2.evennode.com\"\
+      \n Heuristic match: \"is-a-bulls-fan.com\"\n Heuristic match: \"bloxcms.com\"\
+      \n Heuristic match: \"from-oh.com\"\n Heuristic match: \"myvnc.com\"\n Heuristic\
+      \ match: \"from-tn.com\"\n Heuristic match: \"s3-eu-west-2.amazonaws.com\"\n\
+      \ Heuristic match: \"blogspot.com.cy\"\n Heuristic match: \"ditchyourip.com\"\
+      \n Heuristic match: \"uk.com\"\n Heuristic match: \"servehttp.com\"\n Heuristic\
+      \ match: \"blogspot.com.co\"\n Heuristic match: \"is-a-chef.com\"\n Heuristic\
+      \ match: \"dyndns-pics.com\"\n Heuristic match: \"myactivedirectory.com\"\n\
+      \ Heuristic match: \"barsyonline.com\"\n Heuristic match: \"writesthisblog.com\"\
+      \n Heuristic match: \"is-a-techie.com\"\n Heuristic match: \"4u.com\"\n Heuristic\
+      \ match: \"nodebalancer.linode.com\"\n Heuristic match: \"reserve-online.com\"\
+      \n Heuristic match: \"it.com\"\n Heuristic match: \"s3-website.eu-west-3.amazonaws.com\"\
+      \n Heuristic match: \"likes-pie.com\"\n Heuristic match: \"eu.platform.sh\"\n\
+      \ Heuristic match: \"is-a-financialadvisor.com\"\n Heuristic match: \"us-2.evennode.com\"\
+      \n Heuristic match: \"is-a-nascarfan.com\"\n Heuristic match: \"elasticbeanstalk.com\"\
+      \n Heuristic match: \"is-into-cars.com\"\n Heuristic match: \"is-a-player.com\"\
+      \n Heuristic match: \"s3-eu-central-1.amazonaws.com\"\n Heuristic match: \"\
+      from-nj.com\"\n Heuristic match: \"caracal.mythic-beasts.com\"\n Heuristic match:\
+      \ \"us-3.evennode.com\"\n Heuristic match: \"blogspot.com.eg\"\n Heuristic match:\
+      \ \"ddnslive.com\"\n Heuristic match: \"servebbs.com\"\n Heuristic match: \"\
+      dnsdojo.com\"\n Heuristic match: \"from-mo.com\"\n Heuristic match: \"mazeplay.com\"\
+      \n Heuristic match: \"from-il.com\"\n Pattern match: \"http://i.tubemate.net/ad/12.zip;com.radsone.dct;click;x;;t;3\"\
+      \n Heuristic match: \"pagespeedmobilizer.com\"\n Heuristic match: \"s3.ap-northeast-2.amazonaws.com\"\
+      \n Heuristic match: \"blogspot.com.ee\"\n Pattern match: \"http://www.apache.org/licenses/license-2.0\"\
+      \n Heuristic match: \"from-mn.com\"\n Heuristic match: \"blogspot.com.es\"\n\
+      \ Heuristic match: \"from-ut.com\"\n Heuristic match: \"shoparena.pl\"\n Heuristic\
+      \ match: \"issmarterthanyou.com\"\n Heuristic match: \"vfs.cloud9.us-west-1.amazonaws.com\"\
+      \n Heuristic match: \"fentiger.mythic-beasts.com\"\n Heuristic match: \"is-a-personaltrainer.com\"\
+      \n Heuristic match: \"co.com\"\n Heuristic match: \"gr.com\"\n Heuristic match:\
+      \ \"dnsiskinky.com\"\n Heuristic match: \"servehalflife.com\"\n Heuristic match:\
+      \ \"from-tx.com\"\n Heuristic match: \"ddnsking.com\"\n Heuristic match: \"\
+      est-mon-blogueur.com\"\n Heuristic match: \"s3-us-gov-west-1.amazonaws.com\"\
+      \n Heuristic match: \"is-into-games.com\"\n Heuristic match: \"dontexist.com\"\
+      \n Heuristic match: \"herokuapp.com\"\n Heuristic match: \"is-an-actress.com\"\
+      \n Heuristic match: \"s3-website.ap-northeast-2.amazonaws.com\"\n Heuristic\
+      \ match: \"vfs.cloud9.us-west-2.amazonaws.com\"\n Heuristic match: \"r.appspot.com\"\
+      \n Heuristic match: \"from-ga.com\"\n Heuristic match: \"servep2p.com\"\n Heuristic\
+      \ match: \"eu-3.evennode.com\"\n Heuristic match: \"is-certified.com\"\n Heuristic\
+      \ match: \"damnserver.com\"\n Heuristic match: \"p~.rw\"\n Heuristic match:\
+      \ \"finfinfi.fi\"\n Heuristic match: \"s.'.ai\"\n Heuristic match: \"w}.ph\"\
+      \n Pattern match: \"https://exoplayer.dev/issues/cleartext-not-permitted\"\n\
+      \ Pattern match: \"http://www.youtube.com/?app=desktop&persist_app=1\"\n Pattern\
+      \ match: \"http://%s\"\n Pattern match: \"youtube.com/#/\"\n Pattern match:\
+      \ \"http://m.youtube.com/select_site\"\n Heuristic match: \"stat.ad\"\n Pattern\
+      \ match: \"http://www.w3.org/ns/ttml#parameter\"\n Pattern match: \"https://firebase-settings.crashlytics.com/spi/v2/platforms/android/gmp/%s/settings\"\
+      \n Heuristic match: \"androidx.work.util.id\"\n Pattern match: \"https://issuetracker.google.com/issues/new?component=907884&template=1466542\"\
+      \n Pattern match: \"http://ns.adobe.com/xap/1.0/\"\n Pattern match: \"https://firebase.google.com/docs/crashlytics/get-started?platform=android#add-plugin\"\
+      \n Heuristic match: \"crashlytics.installation.id\"\n Heuristic match: \"firebase.installation.id\"\
+      \n Pattern match: \"https://firebase.google.com/support/privacy/init-options\"\
+      \n Pattern match: \"https://firebaseremoteconfig.googleapis.com/v1/projects/%s/namespaces/%s:fetch\"\
+      \n Pattern match: \"https://firebaseremoteconfigrealtime.googleapis.com/v1/projects/%s/namespaces/%s:streamfetchinvalidations\"\
+      \n Pattern match: \"https://android.googlesource.com/toolchain/llvm-project\"\
+      \n Pattern match: \"http://www.apache.org/licenses/license-2.0//\""
+  - EventData: Found potential URL in binary/memory
+  - EventData: string-3
+  - EventData: "Found HTTPS url \"https://exoplayer.dev\"\n Found HTTPS url \"https://firebase\"\
+      \n Found HTTPS url \"https://issuetracker.google.com\"\n Found HTTPS url \"\
+      https://firebase.google.com\"\n Found HTTPS url \"https://firebaseremoteconfig.googleapis.com\"\
+      \n Found HTTPS url \"https://firebaseremoteconfigrealtime.googleapis.com\""
+  - EventData: Possibly tries to communicate over SSL connection (HTTPS)
+  - EventData: string-98
+  - EventData: Sample file "sample.bin" has high entropy 7.9337
+  - EventData: Sample file has high entropy (likely encrypted/compressed content)
+  - EventData: binary-71
+  - EventData: "The analysis contains indicators for crypto or data obfuscation(base64/decrypt)\
+      \ which can hide information. Matched sigs: Contains CRYPTO related strings\n\
+      \ Matched sigs: YARA signature match - AES encryption\n Matched sigs: Contains\
+      \ ability to perform Base64 encoding/decoding\n Matched sigs: Sample file has\
+      \ high entropy (likely encrypted/compressed content)\n Matched sigs: YARA signature\
+      \ match \u2013 cryptographic algorithms"
+  - EventData: Shows ability to obfuscate file or information
+  - EventData: summary-28
+  - EventData: "The analysis shows use of encryption\n use of http/https that can\
+      \ be used to send encrypted data on command and control server. Matched sigs:\
+      \ YARA signature match - AES encryption"
+  - EventData: Shows ability to use encryption for command and control traffic
+  - EventData: summary-31
+  - EventData: "The analysis shows use of encryption and can be used to decode file\
+      \ or information. Matched sigs: YARA signature match - AES encryption\n Matched\
+      \ sigs: Contains ability to perform Base64 encoding/decoding"
+  - EventData: Shows ability to deobfuscate/decode files or information
+  - EventData: summary-32
+  - EventData: 0/26 Antivirus vendors marked sample as clean (0% detection rate)
+  - EventData: Sample was identified as clean by Antivirus engines
+  - EventData: avtest-1
+  - EventData: "Permission request for \"android.permission.INTERNET\"\n Permission\
+      \ request for \"android.permission.WRITE_EXTERNAL_STORAGE\"\n Permission request\
+      \ for \"android.permission.ACCESS_COARSE_LOCATION\"\n Permission request for\
+      \ \"android.permission.ACCESS_FINE_LOCATION\"\n Permission request for \"android.permission.GET_TASKS\"\
+      \n Permission request for \"android.permission.READ_PHONE_STATE\"\n Permission\
+      \ request for \"android.permission.BLUETOOTH\"\n Permission request for \"android.permission.BLUETOOTH_ADMIN\"\
+      \n Permission request for \"android.permission.CHANGE_WIFI_STATE\"\n Permission\
+      \ request for \"android.permission.RECEIVE_BOOT_COMPLETED\"\n Permission request\
+      \ for \"android.permission.SYSTEM_ALERT_WINDOW\"\n Permission request for \"\
+      android.permission.WAKE_LOCK\""
+  - EventData: Requires permissions that could be uesd for malicious intents
+  - EventData: static-27
+  - EventData: "YARA signature for MD5 algorithm matched on file \"libavutil.so\"\n\
+      \ YARA signature for MD5 algorithm matched on file \"libavutil.so_\""
+  - EventData: YARA signature match - MD5 algorithm
+  - EventData: yara-112
+  - EventData: "YARA signature matched on Chacha20 instruction used in file \"libsqlcipher.so_\"\
+      \n YARA signature matched on Chacha20 instruction used in file \"libsqlcipher.so\""
+  - EventData: "YARA signature match \u2013 cryptographic algorithms"
+  - EventData: yara-155
+  - EventData: 'YARA signature "Bolonyokte" classified file "sample.bin" as "rat"
+      (Author: Jean-Philippe Teissier / @Jipe_)'
+  - EventData: YARA signature match
+  - EventData: yara-0
+  selection_network: []
+  condition: selection_behavior or selection_network

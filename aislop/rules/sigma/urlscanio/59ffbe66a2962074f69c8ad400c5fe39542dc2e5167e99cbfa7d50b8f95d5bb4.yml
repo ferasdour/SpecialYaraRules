@@ -1,0 +1,1480 @@
+title: urlscanio behavior detection (59ffbe66)
+id: 59ffbe66a2962074f69c8ad400c5fe39542dc2e5167e99cbfa7d50b8f95d5bb4
+status: experimental
+description: Auto-generated Sigma rule for urlscanio
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: 'Pattern match: "appro@opensl.hg"'
+  - EventData: Found E-Mail address in binary/memory
+  - EventData: string-63
+  - EventData: "Found reference to API (Indicator: \"FreeSid\"; File: \"Reader_en_install.exe\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"Reader_en_install.exe\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; File: \"Reader_en_install.exe\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"Reader_en_install.exe\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; File: \"Reader_en_install.exe\"\
+      )\n Found reference to API (Indicator: \"SysFreeString\"; File: \"Reader_en_install.exe\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Observed system executable string:\"%WINDIR%\\system32\\gdi32.dll\"\
+      \ [Source: 00000000-00006296-00000C66-3635730007]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\user32.dll\" [Source: 00000000-00006296-00000C66-3635730204]"
+  - EventData: References Windows file paths for DLLs (possible dropped files)
+  - EventData: string-625
+  - EventData: "Found string \"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0;\
+      \ WOW64; Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET\
+      \ C\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296-00000C9E-16840454606\"\
+      )\n Found string \"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0)\
+      \ like Gecko\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C;\
+      \ .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729;\
+      \ rv:11.0) like Gecko\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,\
+      \ like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.22621\" (Indicator:\
+      \ \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (Windows NT 10.0; WOW64; .NET4.0C; .NET4.0E;\
+      \ InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729) AppleWebKit/537.36\
+      \ (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.22621\" (Indicator:\
+      \ \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64;\
+      \ Trident/7.0)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64;\
+      \ Trident/5.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR\
+      \ 3.0.30729; .NET CLR 3.5.30729)\" (Indicator: \"mozilla/5.0 (\"; Source: \"\
+      00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64; Trident/7.0;\
+      \ .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET\
+      \ CLR 3.5.30729)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64;\
+      \ Trident/6.0)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64;\
+      \ Trident/6.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR\
+      \ 3.0.30729; .NET CLR 3.5.30729)\" (Indicator: \"mozilla/5.0 (\"; Source: \"\
+      00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64; Trident/7.0)\"\
+      \ (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64;\
+      \ Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR\
+      \ 3.0.30729; .NET CLR 3.5.30729)\" (Indicator: \"mozilla/5.0 (\"; Source: \"\
+      00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/4.0 (compatible; MSIE 7.0; Windows Phone OS 7.0; Trident/3.1; IEMobile/7.0)\"\
+      \ (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/4.0 (compatible; MSIE 8.0; Windows Phone OS 7.5;\
+      \ Trident/4.0; IEMobile/8.0)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5;\
+      \ Trident/5.0; IEMobile/9.0)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0;\
+      \ IEMobile/10.0; ARM; Touch)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (Windows Phone 8.1; ARM; Trident/8.0; Touch;\
+      \ rv:11.0; IEMobile/11.0) like Gecko\" (Indicator: \"mozilla/5.0 (\"; Source:\
+      \ \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1) AppleWebKit/537.36 (KHTML,\
+      \ like Gecko) Chrome/70.0.3538.102 Mobile Safari/537.36 Edge/18.22621\" (Indicator:\
+      \ \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0;\
+      \ .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET\
+      \ CLR 3.5.30729)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 10.0; WOW64;\
+      \ Trident/5.0)\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 10.0; WOW64;\
+      \ Trident/4.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR\
+      \ 3.0.30729; .NET CLR 3.5.30729)\" (Indicator: \"mozilla/4.0 (\"; Source: \"\
+      00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 10.0; WOW64; Trident/7.0;\
+      \ .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET\
+      \ CLR 3.5.30729)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64;\
+      \ Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR\
+      \ 3.0.30729; .NET CLR 3.5.30729)\" (Indicator: \"mozilla/4.0 (\"; Source: \"\
+      00000000-00006296.00000001.300307.00F80000.00000004.mdmp, 00000000-00006296.00000002.302227.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\")\n Found string\
+      \ \"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; .NET4.0C; .NET4.0E;\
+      \ InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)\"\
+      \ (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )\n Found string \"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.1; Trident/4.0;\
+      \ .NET4.0C; .NET4.0E; InfoPath.3; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET\
+      \ CLR 3.5.30729)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00006296.00000001.300307.00F80000.00000004.mdmp,\
+      \ 00000000-00006296.00000002.302227.00F80000.00000004.mdmp, 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\"\
+      )"
+  - EventData: Found user-agent related strings
+  - EventData: string-127
+  - EventData: 'Found string "MoveFileExW" (Indicator: "MoveFileExW"; Source: "00000000-00006296-00000C2C-3628066894")'
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: 'Found string "HTTP/1.1 200 OKServer: nginxContent-Type: text/javascript;charset=utf-8Vary:
+      Accept-EncodingStrict-Transport-Security: max-age=31536000; includeSubDomains;Timing-Allow-Origin:
+      *Access-Control-Allow-Origin: *Cross-Origin-Resource-Policy: cross-ori" (Indicator:
+      "text/javascript"; Source: "00000000-00006296-00000CBE-3636026175")'
+  - EventData: References JavaScript(s)
+  - EventData: string-626
+  - EventData: "\"Registry\\Machine\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\\
+      AppModelUnlock\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet ExploI\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Pers\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policie\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\_\" in Source:\
+      \ 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"Software\\Policies\\\
+      Micros\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\DOMStorage\" in Source:\
+      \ 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"Software\\Pol\"\
+      \ in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"e\\\
+      SOFTWARE\\Pol\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"\
+      Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\4\" in Source:\
+      \ 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\3\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\2\" in Source:\
+      \ 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\1\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\0\" in Source:\
+      \ 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00006296.00000000.298387.00F80000.00000004.mdmp\n\
+      \ \"q4^MwSOFTWARE\\Classes\" in Source: 00000000-00006296.00000001.300307.008EE000.00000004.mdmp\n\
+      \ \"uSOFTWARE\\Classes\\PROTOCOLS\\Handler\\C\" in Source: 00000000-00006296.00000001.300307.008EE000.00000004.mdmp\n\
+      \ \"Software\\Pol\" in Source: 00000000-00006296.00000001.300307.00F80000.00000004.mdmp\n\
+      \ \"e\\SOFTWARE\\Pol\" in Source: 00000000-00006296.00000001.300307.00F80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006296.00000001.300307.00F80000.00000004.mdmp\n \"\
+      e\\Software\\Cla\" in Source: 00000000-00006296.00000001.300307.04CD0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\\PROTOCOLS\\Handler\\data\" in Source: 00000000-00006296.00000001.300307.07690000.00000004.mdmp\n\
+      \ \" APP\"\n\"version\":\"25.001.21111\"\n\"productName\":\"SOFTWARE\\\\\\\\\
+      M\" in Source: 00000000-00006296.00000001.300307.07690000.00000004.mdmp\n \"\
+      robat\"\n\"version\":\"25.001.21111\"\n\"productName\":\"SOFTWARE\\\\\\\\Microsof\"\
+      \ in Source: 00000000-00006296.00000001.300307.07690000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\PrefetchPrerender\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel\" in Source:\
+      \ 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\Safety\\Tracking Protection Exceptions\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\PhishingFilter\" in Source:\
+      \ 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\IEDevTools\\Options\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\"\
+      \ in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\Settings\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\International\\Scripts\"\
+      \ in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\Zoom\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\\PROTOCOLS\\Filter\\text/html\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\4\" in Source:\
+      \ 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\3\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\2\" in Source:\
+      \ 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\1\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\0\" in Source:\
+      \ 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\DOMStorage\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{076C2A6C-F78F-4C46-A723-3583E70876EA}\"\
+      \ in Source: 00000000-00006296.00000001.300307.098E0000.00000004.mdmp\n \"q4^MwSOFTWARE\\\
+      Classes\" in Source: 00000000-00006296.00000002.302227.008EE000.00000004.mdmp\n\
+      \ \"uSOFTWARE\\Classes\\PROTOCOLS\\Handler\\C\" in Source: 00000000-00006296.00000002.302227.008EE000.00000004.mdmp\n\
+      \ \"Software\\Pol\" in Source: 00000000-00006296.00000002.302227.00F80000.00000004.mdmp\n\
+      \ \"e\\SOFTWARE\\Pol\" in Source: 00000000-00006296.00000002.302227.00F80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006296.00000002.302227.00F80000.00000004.mdmp\n \"\
+      e\\Software\\Cla\" in Source: 00000000-00006296.00000002.302227.04CD0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\\PROTOCOLS\\Handler\\data\" in Source: 00000000-00006296.00000002.302227.07690000.00000004.mdmp\n\
+      \ \" APP\"\n\"version\":\"25.001.21111\"\n\"productName\":\"SOFTWARE\\\\\\\\\
+      M\" in Source: 00000000-00006296.00000002.302227.07690000.00000004.mdmp\n \"\
+      robat\"\n\"version\":\"25.001.21111\"\n\"productName\":\"SOFTWARE\\\\\\\\Microsof\"\
+      \ in Source: 00000000-00006296.00000002.302227.07690000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\PrefetchPrerender\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel\" in Source:\
+      \ 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\Microsoft\\\
+      Internet Explorer\\Safety\\Tracking Protection Exceptions\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\PhishingFilter\" in Source:\
+      \ 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\IEDevTools\\Options\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\"\
+      \ in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\Settings\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\International\\Scripts\"\
+      \ in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\Zoom\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\\PROTOCOLS\\Filter\\text/html\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\4\" in Source:\
+      \ 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\3\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\2\" in Source:\
+      \ 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\1\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\0\" in Source:\
+      \ 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\DOMStorage\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{076C2A6C-F78F-4C46-A723-3583E70876EA}\"\
+      \ in Source: 00000000-00006296.00000002.302227.098E0000.00000004.mdmp\n \"q4^MwSOFTWARE\\\
+      Classes\" in Source: 00000000-00006296.00000003.309665.008EE000.00000004.mdmp\n\
+      \ \"uSOFTWARE\\Classes\\PROTOCOLS\\Handler\\C\" in Source: 00000000-00006296.00000003.309665.008EE000.00000004.mdmp\n\
+      \ \"Software\\Pol\" in Source: 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\n\
+      \ \"e\\SOFTWARE\\Pol\" in Source: 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\\
+      \" in Source: 00000000-00006296.00000003.309665.00F80000.00000004.mdmp\n \"\
+      e\\Software\\Cla\" in Source: 00000000-00006296.00000003.309665.04CD0000.00000004.mdmp\n\
+      \ \" APP\"\n\"version\":\"25.001.21111\"\n\"productName\":\"SOFTWARE\\\\\\\\\
+      M\" in Source: 00000000-00006296.00000003.309665.07690000.00000004.mdmp\n \"\
+      istry\\Machine\\Software\\Classes\\CLSID\\{00000339-0000-0000-C000-000000000046}\"\
+      \ in Source: 00000000-00006296.00000003.309665.07690000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006296.00000003.309665.07690000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\PrefetchPrerender\" in\
+      \ Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\Control Panel\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Internet Explorer\\Safety\\Tracking Protection Exceptions\"\
+      \ in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\\
+      Policies\\Microsoft\\Internet Explorer\\PhishingFilter\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\IEDevTools\\Options\"\
+      \ in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Settings\" in Source:\
+      \ 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\International\\Scripts\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Zoom\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Classes\\PROTOCOLS\\Filter\\text/html\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\4\" in Source:\
+      \ 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\3\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\2\" in Source:\
+      \ 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\Persistence\\1\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Persistence\\0\" in Source:\
+      \ 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n \"Software\\Policies\\\
+      Microsoft\\Internet Explorer\\DOMStorage\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"Software\\Policies\\Microsoft\\Internet Explorer\\Main\" in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{076C2A6C-F78F-4C46-A723-3583E70876EA}\"\
+      \ in Source: 00000000-00006296.00000003.309665.098E0000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "\"Reader_en_install.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 75af0000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 75af0000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 75af0000\n \"Reader_en_install.exe\" loaded module \"KERNEL32\" at\
+      \ base 76660000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\TEMP\\\
+      VXOLE32.DLL\" at base 73bf0000\n \"Reader_en_install.exe\" loaded module \"\
+      KERNEL32.DLL\" at base 76660000\n \"Reader_en_install.exe\" loaded module \"\
+      ADVAPI32.DLL\" at base 76b80000\n \"Reader_en_install.exe\" loaded module \"\
+      COMCTL32.DLL\" at base 74f10000\n \"Reader_en_install.exe\" loaded module \"\
+      GDI32.DLL\" at base 76800000\n \"Reader_en_install.exe\" loaded module \"GDIPLUS.DLL\"\
+      \ at base 74650000\n \"Reader_en_install.exe\" loaded module \"OLE32.DLL\" at\
+      \ base 76c00000\n \"Reader_en_install.exe\" loaded module \"OLEAUT32.DLL\" at\
+      \ base 773e0000\n \"Reader_en_install.exe\" loaded module \"SHELL32.DLL\" at\
+      \ base 76d70000\n \"Reader_en_install.exe\" loaded module \"SHLWAPI.DLL\" at\
+      \ base 75700000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-0\"\
+      \ at base 75af0000\n \"Reader_en_install.exe\" loaded module \"USER32.DLL\"\
+      \ at base 76830000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      UXTHEME.DLL\" at base 74990000\n \"Reader_en_install.exe\" loaded module \"\
+      API-MS-WIN-CORE-STRING-L1-1-0\" at base 75af0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-DATETIME-L1-1-1\" at base 75af0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0\" at base 75af0000\n\
+      \ \"Reader_en_install.exe\" loaded module \"VERSION.DLL\" at base 75180000\n\
+      \ \"Reader_en_install.exe\" loaded module \"WINMM.DLL\" at base 75140000\n \"\
+      Reader_en_install.exe\" loaded module \"OLEACC.DLL\" at base 73b90000\n \"Reader_en_install.exe\"\
+      \ loaded module \"MPR.DLL\" at base 74ef0000\n \"Reader_en_install.exe\" loaded\
+      \ module \"OLEDLG.DLL\" at base 73b60000\n \"Reader_en_install.exe\" loaded\
+      \ module \"UXTHEME.DLL\" at base 74990000\n \"Reader_en_install.exe\" loaded\
+      \ module \"MSIMG32.DLL\" at base 73b50000\n \"Reader_en_install.exe\" loaded\
+      \ module \"MSI.DLL\" at base 73670000\n \"Reader_en_install.exe\" loaded module\
+      \ \"WEBIO.DLL\" at base 73a90000\n \"Reader_en_install.exe\" loaded module \"\
+      WINHTTP.DLL\" at base 73590000\n \"Reader_en_install.exe\" loaded module \"\
+      WINSPOOL.DRV\" at base 73510000\n \"Reader_en_install.exe\" loaded module \"\
+      SAMCLI.DLL\" at base 734f0000\n \"Reader_en_install.exe\" loaded module \"WKSCLI.DLL\"\
+      \ at base 73de0000\n \"Reader_en_install.exe\" loaded module \"SRVCLI.DLL\"\
+      \ at base 74020000\n \"Reader_en_install.exe\" loaded module \"NETUTILS.DLL\"\
+      \ at base 74010000\n \"Reader_en_install.exe\" loaded module \"NETAPI32.DLL\"\
+      \ at base 734d0000\n \"Reader_en_install.exe\" loaded module \"WINMMBASE.DLL\"\
+      \ at base 734b0000\n \"Reader_en_install.exe\" loaded module \"CRYPTBASE.DLL\"\
+      \ at base 734a0000\n \"Reader_en_install.exe\" loaded module \"OLEACCRC.DLL\"\
+      \ at base 3080000\n \"Reader_en_install.exe\" loaded module \"MSASN1.DLL\" at\
+      \ base 74490000\n \"Reader_en_install.exe\" loaded module \"CRYPT32.DLL\" at\
+      \ base 764c0000\n \"Reader_en_install.exe\" loaded module \"WINTRUST.DLL\" at\
+      \ base 75860000\n \"Reader_en_install.exe\" loaded module \"PSAPI.DLL\" at base\
+      \ 75760000\n \"Reader_en_install.exe\" loaded module \"IMM32.DLL\" at base 751c0000\n\
+      \ \"Reader_en_install.exe\" loaded module \"PGPMAPIH.DLL\" at base 0\n \"Reader_en_install.exe\"\
+      \ loaded module \"DXGIDEBUG.DLL\" at base 0\n \"Reader_en_install.exe\" loaded\
+      \ module \"API-MS-WIN-CORE-SYSINFO-L1-2-1\" at base 75af0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSWOW64\\IEFRAME.DLL\" at base 726a0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-DOWNLEVEL-SHLWAPI-L2-1-0.DLL\" at base 76400000\n\
+      \ \"Reader_en_install.exe\" loaded module \"RPCRT4.DLL\" at base 75e40000\n\
+      \ \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\DATAEXCHANGE.DLL\"\
+      \ at base 72650000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-DOWNLEVEL-OLE32-L1-1-0.DLL\"\
+      \ at base 760e0000\n \"Reader_en_install.exe\" loaded module \"MSISO.DLL\" at\
+      \ base 72430000\n \"Reader_en_install.exe\" loaded module \"URLMON.DLL\" at\
+      \ base 74270000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSWOW64\\\
+      MSHTML.DLL\" at base 71120000\n \"Reader_en_install.exe\" loaded module \"SSPICLI.DLL\"\
+      \ at base 73e80000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-CORE-URL-L1-1-0.DLL\"\
+      \ at base 75af0000\n \"Reader_en_install.exe\" loaded module \"VIRTDISK.DLL\"\
+      \ at base 74630000\n \"Reader_en_install.exe\" loaded module \"MSHTML.DLL\"\
+      \ at base 71120000\n \"Reader_en_install.exe\" loaded module \"WLDP.DLL\" at\
+      \ base 71020000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      BCRYPTPRIMITIVES.DLL\" at base 75d70000\n \"Reader_en_install.exe\" loaded module\
+      \ \"%WINDIR%\\SYSWOW64\\JSCRIPT9.DLL\" at base 70c50000\n \"Reader_en_install.exe\"\
+      \ loaded module \"JSCRIPT9.DLL\" at base 70c50000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSXML3.DLL\" at base 70a00000\n \"Reader_en_install.exe\"\
+      \ loaded module \"ONDEMANDCONNROUTEHELPER.DLL\" at base 709e0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\ONDEMANDCONNROUTEHELPER.DLL\" at base\
+      \ 709e0000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      MSWSOCK.DLL\" at base 73d20000\n \"Reader_en_install.exe\" loaded module \"\
+      IEFRAME.DLL\" at base 726a0000\n \"Reader_en_install.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\RASADHLP.DLL\" at base 709c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\FWPUCLNT.DLL\" at base 70960000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSWOW64\\SCHANNEL.DLL\" at base 708d0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSIMTF.DLL\" at base 708c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"EXT-MS-WIN-NTUSER-TOUCH-HITTEST-L1-1-0.DLL\" at base 76830000\n\
+      \ \"Reader_en_install.exe\" loaded module \"EXT-MS-WIN-CORE-RESOURCEPOLICY-L1-1-0.DLL\"\
+      \ at base 707b0000\n \"Reader_en_install.exe\" loaded module \"NTDLL.DLL\" at\
+      \ base 77490000\n \"Reader_en_install.exe\" loaded module \"SECUR32.DLL\" at\
+      \ base 70770000\n \"Reader_en_install.exe\" loaded module \"MLANG.DLL\" at base\
+      \ 70730000\n \"Reader_en_install.exe\" loaded module \"PROPSYS.DLL\" at base\
+      \ 73f40000\n \"Reader_en_install.exe\" loaded module \"WININET.DLL\" at base\
+      \ 74a60000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      NCRYPTSSLP.DLL\" at base 6ffa0000\n \"Reader_en_install.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\RSAENH.DLL\" at base 6fd20000\n \"Reader_en_install.exe\"\
+      \ loaded module \"D3D10WARP.DLL\" at base 0\n \"Reader_en_install.exe\" loaded\
+      \ module \"D3D10WARP.DLL\" at base 6f720000\n \"Reader_en_install.exe\" loaded\
+      \ module \"%WINDIR%\\SYSTEM32\\CRYPTNET.DLL\" at base 6f6c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSWOW64\\CRYPTNET.DLL\" at base 6f6c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\CRYPT32.DLL\" at base 764c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"CRYPTNET.DLL\" at base 6f6c0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-WINRT-L1-1-0.DLL\" at base 760e0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL\" at base 760e0000\n\
+      \ \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\COMBASE.DLL\"\
+      \ at base 760e0000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      MSCTF.DLL\" at base 75770000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\OLE32.DLL\" at base 76c00000\n \"Reader_en_install.exe\" loaded module\
+      \ \"%WINDIR%\\SYSTEM32\\WINDOWSCODECS.DLL\" at base 73930000\n \"Reader_en_install.exe\"\
+      \ loaded module \"DWRITE.DLL\" at base 6ffc0000\n \"Reader_en_install.exe\"\
+      \ loaded module \"API-MS-WIN-SECURITY-SDDL-L1-1-0.DLL\" at base 75ff0000\n \"\
+      Reader_en_install.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\"\
+      \ at base 76830000\n \"Reader_en_install.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 76830000\n \"Reader_en_install.exe\" loaded module \"API-MS-WIN-SECURITY-SYSTEMFUNCTIONS-L1-1-0\"\
+      \ at base 76b80000\n \"Reader_en_install.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      UIANIMATION.DLL\" at base 6f320000\n \"Reader_en_install.exe\" loaded module\
+      \ \"API-MS-WIN-RTCORE-NTUSER-WMPOINTER-L1-1-0.DLL\" at base 76830000\n \"Reader_en_install.exe\"\
+      \ loaded module \"%WINDIR%\\SYSWOW64\\WINDOWS.SHELL.SERVICEHOSTBUILDER.DLL\"\
+      \ at base 6f300000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-synch-l1-2-0 (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter kernel32\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter KERNEL32.DLL (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter ADVAPI32.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter COMCTL32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter GDI32.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter gdiplus.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter ole32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter OLEAUT32.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter SHELL32.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter SHLWAPI.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-fibers-l1-1-0 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter USER32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-string-l1-1-0 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-datetime-l1-1-1\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-localization-obsolete-l1-2-0 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter version.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter winmm.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter oleacc.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter mpr.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter oledlg.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter uxtheme.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter msimg32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter msi.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter webio.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter winhttp.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter winspool.drv (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter samcli.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter wkscli.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter srvcli.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter netutils.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter netapi32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter winmmbase.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter cryptbase.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter oleaccrc.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter msasn1.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter crypt32.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter wintrust.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter psapi.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter imm32.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter user32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter PGPmapih.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter dxgidebug.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter Comctl32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter C:\\Reader_en_installENU.dll (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"LoadLibrary\" with a parameter C:\\Reader_en_installLOC.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-sysinfo-l1-2-1 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter comctl32.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-downlevel-shlwapi-l2-1-0.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter api-ms-win-downlevel-ole32-l1-1-0.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter msIso.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter urlmon.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter C:\\Reader_en_install.exe\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter MSHTML.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter WLDP.DLL (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter jscript9.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter mshtml.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter ieframe.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter ext-ms-win-ntuser-touch-hittest-l1-1-0.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter Secur32.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter MLANG.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter PROPSYS.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter WININET.dll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-winrt-l1-1-0.dll (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-winrt-string-l1-1-0.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter WINHTTP.dll\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-rtcore-ntuser-wmpointer-l1-1-0.dll (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"LoadLibrary\" with a parameter CRYPT32.dll\
+      \ (UID: 00000000-00006296)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  - EventData: "\"Reader_en_install.exe\" failed to load missing module \"PGPmapih.dll\"\
+      \ - [base:0; Status:c0000135]\n \"Reader_en_install.exe\" failed to load missing\
+      \ module \"dxgidebug.dll\" - [base:0; Status:c0000135]\n \"Reader_en_install.exe\"\
+      \ failed to load missing module \"d3d10warp.dll\" - [base:0; Status:c000000d]"
+  - EventData: Fails to load modules at runtime
+  - EventData: api-22
+  - EventData: "\"Reader_en_install.exe\" searching for class \"MS_AutodialMonitor\"\
+      \n \"Reader_en_install.exe\" searching for class \"MS_WebCheckMonitor\"\n \"\
+      Reader_en_install.exe\" searching for window \"Choose Reader Install Folder\""
+  - EventData: Scanning for window names
+  - EventData: api-70
+  - EventData: '"Reader_en_install.exe" loaded module "%WINDIR%\SysWOW64\rpcrt4.dll"
+      at 75E40000'
+  - EventData: Loads the RPC (Remote Procedure Call) module DLL
+  - EventData: module-10
+  - EventData: "\"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter\
+      \ InitializeCriticalSectionEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FlsAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FlsSetValue\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlsGetValue (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LCMapStringEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FlsFree\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitOnceExecuteOnce (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEventExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateSemaphoreW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateSemaphoreExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThreadpoolTimer (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetThreadpoolTimer\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WaitForThreadpoolTimerCallbacks (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolTimer\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateThreadpoolWait (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetThreadpoolWait (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWait\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlushProcessWriteBuffers (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeLibraryWhenCallbackReturns\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentProcessorNumber (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSymbolicLinkW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetCurrentPackageId\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetTickCount64 (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileInformationByHandleEx (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetFileInformationByHandle (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemTimePreciseAsFileTime\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter InitializeConditionVariable (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WakeConditionVariable\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WakeAllConditionVariable (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableCS (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter InitializeSRWLock (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter AcquireSRWLockExclusive (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter TryAcquireSRWLockExclusive\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSRWLockExclusive (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SleepConditionVariableSRW (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreateThreadpoolWork (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SubmitThreadpoolWork (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CloseThreadpoolWork\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CompareStringEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocaleInfoEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter AreFileApisANSI\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlGetVersion (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoCreateInstance (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoCreateInstanceEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoGetClassObject (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoGetInstanceFromFile (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoGetInstanceFromIStorage\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ReleaseSemaphore (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateMutexW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ReleaseMutex\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetUserDefaultLangID (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLocalTime (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetTimeFormatW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDateFormatW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter OpenMutexW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RaiseException\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemInfo (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter VirtualQuery (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LoadLibraryExA\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter MoveFileExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeSListHead (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetSystemTimeAsFileTime\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter QueryPerformanceCounter (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter IsProcessorFeaturePresent (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetUnhandledExceptionFilter (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter UnhandledExceptionFilter (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter WaitForSingleObjectEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ResetEvent (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetUserDefaultLCID\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetTempFileNameW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SearchPathW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetProfileIntW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindResourceExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SystemTimeToTzSpecificLocalTime\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetFileAttributesW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileTime (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetFileAttributesExW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FileTimeToLocalFileTime (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetErrorMode (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter VirtualProtect\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalGetAtomNameW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FileTimeToSystemTime (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetThreadLocale\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter lstrcmpiW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter UnlockFile (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetFilePointer\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter LockFile (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetVolumeInformationW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetFileSize\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlushFileBuffers (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GlobalFlags (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetUserDefaultUILanguage\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemDefaultUILanguage (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetLocaleInfoW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentDirectoryW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LocalReAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GlobalHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalReAlloc (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter TlsFree (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter TlsSetValue\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter TlsGetValue (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter TlsAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CompareStringW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalFindAtomW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LoadLibraryA (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter EncodePointer\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter lstrcpyW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GlobalAddAtomW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetStartupInfoW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetPrivateProfileStringW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetPrivateProfileIntW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter lstrcmpA\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalDeleteAtom (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LoadLibraryExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetModuleHandleA\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetVersionExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentThread (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OutputDebugStringA\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetThreadPriority (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetLastError (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CopyFileW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FormatMessageW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter MulDiv (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GlobalLock\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalUnlock (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GlobalSize (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GlobalAlloc\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileType (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetEnvironmentVariableW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetStdHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ConnectNamedPipe (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetExitCodeThread (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateNamedPipeW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileSizeEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSection (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetTempPathW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetFilePointerEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetEndOfFile\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RemoveDirectoryW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FindNextFileW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FindFirstFileW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindClose (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter lstrcmpW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter TerminateThread\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFileAttributesW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLogicalDrives (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetExitCodeProcess\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OutputDebugStringW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WideCharToMultiByte (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter Process32FirstW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter Process32NextW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateToolhelp32Snapshot (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter CreatePipe (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter TerminateProcess (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetPhysicallyInstalledSystemMemory\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetHandleInformation (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReadFile (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetThreadContext\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FlushInstructionCache (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateProcessW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ExitProcess\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowsDirectoryW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetThreadContext (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter VirtualProtectEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DeleteFileW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter Sleep (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter DuplicateHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ResumeThread (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemDirectoryW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetModuleFileNameW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WriteProcessMemory (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter VerifyVersionInfoW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FreeLibrary\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentProcessId (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter VerSetConditionMask (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LocalFree\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OpenProcess (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LocalAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetCurrentProcess\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFullPathNameW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateThread (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CloseHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GlobalFree (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WritePrivateProfileStringW (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter SetEvent (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter MultiByteToWideChar (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateEventW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateFileW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WaitForSingleObject (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WaitForMultipleObjects\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WriteFile (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FindResourceW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LoadResource\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter LockResource (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCurrentThreadId (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SizeofResource\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetDllDirectoryW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemWindowsDirectoryW (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetModuleHandleW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetProcAddress (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LoadLibraryW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter lstrlenW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetProcessHeap (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter DeleteCriticalSection\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DecodePointer (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter HeapAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter HeapReAlloc\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDiskFreeSpaceExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetLastError (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter HeapSize\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter LeaveCriticalSection (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitializeCriticalSectionAndSpinCount\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter EnterCriticalSection (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter HeapFree (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetACP\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetOEMCP (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetEnvironmentStringsW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FreeEnvironmentStringsW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetEnvironmentVariableW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WriteConsoleW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsValidCodePage\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindFirstFileExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumSystemLocalesW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsValidLocale\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter LCMapStringW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetConsoleOutputCP (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ReadConsoleW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetConsoleMode (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTimeZoneInformation (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetStdHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter QueryPerformanceFrequency (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter HeapQueryInformation (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter VirtualAlloc\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetStringTypeW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetCommandLineW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetCommandLineA\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FreeLibraryAndExitThread (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ExitThread (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetModuleHandleExW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PeekNamedPipe (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetFileInformationByHandle (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetDriveTypeW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RtlUnwind (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetCPInfo\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IsDebuggerPresent (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegQueryValueExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateWellKnownSid\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetNamedSecurityInfoW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetNamedSecurityInfoW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetEntriesInAclW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegEnumKeyExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegEnumValueW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegQueryValueW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegEnumKeyW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegDeleteKeyW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegCreateKeyExW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegSetValueExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegDeleteValueW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LookupPrivilegeValueW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter AdjustTokenPrivileges (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegCloseKey (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter AllocateAndInitializeSid\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OpenProcessToken (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter FreeSid (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CheckTokenMembership\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RegOpenKeyExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitCommonControlsEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateDIBSection\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetTextFaceW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetViewportOrgEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetWindowOrgEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetPixelV (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetPaletteEntries (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ExtFloodFill\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PtInRegion (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetBoundsRect (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter FrameRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FillRgn (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RoundRect (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OffsetRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter Rectangle (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LPtoDP (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateRoundRectRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter Polyline (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter Polygon (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreatePolygonRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter Ellipse (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateEllipticRgn (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetDIBColorTable\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter StretchBlt (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetPixel (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetTextCharsetInfo\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter EnumFontFamiliesW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateDIBitmap (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RealizePalette\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemPaletteEntries (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetPaletteEntries (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetNearestPaletteIndex\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreatePalette (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter EnumFontFamiliesExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateCompatibleBitmap\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DPtoLP (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetRectRgn (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter PatBlt\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetMapMode (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CombineRgn (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetRgnBox\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateRectRgnIndirect (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTextColor (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetBkColor\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetTextMetricsW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTextExtentPoint32W (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateFontIndirectW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ScaleWindowExtEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ScaleViewportExtEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OffsetWindowOrgEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OffsetViewportOrgEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetWindowOrgEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetWindowExtEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetViewportOrgEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetViewportExtEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ExtTextOutW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter TextOutW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter MoveToEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetTextAlign\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetROP2 (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetPolyFillMode (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetLayout\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetLayout (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetMapMode (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetBkMode\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SelectPalette (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SelectObject (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ExtSelectClipRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SelectClipRgn (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SaveDC (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RestoreDC\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RectVisible (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PtVisible (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LineTo\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IntersectClipRect (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetWindowExtEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetViewportExtEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetStockObject (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetPixel (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetObjectType\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetClipBox (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ExcludeClipRect (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter Escape\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DeleteObject (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateSolidBrush (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateRectRgn\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreatePatternBrush (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreatePen (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateHatchBrush\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateCompatibleDC (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter BitBlt (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetObjectW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetTextColor (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetBkColor (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateBitmap\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateDCW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CopyMetaFileW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetDeviceCaps\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DeleteDC (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipDrawImageRectI (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdipSetInterpolationMode\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipCreateFromHDC (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipCreateBitmapFromHBITMAP (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GdipDrawImageI (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipDeleteGraphics (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdipBitmapUnlockBits\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipBitmapLockBits (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipCreateBitmapFromScan0 (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GdipCreateBitmapFromStream (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipGetImagePaletteSize (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdipGetImagePalette\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipGetImageHeight (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipGetImageWidth (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdipGetImageGraphicsContext\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipDisposeImage (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipCloneImage (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdiplusStartup\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipFree (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GdipAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GdiplusShutdown\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GdipGetImagePixelFormat (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ReleaseStgMedium (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoCreateGuid\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CLSIDFromString (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CLSIDFromProgID (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoFreeUnusedLibraries\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OleInitialize (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter StringFromGUID2 (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoDisconnectObject\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter StgCreateDocfileOnILockBytes (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter StgOpenStorageOnILockBytes\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateILockBytesOnHGlobal (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoRevokeClassObject (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleFlushClipboard\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OleIsCurrentClipboard (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoRegisterMessageFilter (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleRun\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CreateStreamOnHGlobal (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter DoDragDrop (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleUninitialize\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoInitializeEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoTaskMemFree (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoUninitialize\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoInitialize (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoTaskMemAlloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleGetClipboard\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoLockObjectExternal (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterDragDrop (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RevokeDragDrop\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OleLockRunning (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter OleCreateMenuDescriptor (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleTranslateAccelerator\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter OleDuplicateData (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter IsAccelerator (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter OleDestroyMenuDescriptor\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CommandLineToArgvW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ShellExecuteExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ShellExecuteW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SHGetSpecialFolderPathW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHGetMalloc (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SHGetPathFromIDListW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SHGetSpecialFolderLocation (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SHBrowseForFolderW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SHGetDesktopFolder (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHGetFileInfoW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter DragQueryFileW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DragFinish (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHAppBarMessage (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SHGetFolderPathW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SHGetFolderLocation (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHCreateDirectoryExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter PathFileExistsW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PathIsDirectoryW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PathIsFileSpecW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter PathFindExtensionW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PathFindFileNameW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PathRemoveExtensionW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter PathIsUNCW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PathStripToRootW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PathRemoveFileSpecW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter StrFormatKBSizeW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PathAppendW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter UrlIsW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter PathAddExtensionW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PathRenameExtensionW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterWindowMessageW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegisterClipboardFormatW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSystemMetrics (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDC (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ReleaseDC\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetSysColor (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSysColorBrush (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LoadCursorW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowDC (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SystemParametersInfoW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetRectEmpty\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter EnumDisplayMonitors (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetMonitorInfoW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CopyRect\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCursorPos (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetWindowsHookExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter EnumSystemLocalesEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDateFormatEx (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTimeFormatEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetUserDefaultLocaleName\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IsValidLocaleName (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LCIDToLocaleName (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter LocaleNameToLCID\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetDefaultDllDirectories (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetNativeSystemInfo (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetThreadPreferredUILanguages\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter QueryActCtxW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateActCtxW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ActivateActCtx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindActCtxSectionStringW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter DeactivateActCtx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegisterApplicationRestart\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter LoadIconW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter InitNetworkAddressControl (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetClassInfoW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter RegisterClassW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateDialogIndirectParamW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetParent (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetWindowLongW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CallNextHookEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CallWindowProcW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetClassInfoExW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetClassLongW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowLongW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetPropW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetPropW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowRect (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetTopWindow (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsWindow\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetDlgItem (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetClientRect (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IUnknown_QueryService\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IUnknown_Set (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter IUnknown_SetSite (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CreateURLMonikerEx\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter HeapSetInformation (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CreateAsyncBindCtxEx (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegisterBindStatusCallback\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter UrlMkGetSessionOption (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoInternetCreateSecurityManager\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CoInternetIsFeatureEnabled (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetCoalescableTimer\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RemovePropW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHStrDupW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RtlRegisterFeatureConfigurationChangeNotification\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlDisownModuleHeapAllocation (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RtlQueryFeatureConfiguration\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RtlDllShutdownInProgress (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter LogStagedFeatureUsage (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ProgIDFromCLSID\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter TravelLogCreateInstance (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WldpGetLockdownPolicy (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RtlIsMultiSessionSku\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter EventSetInformation (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter QueryProtectedPolicy (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter ResolveDelayLoadedAPI\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter ResolveDelayLoadsFromDll (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter JsVarToExtension (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter JsVarAddRef\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RevokeBindStatusCallback (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter CoInternetCreateZoneManager (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter SendMessageW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetDesktopWindow (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetWindowPos\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetRect (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetForegroundWindow (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetFocus\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter SetActiveWindow (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PostMessageW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetNextDlgTabItem\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetFocus (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetWindow (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter MonitorFromWindow\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PeekMessageW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetMessageW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter TranslateMessage\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter DispatchMessageW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHGetValueW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter RegisterTouchHitTestingWindow\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetUserNameExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter PSCreateMemoryPropertyStore (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter GetUrlCacheEntryBinaryBlob (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ShowWindow (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter UpdateWindow\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter BeginPaint (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter EndPaint (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsWindowRedirectedForPrint\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter VariantToStringWithDefault (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetDCDpiScaleValue\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowDpiAwarenessContext (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter SetThreadDpiAwarenessContext\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter JsVarRelease (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter ObtainUserAgentString (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WindowsCreateStringReference\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter RoGetActivationFactory (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter wsprintfW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CoInternetQueryInfo\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter PropVariantClear (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SHCreateMemStream (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IStream_Reset\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IStream_Size (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter IStream_Read (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CommitUrlCacheEntryBinaryBlob\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetUrlCacheEntryInfoExW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter SetWindowTextW (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter GetForegroundWindow\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetWindowThreadProcessId (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter AttachThreadInput (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter BringWindowToTop\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter IsIconic (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpGetIEProxyConfigForCurrentUser\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WinHttpOpen (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpGetProxyForUrl (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WinHttpCloseHandle\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WinHttpSetOption (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpConnect (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WinHttpOpenRequest\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WinHttpSetStatusCallback (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpSendRequest (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsDialogMessageW\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter GetCurrentInputMessageSource (UID: 00000000-00006296)\n \"\
+      Reader_en_install.exe\" called \"GetProcAddress\" with a parameter IsChild (UID:\
+      \ 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\" with\
+      \ a parameter WinHttpReceiveResponse (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpQueryHeaders (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter WinHttpQueryDataAvailable\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter WinHttpReadData (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter WinHttpQueryOption (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter CertGetIssuerCertificateFromStore\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter CertGetNameStringW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter GetSystemMenu (UID: 00000000-00006296)\n\
+      \ \"Reader_en_install.exe\" called \"GetProcAddress\" with a parameter EnableMenuItem\
+      \ (UID: 00000000-00006296)\n \"Reader_en_install.exe\" called \"GetProcAddress\"\
+      \ with a parameter FindWindowW (UID: 00000000-00006296)\n \"Reader_en_install.exe\"\
+      \ called \"GetProcAddress\" with a parameter EndDialog (UID: 00000000-00006296)"
+  - EventData: Calls an API typically used to retrieve function addresses
+  - EventData: api-176
+  - EventData: "\"Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\CUSTOMLOCALE\"; Key: \"EMPTY\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\CUSTOMLOCALE\"; Key: \"EN-US\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key:\
+      \ \"EN-US\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\\
+      CONTROL\\NLS\\CUSTOMLOCALE\"; Key: \"EN\")\n \"Reader_en_install.exe\" (Path:\
+      \ \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"EN\"\
+      )\n \"Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\CUSTOMLOCALE\"; Key: \"CA-ES\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"CA-ES\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"CS-CZ\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"CS-CZ\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"DA-DK\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"DA-DK\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"DE-DE\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"DE-DE\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"EL-GR\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"EL-GR\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"ES-ES_TRADNL\")\n \"Reader_en_install.exe\" (Path: \"\
+      HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"ES-ES_TRADNL\"\
+      )\n \"Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\\
+      NLS\\CUSTOMLOCALE\"; Key: \"FI-FI\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"FI-FI\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"FR-FR\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"FR-FR\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"HU-HU\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\\
+      SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\EXTENDEDLOCALE\"; Key: \"HU-HU\")\n \"\
+      Reader_en_install.exe\" (Path: \"HKLM\\SYSTEM\\CONTROLSET001\\CONTROL\\NLS\\\
+      CUSTOMLOCALE\"; Key: \"IT-IT\")"
+  - EventData: Reads information about supported languages
+  - EventData: registry-25
+  - EventData: "\"Reader_en_install.exe\" sets a windows hook with filter \"WH_CBT\"\
+      \ for thread ID 528\n \"Reader_en_install.exe\" sets a windows hook with filter\
+      \ \"WH_MOUSE\" for thread ID 528\n \"Reader_en_install.exe\" sets a windows\
+      \ hook with filter \"WH_KEYBOARD\" for thread ID 528"
+  - EventData: Sets a windows hook
+  - EventData: api-71
+  - EventData: "\"Reader_en_install.exe\" was detected as \"UPX\"  and name: \"Packer\"\
+      \n \"Reader_en_install.exe\" was detected as \"Microsoft Linker\"  and name:\
+      \ \"Linker\""
+  - EventData: Matched Compiler/Packer signature (DIE)
+  - EventData: static-157
+  - EventData: "Virtual size of \"UPX0\" is \"0x2f4000\" greater than 0x100000\n Virtual\
+      \ size of \"UPX1\" is \"0x188000\" greater than 0x100000"
+  - EventData: PE file has a big virtual size section
+  - EventData: static-124
+  - EventData: '"Reader_en_install.exe" (Path: "HKCU\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\WINTRUST\TRUST
+      PROVIDERS\SOFTWARE PUBLISHING"; Key: "STATE")'
+  - EventData: Reads Windows Trust Settings
+  - EventData: registry-20
+  - EventData: "\"Reader_en_install.exe\" (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\\
+      AUTHROOT\\AUTOUPDATE\"; Key: \"DISALLOWEDCERTSYNCDELTATIME\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKCU\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\"; Key: \"\")\n\
+      \ \"Reader_en_install.exe\" (Path: \"HKCU\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\\
+      CA\\CERTIFICATES\"; Key: \"\")\n \"Reader_en_install.exe\" (Path: \"HKCU\\SOFTWARE\\\
+      MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CRLS\"; Key: \"\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKCU\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CTLS\"; Key: \"\
+      \")\n \"Reader_en_install.exe\" (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\\
+      CA\"; Key: \"\")\n \"Reader_en_install.exe\" (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\\
+      SYSTEMCERTIFICATES\\CA\\CERTIFICATES\"; Key: \"\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\\
+      109F1CAED645BB78B3EA2B94C0697C740733031C\"; Key: \"BLOB\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\\
+      D559A586669B08F46A30A133F8A9ED3D038E2EA8\"; Key: \"BLOB\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\\
+      FEE449EE0E3965A5246F000E87FDE2A065FD89D4\"; Key: \"BLOB\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CRLS\"; Key: \"\
+      \")\n \"Reader_en_install.exe\" (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\\
+      CA\\CRLS\\A377D1B1C0538833035211F4083D00FECC414DAB\"; Key: \"BLOB\")\n \"Reader_en_install.exe\"\
+      \ (Path: \"HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CTLS\"; Key: \"\
+      \")"
+  - EventData: Accesses System Certificates Settings
+  - EventData: registry-17
+  - EventData: "\"Reader_en_install.exe\" has flags like  IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE\n\
+      \ IMAGE_DLLCHARACTERISTICS_NX_COMPAT\n IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE"
+  - EventData: File contains dynamic base/NX flags
+  - EventData: static-154
+  selection_network:
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: COMCTL32.dll
+  - DestinationHostname: GDI32.dll
+  - DestinationHostname: MLANG.dll
+  - DestinationHostname: MSHTML.dll
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: PGPmapih.dll
+  - DestinationHostname: PROPSYS.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: Secur32.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: WININET.dll
+  - DestinationHostname: WKSCAL.EXE
+  - DestinationHostname: WLDP.DLL
+  - DestinationHostname: adobe.rdc
+  - DestinationHostname: api-ms-win-core-delayload-l1-1-1.dll
+  - DestinationHostname: api-ms-win-core-processthreads-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-string-l1-1-0.dll
+  - DestinationHostname: api-ms-win-downlevel-ole32-l1-1-0.dll
+  - DestinationHostname: api-ms-win-downlevel-shlwapi-l2-1-0.dll
+  - DestinationHostname: api-ms-win-rtcore-ntuser-wmpointer-l1-1-0.dll
+  - DestinationHostname: bxf0ivf.js
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: cryptbase.dll
+  - DestinationHostname: dlm.gif
+  - DestinationHostname: dlmping2.adobe.com
+  - DestinationHostname: dxgidebug.dll
+  - DestinationHostname: ext-ms-win-ntuser-touch-hittest-l1-1-0.dll
+  - DestinationHostname: gdi32.dll
+  - DestinationHostname: gdiplus.dll
+  - DestinationHostname: geo-dc.adobe.com
+  - DestinationHostname: get.adobe.com
+  - DestinationHostname: ieframe.dll
+  - DestinationHostname: imm32.dll
+  - DestinationHostname: install.exe
+  - DestinationHostname: installENU.dll
+  - DestinationHostname: installLOC.dll
+  - DestinationHostname: jscript9.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: kernelbase.dll
+  - DestinationHostname: mpr.dll
+  - DestinationHostname: msIso.dll
+  - DestinationHostname: msasn1.dll
+  - DestinationHostname: msi.dll
+  - DestinationHostname: msimg32.dll
+  - DestinationHostname: netapi32.dll
+  - DestinationHostname: netutils.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: oleacc.dll
+  - DestinationHostname: oleaccrc.dll
+  - DestinationHostname: oledlg.dll
+  - DestinationHostname: p.gif
+  - DestinationHostname: p.typekit.net
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: rdc.adobe.io
+  - DestinationHostname: samcli.dll
+  - DestinationHostname: srvcli.dll
+  - DestinationHostname: tmmon.dll
+  - DestinationHostname: tmmon64.dll
+  - DestinationHostname: urlmon.dll
+  - DestinationHostname: use.typekit.net
+  - DestinationHostname: user32.dll
+  - DestinationHostname: uxtheme.dll
+  - DestinationHostname: version.dll
+  - DestinationHostname: webio.dll
+  - DestinationHostname: winhttp.dll
+  - DestinationHostname: winmm.dll
+  - DestinationHostname: winmmbase.dll
+  - DestinationHostname: winspool.drv
+  - DestinationHostname: wintrust.dll
+  - DestinationHostname: wkscli.dll
+  - DestinationHostname: www.w3.org
+  - DestinationIp: 23.37.65.85
+  - DestinationIp: 23.55.178.12
+  - DestinationIp: 23.62.54.14
+  condition: selection_behavior or selection_network

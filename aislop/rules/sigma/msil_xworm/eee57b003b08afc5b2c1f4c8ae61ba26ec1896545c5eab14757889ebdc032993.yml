@@ -1,0 +1,820 @@
+title: MSIL.XWorm behavior detection (eee57b00)
+id: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993
+status: experimental
+description: Auto-generated Sigma rule for MSIL.XWorm
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00004684.00000000.180556.04F20000.00000004.mdmp\")\n Found\
+      \ reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"; Source: \"00000000-00005140.00000000.180371.B56EE000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateDirectory\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00007044.00000000.180446.000D2000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"; Source:\
+      \ \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp, 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EA793000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\")"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; File:\
+      \ \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\")\n\
+      \ Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp, 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EA793000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CreateProcessW\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"CreateProcessW\" (Indicator: \"CreateProcess\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found registry modification API: \"RegCreateKeyExA\" in file \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExW\" in file \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      \n Found registry modification API: \"RegCreateKeyExA\" in \"00000000-00005140.00000000.180371.69020000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69224000.00000004.mdmp\"\n Found registry\
+      \ modification API: \"RegCreateKeyExW\" in \"00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\n Found registry\
+      \ modification API: \"RegCreateKeyExA\" in \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: details too long to display
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"OpenProcess\" (Indicator: \"OpenProcess\"; File:\
+      \ \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\")\n\
+      \ Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; File:\
+      \ \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\")\n\
+      \ Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\";\
+      \ Source: \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenProcess\" (Indicator: \"OpenProcess\"; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"; Source: \"\
+      00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp\"\
+      )\n Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; Source: \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )\n Found reference to API \"CommandLineToArgvW\" (Indicator: \"CommandLineToArgv\"\
+      ; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp, 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EA793000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\")\n Found reference\
+      \ to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: "Found reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"set_UseShellExecute\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00004684.00000000.180556.04F20000.00000004.mdmp\")\n Found\
+      \ reference to API \"ShellExecuteExW\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )\n Found reference to API \"set_UseShellExecute\" (Indicator: \"ShellExecute\"\
+      ; Source: \"00000000-00005140.00000000.180371.B56EE000.00000004.mdmp\")\n Found\
+      \ reference to API \"set_UseShellExecute\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00007044.00000000.180446.000D2000.00000002.mdmp\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\")\n\
+      \ Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69020000.00000004.mdmp, 00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00005140.00000000.180371.69020000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp, 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EA793000.00000004.mdmp, 00000000-00007176.00000001.182384.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.400B6000.00000002.mdmp, 00000000-00007176.00000002.184304.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\")\n Found reference\
+      \ to API \"SetLastError\" (Indicator: \"SetLastError\"; Source: \"00000000-00007176.00000000.180463.EC930000.00000004.mdmp,\
+      \ 00000000-00007176.00000000.180463.ECB3C000.00000004.mdmp, 00000000-00007176.00000001.182384.EA793000.00000004.mdmp,\
+      \ 00000000-00007176.00000001.182384.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.400B6000.00000002.mdmp,\
+      \ 00000000-00007176.00000002.184304.EC930000.00000004.mdmp, 00000000-00007176.00000002.184304.ECB3C000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found string \"MoveFileExW\" (Indicator: \"MoveFileExW\"; File: \"\
+      eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\")\n Found\
+      \ string \"MoveFileW\" (Indicator: \"MoveFileW\"; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileW\"; File: \"\
+      756746666524.exe\")\n file/memory contains long string with (Indicator: \"MoveFileW\"\
+      ; File: \"864082610924.exe\")\n file/memory contains long string with (Indicator:\
+      \ \"MoveFileW\"; File: \"982282044390.exe\")\n file/memory contains long string\
+      \ with (Indicator: \"MoveFileExW\"; File: \"718242860213.exe\")\n file/memory\
+      \ contains long string with (Indicator: \"MoveFileExW\"; File: \"866541611667.exe\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileExW\"; File:\
+      \ \"899817728799.exe\")\n file/memory contains long string with (Indicator:\
+      \ \"MoveFileExW\"; File: \"003950772155.exe\")\n file/memory contains long string\
+      \ with (Indicator: \"MoveFileA\"; File: \"415615667303.exe\")\n file/memory\
+      \ contains long string with (Indicator: \"MoveFileW\"; File: \"427624359918-theThing.exe\"\
+      )\n file/memory contains long string with (Indicator: \"MoveFileW\"; File: \"\
+      954841971684-theThing.exe\")\n file/memory contains long string with (Indicator:\
+      \ \"MoveFileW\"; File: \"RCX4C12.tmp\")\n file/memory contains long string with\
+      \ (Indicator: \"MoveFileW\"; File: \"RCX5B3B.tmp\")\n Found string \"MoveFileExW\"\
+      \ (Indicator: \"MoveFileExW\"; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")\n Found string\
+      \ \"MoveFileW\" (Indicator: \"MoveFileW\"; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp,\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\")"
+  - EventData: Able to rename or move file/directory (API string)
+  - EventData: string-884
+  - EventData: "Found reference to API \"CloseServiceHandle\" (Indicator: \"CloseServiceHandle\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"CloseServiceHandle\" (Indicator: \"CloseServiceHandle\"\
+      ; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: "Found reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"QueryServiceStatusEx\" (Indicator: \"QueryServiceStatus\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"\
+      ; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )\n Found reference to API \"QueryServiceStatusEx\" (Indicator: \"QueryServiceStatus\"\
+      ; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )"
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: "Found reference to API \"StartServiceW\" (Indicator: \"StartService\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"StartServiceW\" (Indicator: \"StartService\"; Source:\
+      \ \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "\"Software\\Classes\\Applications\" in Source: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\" in Source:\
+      \ eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\n \"\
+      Software\\Classes\\Applications\\updater.exe\" in Source: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\n\
+      \ \"SOFTWARE\\Mozilla\\MaintenanceService\\\" in Source: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\n\
+      \ \"SOFTWARE\\Mozilla\\MaintenanceService\\3932ecacee736d366d6436db0f55bce4\"\
+      \ in Source: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\n\
+      \ \"\\REGISTRY\\MACHINE\\SOFTWARE\\Classes\\WOW6432Node\\CLSID\\{72C24DD5-D70A-438B-8A42-98424B88AFB8}\\\
+      LocalServer32\" in Source: 00000000-00004684.00000000.180556.031A0000.00000004.mdmp\n\
+      \ 00000000-00004684.00000001.182478.031A0000.00000004.mdmp\n 00000000-00004684.00000002.184399.031A0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\USER\\S-1-5-21-735145574-\\REGISTRY\\MACHINE\\SOFTWARE\\Classes\\\
+      WOW6432Node\\CLSID\\{72C24DD\" in Source: 00000000-00004684.00000000.180556.031A0000.00000004.mdmp\n\
+      \ 00000000-00004684.00000001.182478.031A0000.00000004.mdmp\n 00000000-00004684.00000002.184399.031A0000.00000004.mdmp\n\
+      \ \"Software\\\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Nls\\RegionMapping\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"Software\\7273C5890675CF00E2B9\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in\
+      \ Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"Software\\\
+      Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"Software\\Microsoft\\Windows NT\\CurrentVersion\\InstallationType\" in Source:\
+      \ 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      Software\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\v{0}\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\\S\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\v4.0.30319\" in\
+      \ Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.UseHttpPipeliningAndBufferPooling\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.UseStrictRfcInterimResponseHandli\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.UseSafeSynchronousClose\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.UseStrictRfcInterimResponseHandling\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Uri.AllowDangerousUnicodeDecompositions\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Uri.UseStrictIPv6AddressParsing\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Uri.AllowAllUriEncodingExpansion\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.SchSendAuxRecord\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.RequireCertificateEKUs\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\.NETFramework\\v4.0.30319\\System.Net.ServicePointManager.SecurityProtocol\"\
+      \ in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\\Connections\" in Source:\
+      \ 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"SOFTWARE\\Policies\\\
+      Microsoft\\Windows\\CurrentVersion\\Internet Settings\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard\
+      \ Time\\Dynamic DST\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source:\
+      \ 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n \"HKEY_LOCAL_MACHINE\\\
+      SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time Zones\\Pacific Standard\
+      \ Time\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Time\
+      \ Zones\\Pacific Standard Time\\Dynamic DST\" in Source: 00000000-00004684.00000000.180556.04F20000.00000004.mdmp\n\
+      \ \"e\\Software\\C\" in Source: 00000000-00004684.00000000.180556.1F840000.00000004.mdmp\n\
+      \ 00000000-00004684.00000001.182478.1F840000.00000004.mdmp\n 00000000-00004684.00000002.184399.1F840000.00000004.mdmp\n\
+      \ \"Y\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00005140.00000000.180371.66D50000.00000004.mdmp\n\
+      \ \"Software\\Classes\\Applications\" in Source: 00000000-00005140.00000000.180371.69224000.00000004.mdmp\n\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\n \"SOFTWARE\\Microsoft\\\
+      Windows\\CurrentVersion\\Policies\\System\" in Source: 00000000-00005140.00000000.180371.69224000.00000004.mdmp\n\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\n \"Software\\Classes\\\
+      Applications\\updater.exe\" in Source: 00000000-00005140.00000000.180371.69224000.00000004.mdmp\n\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\n \"SOFTWARE\\Mozilla\\\
+      MaintenanceService\\\" in Source: 00000000-00005140.00000000.180371.69224000.00000004.mdmp\n\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\n \"SOFTWARE\\Mozilla\\\
+      MaintenanceService\\3932ecacee736d366d6436db0f55bce4\" in Source: 00000000-00005140.00000000.180371.69224000.00000004.mdmp\n\
+      \ 00000000-00005140.00000000.180371.69718000.00000004.mdmp\n \"Registry\\Machine\\\
+      Software\\Classes\\AppID\\audiodg.exe\" in Source: 00000000-00007044.00000000.180446.02520000.00000004.mdmp\n\
+      \ \"Software\\\" in Source: 00000000-00007044.00000000.180446.047B0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\.NETFramework\\AppContext\" in Source: 00000000-00007044.00000000.180446.047B0000.00000004.mdmp\n\
+      \ \"System\\CurrentControlSet\\Control\\Nls\\RegionMapping\" in Source: 00000000-00007044.00000000.180446.047B0000.00000004.mdmp\n\
+      \ \"Software\\4A53A09D484C676E5C3C\" in Source: 00000000-00007044.00000000.180446.047B0000.00000004.mdmp\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" in Source: 00000000-00007044.00000000.180446.047B0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "file/memory contains long string(File: \"038389777273.exe\")\n file/memory\
+      \ contains long string(File: \"864082610924.exe\")\n file/memory contains long\
+      \ string(File: \"982282044390.exe\")\n file/memory contains long string(File:\
+      \ \"966429534806-theThing.exe\")\n file/memory contains long string(File: \"\
+      884602843439-theThing.exe\")\n file/memory contains long string(File: \"718242860213.exe\"\
+      )\n file/memory contains long string(File: \"703978228872.exe\")\n file/memory\
+      \ contains long string(File: \"670682119650.exe\")\n file/memory contains long\
+      \ string(File: \"866541611667.exe\")\n file/memory contains long string(File:\
+      \ \"899817728799.exe\")\n file/memory contains long string(File: \"019617948528.exe\"\
+      )\n file/memory contains long string(File: \"479515222481.exe\")\n file/memory\
+      \ contains long string(File: \"152330015621.exe\")\n file/memory contains long\
+      \ string(File: \"564369656389.exe\")\n file/memory contains long string(File:\
+      \ \"736922471264.exe\")\n file/memory contains long string(File: \"756817078630.exe\"\
+      )\n file/memory contains long string(File: \"937052110381.exe\")\n file/memory\
+      \ contains long string(File: \"914645680392.exe\")\n file/memory contains long\
+      \ string(File: \"965858613870.exe\")\n file/memory contains long string(File:\
+      \ \"885969882652.exe\")\n file/memory contains long string(File: \"245155636750-theThing.exe\"\
+      )\n file/memory contains long string(File: \"063917306923.exe\")\n file/memory\
+      \ contains long string(File: \"179865061948.exe\")\n file/memory contains long\
+      \ string(File: \"505802447699.exe\")\n file/memory contains long string(File:\
+      \ \"553964568063.exe\")"
+  - EventData: Able to retrieve command line parameters of the running process
+  - EventData: string-930
+  - EventData: '"z:\build\build\src\obj-firefox\toolkit\mozapps\update\updater\updater.pdb"'
+  - EventData: Contains PDB pathways
+  - EventData: string-7
+  - EventData: "Found reference to API \"DeviceIoControl\" (Indicator: \"DeviceIoControl\"\
+      ; File: \"eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin\"\
+      )\n Found reference to API \"DeviceIoControl\" (Indicator: \"DeviceIoControl\"\
+      ; Source: \"00000000-00005140.00000000.180371.69224000.00000004.mdmp, 00000000-00005140.00000000.180371.69718000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create/control drivers (API string)
+  - EventData: string-220
+  - EventData: 'file/memory contains long string(File: "682846916546.exe")'
+  - EventData: References Windows LDAP client module
+  - EventData: string-987
+  selection_network:
+  - DestinationHostname: 000470905135.exe
+  - DestinationHostname: 000974672353.exe
+  - DestinationHostname: 001368577750.exe
+  - DestinationHostname: 002205629707.exe
+  - DestinationHostname: 007795141162-theThing.exe
+  - DestinationHostname: 016060364214-theThing.exe
+  - DestinationHostname: 024029917334-theThing.exe
+  - DestinationHostname: 029944709707.exe
+  - DestinationHostname: 032180569303-theThing.exe
+  - DestinationHostname: 033560101866-theThing.exe
+  - DestinationHostname: 034345328610.exe
+  - DestinationHostname: 038389777273.exe
+  - DestinationHostname: 041433192976-theThing.exe
+  - DestinationHostname: 045723791528.exe
+  - DestinationHostname: 046014595453-theThing.exe
+  - DestinationHostname: 053909830239.exe
+  - DestinationHostname: 056331327139.exe
+  - DestinationHostname: 067395296116-theThing.exe
+  - DestinationHostname: 069623995007.exe
+  - DestinationHostname: 069797441370-theThing.exe
+  - DestinationHostname: 077159689334-theThing.exe
+  - DestinationHostname: 078208106444.exe
+  - DestinationHostname: 079242365470-theThing.exe
+  - DestinationHostname: 084389419279-theThing.exe
+  - DestinationHostname: 084800811416-theThing.exe
+  - DestinationHostname: 086548434867.exe
+  - DestinationHostname: 086841079354-theThing.exe
+  - DestinationHostname: 088125269984-theThing.exe
+  - DestinationHostname: 090524471513-theThing.exe
+  - DestinationHostname: 094606170499.exe
+  - DestinationHostname: 097166167522-theThing.exe
+  - DestinationHostname: 097173142479-theThing.exe
+  - DestinationHostname: 101009251974-theThing.exe
+  - DestinationHostname: 104095381712-theThing.exe
+  - DestinationHostname: 111208645459.exe
+  - DestinationHostname: 112041085262-theThing.exe
+  - DestinationHostname: 114841421318.exe
+  - DestinationHostname: 128753236895.exe
+  - DestinationHostname: 130795567479.exe
+  - DestinationHostname: 131740203890.exe
+  - DestinationHostname: 131758889917.exe
+  - DestinationHostname: 132164439495-theThing.exe
+  - DestinationHostname: 133235984860.exe
+  - DestinationHostname: 139354620668-theThing.exe
+  - DestinationHostname: 144858643155.exe
+  - DestinationHostname: 145244611311-theThing.exe
+  - DestinationHostname: 146609935357.exe
+  - DestinationHostname: 152472390891.exe
+  - DestinationHostname: 152623955384.exe
+  - DestinationHostname: 152846886850-theThing.exe
+  - DestinationHostname: 153908629228.exe
+  - DestinationHostname: 158935825314-theThing.exe
+  - DestinationHostname: 159347343708.exe
+  - DestinationHostname: 161889049386.exe
+  - DestinationHostname: 162414457301.exe
+  - DestinationHostname: 165196480830-theThing.exe
+  - DestinationHostname: 166418195222.exe
+  - DestinationHostname: 167596801942.exe
+  - DestinationHostname: 169674420527-theThing.exe
+  - DestinationHostname: 170232890930.exe
+  - DestinationHostname: 183145840480-theThing.exe
+  - DestinationHostname: 197447152864.exe
+  - DestinationHostname: 199506168301.exe
+  - DestinationHostname: 200783675101.exe
+  - DestinationHostname: 204890403512-theThing.exe
+  - DestinationHostname: 205103963549.exe
+  - DestinationHostname: 208107835832.exe
+  - DestinationHostname: 214081544028-theThing.exe
+  - DestinationHostname: 220374464060-theThing.exe
+  - DestinationHostname: 221182007317-theThing.exe
+  - DestinationHostname: 223428372094.exe
+  - DestinationHostname: 226419168119.exe
+  - DestinationHostname: 234941059537-theThing.exe
+  - DestinationHostname: 235319579499-theThing.exe
+  - DestinationHostname: 237207734573.exe
+  - DestinationHostname: 239773433524.exe
+  - DestinationHostname: 241302073876-theThing.exe
+  - DestinationHostname: 241985883584.exe
+  - DestinationHostname: 245088653787.exe
+  - DestinationHostname: 245155636750-theThing.exe
+  - DestinationHostname: 245366110719.exe
+  - DestinationHostname: 252027444384.exe
+  - DestinationHostname: 258351827700.exe
+  - DestinationHostname: 261029249229-theThing.exe
+  - DestinationHostname: 267274049285-theThing.exe
+  - DestinationHostname: 274356800298-theThing.exe
+  - DestinationHostname: 279668275338-theThing.exe
+  - DestinationHostname: 290578223146-theThing.exe
+  - DestinationHostname: 292768078883.exe
+  - DestinationHostname: 294709763060.exe
+  - DestinationHostname: 295989173125.exe
+  - DestinationHostname: 299046120813-theThing.exe
+  - DestinationHostname: 301512627094-theThing.exe
+  - DestinationHostname: 301856961829.exe
+  - DestinationHostname: 304321673389-theThing.exe
+  - DestinationHostname: 305576783714-theThing.exe
+  - DestinationHostname: 307328646130-theThing.exe
+  - DestinationHostname: 308417138216.exe
+  - DestinationHostname: 311748725478-theThing.exe
+  - DestinationHostname: 316633220629.exe
+  - DestinationHostname: 32.dll
+  - DestinationHostname: 320226673236.exe
+  - DestinationHostname: 324969320421-theThing.exe
+  - DestinationHostname: 326931727404.exe
+  - DestinationHostname: 337283065471-theThing.exe
+  - DestinationHostname: 343233548282.exe
+  - DestinationHostname: 346564876387.exe
+  - DestinationHostname: 351420939450-theThing.exe
+  - DestinationHostname: 356849301274-theThing.exe
+  - DestinationHostname: 357503930417-theThing.exe
+  - DestinationHostname: 358432372862.exe
+  - DestinationHostname: 372509596302-theThing.exe
+  - DestinationHostname: 374000570026-theThing.exe
+  - DestinationHostname: 381694567262.exe
+  - DestinationHostname: 392053158291.exe
+  - DestinationHostname: 392661385061.exe
+  - DestinationHostname: 392940210205-theThing.exe
+  - DestinationHostname: 393950703815.exe
+  - DestinationHostname: 395169401210-theThing.exe
+  - DestinationHostname: 397312492891-theThing.exe
+  - DestinationHostname: 3DBuilder.ResourceResolver.exe
+  - DestinationHostname: 3DViewer.exe
+  - DestinationHostname: 403204528929.exe
+  - DestinationHostname: 406049152648-theThing.exe
+  - DestinationHostname: 408763551833.exe
+  - DestinationHostname: 412828454562-theThing.exe
+  - DestinationHostname: 413278081307-theThing.exe
+  - DestinationHostname: 421839793812.exe
+  - DestinationHostname: 423268359653-theThing.exe
+  - DestinationHostname: 425016822041.exe
+  - DestinationHostname: 427624359918-theThing.exe
+  - DestinationHostname: 438719863772.exe
+  - DestinationHostname: 441415420952.exe
+  - DestinationHostname: 449964498629-theThing.exe
+  - DestinationHostname: 454324937479-theThing.exe
+  - DestinationHostname: 460655095174.exe
+  - DestinationHostname: 461160270862-theThing.exe
+  - DestinationHostname: 461392292624-theThing.exe
+  - DestinationHostname: 469333567503.exe
+  - DestinationHostname: 471064644832-theThing.exe
+  - DestinationHostname: 471505071010.exe
+  - DestinationHostname: 475274607546.exe
+  - DestinationHostname: 479409500726.exe
+  - DestinationHostname: 479748515593.exe
+  - DestinationHostname: 488767147715.exe
+  - DestinationHostname: 493884127256-theThing.exe
+  - DestinationHostname: 494151473541.exe
+  - DestinationHostname: 501602340050.exe
+  - DestinationHostname: 527190363129-theThing.exe
+  - DestinationHostname: 527873590585.exe
+  - DestinationHostname: 529484846971-theThing.exe
+  - DestinationHostname: 530391747598-theThing.exe
+  - DestinationHostname: 532505446719-theThing.exe
+  - DestinationHostname: 534634075806.exe
+  - DestinationHostname: 535962666633.exe
+  - DestinationHostname: 536854586164-theThing.exe
+  - DestinationHostname: 538666909431-theThing.exe
+  - DestinationHostname: 540421501564.exe
+  - DestinationHostname: 547051135600.exe
+  - DestinationHostname: 547904931813.exe
+  - DestinationHostname: 556629611959.exe
+  - DestinationHostname: 558970347727.exe
+  - DestinationHostname: 559140239040.exe
+  - DestinationHostname: 559332384251.exe
+  - DestinationHostname: 561249511890.exe
+  - DestinationHostname: 570040226258.exe
+  - DestinationHostname: 576592730689-theThing.exe
+  - DestinationHostname: 582558250683.exe
+  - DestinationHostname: 585272918494-theThing.exe
+  - DestinationHostname: 587572075816.exe
+  - DestinationHostname: 594196974103-theThing.exe
+  - DestinationHostname: 597056359572.exe
+  - DestinationHostname: 607815334756.exe
+  - DestinationHostname: 611359916346.exe
+  - DestinationHostname: 612226011930.exe
+  - DestinationHostname: 633855207306.exe
+  - DestinationHostname: 636547544761.exe
+  - DestinationHostname: 646078083289.exe
+  - DestinationHostname: 652731013853.exe
+  - DestinationHostname: 656561536365-theThing.exe
+  - DestinationHostname: 658536353609.exe
+  - DestinationHostname: 658647139251-theThing.exe
+  - DestinationHostname: 661796873524-theThing.exe
+  - DestinationHostname: 667187372873-theThing.exe
+  - DestinationHostname: 679358350107-theThing.exe
+  - DestinationHostname: 682004570946-theThing.exe
+  - DestinationHostname: 683668148703.exe
+  - DestinationHostname: 685367462372-theThing.exe
+  - DestinationHostname: 686365938456-theThing.exe
+  - DestinationHostname: 691539868215.exe
+  - DestinationHostname: 696923745136.exe
+  - DestinationHostname: 701689238033-theThing.exe
+  - DestinationHostname: 702586053485-theThing.exe
+  - DestinationHostname: 702659797999-theThing.exe
+  - DestinationHostname: 702850168475-theThing.exe
+  - DestinationHostname: 704216670488-theThing.exe
+  - DestinationHostname: 704709696412.exe
+  - DestinationHostname: 708658024752.exe
+  - DestinationHostname: 709485739538-theThing.exe
+  - DestinationHostname: 712615008741.exe
+  - DestinationHostname: 713248489878-theThing.exe
+  - DestinationHostname: 715834340537-theThing.exe
+  - DestinationHostname: 723485316898.exe
+  - DestinationHostname: 724373207567.exe
+  - DestinationHostname: 727527585127-theThing.exe
+  - DestinationHostname: 732586678706-theThing.exe
+  - DestinationHostname: 736857263802-theThing.exe
+  - DestinationHostname: 737464649156.exe
+  - DestinationHostname: 741065733967-theThing.exe
+  - DestinationHostname: 742070211107-theThing.exe
+  - DestinationHostname: 744130228739-theThing.exe
+  - DestinationHostname: 747520640542-theThing.exe
+  - DestinationHostname: 749656770340.exe
+  - DestinationHostname: 750470183803.exe
+  - DestinationHostname: 753814052506-theThing.exe
+  - DestinationHostname: 755295632969-theThing.exe
+  - DestinationHostname: 766191339989-theThing.exe
+  - DestinationHostname: 771715939590-theThing.exe
+  - DestinationHostname: 772474203172.exe
+  - DestinationHostname: 775381907203.exe
+  - DestinationHostname: 781099838062-theThing.exe
+  - DestinationHostname: 784432908205.exe
+  - DestinationHostname: 791298728590-theThing.exe
+  - DestinationHostname: 793259346876-theThing.exe
+  - DestinationHostname: 795518963729-theThing.exe
+  - DestinationHostname: 797272824230-theThing.exe
+  - DestinationHostname: 799288035079-theThing.exe
+  - DestinationHostname: 804825063222.exe
+  - DestinationHostname: 808193170217-theThing.exe
+  - DestinationHostname: 819055582019-theThing.exe
+  - DestinationHostname: 819208457386.exe
+  - DestinationHostname: 819532536998-theThing.exe
+  - DestinationHostname: 824807120274.exe
+  - DestinationHostname: 832560790613-theThing.exe
+  - DestinationHostname: 842989015004-theThing.exe
+  - DestinationHostname: 844223903375-theThing.exe
+  - DestinationHostname: 844381866829.exe
+  - DestinationHostname: 846714586934.exe
+  - DestinationHostname: 851827556877.exe
+  - DestinationHostname: 855367306618.exe
+  - DestinationHostname: 859763923167.exe
+  - DestinationHostname: 861224229203.exe
+  - DestinationHostname: 863054145404-theThing.exe
+  - DestinationHostname: 868440221206-theThing.exe
+  - DestinationHostname: 869749976510.exe
+  - DestinationHostname: 870908524890.exe
+  - DestinationHostname: 871371848280.exe
+  - DestinationHostname: 872549116404.exe
+  - DestinationHostname: 889375559118-theThing.exe
+  - DestinationHostname: 892206114598.exe
+  - DestinationHostname: 909440616177-theThing.exe
+  - DestinationHostname: 916192908746.exe
+  - DestinationHostname: 923578606955.exe
+  - DestinationHostname: 923661312554-theThing.exe
+  - DestinationHostname: 925255379490.exe
+  - DestinationHostname: 927401691510-theThing.exe
+  - DestinationHostname: 929325524480-theThing.exe
+  - DestinationHostname: 930002577794.exe
+  - DestinationHostname: 932210557281.exe
+  - DestinationHostname: 935109742575-theThing.exe
+  - DestinationHostname: 937254595542-theThing.exe
+  - DestinationHostname: 940606974361.exe
+  - DestinationHostname: 944039548468-theThing.exe
+  - DestinationHostname: 944342187903.exe
+  - DestinationHostname: 949572801794.exe
+  - DestinationHostname: 956182598551-theThing.exe
+  - DestinationHostname: 966429534806-theThing.exe
+  - DestinationHostname: 969965152407-theThing.exe
+  - DestinationHostname: 975273580351-theThing.exe
+  - DestinationHostname: 977751357082-theThing.exe
+  - DestinationHostname: 981759023658-theThing.exe
+  - DestinationHostname: 981911400861-theThing.exe
+  - DestinationHostname: 983485256116.exe
+  - DestinationHostname: 989911747166-theThing.exe
+  - DestinationHostname: 991388209782.exe
+  - DestinationHostname: 992918241378-theThing.exe
+  - DestinationHostname: 993793760451-theThing.exe
+  - DestinationHostname: 996380965823.exe
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: ActiveX.exe
+  - DestinationHostname: AppInstaller.exe
+  - DestinationHostname: BrowserCore.exe
+  - DestinationHostname: Builder3D.exe
+  - DestinationHostname: CRYPT32.dll
+  - DestinationHostname: ConfigSecurityPolicy.exe
+  - DestinationHostname: DW20.exe
+  - DestinationHostname: DiagTrackRunner.exe
+  - DestinationHostname: ExtExport.exe
+  - DestinationHostname: FlickLearningWizard.exe
+  - DestinationHostname: GatherOsState.exe
+  - DestinationHostname: GetHelp.exe
+  - DestinationHostname: IEContentService.exe
+  - DestinationHostname: Icon.033F861B.4BF0.431A.8E7C.58F53D588960.exe
+  - DestinationHostname: Icon.05529995.0C4B.4B5C.8A34.4C8FB6C493E2.exe
+  - DestinationHostname: Icon.1CAF0566.1385.42CB.A31F.580978CFEED1.exe
+  - DestinationHostname: Icon.40BB677D.0A7A.4D43.9F72.5AE6F0E97EE2.exe
+  - DestinationHostname: Icon.4DC581BB.4DF6.4376.8C18.AC7690CBEE7B.exe
+  - DestinationHostname: Icon.57D52F1E.F0D3.4F58.8F76.E727437CB7A9.exe
+  - DestinationHostname: Icon.6AFF5016.E571.4E7C.AE8E.B1EB13D36EE2.exe
+  - DestinationHostname: Icon.7E3E9021.9723.4BFF.BACD.087B95A4CC01.exe
+  - DestinationHostname: Icon.7F73F864.FB56.49F2.8A13.7D9952C3AAED.exe
+  - DestinationHostname: Icon.8D34AD9F.DDB0.4D70.9623.57654F34F816.exe
+  - DestinationHostname: Icon.90768852.08A2.494E.BF63.2D2AF2998F37.exe
+  - DestinationHostname: Icon.9EE5A229.931B.4BB5.B8A7.79EF229F3D68.exe
+  - DestinationHostname: Icon.A5AEEF5F.4B00.496A.BD92.039B20A17EDA.exe
+  - DestinationHostname: Icon.B9FB7347.CAE7.494C.A15D.5C1DB5D01BEC.exe
+  - DestinationHostname: Icon.D9679595.74DB.4A19.BF75.158941B688AB.exe
+  - DestinationHostname: ImagingDevices.exe
+  - DestinationHostname: InputPersonalization.exe
+  - DestinationHostname: KMS.exe
+  - DestinationHostname: MSASCui.exe
+  - DestinationHostname: MSASCuiL.exe
+  - DestinationHostname: MessagingApplication.exe
+  - DestinationHostname: Microsoft.BingFinance
+  - DestinationHostname: Microsoft.BingNews
+  - DestinationHostname: Microsoft.BingSports
+  - DestinationHostname: Microsoft.BingWeather
+  - DestinationHostname: Microsoft.DesktopAppInstaller
+  - DestinationHostname: Microsoft.GetHelp
+  - DestinationHostname: Microsoft.Getstarted
+  - DestinationHostname: Microsoft.MSPaint
+  - DestinationHostname: Microsoft.Messaging
+  - DestinationHostname: Microsoft.Microsoft
+  - DestinationHostname: Microsoft.MicrosoftOfficeHub
+  - DestinationHostname: Microsoft.MicrosoftSolitaireCollection
+  - DestinationHostname: Microsoft.MicrosoftSolitaireCollection.exe
+  - DestinationHostname: Microsoft.MicrosoftStickyNotes
+  - DestinationHostname: Microsoft.Msn.Money.exe
+  - DestinationHostname: Microsoft.Msn.News.exe
+  - DestinationHostname: Microsoft.Msn.Sports.exe
+  - DestinationHostname: Microsoft.Msn.Weather.exe
+  - DestinationHostname: Microsoft.NET
+  - DestinationHostname: Microsoft.Net
+  - DestinationHostname: Microsoft.Notes.exe
+  - DestinationHostname: Microsoft.Office.OneNote
+  - DestinationHostname: Microsoft.OneConnect
+  - DestinationHostname: Microsoft.People
+  - DestinationHostname: Microsoft.Print
+  - DestinationHostname: Microsoft.VisualBasic.ni.dll
+  - DestinationHostname: MpCmdRun.exe
+  - DestinationHostname: MpUXSrv.exe
+  - DestinationHostname: MpUxSrv.exe
+  - DestinationHostname: MsMpEng.exe
+  - DestinationHostname: MsSense.exe
+  - DestinationHostname: NPFInstall.exe
+  - DestinationHostname: NisSrv.exe
+  - DestinationHostname: ODeploy.exe
+  - DestinationHostname: OLEAUT32.dll
+  - DestinationHostname: Oarpmany.exe
+  - DestinationHostname: OfficeHubTaskHost.exe
+  - DestinationHostname: OfficeHubWin32.exe
+  - DestinationHostname: OfflineScannerShell.exe
+  - DestinationHostname: OneConnect.exe
+  - DestinationHostname: PaintStudio.View.exe
+  - DestinationHostname: Pastebin.com
+  - DestinationHostname: PeopleApp.exe
+  - DestinationHostname: Print3D.exe
+  - DestinationHostname: SHLWAPI.dll
+  - DestinationHostname: SenseCncProxy.exe
+  - DestinationHostname: SenseSampleUploader.exe
+  - DestinationHostname: SetupHost.exe
+  - DestinationHostname: ShapeCollector.exe
+  - DestinationHostname: SmartTagInstall.exe
+  - DestinationHostname: Solitaire.exe
+  - DestinationHostname: System.Configuration
+  - DestinationHostname: System.Configuration.ni.dll
+  - DestinationHostname: System.Core
+  - DestinationHostname: System.Core.ni.dll
+  - DestinationHostname: System.Xml
+  - DestinationHostname: System.Xml.ni.dll
+  - DestinationHostname: System.ni.dll
+  - DestinationHostname: TabTip.exe
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: Uninstall.exe
+  - DestinationHostname: VERSION.dll
+  - DestinationHostname: VSTOInstaller.exe
+  - DestinationHostname: View3D.ResourceResolver.exe
+  - DestinationHostname: WhatsNew.Store.exe
+  - DestinationHostname: Wordconv.exe
+  - DestinationHostname: advapi32.dll
+  - DestinationHostname: api-ms-win-appmodel-runtime-l1-1-2.dll
+  - DestinationHostname: api-ms-win-core-quirks-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: api-ms-win-core-winrt-l1-1-0.dll
+  - DestinationHostname: api-ms-win-core-xstate-l2-1-0.dll
+  - DestinationHostname: appidcertstorecheck.exe
+  - DestinationHostname: audiodg.exe
+  - DestinationHostname: autofmt.exe
+  - DestinationHostname: axinstui.exe
+  - DestinationHostname: bcrypt.dll
+  - DestinationHostname: chrmstp.exe
+  - DestinationHostname: chrome.exe
+  - DestinationHostname: clip.exe
+  - DestinationHostname: clr.dll
+  - DestinationHostname: clrjit.dll
+  - DestinationHostname: combase.dll
+  - DestinationHostname: control.exe
+  - DestinationHostname: credentialuibroker.exe
+  - DestinationHostname: credwiz.exe
+  - DestinationHostname: crypt32.dll
+  - DestinationHostname: dir0000.chk
+  - DestinationHostname: dir0001.chk
+  - DestinationHostname: dir0002.chk
+  - DestinationHostname: disktoast.exe
+  - DestinationHostname: dwtrig20.exe
+  - DestinationHostname: easpolicymanagerbrokerhost.exe
+  - DestinationHostname: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin
+  - DestinationHostname: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin..exe
+  - DestinationHostname: eee57b003b08afc5b2c1f4c8ae61ba26ec1896545c5eab14757889ebdc032993.bin.exe
+  - DestinationHostname: excelcnv.exe
+  - DestinationHostname: helper.exe
+  - DestinationHostname: iediagcmd.exe
+  - DestinationHostname: ieinstal.exe
+  - DestinationHostname: ielowutil.exe
+  - DestinationHostname: iexplore.exe
+  - DestinationHostname: iphlpapi.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: launcher.exe
+  - DestinationHostname: microsoft-onecore-i..atedusermode
+  - DestinationHostname: microsoft-windows-a..cation
+  - DestinationHostname: microsoft-windows-b..vironment
+  - DestinationHostname: microsoft-windows-m..cymanagerbrokerhost
+  - DestinationHostname: mighost.exe
+  - DestinationHostname: mip.exe
+  - DestinationHostname: misc.exe
+  - DestinationHostname: mitmdump.exe
+  - DestinationHostname: mitmproxy.exe
+  - DestinationHostname: mitmweb.exe
+  - DestinationHostname: mscoree.dll
+  - DestinationHostname: mscoreei.dll
+  - DestinationHostname: mscorlib.ni.dll
+  - DestinationHostname: msinfo32.exe
+  - DestinationHostname: node.exe
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: ole32.dll
+  - DestinationHostname: onenoteim.exe
+  - DestinationHostname: onenoteshare.exe
+  - DestinationHostname: ose.exe
+  - DestinationHostname: osrrb.exe
+  - DestinationHostname: proxy.exe
+  - DestinationHostname: psapi.dll
+  - DestinationHostname: rasapi32.dll
+  - DestinationHostname: secur32.dll
+  - DestinationHostname: securekernel.exe
+  - DestinationHostname: sedlauncher.exe
+  - DestinationHostname: sedsvc.exe
+  - DestinationHostname: service.exe
+  - DestinationHostname: setup.exe
+  - DestinationHostname: setupplatform.exe
+  - DestinationHostname: setupprep.exe
+  - DestinationHostname: shell32.dll
+  - DestinationHostname: shost.exe
+  - DestinationHostname: sxs.dll
+  - DestinationHostname: tzres.dll.mui
+  - DestinationHostname: uninstall.exe
+  - DestinationHostname: user32.dll
+  - DestinationHostname: wab.exe
+  - DestinationHostname: wabmig.exe
+  - DestinationHostname: wdnsfltr.exe
+  - DestinationHostname: winhttp.dll
+  - DestinationHostname: winresume.exe
+  - DestinationHostname: wm.exe
+  - DestinationHostname: wmlaunch.exe
+  - DestinationHostname: wmpconfig.exe
+  - DestinationHostname: wmplayer.exe
+  - DestinationHostname: wmpnetwk.exe
+  - DestinationHostname: wmpnscfg.exe
+  - DestinationHostname: wmprph.exe
+  - DestinationHostname: wmpshare.exe
+  - DestinationHostname: wordpad.exe
+  condition: selection_behavior or selection_network

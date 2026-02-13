@@ -1,0 +1,899 @@
+title: Tool.StormAttack behavior detection (d56b4d6b)
+id: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a
+status: experimental
+description: Auto-generated Sigma rule for Tool.StormAttack
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"19210862817,4644,3142,,CreateProcessA,kernel32.dll,\"\
+      00:56:26.703\",RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00000272.00000001.216752.028E0000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"33966614392,3856,3142,,CreateProcessA,kernel32.dll,\"00:55:49.718\"\
+      ,RX=0,PX=0\" (Indicator: \"CreateProcess\"; Source: \"00000000-00003560.00000001.214388.02890000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "\"SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\"\
+      \ in Source: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\\" in Source: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\\" in Source: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\" in Source: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\n\
+      \ \"Software\\Microsoft\\Active Setup\\Installed Components\\\" in Source: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00000272.00000000.216539.028C0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00000272.00000000.216539.028C0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001288.00000000.217070.02C40000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001288.00000000.217070.02C40000.00000004.mdmp\n 00000000-00001288.00000001.217579.02C40000.00000004.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Policies\\\
+      Microsoft\\Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00001288.00000001.217579.02C40000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001332.00000000.212874.02EF0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001332.00000000.212874.02EF0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001976.00000000.214703.02AD0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001976.00000000.214703.02AD0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00003560.00000000.213779.02890000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00003560.00000000.213779.02890000.00000004.mdmp\n \"STRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00003560.00000001.214388.02890000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006420.00000000.222500.02ED0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006420.00000000.222500.02ED0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007140.00000000.211951.02960000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007140.00000000.211951.02960000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007380.00000000.215612.029B0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007380.00000000.215612.029B0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007408.00000000.218819.026A0000.00000004.mdmp\n\
+      \ 00000000-00007408.00000001.220740.026A0000.00000004.mdmp\n \"stry\\Machine\\\
+      Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source:\
+      \ 00000000-00007408.00000000.218819.026A0000.00000004.mdmp\n \"HARDWARE\\DESCRIPTION\\\
+      System\\CentralProcessor\\0\" in Source: 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\" in Source:\
+      \ 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Active Setup\\Installed Components\\\" in Source: 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007408.00000002.222184.026A0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007628.00000000.217895.033C0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007628.00000000.217895.033C0000.00000004.mdmp"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API \"StartServiceCtrlDispatcherA\" (Indicator:\
+      \ \"StartServiceCtrlDispatcher\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartService\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"StartServiceA\" (Indicator: \"StartService\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartServiceCtrlDispatcher\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartService\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"StartServiceA\" (Indicator: \"StartService\"; Source: \"\
+      00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartServiceCtrlDispatcher\"\
+      ; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"StartServiceCtrlDispatcherA\" (Indicator: \"StartService\"\
+      ; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"StartServiceA\" (Indicator: \"StartService\"; Source: \"\
+      00000000-00007140.00000001.212561.00403000.00000002.mdmp\")"
+  - EventData: Contains ability to start a service (API string)
+  - EventData: string-209
+  - EventData: "Found reference to API (Indicator: \"StartServiceCtrlDispatcherA\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"OpenServiceA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"StartServiceA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CloseServiceHandle\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateServiceA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"SetServiceStatus\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemWindowsDirectoryA\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API (Indicator: \"SizeofResource\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"LockResource\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CopyFileA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableA\"; File: \"\
+      d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n Found\
+      \ reference to API (Indicator: \"WriteFile\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"SetPriorityClass\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetShortPathNameA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"FindResourceA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcatA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"SetThreadPriority\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualAllocEx\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateRemoteThread\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"WriteProcessMemory\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CoCreateGuid\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GlobalMemoryStatusEx\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"SeShutdownPrivilege\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"URLDownloadToFileA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"gethostbyname\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetVersionExA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDefaultUILanguage\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API (Indicator: \"ExitThread\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteFileA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"wsprintfA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"LookupPrivilegeValueA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteService\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"WSASocketA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"InternetCloseHandle\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"InternetReadFile\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"InternetOpenUrlA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"InternetOpenA\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemWindowsDirectoryA\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateRemoteThread\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteProcessMemory\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualAllocEx\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadPriority\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetPriorityClass\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcatA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableA\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetShortPathNameA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFileA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LockResource\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SizeofResource\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetServiceStatus\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceCtrlDispatcherA\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegQueryValueExA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseServiceHandle\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenServiceA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateServiceA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerA\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateGuid\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemWindowsDirectoryA\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"CreateRemoteThread\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteProcessMemory\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"VirtualAllocEx\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetStartupInfoA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ResumeThread\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetThreadPriority\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThread\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetPriorityClass\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcatA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableA\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"GetShortPathNameA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CopyFileA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalFree\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LockResource\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalAlloc\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SizeofResource\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"FindResourceA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetServiceStatus\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceCtrlDispatcherA\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegQueryValueExA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseServiceHandle\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"StartServiceA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenServiceA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateServiceA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerA\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoCreateGuid\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GlobalMemoryStatusEx\"; Source: \"\
+      00000000-00007408.00000002.222184.00405000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SeShutdownPrivilege\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"URLDownloadToFileA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"gethostbyname\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetVersionExA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDefaultUILanguage\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Sleep\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitThread\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetFileAttributesA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteFileA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"wsprintfA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"MessageBoxA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ExitWindowsEx\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegQueryValueExA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"AdjustTokenPrivileges\"; Source: \"\
+      00000000-00007408.00000002.222184.00405000.00000002.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LookupPrivilegeValueA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenProcessToken\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"DeleteService\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenServiceA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"OpenSCManagerA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteValueA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"WSASocketA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetCloseHandle\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetReadFile\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetOpenUrlA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found reference to API (Indicator: \"InternetOpenA\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found registry modification API: \"RegCreateKeyA\" in file \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      \n Found registry modification API: \"RegCreateKeyA\" in \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      \n Found registry modification API: \"RegCreateKeyA\" in \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "Found reference to API \"CloseServiceHandle\" (Indicator: \"CloseServiceHandle\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"CloseServiceHandle\" (Indicator: \"CloseServiceHandle\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"CloseServiceHandle\" (Indicator: \"CloseServiceHandle\"\
+      ; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")"
+  - EventData: Contains ability to close a handle to a service (API string)
+  - EventData: string-242
+  - EventData: "Found reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"OpenSCManagerA\" (Indicator: \"OpenSCManager\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )"
+  - EventData: Able to enumerate service (API string)
+  - EventData: string-191
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"GetLastError\" (Indicator: \"GetLastError\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"ResumeThread\" (Indicator: \"ResumeThread\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: "Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"LockResource\" (Indicator: \"LockResource\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API \"FindResourceA\" (Indicator: \"FindResource\"; File:\
+      \ \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\")\n\
+      \ Found reference to API \"LockResource\" (Indicator: \"LockResource\"; Source:\
+      \ \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"LoadResource\" (Indicator: \"LoadResource\"; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\"\
+      ; Source: \"00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found\
+      \ reference to API \"FindResourceA\" (Indicator: \"FindResource\"; Source: \"\
+      00000000-00001332.00000000.212874.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"LockResource\" (Indicator: \"LockResource\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")\n Found reference\
+      \ to API \"SizeofResource\" (Indicator: \"SizeofResource\"; Source: \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\"\
+      )\n Found reference to API \"FindResourceA\" (Indicator: \"FindResource\"; Source:\
+      \ \"00000000-00007140.00000001.212561.00403000.00000002.mdmp\")"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "Found reference to API \"ShellExecuteA\" (Indicator: \"ShellExecute\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"ShellExecuteA\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows\
+      \ NT 5.1; SV1)\" (Indicator: \"mozilla/4.0 (\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 6.00; Windows NT\
+      \ 5.0; MyIE 3.01)\" (Indicator: \"mozilla/4.0 (\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found string \"User-Agent:Mozilla/5.0 (X11; U; Linux i686; en-US; re:1.4.0)\
+      \ Gecko/20080808 Firefox/8.0\" (Indicator: \"mozilla/5.0 (\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 7.00; Windows NT\
+      \ 5.1; MyIE 3.01)\" (Indicator: \"mozilla/4.0 (\"; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT\
+      \ 5.1; SV1)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 6.00; Windows NT\
+      \ 5.0; MyIE 3.01)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found string \"User-Agent:Mozilla/5.0 (X11; U; Linux i686; en-US; re:1.4.0)\
+      \ Gecko/20080808 Firefox/8.0\" (Indicator: \"mozilla/5.0 (\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )\n Found string \"User-Agent:Mozilla/4.0 (compatible; MSIE 7.00; Windows NT\
+      \ 5.1; MyIE 3.01)\" (Indicator: \"mozilla/4.0 (\"; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\"\
+      )"
+  - EventData: Found user-agent related strings
+  - EventData: string-127
+  - EventData: "Found string \"%WINDIR%\\system32\\cmd.exe /c  del C:\\D56B4D~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007140-00000C46-33743683399\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del C:\\D56B4D~1.EXE > nul\"\
+      \ (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007140-00000C46-33743683399\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{4C6AC~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00001332-00000C46-32393014556\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{4C6AC~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00001332-00000C46-32393014556\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{612AA~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00003560-00000C46-33966614392\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{612AA~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00003560-00000C46-33966614392\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{21623~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00001976-00000C46-33442591930\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{21623~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00001976-00000C46-33442591930\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{6312E~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007380-00000C46-34076206147\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{6312E~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007380-00000C46-34076206147\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{0D1F9~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00000272-00000C46-19210862817\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{0D1F9~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00000272-00000C46-19210862817\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{6882F~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00001288-00000C46-30193709656\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{6882F~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00001288-00000C46-30193709656\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{F3864~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007628-00000C46-34025082323\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{F3864~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007628-00000C46-34025082323\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{29C9A~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007408-00000C46-137321596861\"\
+      )\n Found string \"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{29C9A~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007408-00000C46-137321596861\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{6882F~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00001288.00000001.217579.02C40000.00000004.mdmp\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{6882F~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00001288.00000001.217579.02C40000.00000004.mdmp\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{612AA~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00003560.00000001.214388.02890000.00000004.mdmp\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{612AA~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00003560.00000001.214388.02890000.00000004.mdmp\"\
+      )\n Found string \":\\WINDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{6312E~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007380.00000001.216222.029D0000.00000004.mdmp\"\
+      )\n Found string \":\\WINDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{6312E~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007380.00000001.216222.029D0000.00000004.mdmp\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{29C9A~1.EXE\
+      \ > nul\" (Indicator: \"\\system32\\cmd.exe /c \"; Source: \"00000000-00007408.00000002.222184.026A0000.00000004.mdmp\"\
+      )\n Found string \"NDOWS\\system32\\cmd.exe /c  del C:\\WINDOWS\\{29C9A~1.EXE\
+      \ > nul\" (Indicator: \"cmd.exe /c\"; Source: \"00000000-00007408.00000002.222184.026A0000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to executes commands or batch file
+  - EventData: string-174
+  - EventData: "Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; Source: \"00000000-00007408.00000002.222184.00405000.00000002.mdmp\")"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Observed system executable string:\"%WINDIR%\\{4C6AC43C-0025-4096-8C51-58EF03F06EA3}.exe\"\
+      \ [Source: 00000000-00007140-00000BC1-2286343901]\n Observed system executable\
+      \ string:\"%WINDIR%\\SysWOW64\\cmd.exe\" [Source: 00000000-00007140-00000BC0-2286381533]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c  del C:\\\
+      D56B4D~1.EXE > nul\" [Source: 00000000-00007140-00000C46-33743683399]\n Observed\
+      \ system executable string:\"%WINDIR%\\{612AA4F9-41B8-4bbb-9904-ABA3F6B5122D}.exe\"\
+      \ [Source: 00000000-00001332-00000BC1-2300469233]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{4C6AC~1.EXE > nul\"\
+      \ [Source: 00000000-00001332-00000C46-32393014556]\n Observed system executable\
+      \ string:\"%WINDIR%\\{21623C94-DBCA-4934-8A61-91E71E17DBDA}.exe\" [Source: 00000000-00003560-00000BC1-2314906073]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\\
+      {612AA~1.EXE > nul\" [Source: 00000000-00003560-00000C46-33966614392]\n Observed\
+      \ system executable string:\"%WINDIR%\\{6312EF87-B8CC-4c07-9377-7809D75E7656}.exe\"\
+      \ [Source: 00000000-00001976-00000BC1-2329109688]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{21623~1.EXE > nul\"\
+      \ [Source: 00000000-00001976-00000C46-33442591930]\n Observed system executable\
+      \ string:\"%WINDIR%\\{0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710}.exe\" [Source: 00000000-00007380-00000BC1-2343594026]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\\
+      {6312E~1.EXE > nul\" [Source: 00000000-00007380-00000C46-34076206147]\n Observed\
+      \ system executable string:\"%WINDIR%\\{6882FEE6-8D79-4f6d-921B-31CE4BCD149E}.exe\"\
+      \ [Source: 00000000-00000272-00000BC1-2351890166]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{0D1F9~1.EXE > nul\"\
+      \ [Source: 00000000-00000272-00000C46-19210862817]\n Observed system executable\
+      \ string:\"%WINDIR%\\{F3864086-2DDC-4e79-8F55-FA9667BC9657}.exe\" [Source: 00000000-00001288-00000BC1-2364781960]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\\
+      {6882F~1.EXE > nul\" [Source: 00000000-00001288-00000C46-30193709656]\n Observed\
+      \ system executable string:\"%WINDIR%\\{29C9AF49-9A42-410d-8AF8-746C798DFF91}.exe\"\
+      \ [Source: 00000000-00007628-00000BC1-2379234218]\n Observed system executable\
+      \ string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\{F3864~1.EXE > nul\"\
+      \ [Source: 00000000-00007628-00000C46-34025082323]\n Observed system executable\
+      \ string:\"%WINDIR%\\{386717B2-7ECA-470c-A7B1-4C61B46F6D02}.exe\" [Source: 00000000-00007408-00000BC1-2436741755]\n\
+      \ Observed system executable string:\"%WINDIR%\\system32\\cmd.exe /c  del %WINDIR%\\\
+      {29C9A~1.EXE > nul\" [Source: 00000000-00007408-00000C46-137321596861]"
+  - EventData: Possibly uses system binaries (Windows LOLbins)
+  - EventData: string-170
+  - EventData: "\"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source:\
+      \ 00000000-00000272.00000000.216539.028C0000.00000004.mdmp\n \"stry\\Machine\\\
+      Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\" in Source:\
+      \ 00000000-00000272.00000000.216539.028C0000.00000004.mdmp\n \"\\REGISTRY\\\
+      MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001288.00000000.217070.02C40000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001288.00000000.217070.02C40000.00000004.mdmp\n \"STRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Policies\\Microsoft\\\
+      Windows\\Safer\\CodeIdentifiers\" in Source: 00000000-00001288.00000001.217579.02C40000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001288.00000001.217579.02C40000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001332.00000000.212874.02EF0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001332.00000000.212874.02EF0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00001976.00000000.214703.02AD0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00001976.00000000.214703.02AD0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00003560.00000000.213779.02890000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00003560.00000000.213779.02890000.00000004.mdmp\n \"STRY\\\
+      USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\Windows\\\
+      CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00003560.00000001.214388.02890000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00006420.00000000.222500.02ED0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00006420.00000000.222500.02ED0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007140.00000000.211951.02960000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007140.00000000.211951.02960000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007380.00000000.215612.029B0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007380.00000000.215612.029B0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007408.00000000.218819.026A0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007408.00000000.218819.026A0000.00000004.mdmp\n \"\\\
+      REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007408.00000001.220740.026A0000.00000004.mdmp\n\
+      \ \"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\" in Source: 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n\
+      \ \"SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\" in Source:\
+      \ 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n \"Software\\Microsoft\\\
+      Active Setup\\Installed Components\\\" in Source: 00000000-00007408.00000002.222184.00405000.00000002.mdmp\n\
+      \ \"STRY\\USER\\S-1-5-21-735145574-3570218355-1207367261-1001\\Software\\Microsoft\\\
+      Windows\\CurrentVersion\\Explorer\\Shell Folders\" in Source: 00000000-00007408.00000002.222184.026A0000.00000004.mdmp\n\
+      \ \"\\REGISTRY\\MACHINE\\Software\\Classes\\PackagedCom\" in Source: 00000000-00007628.00000000.217895.033C0000.00000004.mdmp\n\
+      \ \"stry\\Machine\\Software\\Classes\\CLSID\\{FA445657-9379-11D6-B41A-00065B83EE53}\"\
+      \ in Source: 00000000-00007628.00000000.217895.033C0000.00000004.mdmp"
+  - EventData: Found registry location strings in memory
+  - EventData: memorydump-10
+  - EventData: "\"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\"\
+      \ at base 75570000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\"\
+      \ at base 75570000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\"\
+      \ at base 75570000\n \"<Input Sample.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\"\
+      \ at base 72d90000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\\
+      UXTHEME.DLL\" at base 73ef0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\\
+      SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"<Input Sample.exe\" loaded module\
+      \ \"KERNEL32.DLL\" at base 778e0000\n \"<Input Sample.exe\" loaded module \"\
+      %WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"<Input Sample.exe\" loaded\
+      \ module \"OLEAUT32.DLL\" at base 775d0000\n \"<Input Sample.exe\" loaded module\
+      \ \"RPCRT4.DLL\" at base 747e0000\n \"<Input Sample.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\"\
+      \ at base 75950000\n \"<Input Sample.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"<Input Sample.exe\" loaded module \"API-MS-WIN-CORE-COM-L1-1-0.DLL\"\
+      \ at base 74bd0000\n \"<Input Sample.exe\" loaded module \"NTDLL.DLL\" at base\
+      \ 77a20000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\"\
+      \ at base 74390000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"cmd.exe\"\
+      \ loaded module \"KERNEL32\" at base 778e0000\n \"cmd.exe\" loaded module \"\
+      API-MS-WIN-CORE-STRING-L1-1-0\" at base 75570000\n \"cmd.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-DATETIME-L1-1-1\" at base 75570000\n \"cmd.exe\" loaded\
+      \ module \"API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0\" at base 75570000\n\
+      \ \"cmd.exe\" loaded module \"%WINDIR%\\SYSTEM32\\IMM32.DLL\" at base 74920000\n\
+      \ \"cmd.exe\" loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n\
+      \ \"cmd.exe\" loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n\
+      \ \"cmd.exe\" loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base\
+      \ 75570000\n \"cmd.exe\" loaded module \"%WINDIR%\\TEMP\\VXOLE32.DLL\" at base\
+      \ 72d90000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" loaded module \"\
+      API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"NTDLL.DLL\" at base 77a20000\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\APPHELP.DLL\" at base 74390000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-SYNCH-L1-2-0\" at base 75570000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-FIBERS-L1-1-1\" at base 75570000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"API-MS-WIN-CORE-LOCALIZATION-L1-2-1\" at base 75570000\n \"\
+      ?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" loaded module \"KERNEL32\" at base\
+      \ 778e0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" loaded module \"\
+      %WINDIR%\\TEMP\\VXOLE32.DLL\" at base 72d90000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\UXTHEME.DLL\" at base 73ef0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\MSCTF.DLL\" at base 757a0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"KERNEL32.DLL\" at base 778e0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"%WINDIR%\\SYSTEM32\\OLE32.DLL\" at base 774b0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"OLEAUT32.DLL\" at base 775d0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"RPCRT4.DLL\" at base 747e0000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ loaded module \"EXT-MS-WIN-RTCORE-NTUSER-WINDOW-EXT-L1-1-0.DLL\" at base 75950000\n\
+      \ \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" loaded module \"EXT-MS-WIN-RTCORE-NTUSER-INTEGRATION-L1-1-0.DLL\"\
+      \ at base 75950000\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" loaded module\
+      \ \"API-MS-WIN-CORE-COM-L1-1-0.DLL\" at base 74bd0000"
+  - EventData: Loads modules at runtime
+  - EventData: api-7
+  - EventData: "\"<Input Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0\
+      \ (UID: 00000000-00007140)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00007140)\n \"<Input\
+      \ Sample.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1\
+      \ (UID: 00000000-00007140)\n \"<Input Sample.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00007140)\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00001332)\n \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID: 00000000-00001332)\n\
+      \ \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-localization-l1-2-1 (UID: 00000000-00001332)\n\
+      \ \"?4C6AC43C-0025-4096-8C51-58EF03F06EA3?.exe\" called \"LoadLibrary\" with\
+      \ a parameter kernel32 (UID: 00000000-00001332)\n \"cmd.exe\" called \"LoadLibrary\"\
+      \ with a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00006964)\n \"\
+      cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00006964)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00006964)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00006964)\n\
+      \ \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00003560)\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00003560)\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00003560)\n \"?612AA4F9-41B8-4bbb-9904-ABA3F6B5122D?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00003560)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00004608)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00004608)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00004608)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00004608)\n\
+      \ \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00001976)\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00001976)\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00001976)\n \"?21623C94-DBCA-4934-8A61-91E71E17DBDA?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00001976)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00003628)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00003628)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00003628)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00003628)\n\
+      \ \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00007380)\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00007380)\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00007380)\n \"?6312EF87-B8CC-4c07-9377-7809D75E7656?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007380)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00008140)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00008140)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00008140)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00008140)\n\
+      \ \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00000272)\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00000272)\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00000272)\n \"?0D1F9DF9-B0EF-4c3a-8B47-3A3582A7D710?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00000272)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00000188)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00000188)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00000188)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00000188)\n\
+      \ \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00001288)\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00001288)\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00001288)\n \"?6882FEE6-8D79-4f6d-921B-31CE4BCD149E?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00001288)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00007636)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00007636)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00007636)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007636)\n\
+      \ \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00007628)\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00007628)\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00007628)\n \"?F3864086-2DDC-4e79-8F55-FA9667BC9657?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007628)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00002604)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00002604)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00002604)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00002604)\n\
+      \ \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00007408)\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00007408)\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00007408)\n \"?29C9AF49-9A42-410d-8AF8-746C798DFF91?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007408)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00007812)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00007812)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00007812)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00007812)\n\
+      \ \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" called \"LoadLibrary\" with\
+      \ a parameter api-ms-win-core-synch-l1-2-0 (UID: 00000000-00006420)\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1 (UID:\
+      \ 00000000-00006420)\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" called\
+      \ \"LoadLibrary\" with a parameter api-ms-win-core-localization-l1-2-1 (UID:\
+      \ 00000000-00006420)\n \"?386717B2-7ECA-470c-A7B1-4C61B46F6D02?.exe\" called\
+      \ \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00006420)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter api-ms-win-core-synch-l1-2-0 (UID:\
+      \ 00000000-00005504)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter api-ms-win-core-fibers-l1-1-1\
+      \ (UID: 00000000-00005504)\n \"cmd.exe\" called \"LoadLibrary\" with a parameter\
+      \ api-ms-win-core-localization-l1-2-1 (UID: 00000000-00005504)\n \"cmd.exe\"\
+      \ called \"LoadLibrary\" with a parameter kernel32 (UID: 00000000-00005504)"
+  - EventData: Calls an API typically used to load libraries
+  - EventData: api-175
+  selection_network:
+  - DestinationHostname: 1.EXE
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: cmd.exe
+  - DestinationHostname: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin
+  - DestinationHostname: d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin.exe
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: ntdll.dll
+  condition: selection_behavior or selection_network

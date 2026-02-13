@@ -1,0 +1,608 @@
+title: Sality.3 behavior detection (244a61e8)
+id: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5
+status: experimental
+description: Auto-generated Sigma rule for Sality.3
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection_behavior:
+  - EventData: "Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"RegCloseKey(\" (Indicator: \"RegCloseKey\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API \"RegCloseKey\" (Indicator: \"RegCloseKey\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to disable/close registry key (API string)
+  - EventData: string-345
+  - EventData: "Found reference to API \"CreateFileW\" (Indicator: \"CreateFile\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API \"wCreateFileMappingA\" (Indicator: \"CreateFile\"\
+      ; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )\n Found reference to API \"wCreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )\n Found reference to API \"wCreateFileW\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )\n Found reference to API \"CreateFileA\" (Indicator: \"CreateFile\"; Source:\
+      \ \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\")"
+  - EventData: Contains ability to create/open files (API string)
+  - EventData: string-315
+  - EventData: "Found reference to API \"CreateDirectoryW\" (Indicator: \"CreateDirectory\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"wCreateDirectoryA\" (Indicator: \"CreateDirectory\"\
+      ; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to create directories (API string)
+  - EventData: string-423
+  - EventData: "Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"Executor.exec(): CreateProcess\" (Indicator: \"\
+      CreateProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"CreateProcessA\" (Indicator: \"CreateProcess\"\
+      ; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\")"
+  - EventData: Contains ability to create a new process (API string)
+  - EventData: string-204
+  - EventData: "Found reference to API \"ShellExecuteA\" (Indicator: \"ShellExecute\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"ShellExecuteA\" (Indicator: \"ShellExecute\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute an application (API string)
+  - EventData: string-240
+  - EventData: "\"SOFTWARE\\JavaSoft\\Java Update\\Policy\\jucheck\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"SOFTWARE\\JavaSoft\\Java Update\\Policy\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"SOFTWARE\\JavaSoft\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"Software\\JavaSoft\\JRE\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"Software\\JavaSoft\\Java Runtime Environment\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"Software\\JavaSoft\\JDK\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\n\
+      \ \"Software\\JavaSoft\\Java Development Kit\" in Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin"
+  - EventData: Contains registry location strings
+  - EventData: string-120
+  - EventData: "Found reference to API (Indicator: \"RegQueryValueExA\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"RegDeleteKeyA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegQueryInfoKeyW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetSecurityDescriptorDacl\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"RegDeleteValueA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptGetHashParam\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegCloseKey\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptDestroyHash\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptReleaseContext\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegNotifyChangeKeyValue\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"ConvertStringSecurityDescriptorToSecurityDescriptorW\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptCreateHash\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptHashData\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptAcquireContextA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegSetValueExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegEnumKeyExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeSecurityDescriptor\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"CryptUnprotectData\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptProtectData\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptBinaryToStringA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptStringToBinaryA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetStockObject\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HeapAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileAttributesA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetTempPathA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"OutputDebugStringW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ExitProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IsDBCSLeadByte\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LockResource\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IsValidCodePage\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FormatMessageW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FindClose\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcessId\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetEnvironmentVariableW\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"WaitForSingleObject\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileType\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionEx\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"GetSystemInfo\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"OpenMutexA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateEventA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"OpenEventA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IsDebuggerPresent\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCPInfo\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CompareStringW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocalTime\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileSizeEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleMode\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileInformationByHandle\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"SetUnhandledExceptionFilter\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"IsValidLocale\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadResource\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RaiseException\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HeapFree\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualProtect\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FreeLibrary\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcessHeap\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSection\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"WriteFile\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentThreadId\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetExitCodeProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultUILanguage\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"LCMapStringEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ReadConsoleW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"WideCharToMultiByte\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcmpA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TerminateProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetFilePointerEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ReadFile\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentDirectoryW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LocalFree\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetOEMCP\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateMutexA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetStdHandle\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetNativeSystemInfo\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCurrentProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLCID\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HeapReAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FreeEnvironmentStringsW\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"LoadLibraryExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetThreadLocale\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FormatMessageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLastError\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FindNextFileW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FindResourceA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleFileNameA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetStringTypeW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentStringsW\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"QueryPerformanceCounter\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetVersionExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetACP\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LCMapStringW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsFree\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcmpiA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetTimeZoneInformation\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"InitializeSListHead\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetEndOfFile\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SizeofResource\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetDllDirectoryA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetStdHandle\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SystemTimeToTzSpecificLocalTime\";\
+      \ File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VirtualQuery\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCommandLineW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HeapSize\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetLastError\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetDriveTypeW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadLibraryExW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateThread\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateDirectoryW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ResetEvent\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"WaitForMultipleObjects\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"GetStartupInfoW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreatePipe\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteCriticalSection\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFullPathNameW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsGetValue\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TlsSetValue\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"Sleep\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"UnhandledExceptionFilter\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"GetSystemDefaultUILanguage\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FindFirstFileExW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InitializeCriticalSectionAndSpinCount\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcatA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LeaveCriticalSection\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectoryA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"EnterCriticalSection\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"PeekNamedPipe\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IsProcessorFeaturePresent\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"LocalAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DecodePointer\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemTimeAsFileTime\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"FlushFileBuffers\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"lstrcpynA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetHandleInformation\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"WriteConsoleW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetConsoleOutputCP\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetEvent\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetEnvironmentVariableA\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"EncodePointer\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlUnwind\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetModuleHandleExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DeleteFileA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FileTimeToSystemTime\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"MultiByteToWideChar\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SysAllocString\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VariantChangeType\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SysFreeString\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VariantClear\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VariantInit\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetErrorInfo\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ShellExecuteA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"Shell_NotifyIconA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SHGetFolderPathW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CharNextA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DestroyWindow\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadStringA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"AppendMenuA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetMessageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"MessageBoxW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"PeekMessageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TranslateMessage\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetCursorPos\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegisterClassA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"PostMessageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"PostQuitMessage\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"MsgWaitForMultipleObjectsEx\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"CreateWindowExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"TrackPopupMenu\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"ShowWindow\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CreatePopupMenu\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"wsprintfA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetWindowLongA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LoadImageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DispatchMessageA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetDesktopWindow\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetWindowLongA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"DefWindowProcA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemMetrics\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetForegroundWindow\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"VerQueryValueW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetFileVersionInfoSizeA\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"InternetErrorDlg\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HttpSendRequestA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InternetTimeToSystemTime\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"InternetOpenA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HttpOpenRequestA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InternetReadFile\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InternetConnectA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InternetTimeFromSystemTime\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"InternetCloseHandle\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"InternetCrackUrlA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"HttpQueryInfoA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"StringFromGUID2\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoUninitialize\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoCreateInstance\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CLSIDFromString\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemRealloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IIDFromString\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoInitialize\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CoTaskMemFree\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegOpenKeyTransactedA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegCreateKeyTransactedA\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"RegDeleteKeyTransactedA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RegDeleteKeyExA\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"AllocateAndInitializeSid\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"OpenProcessToken\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetTokenInformation\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"EqualSid\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FreeSid\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CryptAcquireContext\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"RtlGetVersion\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetVersionExW\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"IsWow64Process\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetSystemDirectory\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetThreadPreferredUILanguages\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API (Indicator: \"LCIDToLocaleName\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FlsAlloc\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FlsFree\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FlsGetValue\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"FlsSetValue\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"AreFileApisANSI\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"CompareStringEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"EnumSystemLocalesEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetDateFormatEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetLocaleInfoEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetTimeFormatEx\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetUserDefaultLocaleName\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"IsValidLocaleName\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"LocaleNameToLCID\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"SetThreadStackGuarantee\"; File: \"\
+      244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n Found\
+      \ reference to API (Indicator: \"SetErrorMode\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API (Indicator: \"GetProcAddress\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ShellExecuteA\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"Sleep\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"LoadLibraryA\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"VirtualProtect\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"ExitProcess\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RegCloseKey\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"SHFileOperationA\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"wsprintfA\"; Source: \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp,\
+      \ 00000000-00007184.00000000.175279.02750000.00000004.mdmp, 00000000-00007184.00000000.175279.041A0000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.04865000.00000004.mdmp\")\n Found reference\
+      \ to API (Indicator: \"RtlGetVersion\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateProcessA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CloseHandle\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"WriteFile\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"CreateFileA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTickCount\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcpyA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrcatA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"lstrlenA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"GetTempPathA\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )\n Found reference to API (Indicator: \"SetErrorMode\"; Source: \"00000000-00007184.00000000.175279.02750000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to execute Windows APIs
+  - EventData: string-101
+  - EventData: "Found registry modification API: \"RegCreateKeyExA\" in file \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      \n Found registry modification API: \"RegCreateKeyTransactedA\" in file \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\""
+  - EventData: Able to create/load registry keys (API string)
+  - EventData: string-307
+  - EventData: "\"f position !== 'number' || !isFinite(position) || Math.floor(position)\
+      \ !== position || position > subjectString.length) {        position = subjectString.length;\
+      \      }      position -= searchString.length;      var lastIndex = subjectString.indexOf(searchString,\
+      \ position);      return lastIndex !== -1 && lastIndex === position;  };}//\
+      \ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trimif\
+      \ (!String.prototype.trim) {  (function() {    // Make sure we trim BOM and\
+      \ NBSP    var rtrim = /^[\\s\\uFEFF\\xA0]+|[\\s\\uFEFF\\xA0]+$/g;    String.prototype.trim\
+      \ = function() {      return this.replace(rtrim, '');    };  })();}var api =\
+      \ {}api.getFunctionName = function (f) {    var Assert = require(\"Assert\"\
+      )    Assert.t(f instanceof Function)    // get function signature and body \
+      \   var reply = f.toString()    // strip 'function' form the beginning    reply\
+      \ = reply.substr('function'.length)    // drop comments (http://stackoverflow.com/a/15123777)\
+      \    //\" (Indicator: \"stackoverflow.com\")\n \"uctAlmost = function (ctor)\
+      \ {    function stub () {}    stub.prototype = ctor.prototype    var obj = new\
+      \ stub()    obj.constructor = ctor    return obj}api.getOwnProperty = function\
+      \ (obj, name, fallback) {    if (name in obj && Object.prototype.hasOwnProperty.call(obj,\
+      \ name)) {        return obj[name]    }    return fallback}api.getProperty =\
+      \ function (obj, name, fallback) {    if (name in obj) {        return obj[name]\
+      \    }    return fallback}api.singleton = function (ctor) {    return (function\
+      \ () {        var instance;        return function () {            if (instance\
+      \ === undefined) {                instance = ctor()            }           \
+      \ return instance        }    })()}var getAddressWidth = api.singleton(function\
+      \ () {    return require('activex')(\"winmgmts:root\\\\cimv2:Win32_Processor='cpu0'\"\
+      ).AddressWidth})// http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascriptapi.capitalizeFirstLetter\
+      \ = function (str) {    retur\" (Indicator: \"stackoverflow.com\")\n \".join(';\
+      \ '))})}, jibe, 'C:\\\\jenkins\\\\workspace\\\\8-2-build-windows-x64-cygwin-sans-NAS\\\
+      \\jdk8u401\\\\683\\\\install\\\\make\\\\smartmake\\\\scripting\\\\activex.js',\
+      \ 'activex', 4)//////////////////////////////////////////////////////////////////////////////////\
+      \ deepCompare module////////////////////////////////////////////////////////////////////////////////jibe.loadModule(function\
+      \ (require, publish, jibe, __FILE__, __MODULE__, log) {/* * Copyright (c) 2014,\
+      \ Oracle and/or its affiliates. All rights reserved. * ORACLE PROPRIETARY/CONFIDENTIAL.\
+      \ Use is subject to license terms. */// http://stackoverflow.com/questions/1068834/object-comparison-in-javascriptvar\
+      \ deepCompare = (function () {  function compare2Objects (x, y, leftChain, rightChain)\
+      \ {    var p;    // remember that NaN === NaN returns false    // and isNaN(undefined)\
+      \ returns true    if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof\
+      \ y === 'number') {         return true;    }    // Compare primitives and functions.\
+      \    // C\" (Indicator: \"stackoverflow.com\")\n \"er(moduleNameFilter)    }\
+      \    // Copy module information for requested modules    var reply = {}    moduleNames.forEach(function\
+      \ (name) {        var info = Arrays.extend({}, loadedModules[name])        info.name\
+      \ = name        reply[name] = info    })    return reply})        api.require\
+      \ = (function (moduleName) {        if (loadedModules.hasOwnProperty(moduleName))\
+      \ {            // Module has been loaded already            return loadedModules[moduleName].api\
+      \        }        if (!loadedModules.hasOwnProperty(moduleName)) {         \
+      \   fatal(\"Can't find source of \\'\" + moduleName + \"\\' module\")      \
+      \  }    })        api.readFile = (function readFile (path, callback, thisArg)\
+      \ {    function closeStream(stream) {        try {            stream.Close()\
+      \        } catch (e) {            // TBD: report error        }    }    // Detect\
+      \ if file is UCS 16 little-endian encoded (Unicode)    // http://stackoverflow.com/a/1465386/4224163\
+      \    function isUnicode() {        var stream = fso.\" (Indicator: \"stackoverflow.com\"\
+      ), \"uctAlmost = function (ctor) {    function stub () {}    stub.prototype\
+      \ = ctor.prototype    var obj = new stub()    obj.constructor = ctor    return\
+      \ obj}api.getOwnProperty = function (obj, name, fallback) {    if (name in obj\
+      \ && Object.prototype.hasOwnProperty.call(obj, name)) {        return obj[name]\
+      \    }    return fallback}api.getProperty = function (obj, name, fallback) {\
+      \    if (name in obj) {        return obj[name]    }    return fallback}api.singleton\
+      \ = function (ctor) {    return (function () {        var instance;        return\
+      \ function () {            if (instance === undefined) {                instance\
+      \ = ctor()            }            return instance        }    })()}var getAddressWidth\
+      \ = api.singleton(function () {    return require('activex')(\"winmgmts:root\\\
+      \\cimv2:Win32_Processor='cpu0'\").AddressWidth})// http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascriptapi.capitalizeFirstLetter\
+      \ = function (str) {    retu\" (Indicator: \"stackoverflow.com\"), \".join(';\
+      \ '))})}, jibe, 'C:\\\\jenkins\\\\workspace\\\\8-2-build-windows-x64-cygwin-sans-NAS\\\
+      \\jdk8u401\\\\683\\\\install\\\\make\\\\smartmake\\\\scripting\\\\activex.js',\
+      \ 'activex', 4)//////////////////////////////////////////////////////////////////////////////////\
+      \ deepCompare module////////////////////////////////////////////////////////////////////////////////jibe.loadModule(function\
+      \ (require, publish, jibe, __FILE__, __MODULE__, log) {/* * Copyright (c) 2014,\
+      \ Oracle and/or its affiliates. All rights reserved. * ORACLE PROPRIETARY/CONFIDENTIAL.\
+      \ Use is subject to license terms. */// http://stackoverflow.com/questions/1068834/object-comparison-in-javascriptvar\
+      \ deepCompare = (function () {  function compare2Objects (x, y, leftChain, rightChain)\
+      \ {    var p;    // remember that NaN === NaN returns false    // and isNaN(undefined)\
+      \ returns true    if (isNaN(x) && isNaN(y) && typeof x === 'number' && typeof\
+      \ y === 'number') {         return true;    }    // Compare primitives and functions.\
+      \    //\" (Indicator: \"stackoverflow.com\"), \"er(moduleNameFilter)    }  \
+      \  // Copy module information for requested modules    var reply = {}    moduleNames.forEach(function\
+      \ (name) {        var info = Arrays.extend({}, loadedModules[name])        info.name\
+      \ = name        reply[name] = info    })    return reply})        api.require\
+      \ = (function (moduleName) {        if (loadedModules.hasOwnProperty(moduleName))\
+      \ {            // Module has been loaded already            return loadedModules[moduleName].api\
+      \        }        if (!loadedModules.hasOwnProperty(moduleName)) {         \
+      \   fatal(\"Can't find source of \\'\" + moduleName + \"\\' module\")      \
+      \  }    })        api.readFile = (function readFile (path, callback, thisArg)\
+      \ {    function closeStream(stream) {        try {            stream.Close()\
+      \        } catch (e) {            // TBD: report error        }    }    // Detect\
+      \ if file is UCS 16 little-endian encoded (Unicode)    // http://stackoverflow.com/a/1465386/4224163\
+      \    function isUnicode() {        var stream = fso\" (Indicator: \"stackoverflow.com\"\
+      )\n \"// drop comments (http://stackoverflow.com/a/15123777)\" (Indicator: \"\
+      stackoverflow.com\")\n \"// http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript\"\
+      \ (Indicator: \"stackoverflow.com\")\n \"// http://stackoverflow.com/questions/1068834/object-comparison-in-javascript\"\
+      \ (Indicator: \"stackoverflow.com\")\n \"// http://stackoverflow.com/a/1465386/4224163\"\
+      \ (Indicator: \"stackoverflow.com\")"
+  - EventData: Found well known domains (string)
+  - EventData: string-135
+  - EventData: "Found reference to API \"LockResource\" (Indicator: \"LockResource\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"LoadResource\" (Indicator: \"LoadResource\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API \"FindResourceA\" (Indicator: \"FindResource\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API \"SizeofResource\" (Indicator: \"SizeofResource\";\
+      \ File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )"
+  - EventData: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventData: string-550
+  - EventData: "Found reference to API \"GetProcessHeap\" (Indicator: \"GetProcessHeap\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"OpenProcessToken\" (Indicator: \"OpenProcess\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"failed in IsUserInAdminGroup(): lpfnOpenProcessToken()\"\
+      \ (Indicator: \"OpenProcess\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )"
+  - EventData: Contains ability to retrieve/open a process (API string)
+  - EventData: string-272
+  - EventData: "Found reference to API \"GetLastError\" (Indicator: \"GetLastError\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"SetLastError\" (Indicator: \"SetLastError\"; File:\
+      \ \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\")\n\
+      \ Found reference to API \"failed in IsUserInAdminGroup(): GetLastError() !=\
+      \ ERROR_INSUFFICIENT_BUFFER\" (Indicator: \"GetLastError\"; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"wGetLastError\" (Indicator: \"GetLastError\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - EventData: string-319
+  - EventData: "Found reference to API \"GetCommandLineA\" (Indicator: \"GetCommandLine\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"GetCommandLineW\" (Indicator: \"GetCommandLine\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )"
+  - EventData: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventData: string-206
+  - EventData: 'Found reference to API "ShowWindow" (Indicator: "ShowWindow"; File:
+      "244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin")'
+  - EventData: Contains ability to show a graphical window (API string)
+  - EventData: string-208
+  - EventData: "Found reference to API \"CreateThread\" (Indicator: \"CreateThread\"\
+      ; File: \"244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin\"\
+      )\n Found reference to API \"wCreateThread\" (Indicator: \"CreateThread\"; Source:\
+      \ \"00000000-00007184.00000000.175279.004B8000.00000040.mdmp, 00000000-00007184.00000000.175279.02750000.00000004.mdmp,\
+      \ 00000000-00007184.00000000.175279.041A0000.00000004.mdmp, 00000000-00007184.00000000.175279.04865000.00000004.mdmp\"\
+      )"
+  - EventData: Contains ability to retrieve/modify process thread (API string)
+  - EventData: string-161
+  - EventData: '"<Input Sample.exe" writes to a file "C:\Users\%OSUSER%\AppData\Local\Temp\ucvt.exe"'
+  - EventData: Writes files in a temp directory
+  - EventData: api-267
+  - EventData: '"SELECT Value FROM Property WHERE Property = ''" (Source: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin,
+      Indicator: "select value from property where property = ''")'
+  - EventData: Contains SQL queries
+  - EventData: string-16
+  - EventData: "\"<Input Sample.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcryptprimitives.dll\"\
+      \ at 76AE0000\n \"<Input Sample.exe\" loaded module \"%WINDIR%\\SysWOW64\\bcrypt.dll\"\
+      \ at 73820000"
+  - EventData: Loads the Bcrypt module DLL
+  - EventData: module-9
+  - EventData: "Process <Input Sample.exe created mutex with name  \"\\Sessions\\\
+      1\\BaseNamedObjects\\uxJLpe1m\"\n Process <Input Sample.exe created mutex with\
+      \ name  \"memory compressionM_1644_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1692_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1548_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"wininit.exeM_496_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1856_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1820_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1148_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1080_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"services.exeM_636_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1304_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1988_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1392_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1492_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1408_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_744_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_880_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"lsass.exeM_644_\"\n Process <Input Sample.exe created mutex with\
+      \ name  \"svchost.exeM_1760_\"\n Process <Input Sample.exe created mutex with\
+      \ name  \"svchost.exeM_632_\"\n Process <Input Sample.exe created mutex with\
+      \ name  \"svchost.exeM_1288_\"\n Process <Input Sample.exe created mutex with\
+      \ name  \"fontdrvhost.exeM_780_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1900_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1400_\"\n Process <Input Sample.exe created mutex\
+      \ with name  \"svchost.exeM_1812_\""
+  - EventData: Creates mutants
+  - EventData: mutant-0
+  - EventData: 'file/memory contains long string with (Indicator: "text/javascript";
+      File: "244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin")'
+  - EventData: References JavaScript(s)
+  - EventData: string-626
+  selection_network:
+  - DestinationHostname: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin
+  - DestinationHostname: 244a61e86b84c5272b57eb538912d8c9fab7fccad9a2505ddc2324fd344fabc5.bin.exe
+  - DestinationHostname: 32.dll
+  - DestinationHostname: ADVAPI32.dll
+  - DestinationHostname: MSVCRT.dll
+  - DestinationHostname: SHELL32.dll
+  - DestinationHostname: USER32.dll
+  - DestinationHostname: WININET.DLL
+  - DestinationHostname: api-ms-win-core-synch-l1-2-0.dll
+  - DestinationHostname: kernel32.dll
+  - DestinationHostname: ntdll.dll
+  - DestinationHostname: paaaaad.fd.fd
+  - DestinationHostname: padrup.com.ds
+  - DestinationHostname: sobaka1.gif
+  - DestinationHostname: sobakavolos.gif
+  - DestinationIp: 85.85.85.85
+  condition: selection_behavior or selection_network
