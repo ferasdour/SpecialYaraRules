@@ -1,0 +1,24 @@
+title: Win_malicious_confidence_100_ malware detection
+id: Win_mali-bd69ec91
+status: experimental
+description: Detects Win_malicious_confidence_100_ malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to execute an application (API string)
+  - EventType: Can load assembly that contains the code that is currently executing
+      (Dotnet)
+  - EventType: Contains ability to create directories (API string)
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to show a graphical window (API string)
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - EventType: Possibly checks for the presence of an Antivirus engine
+  - EventType: References Windows file paths for DLLs (possible dropped files)
+  - EventType: Possibly uses system binaries (Windows LOLbins)
+  condition: selection
+tags:
+- malware
+- Win_malicious_confidence_100_

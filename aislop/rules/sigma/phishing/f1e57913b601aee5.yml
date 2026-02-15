@@ -1,0 +1,28 @@
+title: phishing malware detection
+id: phishing-f1e57913
+status: experimental
+description: Detects phishing malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: The input sample is signed with a certificate
+  - EventType: Spawns new processes that are not known child processes
+  - EventType: Process launched with changed environment
+  - EventType: Spawns new processes
+  - EventType: Contacts server
+  - EventType: Contacts domains
+  - EventType: Queries DNS server
+  - EventType: Found potential URL in binary/memory
+  - EventType: Short-term SSL certificate detected
+  - EventType: Communicates with HTTP webserver (GET/POST requests)
+  - DestinationHostname: cdn.storageimagedisplay.com
+  - DestinationHostname: skinnycrawlinglax.com
+  - DestinationIp: 172.240.108.84
+  - DestinationIp: 45.133.44.1
+  - DestinationIp: 172.240.108.84
+  condition: selection
+tags:
+- malware
+- phishing

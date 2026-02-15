@@ -1,0 +1,24 @@
+title: evasive malware detection
+id: evasive-53d7694d
+status: experimental
+description: Detects evasive malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to disable/close registry key (API string)
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to create directories (API string)
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to find and load resources of specific modules (API
+      string)
+  - EventType: Able to retrieve command line parameters of the running process
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Found well known domains (string)
+  condition: selection
+tags:
+- malware
+- evasive

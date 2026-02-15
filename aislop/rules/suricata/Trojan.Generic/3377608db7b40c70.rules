@@ -1,0 +1,1 @@
+alert ip $HOME_NET any -> 106.52.51.128 any (msg:"MALWARE C2 106.52.51.128"; sid:396634401; rev:1;)

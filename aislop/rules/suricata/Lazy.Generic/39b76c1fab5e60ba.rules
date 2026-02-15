@@ -1,0 +1,2 @@
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE pee-files.nl"; dns.query; content:"pee-files.nl"; sid:52012901; rev:1;)
+alert ip $HOME_NET any -> 104.21.84.179 any (msg:"MALWARE C2 104.21.84.179"; sid:52012902; rev:1;)

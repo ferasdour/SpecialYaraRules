@@ -1,0 +1,1 @@
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE de5b.northstar.api.socdn.com"; dns.query; content:"de5b.northstar.api.socdn.com"; sid:759966901; rev:1;)

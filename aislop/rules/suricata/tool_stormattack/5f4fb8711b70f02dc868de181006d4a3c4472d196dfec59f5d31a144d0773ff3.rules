@@ -1,7 +1,0 @@
-alert dns any any -> any any (msg:"C2 domain 1.EXE (5f4fb871)"; dns.query; content:"1.EXE"; nocase; sid:994125501; rev:1;)
-alert dns any any -> any any (msg:"C2 domain 5f4fb8711b70f02dc868de181006d4a3c4472d196dfec59f5d31a144d0773ff3.bin (5f4fb871)"; dns.query; content:"5f4fb8711b70f02dc868de181006d4a3c4472d196dfec59f5d31a144d0773ff3.bin"; nocase; sid:994125502; rev:1;)
-alert dns any any -> any any (msg:"C2 domain 5f4fb8711b70f02dc868de181006d4a3c4472d196dfec59f5d31a144d0773ff3.bin.exe (5f4fb871)"; dns.query; content:"5f4fb8711b70f02dc868de181006d4a3c4472d196dfec59f5d31a144d0773ff3.bin.exe"; nocase; sid:994125503; rev:1;)
-alert dns any any -> any any (msg:"C2 domain api-ms-win-core-synch-l1-2-0.dll (5f4fb871)"; dns.query; content:"api-ms-win-core-synch-l1-2-0.dll"; nocase; sid:994125504; rev:1;)
-alert dns any any -> any any (msg:"C2 domain cmd.exe (5f4fb871)"; dns.query; content:"cmd.exe"; nocase; sid:994125505; rev:1;)
-alert dns any any -> any any (msg:"C2 domain kernel32.dll (5f4fb871)"; dns.query; content:"kernel32.dll"; nocase; sid:994125506; rev:1;)
-alert dns any any -> any any (msg:"C2 domain ntdll.dll (5f4fb871)"; dns.query; content:"ntdll.dll"; nocase; sid:994125507; rev:1;)

@@ -1,7 +1,0 @@
-alert dns any any -> any any (msg:"C2 domain 1.EXE (d56b4d6b)"; dns.query; content:"1.EXE"; nocase; sid:378619801; rev:1;)
-alert dns any any -> any any (msg:"C2 domain api-ms-win-core-synch-l1-2-0.dll (d56b4d6b)"; dns.query; content:"api-ms-win-core-synch-l1-2-0.dll"; nocase; sid:378619802; rev:1;)
-alert dns any any -> any any (msg:"C2 domain cmd.exe (d56b4d6b)"; dns.query; content:"cmd.exe"; nocase; sid:378619803; rev:1;)
-alert dns any any -> any any (msg:"C2 domain d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin (d56b4d6b)"; dns.query; content:"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin"; nocase; sid:378619804; rev:1;)
-alert dns any any -> any any (msg:"C2 domain d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin.exe (d56b4d6b)"; dns.query; content:"d56b4d6bb8295abc9407857947fcffcebf202c6a7297640147405358562be44a.bin.exe"; nocase; sid:378619805; rev:1;)
-alert dns any any -> any any (msg:"C2 domain kernel32.dll (d56b4d6b)"; dns.query; content:"kernel32.dll"; nocase; sid:378619806; rev:1;)
-alert dns any any -> any any (msg:"C2 domain ntdll.dll (d56b4d6b)"; dns.query; content:"ntdll.dll"; nocase; sid:378619807; rev:1;)

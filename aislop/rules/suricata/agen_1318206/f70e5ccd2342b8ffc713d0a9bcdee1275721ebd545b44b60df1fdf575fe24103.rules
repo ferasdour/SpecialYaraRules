@@ -1,5 +1,0 @@
-alert dns any any -> any any (msg:"C2 domain 32.dll (f70e5ccd)"; dns.query; content:"32.dll"; nocase; sid:905710001; rev:1;)
-alert dns any any -> any any (msg:"C2 domain f70e5ccd2342b8ffc713d0a9bcdee1275721ebd545b44b60df1fdf575fe24103.bin (f70e5ccd)"; dns.query; content:"f70e5ccd2342b8ffc713d0a9bcdee1275721ebd545b44b60df1fdf575fe24103.bin"; nocase; sid:905710002; rev:1;)
-alert dns any any -> any any (msg:"C2 domain f70e5ccd2342b8ffc713d0a9bcdee1275721ebd545b44b60df1fdf575fe24103.bin.exe (f70e5ccd)"; dns.query; content:"f70e5ccd2342b8ffc713d0a9bcdee1275721ebd545b44b60df1fdf575fe24103.bin.exe"; nocase; sid:905710003; rev:1;)
-alert dns any any -> any any (msg:"C2 domain testmycdn.azureedge.net (f70e5ccd)"; dns.query; content:"testmycdn.azureedge.net"; nocase; sid:905710004; rev:1;)
-alert ip any any -> 151.247.22.212 any (msg:"C2 IP 151.247.22.212 (f70e5ccd)"; sid:905710005; rev:1;)

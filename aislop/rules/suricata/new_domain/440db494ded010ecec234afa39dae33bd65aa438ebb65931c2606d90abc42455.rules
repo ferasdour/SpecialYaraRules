@@ -1,4 +1,0 @@
-alert dns any any -> any any (msg:"C2 domain favicon.ico (440db494)"; dns.query; content:"favicon.ico"; nocase; sid:135930501; rev:1;)
-alert dns any any -> any any (msg:"C2 domain nocheat.icu (440db494)"; dns.query; content:"nocheat.icu"; nocase; sid:135930502; rev:1;)
-alert ip any any -> 107.0.0.0 any (msg:"C2 IP 107.0.0.0 (440db494)"; sid:135930503; rev:1;)
-alert ip any any -> 94.103.1.86 any (msg:"C2 IP 94.103.1.86 (440db494)"; sid:135930504; rev:1;)

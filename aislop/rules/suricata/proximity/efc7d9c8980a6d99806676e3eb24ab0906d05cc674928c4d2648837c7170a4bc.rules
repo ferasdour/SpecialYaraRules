@@ -1,5 +1,0 @@
-alert dns any any -> any any (msg:"C2 domain concrete.co.jp (efc7d9c8)"; dns.query; content:"concrete.co.jp"; nocase; sid:142825201; rev:1;)
-alert dns any any -> any any (msg:"C2 domain favicon.ico (efc7d9c8)"; dns.query; content:"favicon.ico"; nocase; sid:142825202; rev:1;)
-alert dns any any -> any any (msg:"C2 domain index.php (efc7d9c8)"; dns.query; content:"index.php"; nocase; sid:142825203; rev:1;)
-alert ip any any -> 107.0.0.0 any (msg:"C2 IP 107.0.0.0 (efc7d9c8)"; sid:142825204; rev:1;)
-alert ip any any -> 133.130.127.214 any (msg:"C2 IP 133.130.127.214 (efc7d9c8)"; sid:142825205; rev:1;)

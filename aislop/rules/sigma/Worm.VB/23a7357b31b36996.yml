@@ -1,0 +1,23 @@
+title: Worm.VB malware detection
+id: Worm.VB-23a7357b
+status: experimental
+description: Detects Worm.VB malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to execute an application (API string)
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains ability to disable/close registry key (API string)
+  - EventType: Found E-Mail address in binary/memory
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to executes commands or batch file
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - EventType: Creates directory on disk
+  condition: selection
+tags:
+- malware
+- Worm.VB

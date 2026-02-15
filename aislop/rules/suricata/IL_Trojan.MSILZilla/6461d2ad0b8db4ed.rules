@@ -1,0 +1,2 @@
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE larenxzose-39663.portmap.host"; dns.query; content:"larenxzose-39663.portmap.host"; sid:525828201; rev:1;)
+alert ip $HOME_NET any -> 193.161.193.99 any (msg:"MALWARE C2 193.161.193.99"; sid:525828202; rev:1;)

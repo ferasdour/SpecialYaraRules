@@ -1,0 +1,2 @@
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE webcdns.com"; dns.query; content:"webcdns.com"; sid:696394601; rev:1;)
+alert ip $HOME_NET any -> 104.21.30.194 any (msg:"MALWARE C2 104.21.30.194"; sid:696394602; rev:1;)

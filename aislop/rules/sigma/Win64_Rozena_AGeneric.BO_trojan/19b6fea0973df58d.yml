@@ -1,0 +1,25 @@
+title: Win64_Rozena_AGeneric.BO_trojan malware detection
+id: Win64_Ro-19b6fea0
+status: experimental
+description: Detects Win64_Rozena_AGeneric.BO_trojan malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to disable/close registry key (API string)
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to execute an application (API string)
+  - EventType: Contains registry location strings
+  - EventType: Able to retrieve command line parameters of the running process
+  - EventType: Calls an API typically used to copy file from one location to another
+  - EventType: Writes files in a temp directory
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - DestinationHostname: webcdns.com
+  - DestinationIp: 104.21.30.194
+  condition: selection
+tags:
+- malware
+- Win64_Rozena_AGeneric.BO_trojan

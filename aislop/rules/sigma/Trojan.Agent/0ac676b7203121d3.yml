@@ -1,0 +1,25 @@
+title: Trojan.Agent malware detection
+id: Trojan.A-0ac676b7
+status: experimental
+description: Detects Trojan.Agent malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Able to retrieve command line parameters of the running process
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Found E-Mail address in binary/memory
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - EventType: Contains ability to retrieve the command-line string for the current
+      process (API string)
+  - EventType: Possibly uses system binaries (Windows LOLbins)
+  - EventType: Found registry location strings in memory
+  - EventType: Calls an API typically used to copy file from one location to another
+  - DestinationHostname: batyatj6.beget.tech
+  condition: selection
+tags:
+- malware
+- Trojan.Agent

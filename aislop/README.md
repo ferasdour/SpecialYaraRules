@@ -1,24 +1,66 @@
-# What?
+# aislop
 
-Gonna try to refine this into something meaningful, but the gist is, wanted a tool that could pull sample details from HA and turn them into yara rules. Told copilot to run it, did some basic debugging to get it up and running.
+Automated malware rule generation from Hybrid Analysis samples.
 
-The rules might suck right now, but wanting to get them more useful over time. 
+## What?
 
-The current goals:
-- validate and fix yara rule generations
-- validate and fix sigma rule generations
-- the suricata rules work better than the others, but it's just cause it found things and said omg ip addresses. For the love of all things don't use these.
+Tool that pulls malware samples from Hybrid Analysis and generates:
+- YARA rules (file + memory strings)
+- Sigma rules (behavioral IOCs)
+- Suricata rules (network IOCs)
 
-# Why?
+## Why?
 
-Hybrid analysis didn't have a way to pull yara rules, and I didn't want to just parse straight to yargen or something. Maybe I should have just done that. Copilot didn't seem to think it the thing to do either, so whatever. 
+Hybrid Analysis didn't have a way to bulk-export YARA rules. This fills that gap.
 
-# How?
+## How?
 
-- set your hybrid analysis api key with the environment variable HA_API_KEY
-- then run the python script
+```bash
+# Set API key
+export HA_API_KEY=your_hybrid_analysis_key
+
+# Run
+python copilot-hatoyara.py
+```
+
+## Requirements
+
+```bash
+pip install requests pyyaml
+```
+
+## Output
 
 ```
-export HA_API_KEY=ajeioejne....
-./copilot-hatoyara.py
+rules/
+├── yara/
+│   └── dcrat/
+│       └── <sha256>.yar
+├── sigma/
+│   └── dcrat/
+│       └── <sha256>.yml
+└── suricata/
+    └── dcrat/
+        └── <sha256>.rules
 ```
+
+
+## Config
+
+Edit these constants at the top of the script:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `LATEST_LIMIT` | 100 | Samples to fetch |
+| `MAX_WORKERS` | 4 | Thread count |
+| `MIN_REQUEST_INTERVAL` | 5.0 | Rate limiting (seconds) |
+
+## Benign Domains
+
+The script filters out common benign domains. Edit `BENIGN_DOMAINS` set to customize.
+
+## Tags
+
+- Uses `tags` field in Sigma for threat family
+- Includes reference URLs to Hybrid Analysis samples
+- Tracks threat scores from HA verdict
