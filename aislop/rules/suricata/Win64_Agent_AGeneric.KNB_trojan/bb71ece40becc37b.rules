@@ -1,0 +1,2 @@
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE api.valentinesforever.thm"; dns.query; content:"api.valentinesforever.thm"; sid:655035001; rev:1;)
+alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE testmycdn.azureedge.net"; dns.query; content:"testmycdn.azureedge.net"; sid:655035002; rev:1;)

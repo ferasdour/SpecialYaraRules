@@ -29,6 +29,8 @@ from typing import Any
 import requests
 import yaml
 import urllib3
+from ha_fetcher import HAClient
+from ha_rule_builder import generate_family_yara_from_strings
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -62,12 +64,12 @@ HEADERS = {
     "Accept": "application/json",
 }
 
-LATEST_LIMIT = 3
+LATEST_LIMIT = 15
 MAX_WORKERS = 1
 
 GLOBAL_REQUEST_LOCK = threading.Lock()
 LAST_REQUEST_TIME = 0.0
-MIN_REQUEST_INTERVAL = 10.0
+MIN_REQUEST_INTERVAL = 5.0
 MAX_RETRIES = 3
 BACKOFF_BASE = 15.0
 
@@ -236,30 +238,36 @@ def get_summary(report_id: str) -> dict:
         return {}
 
 
-def get_memory_strings(report_id: str) -> list[str]:
-    cached = cache_get(f"ms_{report_id}")
+def get_sample_strings(report_id: str, timeout: int = 30) -> list[str]:
+    """Extract strings from the sample file via HA strings endpoint"""
+    cached = cache_get(f"strings_{report_id}")
     if cached:
         return cached
     
     strings = []
-    
     url = f"{BASE_URL}/report/{report_id}/strings"
+    
     try:
         resp = rate_limited_get(url, accept="application/octet-stream")
-        if resp:
-            zip_data = resp.content
-            with zipfile.ZipFile(io.BytesIO(zip_data)) as zf:
-                for name in zf.namelist():
-                    if name.lower().endswith(".string"):
-                        try:
-                            text = zf.read(name).decode("utf-8", errors="ignore")
-                            strings.extend(PRINTABLE_RE.findall(text))
-                        except:
-                            pass
-    except:
-        pass
+        if not resp or not resp.content:
+            return []
+        
+        zip_data = resp.content
+        with zipfile.ZipFile(io.BytesIO(zip_data)) as zf:
+            for name in zf.namelist():
+                if name.lower().endswith(".string"):
+                    try:
+                        text = zf.read(name).decode("utf-8", errors="ignore")
+                        for line in text.split('\n'):
+                            line = line.strip()
+                            if 4 <= len(line) <= 100:
+                                strings.append(line)
+                    except:
+                        pass
+    except Exception as e:
+        print(f"[!] Strings fetch failed: {e}")
     
-    cache_set(f"ms_{report_id}", strings)
+    cache_set(f"strings_{report_id}", strings)
     return strings
 
 
@@ -393,17 +401,66 @@ def calculate_threshold(total_strings: int) -> str:
     else:
         return "any of them"
 
+GENERIC_STRINGS = {
+    "kernel32.dll", "user32.dll", "advapi32.dll", "ntdll.dll",
+    "shell32.dll", "ole32.dll", "msvcrt.dll", "ws2_32.dll",
+    "Microsoft Corporation", "Windows", "Program Files",
+    "temp", "tmp", "appdata", "localappdata",
+}
+
+def is_generic_string(s: str) -> bool:
+    """Filter out generic strings that appear in every Windows binary"""
+    lower = s.lower()
+    if len(s) < 6:
+        return True
+    if s.isdigit() or s.isalpha():
+        return True
+    for gen in GENERIC_STRINGS:
+        if gen.lower() in lower:
+            return True
+    return False
+
+def filter_sample_strings(strings: list[str], max_count: int = 30) -> list[str]:
+    """Filter sample strings to keep meaningful ones"""
+    filtered = []
+    for s in strings:
+        if is_generic_string(s):
+            continue
+        if s not in filtered:
+            filtered.append(s)
+    return filtered[:max_count]
+
 def generate_family_yara(family: str, samples_data: list[dict]) -> tuple[str, str] | None:
-    all_domains = []
-    all_hosts = []
+    """Generate YARA rule from ACTUAL SAMPLE DATA (imphash, ssdeep, type, etc)"""
+    all_imphashes = []
+    all_ssdeep = []
+    all_types = []
+    all_entrypoints = []
     all_file_names = []
     all_mitre = []
     all_urls = []
+    all_domains = []
+    all_hosts = []
     
     for sd in samples_data:
-        all_domains.extend(sd.get("domains", []))
-        all_hosts.extend(sd.get("hosts", []))
         summary = sd.get("summary", {})
+        
+        imphash = summary.get("imphash")
+        if imphash:
+            all_imphashes.append(imphash)
+        
+        ssdeep = summary.get("ssdeep")
+        if ssdeep:
+            all_ssdeep.append(ssdeep)
+        
+        ptype = summary.get("type_short", [])
+        if ptype:
+            all_types.append(" ".join(ptype))
+        
+        ep = summary.get("entrypoint")
+        if ep:
+            all_entrypoints.append(ep)
+        
         for f in summary.get("extracted_files", [])[:10]:
             name = f.get("name", "")
             if name and len(name) > 4:
@@ -417,9 +474,14 @@ def generate_family_yara(family: str, samples_data: list[dict]) -> tuple[str, st
         target_url = sd.get("target_url")
         if target_url:
             all_urls.append(target_url)
+        
+        all_domains.extend(sd.get("domains", []))
+        all_hosts.extend(sd.get("hosts", []))
     
-    unique_domains = [d for d in set(all_domains) if not is_benign_domain(d)]
-    unique_hosts = list(set(all_hosts))
+    unique_imphashes = list(set(all_imphashes))
+    unique_ssdeep = list(set(all_ssdeep))
+    unique_types = list(set(all_types))
+    unique_eps = list(set(all_entrypoints))
     
     name_counts = Counter(all_file_names)
     common_names = [n for n, count in name_counts.most_common(15) if count >= len(samples_data) // 2][:8]
@@ -429,17 +491,29 @@ def generate_family_yara(family: str, samples_data: list[dict]) -> tuple[str, st
     
     unique_urls = list(set(all_urls))
     
-    if len(unique_urls) < 1 and len(unique_domains) < 1 and len(common_names) < 2 and len(unique_hosts) < 1:
+    unique_domains = [d for d in set(all_domains) if not is_benign_domain(d)]
+    unique_hosts = list(set(all_hosts))
+    
+    if not unique_imphashes and not unique_ssdeep and not unique_types and len(common_names) < 1:
         return None
     
     safe_family = family.replace(":", "_").replace("\\", "_").replace("/", "_")
     
     str_lines = []
-    for i, d in enumerate(unique_domains[:10]):
-        str_lines.append(f'        $d{i} = "{d}"')
-    for i, h in enumerate(unique_hosts[:5]):
-        str_lines.append(f'        $h{i} = "{h}"')
-    for i, name in enumerate(common_names[:8]):
+    
+    for i, imp in enumerate(unique_imphashes[:3]):
+        str_lines.append(f'        $imphash{i} = "{imp}"')
+    
+    for i, ss in enumerate(unique_ssdeep[:3]):
+        str_lines.append(f'        $ssdeep{i} = "{ss}"')
+    
+    for i, t in enumerate(unique_types[:3]):
+        str_lines.append(f'        $type{i} = "{t}"')
+    
+    for i, ep in enumerate(unique_eps[:2]):
+        str_lines.append(f'        $ep{i} = "{ep}"')
+    
+    for i, name in enumerate(common_names[:5]):
         str_lines.append(f'        $fn{i} = "{name}"')
     
     if not str_lines:
@@ -607,13 +681,18 @@ def process_sample(sample: dict) -> dict | None:
 def main():
     global SHUTDOWN_REQUESTED
     
-    print(f"[*] Fetching {LATEST_LIMIT} latest samples...")
-    samples = get_latest_samples(LATEST_LIMIT)
-    print(f"[*] Got {len(samples)} samples from API")
+    print(f"[*] Fetching {LATEST_LIMIT} latest samples via HA fetcher...")
+    ha = HAClient()
+    samples = ha.get_latest(LATEST_LIMIT) or []
+    print(f"[*] HA fetch returned {len(samples)} samples")
+    # Fallback to local cache if HA fetch yields nothing
+    if not samples:
+        samples = get_latest_samples(LATEST_LIMIT)
+        print(f"[*] Local cache yields {len(samples)} samples")
     malicious = filter_malicious(samples)
     print(f"[*] Found {len(malicious)} malicious samples")
     
-    max_process = min(len(malicious), 15)
+    max_process = min(len(malicious), 10)
     malicious = malicious[:max_process]
     print(f"[*] Processing max {max_process} samples")
     
@@ -661,11 +740,43 @@ def main():
         sample = samples_data[0]
         sha256 = sample["sha256"]
         
-        result = generate_family_yara(family, samples_data)
-        if result:
-            yara_rule, safe_family = result
+        # Build YARA from sample-derived data (avoid cache-hints; rely on HA sample data)
+        all_strings = []
+        all_files = []
+        all_domains = []
+        all_hosts = []
+        all_mitre = []
+        all_urls = []
+        for s in samples_data:
+            if isinstance(s, dict):
+                all_strings.extend(s.get("sample_strings", []) or [])
+                summary = s.get("summary", {})
+                for ef in summary.get("extracted_files", []) or []:
+                    name = ef.get("name")
+                    if name:
+                        all_files.append(name)
+                all_domains.extend(summary.get("domains", []) or [])
+                all_hosts.extend(summary.get("hosts", []) or [])
+                for m in summary.get("mitre_attcks", [])[:5]:
+                    tech = m.get("technique", "")
+                    if tech:
+                        all_mitre.append(tech)
+                if summary.get("target_url"):
+                    all_urls.append(summary.get("target_url"))
+
+        sample_strings = list(dict.fromkeys(all_strings))[:30]
+        sample_files = list(dict.fromkeys(all_files))
+        domains = list(dict.fromkeys(all_domains))[:20]
+        ips = list(dict.fromkeys(all_hosts))[:20]
+        first_sha = sha256
+        first_seen = samples_data[0].get("first_seen", "unknown")
+        threat = samples_data[0].get("threat_score", 0)
+        mitre_techniques = list(dict.fromkeys(all_mitre))
+        rule_out = generate_family_yara_from_strings(family, sample_strings, sample_files, domains, ips, first_sha, first_seen, threat, mitre_techniques)
+        if rule_out:
+            yara_rule, safe_family = rule_out
             try:
-                write_yara(safe_family, yara_rule, sha256)
+                write_yara(safe_family, yara_rule, first_sha)
                 yara_count += 1
                 print(f"[+] YARA: {family}")
             except Exception as e:

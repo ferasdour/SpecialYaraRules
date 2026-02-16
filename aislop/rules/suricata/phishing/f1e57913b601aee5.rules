@@ -1,5 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE cdn.storageimagedisplay.com"; dns.query; content:"cdn.storageimagedisplay.com"; sid:364673701; rev:1;)
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE skinnycrawlinglax.com"; dns.query; content:"skinnycrawlinglax.com"; sid:364673702; rev:1;)
-alert ip $HOME_NET any -> 172.240.108.84 any (msg:"MALWARE C2 172.240.108.84"; sid:364673703; rev:1;)
-alert ip $HOME_NET any -> 45.133.44.1 any (msg:"MALWARE C2 45.133.44.1"; sid:364673704; rev:1;)
-alert ip $HOME_NET any -> 172.240.108.84 any (msg:"MALWARE C2 172.240.108.84"; sid:364673705; rev:1;)

@@ -1,0 +1,36 @@
+title: Expiro.Generic malware detection
+id: Expiro.G-2f569bd1
+status: experimental
+description: Detects Expiro.Generic malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to disable/close registry key (API string)
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to execute an application (API string)
+  - EventType: Able to use GrayString API for text rendering
+  - EventType: Contains ability to create directories (API string)
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to executes commands or batch file
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Able to create/load registry keys (API string)
+  - DestinationHostname: anpmnmxo.biz
+  - DestinationHostname: bumxkqgxu.biz
+  - DestinationHostname: cvgrf.biz
+  - DestinationHostname: deoci.biz
+  - DestinationHostname: dwrqljrr.biz
+  - DestinationHostname: dynadot.rsocdomains.com
+  - DestinationHostname: fwiwk.biz
+  - DestinationHostname: gytujflc.biz
+  - DestinationIp: 44.244.22.128
+  - DestinationIp: 50.16.27.236
+  - DestinationIp: 3.229.117.57
+  - DestinationIp: 172.233.219.123
+  - DestinationIp: 192.64.119.165
+  condition: selection
+tags:
+- malware
+- Expiro.Generic

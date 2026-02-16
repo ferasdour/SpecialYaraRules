@@ -1,0 +1,26 @@
+title: suspicious_redirect malware detection
+id: suspicio-daae89f5
+status: experimental
+description: Detects suspicious_redirect malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: The input sample is signed with a certificate
+  - EventType: Process launched with changed environment
+  - EventType: Spawns new processes that are not known child processes
+  - EventType: Spawns new processes
+  - EventType: Contacts server
+  - EventType: Queries DNS server
+  - EventType: Identifies external resources in HTML content
+  - EventType: Dropped files
+  - EventType: Able to visualize and control listed components (API string)
+  - EventType: Found potential URL in binary/memory
+  - DestinationHostname: www.apunkasoftware.net
+  - DestinationIp: 45.12.3.62
+  - DestinationIp: 45.12.3.62
+  condition: selection
+tags:
+- malware
+- suspicious_redirect

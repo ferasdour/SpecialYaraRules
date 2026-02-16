@@ -1,0 +1,26 @@
+title: Win_malicious_confidence_100_ malware detection
+id: Win_mali-ba481f74
+status: experimental
+description: Detects Win_malicious_confidence_100_ malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Found E-Mail address in binary/memory
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains ability to impersonate another user on the local machine (API
+      string)
+  - EventType: Contains ability to create directories (API string)
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Contains ability to retrieve/modify process thread (API string)
+  - EventType: Contains ability to retrieve/open a process (API string)
+  - EventType: Able to rename or move file/directory (API string)
+  - EventType: Contains ability to set/get the last-error code for a calling thread
+      (API string)
+  - DestinationHostname: testmycdn.azureedge.net
+  condition: selection
+tags:
+- malware
+- Win_malicious_confidence_100_

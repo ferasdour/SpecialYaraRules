@@ -1,1 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE batyatj6.beget.tech"; dns.query; content:"batyatj6.beget.tech"; sid:326437501; rev:1;)

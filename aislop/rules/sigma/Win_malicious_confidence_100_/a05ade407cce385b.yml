@@ -1,0 +1,23 @@
+title: Win_malicious_confidence_100_ malware detection
+id: Win_mali-a05ade40
+status: experimental
+description: Detects Win_malicious_confidence_100_ malware
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+  - EventType: Contains ability to disable/close registry key (API string)
+  - EventType: Contains ability to create a new process (API string)
+  - EventType: Contains ability to create/open files (API string)
+  - EventType: Contains registry location strings
+  - EventType: Contains ability to execute Windows APIs
+  - EventType: Contains ability to executes commands or batch file
+  - EventType: Contains ability to start a service (API string)
+  - EventType: Able to enumerate service (API string)
+  - EventType: Able to create/load registry keys (API string)
+  - EventType: Contains ability to close a handle to a service (API string)
+  condition: selection
+tags:
+- malware
+- Win_malicious_confidence_100_

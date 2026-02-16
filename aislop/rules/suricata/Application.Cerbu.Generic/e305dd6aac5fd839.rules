@@ -1,2 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE controlprice.xyz"; dns.query; content:"controlprice.xyz"; sid:805077401; rev:1;)
-alert ip $HOME_NET any -> 172.67.217.46 any (msg:"MALWARE C2 172.67.217.46"; sid:805077402; rev:1;)
