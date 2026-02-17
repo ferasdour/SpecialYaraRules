@@ -1,812 +1,261 @@
 #!/usr/bin/env python3
 """
-Hybrid Analysis → Multi-rule pipeline v6
-- Batches samples by family for better rule generation
-- Filters out generic Windows/system strings
-- Uses more realistic YARA conditions
-- Proper Ctrl+C handling
-
-Key improvements:
-- Groups samples by family first
-- Extracts common strings across family samples
-- Filters unique/sample-specific paths
-- More realistic matching conditions
+Single-file inline copilot-hatoyara runner.
+Notes:
+- Minimal, dependency-free; uses standard library only.
+- Fetches HA data, builds YARA rules and Sigma/Suricata rules per family.
+- Dry-run mode uses embedded sample data for safety.
 """
-import os
-import io
+import argparse
 import json
-import re
-import signal
+import os
 import sys
 import time
-import threading
-import zipfile
-import subprocess
-from collections import defaultdict, Counter
-from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any
-import requests
-import yaml
-import urllib3
-from ha_fetcher import HAClient
-from ha_rule_builder import generate_family_yara_from_strings
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+import datetime
+from typing import List, Dict, Any, Set, Tuple
+import urllib.request
+import urllib.error
+import hashlib
 
+# Placeholder; replace in real env if needed
+API_ENDPOINT_BASE = os.environ.get("HA_API_BASE", "https://www.hybrid-analysis.com/api/v2")
 
-SHUTDOWN_REQUESTED = False
-
-def signal_handler(sig, frame):
-    global SHUTDOWN_REQUESTED
-    print("\n[!] Shutdown requested, finishing current task...")
-    SHUTDOWN_REQUESTED = True
-
-
-signal.signal(signal.SIGINT, signal_handler)
-signal.signal(signal.SIGTERM, signal_handler)
-
-
-# =========================
-# Configuration
-# =========================
-
-API_KEY = os.environ.get('HA_API_KEY')
-if not API_KEY:
-    print("[!] Error: HA_API_KEY environment variable not set")
-    print("    Run: export HA_API_KEY=your_key_here")
-    exit(1)
-
-BASE_URL = "https://hybrid-analysis.com/api/v2"
-
-HEADERS = {
-    "api-key": API_KEY,
-    "User-Agent": "Falcon Sandbox",
-    "Accept": "application/json",
-}
-
-LATEST_LIMIT = 15
-MAX_WORKERS = 1
-
-GLOBAL_REQUEST_LOCK = threading.Lock()
-LAST_REQUEST_TIME = 0.0
-MIN_REQUEST_INTERVAL = 5.0
-MAX_RETRIES = 3
-BACKOFF_BASE = 15.0
-
-CACHE_DIR = Path("cache")
-RULES_DIR = Path("rules")
-YARA_DIR = RULES_DIR / "yara"
-SIGMA_DIR = RULES_DIR / "sigma"
-SURICATA_DIR = RULES_DIR / "suricata"
-LOGS_DIR = Path("logs")
-
-for d in [CACHE_DIR, YARA_DIR, SIGMA_DIR, SURICATA_DIR, LOGS_DIR]:
-    d.mkdir(parents=True, exist_ok=True)
-
-BENIGN_DOMAINS = {
-    "microsoft.com", "windows.com", "google.com", "cloudflare.com",
-    "github.com", "amazon.com", "apple.com", "adobe.com", "mozilla.org",
-    "w3.org", "iana.org", "python.org", "java.com", "oracle.com",
-    "reddit.com", "twitter.com", "facebook.com", "instagram.com",
-    "linkedin.com", "dropbox.com", "zoom.us", "chocolatey.org",
-    "nuget.org", "npmjs.com", "pypi.org", "rubygems.org",
-}
-
-GENERIC_WINDOWS_STRINGS = {
-    "kernel32.dll", "user32.dll", "advapi32.dll", "gdi32.dll",
-    "ntdll.dll", "shell32.dll", "ole32.dll", "comdlg32.dll",
-    "version.dll", "winmm.dll", "ws2_32.dll", "crypt32.dll",
-    "msvcrt.dll", "secur32.dll", "oleaut32.dll", "comctl32.dll",
-    "Microsoft Corporation",
-}
-
-HIGH_VALUE_PATTERNS = [
-    "powershell", "cmd.exe", "wscript", "cscript",
-    "virtualalloc", "virtualprotect", "getprocaddress", "loadlibrary",
-    "winexec", "shellexecute", "regsvr32", "schtasks", "rundll32",
-    "net user", "add user", "createuser", "admin$",
-    "powershell -enc", "iex", "invoke-expression", "downloadstring",
-    "webclient", "bitsadmin", "certutil", "mshta",
-    "reg add", "regedit", "runonce", "services",
-    "mutex", "mole", "njRAT", "emotet", "trickbot", "cobalt",
-    "ransom", "locky", "wannacry", "petya",
-]
-
-C2_PATTERNS = [
-    r"https?://[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(/|$)",
-    r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+",
-]
-
-DOMAIN_RE = re.compile(r"[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
-IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
-PRINTABLE_RE = re.compile(r"[ -~]{4,}")
-SHA256_RE = re.compile(r"[a-f0-9]{64}")
-
-
-# =========================
-# HTTP helpers
-# =========================
-
-def rate_limited_get(url: str, params: dict = None, accept: str = "application/json") -> requests.Response | None:
-    global LAST_REQUEST_TIME, SHUTDOWN_REQUESTED
-    headers = dict(HEADERS)
-    headers["Accept"] = accept
-
-    for attempt in range(MAX_RETRIES):
-        if SHUTDOWN_REQUESTED:
-            return None
-            
-        with GLOBAL_REQUEST_LOCK:
-            elapsed = time.time() - LAST_REQUEST_TIME
-            if elapsed < MIN_REQUEST_INTERVAL:
-                time.sleep(MIN_REQUEST_INTERVAL - elapsed)
-            LAST_REQUEST_TIME = time.time()
-
-        try:
-            resp = requests.get(url, headers=headers, params=params, timeout=60, verify=False)
-            if resp.status_code in (429, 503):
-                wait_time = BACKOFF_BASE * (2 ** attempt)
-                print(f"[!] Rate limited, waiting {wait_time:.0f}s before retry...")
-                time.sleep(wait_time)
-                continue
-            resp.raise_for_status()
-            return resp
-        except Exception as e:
-            if attempt < MAX_RETRIES - 1:
-                wait_time = BACKOFF_BASE * (2 ** attempt)
-                print(f"[!] Request error: {e}, waiting {wait_time:.0f}s...")
-                time.sleep(wait_time)
-                continue
-            print(f"[!] Request failed after {MAX_RETRIES} attempts: {e}")
-            return None
-
-
-# =========================
-# API helpers
-# =========================
-
-def get_latest_samples(limit: int = LATEST_LIMIT) -> list[dict]:
-    url = f"{BASE_URL}/feed/latest"
-    resp = rate_limited_get(url, {"limit": limit})
-    if not resp:
-        return []
+# Proxy support: respect HTTPS_PROXY/https_proxy environment variables if provided
+PROXY = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+GLOBAL_OPENER = None
+if PROXY:
     try:
-        data = resp.json()
-        if isinstance(data, list):
-            return data
-        return data.get("data", [])
-    except:
-        return []
+        proxy_handler = urllib.request.ProxyHandler({"http": PROXY, "https": PROXY})
+        GLOBAL_OPENER = urllib.request.build_opener(proxy_handler)
+        print(f"[INFO] Using HTTPS_PROXY={PROXY}", file=sys.stderr)
+    except Exception as e:
+        print(f"[WARN] Failed to configure proxy: {e}", file=sys.stderr)
 
+def string_to_hex_literal(s: str, max_len: int = 16) -> str:
+    b = s.encode("utf-8", errors="ignore")[:max_len]
+    hex_bytes = " ".join(f"{byte:02x}" for byte in b)
+    return f"{{ {hex_bytes} }}"
 
-def filter_malicious(samples: list[dict]) -> list[dict]:
-    malicious = []
+def is_benign_string(s: str) -> bool:
+    if not s:
+        return True
+    low = s.lower()
+    benign_keywords = [
+        "microsoft", "windows", "dll", "notepad", "explorer",
+        "this program cannot be run in dos mode", "placeholder", "sample"
+    ]
+    for w in benign_keywords:
+        if w in low:
+            return True
+    if len(low) < 3:
+        return True
+    return False
+
+class HAClient:
+    def __init__(self, api_key: str, dry_run: bool = False, cache_dir: str = ".cache_ha"):
+        self.api_key = api_key
+        self.dry_run = dry_run
+        self.cache_dir = cache_dir
+        os.makedirs(self.cache_dir, exist_ok=True)
+    def fetch_families(self, limit: int = 5) -> List[str]:
+        if self.dry_run:
+            return ["familyA", "familyB", "familyC"][:limit]
+        url = f"{API_ENDPOINT_BASE}/families"
+        print(f"[DEBUG] HA URL: {url}", file=sys.stderr)
+        try:
+            # First try Bearer token (common pattern)
+            req = urllib.request.Request(url, headers={"Authorization": f"Bearer {self.api_key}", "User-Agent": "copilot-hatoyara/1.0"})
+            opener = globals().get("GLOBAL_OPENER")
+            if opener is not None:
+                with opener.open(req, timeout=15) as resp:
+                    data = json.load(resp)
+            else:
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    data = json.load(resp)
+        except Exception:
+            try:
+                # Fallback: API key header
+                req = urllib.request.Request(url, headers={"X-API-Key": f"{self.api_key}", "Accept": "application/json", "User-Agent": "copilot-hatoyara/1.0"})
+                opener = globals().get("GLOBAL_OPENER")
+                if opener is not None:
+                    with opener.open(req, timeout=15) as resp:
+                        data = json.load(resp)
+                else:
+                    with urllib.request.urlopen(req, timeout=15) as resp:
+                        data = json.load(resp)
+            except Exception as e:
+                print(f"[WARN] failed to fetch families: {e}", file=sys.stderr)
+                return []
+        families = [f.get("name","unknown") for f in data.get("families", [])]
+        return families[:limit]
+    def fetch_samples_for_family(self, family: str, limit: int = 15) -> List[Dict[str, Any]]:
+        if self.dry_run:
+            sample = {
+                "sha256": "deadbeef" * 4,
+                "first_seen": "2025-12-01",
+                "sample_strings": ["SuspiciousStringA", "ImportantFile.exe", "config.ini"],
+                "file_names": ["payload.dll", "readme.txt"],
+                "domains": ["example.com", "bad-domain.net"],
+                "ips": ["8.8.8.8", "192.0.2.1"],
+                "threat_score": 65,
+                "mitre_techniques": ["TA0001", "TA0002"],
+                "target_url": "http://ha.example"
+            }
+            return [sample]
+        url = f"{API_ENDPOINT_BASE}/families/{family}/samples"
+        print(f"[DEBUG] HA URL: {url}", file=sys.stderr)
+        try:
+            req = urllib.request.Request(url, headers={"Authorization": f"Bearer {self.api_key}", "User-Agent": "copilot-hatoyara/1.0"})
+            opener = globals().get("GLOBAL_OPENER")
+            if opener is not None:
+                with opener.open(req, timeout=20) as resp:
+                    data = json.load(resp)
+            else:
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    data = json.load(resp)
+        except Exception:
+            try:
+                req = urllib.request.Request(url, headers={"X-API-Key": f"{self.api_key}", "Accept": "application/json", "User-Agent": "copilot-hatoyara/1.0"})
+                opener = globals().get("GLOBAL_OPENER")
+                if opener is not None:
+                    with opener.open(req, timeout=20) as resp:
+                        data = json.load(resp)
+                else:
+                    with urllib.request.urlopen(req, timeout=20) as resp:
+                        data = json.load(resp)
+            except Exception as e:
+                print(f"[WARN] failed to fetch samples for {family}: {e}", file=sys.stderr)
+                return []
+        return data.get("samples", [])[:limit]
+
+def deduplicate_signals_by_family(samples: List[Dict[str, Any]]) -> Dict[str, int]:
+    freq: Dict[str, int] = {}
     for s in samples:
-        verdict = s.get("verdict", "").lower()
-        threat = s.get("threat_score", 0)
-        if verdict == "malicious" or threat >= 70:
-            malicious.append(s)
-    return malicious
+        signals = set()
+        for sig in s.get("sample_strings", []) + s.get("file_names", []):
+            if is_benign_string(sig):
+                continue
+            signals.add(sig)
+        for sig in signals:
+            freq[sig] = freq.get(sig, 0) + 1
+    return freq
 
+def generate_yara_for_family(family: str, samples: List[Dict[str, Any]], threshold: float = 0.7, min_signals: int = 3) -> str:
+    per_sig: Dict[str, int] = deduplicate_signals_by_family(samples)
+    if not per_sig:
+        return ""
+    total_samples = len(samples)
+    sorted_signals = sorted(per_sig.items(), key=lambda kv: kv[1], reverse=True)
+    chosen: List[str] = []
+    for sig, count in sorted_signals:
+        if count / max(1, total_samples) >= threshold or len(chosen) < min_signals:
+            chosen.append(sig)
+        if len(chosen) >= max(min_signals, int(len(sorted_signals) * (threshold if threshold>0 else 0.5))):
+            break
+    if len(chosen) < min_signals:
+        chosen = [s for s, c in sorted_signals[:min_signals]]
+    hex_strings = []
+    for idx, s in enumerate(chosen, 1):
+        hex_strings.append(f"$sig{idx} = {string_to_hex_literal(s)}")
+    additional = []
+    for s in set(s for samp in samples for s in samp.get("file_names", []) if not is_benign_string(s)):
+        additional.append(f"$file{len(additional)+1} = {string_to_hex_literal(s)}")
+    lines = []
+    lines.extend(hex_strings)
+    lines.extend(additional)
+    header = f"rule HA_{family}_signals\n{{\n  meta:\n    description = \"Derived from samples for {family}\"\n  strings:\n"
+    for line in lines:
+        linestr = f"    {line}"
+        header += linestr + "\n"
+    header += "  condition:\n    any of them\n"
+    header += f"  // provenance: sample_count={total_samples}, first_sha256={samples[0]['sha256'] if samples else '—'}, first_seen={samples[0]['first_seen'] if samples else '—'}, threat_score={samples[0]['threat_score'] if samples else '—'}, mitre_techniques={', '.join(samples[0]['mitre_techniques']) if samples and samples[0].get('mitre_techniques') else '—'}, target_url={samples[0]['target_url'] if samples else '—'}\n"
+    header += "}\n"
+    return header
 
-def cache_get(name: str) -> Any:
-    path = CACHE_DIR / name
-    if path.exists():
-        try:
-            return json.loads(path.read_text(encoding="utf-8"))
-        except:
-            pass
-    return None
+def generate_sigma_for_family(family: str, samples: List[Dict[str, Any]]) -> str:
+    domains = set()
+    ips = set()
+    for s in samples:
+        for d in s.get("domains", []):
+            domains.add(d)
+        for ip in s.get("ips", []):
+            ips.add(ip)
+    lines = []
+    if domains:
+        lines.append("title: HA Family IOC - %s" % family)
+        lines.append("logsource:")
+        lines.append("  product: generic")
+        lines.append("detection:")
+        lines.append("  selection:")
+        lines.append("    Domain: " + ", ".join(sorted(domains)))
+        lines.append("  condition: Domain")
+    if ips:
+        lines.append("  DestinationIP: " + ", ".join(sorted(ips)))
+    return "\n".join(lines) + "\n" if lines else ""
 
-
-def cache_set(name: str, data: Any) -> None:
-    path = CACHE_DIR / name
-    path.write_text(json.dumps(data, indent=2), encoding="utf-8")
-
-
-def get_overview(sha256: str) -> dict:
-    cached = cache_get(f"ov_{sha256}")
-    if cached:
-        return cached
-    url = f"{BASE_URL}/overview/{sha256}"
-    resp = rate_limited_get(url)
-    if not resp:
-        return {}
-    try:
-        data = resp.json()
-        cache_set(f"ov_{sha256}", data)
-        return data
-    except Exception as e:
-        print(f"[!] Failed to get overview: {e}")
-        return {}
-
-
-def get_summary(report_id: str) -> dict:
-    cached = cache_get(f"sm_{report_id}")
-    if cached:
-        return cached
-    url = f"{BASE_URL}/report/{report_id}/summary"
-    resp = rate_limited_get(url)
-    if not resp:
-        return {}
-    try:
-        data = resp.json()
-        cache_set(f"sm_{report_id}", data)
-        return data
-    except Exception as e:
-        print(f"[!] Failed to get summary: {e}")
-        return {}
-
-
-def get_sample_strings(report_id: str, timeout: int = 30) -> list[str]:
-    """Extract strings from the sample file via HA strings endpoint"""
-    cached = cache_get(f"strings_{report_id}")
-    if cached:
-        return cached
-    
-    strings = []
-    url = f"{BASE_URL}/report/{report_id}/strings"
-    
-    try:
-        resp = rate_limited_get(url, accept="application/octet-stream")
-        if not resp or not resp.content:
-            return []
-        
-        zip_data = resp.content
-        with zipfile.ZipFile(io.BytesIO(zip_data)) as zf:
-            for name in zf.namelist():
-                if name.lower().endswith(".string"):
-                    try:
-                        text = zf.read(name).decode("utf-8", errors="ignore")
-                        for line in text.split('\n'):
-                            line = line.strip()
-                            if 4 <= len(line) <= 100:
-                                strings.append(line)
-                    except:
-                        pass
-    except Exception as e:
-        print(f"[!] Strings fetch failed: {e}")
-    
-    cache_set(f"strings_{report_id}", strings)
-    return strings
-
-
-# =========================
-# IOC extraction
-# =========================
-
-def is_generic_windows(s: str) -> bool:
-    lower = s.lower()
-    for gen in GENERIC_WINDOWS_STRINGS:
-        if gen.lower() == lower:
-            return True
-    if len(s) < 4:
-        return True
-    if s.isdigit():
-        return True
-    return False
-
-
-def is_sample_specific(s: str) -> bool:
-    if SHA256_RE.search(s):
-        return True
-    if len(s) > 150:
-        return True
-    return False
-
-
-def is_high_value(s: str) -> bool:
-    lower = s.lower()
-    for pattern in HIGH_VALUE_PATTERNS:
-        if pattern in lower:
-            return True
-    for pattern in C2_PATTERNS:
-        if re.search(pattern, s, re.I):
-            return True
-    return False
-
-
-def filter_strings(strings: list[str], max_count: int = 30) -> list[str]:
-    filtered = []
-    for s in strings:
-        if len(s) < 3:
-            continue
-        if s.isdigit():
-            continue
-        if is_sample_specific(s):
-            continue
-        filtered.append(s)
-    return list(dict.fromkeys(filtered))[:max_count]
-
-
-def extract_network_iocs(summary: dict, strings: list[str]) -> tuple[list, list]:
-    all_text = "\n".join(strings)
-    domains = set(DOMAIN_RE.findall(all_text))
-    ips = set(IP_RE.findall(all_text))
-    
-    for d in summary.get("domains", []):
-        domains.add(d)
-    for h in summary.get("hosts", []):
-        ips.add(h)
-    
-    domains = {d for d in domains if not any(b in d.lower() for b in BENIGN_DOMAINS)}
-    ips = {ip for ip in ips if not ip.startswith(("10.", "172.", "192.168", "127."))}
-    
-    return sorted(domains)[:15], sorted(ips)[:10]
-
-
-def extract_behaviors(summary: dict) -> list[dict]:
-    behaviors = []
-    for sig in summary.get("signatures", [])[:10]:
-        name = sig.get("name", "")
-        risk = sig.get("risk", 0)
-        if risk >= 50 and name:
-            behaviors.append({"name": name, "risk": risk})
-    return behaviors
-
-
-def extract_family(sample: dict, overview: dict, summary: dict) -> str:
-    family = overview.get("vx_family") or overview.get("vxf_family")
-    if not family:
-        family = sample.get("vxf_family") or sample.get("vx_family")
-    if not family:
-        family = sample.get("threat_family")
-    if not family:
-        tags = summary.get("classification_tags", [])
-        if tags:
-            family = str(tags[0]) if tags else "unknown"
-    if not family:
-        family = "unknown"
-    return re.sub(r"[^a-zA-Z0-9._-]", "_", family)[:50]
-
-
-# =========================
-# YARA generation
-# =========================
-
-
-def is_benign_domain(domain: str) -> bool:
-    d = domain.lower()
-    BENIGN = {
-        "example.com", "test.com", "localhost", "127.0.0.1",
-        "microsoft.com", "windows.com", "google.com", "cloudflare.com",
-        "github.com", "amazon.com", "apple.com", "adobe.com", "mozilla.org",
-        "w3.org", "iana.org", "python.org", "java.com", "oracle.com",
-        "facebook.com", "twitter.com", "instagram.com", "linkedin.com",
-        "dropbox.com", "zoom.us", "chocolatey.org", "nuget.org", "npmjs.com",
-        "pypi.org", "rubygems.org", "apache.org", "nginx.com", "ubuntu.com",
-        "debian.org", "centos.org", "redhat.com", "fedoraproject.org",
-        "contoso.com", "fabrikam.com", "adatum.com",
-        "fonts.googleapis.com", "fonts.gstatic.com", "ajax.googleapis.com",
-        "cdn.jsdelivr.net", "unpkg.com", "raw.githubusercontent.com",
-        "mail.protection.outlook.com", "protection.outlook.com",
-    }
-    if d in BENIGN:
-        return True
-    for b in BENIGN:
-        if b in d:
-            return True
-    return False
-
-def to_hex(s: str) -> str:
-    return " ".join(f"{b:02x}" for b in s.encode("utf-8", errors="ignore"))
-
-def calculate_threshold(total_strings: int) -> str:
-    if total_strings >= 10:
-        return f"{max(5, total_strings * 80 // 100)} of them"
-    elif total_strings >= 5:
-        return f"{max(3, total_strings * 80 // 100)} of them"
-    elif total_strings >= 3:
-        return f"{max(2, total_strings * 80 // 100)} of them"
-    else:
-        return "any of them"
-
-GENERIC_STRINGS = {
-    "kernel32.dll", "user32.dll", "advapi32.dll", "ntdll.dll",
-    "shell32.dll", "ole32.dll", "msvcrt.dll", "ws2_32.dll",
-    "Microsoft Corporation", "Windows", "Program Files",
-    "temp", "tmp", "appdata", "localappdata",
-}
-
-def is_generic_string(s: str) -> bool:
-    """Filter out generic strings that appear in every Windows binary"""
-    lower = s.lower()
-    if len(s) < 6:
-        return True
-    if s.isdigit() or s.isalpha():
-        return True
-    for gen in GENERIC_STRINGS:
-        if gen.lower() in lower:
-            return True
-    return False
-
-def filter_sample_strings(strings: list[str], max_count: int = 30) -> list[str]:
-    """Filter sample strings to keep meaningful ones"""
-    filtered = []
-    for s in strings:
-        if is_generic_string(s):
-            continue
-        if s not in filtered:
-            filtered.append(s)
-    return filtered[:max_count]
-
-def generate_family_yara(family: str, samples_data: list[dict]) -> tuple[str, str] | None:
-    """Generate YARA rule from ACTUAL SAMPLE DATA (imphash, ssdeep, type, etc)"""
-    all_imphashes = []
-    all_ssdeep = []
-    all_types = []
-    all_entrypoints = []
-    all_file_names = []
-    all_mitre = []
-    all_urls = []
-    all_domains = []
-    all_hosts = []
-    
-    for sd in samples_data:
-        summary = sd.get("summary", {})
-        
-        imphash = summary.get("imphash")
-        if imphash:
-            all_imphashes.append(imphash)
-        
-        ssdeep = summary.get("ssdeep")
-        if ssdeep:
-            all_ssdeep.append(ssdeep)
-        
-        ptype = summary.get("type_short", [])
-        if ptype:
-            all_types.append(" ".join(ptype))
-        
-        ep = summary.get("entrypoint")
-        if ep:
-            all_entrypoints.append(ep)
-        
-        for f in summary.get("extracted_files", [])[:10]:
-            name = f.get("name", "")
-            if name and len(name) > 4:
-                all_file_names.append(name)
-        
-        for m in sd.get("mitre", [])[:5]:
-            tech = m.get("technique", "")
-            if tech:
-                all_mitre.append(tech)
-        
-        target_url = sd.get("target_url")
-        if target_url:
-            all_urls.append(target_url)
-        
-        all_domains.extend(sd.get("domains", []))
-        all_hosts.extend(sd.get("hosts", []))
-    
-    unique_imphashes = list(set(all_imphashes))
-    unique_ssdeep = list(set(all_ssdeep))
-    unique_types = list(set(all_types))
-    unique_eps = list(set(all_entrypoints))
-    
-    name_counts = Counter(all_file_names)
-    common_names = [n for n, count in name_counts.most_common(15) if count >= len(samples_data) // 2][:8]
-    
-    mitre_counts = Counter(all_mitre)
-    common_mitre = [m for m, count in mitre_counts.most_common(5)]
-    
-    unique_urls = list(set(all_urls))
-    
-    unique_domains = [d for d in set(all_domains) if not is_benign_domain(d)]
-    unique_hosts = list(set(all_hosts))
-    
-    if not unique_imphashes and not unique_ssdeep and not unique_types and len(common_names) < 1:
-        return None
-    
-    safe_family = family.replace(":", "_").replace("\\", "_").replace("/", "_")
-    
-    str_lines = []
-    
-    for i, imp in enumerate(unique_imphashes[:3]):
-        str_lines.append(f'        $imphash{i} = "{imp}"')
-    
-    for i, ss in enumerate(unique_ssdeep[:3]):
-        str_lines.append(f'        $ssdeep{i} = "{ss}"')
-    
-    for i, t in enumerate(unique_types[:3]):
-        str_lines.append(f'        $type{i} = "{t}"')
-    
-    for i, ep in enumerate(unique_eps[:2]):
-        str_lines.append(f'        $ep{i} = "{ep}"')
-    
-    for i, name in enumerate(common_names[:5]):
-        str_lines.append(f'        $fn{i} = "{name}"')
-    
-    if not str_lines:
-        return None
-    
-    condition = calculate_threshold(len(str_lines))
-    
-    first_sha = samples_data[0]["sha256"]
-    first_seen = samples_data[0].get("first_seen", "unknown")
-    threat = samples_data[0].get("threat_score", "unknown")
-    
-    mitre_str = ", ".join(common_mitre) if common_mitre else "none"
-    target_url_str = unique_urls[0] if unique_urls else "none"
-    
-    rule = f"""rule {safe_family}_family
-{{
-    meta:
-        description = "Auto-generated YARA rule for {family}"
-        author = "aislop v6"
-        source = "Hybrid Analysis"
-        sample_count = "{len(samples_data)}"
-        first_sha256 = "{first_sha}"
-        first_seen = "{first_seen}"
-        threat_score = "{threat}"
-        mitre_techniques = "{mitre_str}"
-        target_url = "{target_url_str}"
-
-    strings:
-{chr(10).join(str_lines)}
-
-    condition:
-        {condition}
-}}
-"""
-    return rule, safe_family
-
-
-def write_yara(safe_family: str, rule: str, sha256: str) -> Path:
-    fam_dir = YARA_DIR / safe_family
-    fam_dir.mkdir(parents=True, exist_ok=True)
-    path = fam_dir / f"{sha256[:16]}.yar"
-    path.write_text(rule, encoding="utf-8")
-    return path
-
-
-# =========================
-# Sigma generation  
-# =========================
-
-def generate_sigma(family: str, signatures: list, domains: list, hosts: list, sha256: str) -> str | None:
-    if not (signatures or domains or hosts):
-        return None
-    
-    selection = []
-    for sig in signatures[:10]:
-        name = sig.get("name", "")
-        if name:
-            selection.append({"EventType": name})
-    for d in domains[:8]:
-        selection.append({"DestinationHostname": d})
-    for ip in hosts[:5]:
-        selection.append({"DestinationIp": ip})
-    
-    sigma = {
-        "title": f"{family} malware detection",
-        "id": f"{family[:8]}-{sha256[:8]}",
-        "status": "experimental",
-        "description": f"Detects {family} malware",
-        "logsource": {"product": "windows", "service": "sysmon"},
-        "detection": {"selection": selection, "condition": "selection"},
-        "tags": ["malware", family],
-    }
-    return yaml.safe_dump(sigma, sort_keys=False)
-
-
-def write_sigma(family: str, rule: str, sha256: str) -> Path:
-    fam_dir = SIGMA_DIR / family
-    fam_dir.mkdir(parents=True, exist_ok=True)
-    path = fam_dir / f"{sha256[:16]}.yml"
-    path.write_text(rule, encoding="utf-8")
-    return path
-
-
-# =========================
-# Suricata generation
-# =========================
-
-def generate_suricata(domains: list, ips: list, sha256: str) -> str | None:
-    if not (domains or ips):
-        return None
-    
+def generate_suricata_for_family(family: str, samples: List[Dict[str, Any]]) -> str:
     rules = []
-    base_sid = int(sha256[:7], 16) % 10000000
-    sid = 1
-    
-    for d in domains[:10]:
-        rules.append(f'alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE {d}"; dns.query; content:"{d}"; sid:{base_sid}{sid:02d}; rev:1;)')
-        sid += 1
-    
-    for ip in ips[:10]:
-        rules.append(f'alert ip $HOME_NET any -> {ip} any (msg:"MALWARE C2 {ip}"; sid:{base_sid}{sid:02d}; rev:1;)')
-        sid += 1
-    
-    return "\n".join(rules)
-
-
-def write_suricata(family: str, rule: str, sha256: str) -> Path:
-    fam_dir = SURICATA_DIR / family
-    fam_dir.mkdir(parents=True, exist_ok=True)
-    path = fam_dir / f"{sha256[:16]}.rules"
-    path.write_text(rule, encoding="utf-8")
-    return path
-
-
-# =========================
-# Processing
-# =========================
-
-def process_sample(sample: dict) -> dict | None:
-    if SHUTDOWN_REQUESTED:
-        return None
-    
-    sha256 = sample.get("sha256", "")
-    if not sha256:
-        return None
-    
-    try:
-        overview = get_overview(sha256)
-    except Exception as e:
-        print(f"[!] Failed overview {sha256[:8]}: {e}")
-        return None
-    
-    reports = overview.get("reports", [])
-    if not reports:
-        return None
-    
-    try:
-        summary = get_summary(str(reports[0]))
-    except:
-        summary = {}
-    
-    family = extract_family(sample, overview, summary)
-    
-    domains = summary.get("domains", [])
-    hosts = summary.get("hosts", [])
-    signatures = summary.get("signatures", [])
-    mitre = summary.get("mitre_attcks", [])
-    target_url = summary.get("target_url")
-    
-    return {
-        "sha256": sha256,
-        "family": family,
-        "overview": overview,
-        "summary": summary,
-        "domains": domains,
-        "hosts": hosts,
-        "signatures": signatures,
-        "mitre": mitre,
-        "target_url": target_url,
-        "first_seen": overview.get("analysis_start_time", "unknown"),
-        "threat_score": overview.get("threat_score", 0),
-    }
-
+    sid = 100000
+    for d in set(d for s in samples for d in s.get("domains", [])):
+        if d.strip():
+            rules.append(f"alert http any any -> any any (msg:'HA IOC Domain {d}'; flow: to_server; content:\"{d}\"; nocase; sid:{sid}; rev:1)")
+            sid += 1
+    for ip in set(ip for s in samples for ip in s.get("ips", [])):
+        if ip.strip():
+            rules.append(f"alert ip any any -> {ip} any (msg:'HA IOC IP {ip}'; sid:{sid}; rev:1)")
+            sid += 1
+    return "\n".join(rules) + ("\n" if rules else "")
 
 def main():
-    global SHUTDOWN_REQUESTED
-    
-    print(f"[*] Fetching {LATEST_LIMIT} latest samples via HA fetcher...")
-    ha = HAClient()
-    samples = ha.get_latest(LATEST_LIMIT) or []
-    print(f"[*] HA fetch returned {len(samples)} samples")
-    # Fallback to local cache if HA fetch yields nothing
-    if not samples:
-        samples = get_latest_samples(LATEST_LIMIT)
-        print(f"[*] Local cache yields {len(samples)} samples")
-    malicious = filter_malicious(samples)
-    print(f"[*] Found {len(malicious)} malicious samples")
-    
-    max_process = min(len(malicious), 10)
-    malicious = malicious[:max_process]
-    print(f"[*] Processing max {max_process} samples")
-    
-    print("[*] Processing samples (this may take a while)...")
-    sys.stdout.flush()
-    
-    processed = []
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = {executor.submit(process_sample, s): s for s in malicious}
-        for i, fut in enumerate(as_completed(futures)):
-            if SHUTDOWN_REQUESTED:
-                break
-            print(f"[*] Processing {i+1}/{len(malicious)}...", end="\r")
-            sys.stdout.flush()
-            try:
-                result = fut.result()
-                if result:
-                    processed.append(result)
-                    print(f"[+] {result['family']}: {result['sha256'][:8]}")
-            except Exception as e:
-                print(f"[!] Error: {e}")
-    
-    if SHUTDOWN_REQUESTED:
-        print("[!] Shutdown requested, saving progress...")
-    
-    print(f"[*] Grouping by family...")
-    families = defaultdict(list)
-    for p in processed:
-        families[p["family"]].append(p)
-    
-    samples_with_iocs = sum(1 for p in processed if p.get("domains") or p.get("hosts"))
-    print(f"[*] Found {len(families)} unique families, {samples_with_iocs} samples with IOCs")
-    
-    yara_count = 0
-    sigma_count = 0
-    suricata_count = 0
-    
-    for family, samples_data in families.items():
-        if SHUTDOWN_REQUESTED:
-            break
-        
-        if len(samples_data) < 1:
+    parser = argparse.ArgumentParser(description="Inline copilot-hatoyara: HA -> YARA/Sigma/Suricata")
+    parser.add_argument("--api-key", "-k", help="HA API key (or set HA_API_KEY env var)")
+    parser.add_argument("--dry-run", action="store_true", help="Use embedded sample data only")
+    parser.add_argument("--limit-families", type=int, default=3, help="Max families to process")
+    parser.add_argument("--max-samples", type=int, default=15, help="Max samples per family")
+    parser.add_argument("--output-dir", default="rules", help="Output root directory")
+    parser.add_argument("--threshold", type=float, default=0.7, help="YARA signal threshold (0-1)")
+    parser.add_argument("--min-signals", type=int, default=3, help="Minimum signals to include")
+    args = parser.parse_args()
+
+    api_key = args.api_key or os.environ.get("HA_API_KEY", "")
+    if not api_key and not args.dry_run:
+        print("Error: API key required unless --dry-run is set.", file=sys.stderr)
+        sys.exit(2)
+
+    client = HAClient(api_key, dry_run=args.dry_run)
+    families = client.fetch_families(limit=args.limit_families)
+    if not families:
+        print("No families found. Exiting.", file=sys.stderr)
+        sys.exit(0)
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    for family in families:
+        samples = client.fetch_samples_for_family(family, limit=args.max_samples)
+        if not samples:
+            print(f"Skipping {family}: no samples", file=sys.stderr)
             continue
-        
-        sample = samples_data[0]
-        sha256 = sample["sha256"]
-        
-        # Build YARA from sample-derived data (avoid cache-hints; rely on HA sample data)
-        all_strings = []
-        all_files = []
-        all_domains = []
-        all_hosts = []
-        all_mitre = []
-        all_urls = []
-        for s in samples_data:
-            if isinstance(s, dict):
-                all_strings.extend(s.get("sample_strings", []) or [])
-                summary = s.get("summary", {})
-                for ef in summary.get("extracted_files", []) or []:
-                    name = ef.get("name")
-                    if name:
-                        all_files.append(name)
-                all_domains.extend(summary.get("domains", []) or [])
-                all_hosts.extend(summary.get("hosts", []) or [])
-                for m in summary.get("mitre_attcks", [])[:5]:
-                    tech = m.get("technique", "")
-                    if tech:
-                        all_mitre.append(tech)
-                if summary.get("target_url"):
-                    all_urls.append(summary.get("target_url"))
-
-        sample_strings = list(dict.fromkeys(all_strings))[:30]
-        sample_files = list(dict.fromkeys(all_files))
-        domains = list(dict.fromkeys(all_domains))[:20]
-        ips = list(dict.fromkeys(all_hosts))[:20]
-        first_sha = sha256
-        first_seen = samples_data[0].get("first_seen", "unknown")
-        threat = samples_data[0].get("threat_score", 0)
-        mitre_techniques = list(dict.fromkeys(all_mitre))
-        rule_out = generate_family_yara_from_strings(family, sample_strings, sample_files, domains, ips, first_sha, first_seen, threat, mitre_techniques)
-        if rule_out:
-            yara_rule, safe_family = rule_out
-            try:
-                write_yara(safe_family, yara_rule, first_sha)
-                yara_count += 1
-                print(f"[+] YARA: {family}")
-            except Exception as e:
-                print(f"[!] YARA write error: {e}")
-        
-        domains = sample.get("domains", [])
-        hosts = sample.get("hosts", [])
-        signatures = sample.get("signatures", [])
-        
-        sigma_rule = generate_sigma(family, signatures, domains, hosts, sha256)
-        if sigma_rule:
-            try:
-                write_sigma(family, sigma_rule, sha256)
-                sigma_count += 1
-            except:
-                pass
-        
-        suricata_rule = generate_suricata(domains, hosts, sha256)
-        if suricata_rule:
-            try:
-                write_suricata(family, suricata_rule, sha256)
-                suricata_count += 1
-            except:
-                pass
-    
-    print(f"\n[*] Done!")
-    print(f"    YARA rules: {yara_count}")
-    print(f"    Sigma rules: {sigma_count}")
-    print(f"    Suricata rules: {suricata_count}")
-
+        yara = generate_yara_for_family(family, samples, threshold=args.threshold, min_signals=args.min_signals)
+        if yara:
+            yara_dir = os.path.join(args.output_dir, "yara")
+            os.makedirs(yara_dir, exist_ok=True)
+            path = os.path.join(yara_dir, f"{family}.yar")
+            with open(path, "w", encoding="ascii") as f:
+                f.write(yara)
+        sigma = generate_sigma_for_family(family, samples)
+        if sigma:
+            sigma_dir = os.path.join(args.output_dir, "sigma")
+            os.makedirs(sigma_dir, exist_ok=True)
+            path = os.path.join(sigma_dir, f"{family}.yml")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(sigma)
+        suri = generate_suricata_for_family(family, samples)
+        if suri:
+            suri_dir = os.path.join(args.output_dir, "suricata")
+            os.makedirs(suri_dir, exist_ok=True)
+            path = os.path.join(suri_dir, f"{family}.rules")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(suri)
+        print(f"Wrote outputs for {family}")
 
 if __name__ == "__main__":
     main()

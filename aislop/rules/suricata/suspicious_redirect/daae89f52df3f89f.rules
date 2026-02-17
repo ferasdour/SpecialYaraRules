@@ -1,3 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE www.apunkasoftware.net"; dns.query; content:"www.apunkasoftware.net"; sid:930447901; rev:1;)
-alert ip $HOME_NET any -> 45.12.3.62 any (msg:"MALWARE C2 45.12.3.62"; sid:930447902; rev:1;)
-alert ip $HOME_NET any -> 45.12.3.62 any (msg:"MALWARE C2 45.12.3.62"; sid:930447903; rev:1;)

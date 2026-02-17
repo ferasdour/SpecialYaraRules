@@ -1,1 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE vcc-library.uk"; dns.query; content:"vcc-library.uk"; sid:5680301; rev:1;)

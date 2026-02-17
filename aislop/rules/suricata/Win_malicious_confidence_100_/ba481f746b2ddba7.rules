@@ -1,1 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE testmycdn.azureedge.net"; dns.query; content:"testmycdn.azureedge.net"; sid:533055101; rev:1;)

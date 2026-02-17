@@ -1,1 +1,0 @@
-alert dns $HOME_NET any -> $EXTERNAL_NET any (msg:"MALWARE vaibaht.com"; dns.query; content:"vaibaht.com"; sid:701644701; rev:1;)
